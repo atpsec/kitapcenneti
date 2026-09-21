@@ -9,6 +9,7 @@ import { showToast } from '../components/Toast'
 import { useProgress } from '../hooks/useProgress'
 import { STICKERS } from '../data/stickers'
 import { SocialShare } from '../components/SocialShare'
+import { useMembership } from '../hooks/useMembership'
 
 const AVATARS = ['🦊', '🐻', '🦄', '🐱', '🐼', '🦁', '🐸', '🦉', '🐯', '🐨']
 const INTERESTS = ['masal', 'oyun', 'boyama', 'uzay', 'hayvan', 'stem', 'müzik', 'duygu']
@@ -28,6 +29,7 @@ export function ProfilePage({ onNavigate }: Props) {
     pinEnabled,
   } = usePortalProfile()
   const { stars, streak, badges, stickers } = useProgress()
+  const { membership, isPlus } = useMembership()
   const [draft, setDraft] = useState<PortalProfile>(profile)
   const [pin, setPin] = useState('')
   const [pin2, setPin2] = useState('')
@@ -52,8 +54,20 @@ export function ProfilePage({ onNavigate }: Props) {
         <p>Kardeş profilleri, yaş grubu, aile PIN kilidi — her çocuk kendi dünyasında.</p>
       </header>
 
+      <section className="account-strip">
+        <div className="account-strip__icon">✦</div>
+        <div>
+          <span className="membership-eyebrow">Aile hesabı</span>
+          <strong>{isPlus ? 'Aile+ aktif' : 'Ücretsiz plan'}</strong>
+          <small>{membership.email || 'Ebeveyn e-postası henüz eklenmedi'}</small>
+        </div>
+        <button type="button" className="btn btn--small btn--primary" onClick={() => onNavigate('membership')}>
+          {isPlus ? 'Üyeliği yönet' : 'Aile+ planlarını gör'} <span>→</span>
+        </button>
+      </section>
+
       <section className="section">
-        <h2 className="section__title">Profiller ({profiles.length}/5)</h2>
+        <h2 className="section__title">Profiller ({profiles.length}/{isPlus ? 5 : 1})</h2>
         <div className="profile-switcher">
           {profiles.map((p) => (
             <button
@@ -71,12 +85,16 @@ export function ProfilePage({ onNavigate }: Props) {
             type="button"
             className="btn btn--ghost"
             onClick={() => {
-              const n = addProfile()
+              if (!isPlus) {
+                onNavigate('membership')
+                return
+              }
+              const n = addProfile(5)
               if (n) showToast('Yeni kardeş profili eklendi')
               else showToast('En fazla 5 profil')
             }}
           >
-            + Kardeş ekle
+            + {isPlus ? 'Kardeş ekle' : 'Aile+ ile kardeş ekle'}
           </button>
           {profiles.length > 1 && (
             <button

@@ -25,6 +25,7 @@ export const PARENT_NAV: NavItem[] = [
   { id: 'classroom', label: 'Sınıf Merkezi', emoji: '🏫', short: 'Kod', mode: 'parent' },
   { id: 'journal', label: 'Gelişim Günlüğü', emoji: '📔', short: 'Günlük', mode: 'parent' },
   { id: 'shop', label: 'Ücretsiz Paketler', emoji: '🎁', short: 'Paket', mode: 'parent' },
+  { id: 'membership', label: 'Aile+ Üyelik', emoji: '✦', short: 'Aile+', mode: 'parent' },
 ]
 
 export const SIDEBAR_EXTRA: { id: PageId; label: string; emoji: string }[] = [
@@ -41,6 +42,7 @@ export const SIDEBAR_EXTRA: { id: PageId; label: string; emoji: string }[] = [
   { id: 'playground', label: 'Etkileşim Arenası', emoji: '🕹️' },
   { id: 'classroom', label: 'Sınıf Merkezi', emoji: '🏫' },
   { id: 'search', label: 'Ara', emoji: '🔎' },
+  { id: 'membership', label: 'Aile+ Üyelik', emoji: '✦' },
 ]
 
 export function navForMode(mode: PortalMode): NavItem[] {

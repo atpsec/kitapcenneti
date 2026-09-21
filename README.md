@@ -33,3 +33,9 @@ npm install
 npm run dev
 npm run build:gh
 ```
+
+## Aile+ üyelik altyapısı
+
+Üyelik ekranı ücretsiz ve Aile+ planlarını içerir. Gerçek ödeme için Cloudflare Pages Functions ortamında Stripe anahtarlarını tanımlayın: `STRIPE_SECRET_KEY`, `STRIPE_PRICE_MONTHLY`, `STRIPE_PRICE_ANNUAL`, `STRIPE_WEBHOOK_SECRET` ve `SITE_URL`. D1 kullanacaksanız `migrations/0001_membership.sql` dosyasını çalıştırıp `DB` binding'ini Pages projesine ekleyin.
+
+Tarayıcı tarafında `VITE_MEMBERSHIP_API_BASE` değerini Functions adresine bağlayın. Anahtarlar istemciye açılmamalı; ödeme ve webhook uçları yalnızca sunucu ortamında çalışmalıdır.

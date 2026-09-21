@@ -33,6 +33,7 @@ export type PageId =
   | 'privacy'
   | 'terms'
   | 'contact'
+  | 'membership'
 
 export type PortalMode = 'kids' | 'parent'
 
@@ -49,5 +50,5 @@ export const ALL_PAGES: PageId[] = [
   'rhymes', 'stem', 'feelings', 'blog', 'printables', 'certificates', 'parents',
   'library', 'paths', 'journal', 'calendar', 'teachers', 'profile', 'discover', 'world', 'shop', 'search',
   'live', 'classroom', 'challenge', 'playground',
-  'about', 'privacy', 'terms', 'contact',
+  'about', 'privacy', 'terms', 'contact', 'membership',
 ]

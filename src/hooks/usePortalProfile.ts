@@ -160,8 +160,8 @@ export function usePortalProfile() {
     persistProfiles(profiles, id)
   }
 
-  const addProfile = () => {
-    if (profiles.length >= 5) return null
+  const addProfile = (maxProfiles = 5) => {
+    if (profiles.length >= maxProfiles) return null
     const next: PortalProfile = {
       ...DEFAULT_PROFILE,
       id: uid(),

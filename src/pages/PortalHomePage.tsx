@@ -19,6 +19,7 @@ import { InstallPrompt } from '../components/InstallPrompt'
 import { ReminderPanel } from '../components/ReminderPanel'
 import { FamilyLockModal } from '../components/FamilyLockModal'
 import { PetCare } from '../components/PetCare'
+import { PremiumGate } from '../components/PremiumGate'
 
 interface Props {
   onNavigate: (page: PageId) => void
@@ -206,7 +207,9 @@ export function PortalHomePage({ onNavigate }: Props) {
         <aside className="portal-home__rail">
           <ProgressHub compact onNavigate={onNavigate} />
           <div className="rail-card rail-card--pet"><div className="rail-card__top"><span className="rail-card__icon">🦊</span><span className="rail-card__label">Portal dostun</span></div><h2>Biraz bakım zamanı</h2><p>Dostunla ilgilen, sonra yeni bir oyuna geç.</p><button type="button" className="text-link" onClick={() => document.querySelector('.pet-care')?.scrollIntoView({ behavior: 'smooth' })}>Dostuma git <span>↓</span></button></div>
-          <div className="rail-card rail-card--collection"><div className="rail-card__top"><span className="rail-card__icon">🧭</span><span className="rail-card__label">Küratör seçkisi</span></div><h2>{COLLECTIONS[0]?.title || 'Merak köşesi'}</h2><p>{COLLECTIONS[0]?.description || 'Bugün için küçük bir keşif.'}</p><button type="button" className="text-link" onClick={() => onNavigate('discover')}>Seçkiyi aç <span>↗</span></button></div>
+          <PremiumGate onNavigate={onNavigate} label="Küratör seçkileri Aile+ ile açılır">
+            <div className="rail-card rail-card--collection"><div className="rail-card__top"><span className="rail-card__icon">🧭</span><span className="rail-card__label">Küratör seçkisi</span></div><h2>{COLLECTIONS[0]?.title || 'Merak köşesi'}</h2><p>{COLLECTIONS[0]?.description || 'Bugün için küçük bir keşif.'}</p><button type="button" className="text-link" onClick={() => onNavigate('discover')}>Seçkiyi aç <span>↗</span></button></div>
+          </PremiumGate>
         </aside>
       </div>
       <section className="section portal-home__pet-section"><div className="section-heading-row"><div><span className="section-kicker">Yavaşla</span><h2 className="section__title">Portal dostun</h2></div><span className="section-heading-note">İyi hissetmek de ilerlemedir</span></div><PetCare /></section>
