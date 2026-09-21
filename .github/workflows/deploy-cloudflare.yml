@@ -7,6 +7,9 @@ on:
 
 jobs:
   deploy:
+    # GitHub Pages is the public fallback. Enable this job after adding the
+    # Cloudflare account token and account id repository secrets.
+    if: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -25,11 +28,8 @@ jobs:
           BASE_PATH: /
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: kitapcenneti
-          directory: dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true
+          command: pages deploy dist --project-name kitapcenneti
