@@ -45,5 +45,6 @@ Hesap API uçları:
 - `POST /api/auth/register`, `POST /api/auth/login`, `POST /api/auth/logout`, `GET /api/auth/me`
 - `GET/POST/PUT/DELETE /api/family/children`
 - `GET/POST /api/family/progress?childId=...`
+- `GET /api/membership/account-status`
 
 Cloudflare Pages üzerinde hesabın ve senkronizasyonun çalışması için Functions ortamına `DB` adlı D1 binding'i ekleyin. Şifreler PBKDF2-SHA-256 ile hashlenir; oturumlar HttpOnly, Secure ve SameSite=None cookie ile tutulur.

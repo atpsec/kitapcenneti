@@ -97,6 +97,7 @@ export function useMembership() {
         const response = await fetch(base + '/membership/checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
           body: JSON.stringify({ plan, email: normalizedEmail }),
         })
         const payload = (await response.json()) as { url?: string; error?: string }
@@ -130,6 +131,7 @@ export function useMembership() {
       const response = await fetch(base + '/membership/confirm', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ sessionId }),
       })
       const payload = (await response.json()) as Partial<MembershipState> & { error?: string }
@@ -149,11 +151,18 @@ export function useMembership() {
   }, [membership.email, update])
 
   const refresh = useCallback(async () => {
-    if (!membership.customerId || !membership.subscriptionId) return
     const base = apiBase()
     if (!base) return
     try {
-      const response = await fetch(base + '/membership/status?customerId=' + encodeURIComponent(membership.customerId) + '&subscriptionId=' + encodeURIComponent(membership.subscriptionId))
+      if (!membership.customerId || !membership.subscriptionId) {
+        const accountResponse = await fetch(base + '/membership/account-status', { credentials: 'include' })
+        const accountPayload = (await accountResponse.json()) as Partial<MembershipState>
+        if (accountResponse.ok && accountPayload.status) {
+          update({ plan: accountPayload.plan === 'family_plus' ? 'family_plus' : 'free', status: accountPayload.status })
+        }
+        return
+      }
+      const response = await fetch(base + '/membership/status?customerId=' + encodeURIComponent(membership.customerId) + '&subscriptionId=' + encodeURIComponent(membership.subscriptionId), { credentials: 'include' })
       const payload = (await response.json()) as Partial<MembershipState>
       if (response.ok && payload.status) {
         update({
