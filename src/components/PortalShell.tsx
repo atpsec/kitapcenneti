@@ -66,7 +66,7 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
           <span className="portal-brand__mark">📚</span>
           <div>
             <strong>Kitap Cenneti</strong>
-            <small>Aile & Çocuk Portalı</small>
+            <small>Masal · Oyun · Keşif</small>
           </div>
         </button>
 
@@ -74,7 +74,7 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Masal, oyun, STEM, blog ara…"
+            placeholder="Bir masal, oyun veya konu ara…"
             aria-label="Portalda ara"
           />
           <button type="submit" className="btn btn--small">

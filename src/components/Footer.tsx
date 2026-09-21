@@ -15,7 +15,7 @@ export function Footer({ onNavigate }: FooterProps) {
       <div className="footer__content">
         <p className="footer__brand">📚 Kitap Cenneti</p>
         <p className="footer__text">
-          Çocuklar ve aileler için ücretsiz, güvenli ve eğlenceli içerik ✨
+          Çocuklar ve aileler için güvenli, merak uyandıran küçük keşifler ✨
         </p>
         <div className="footer__nav">
           <button onClick={() => go('portal')}>Portal</button>

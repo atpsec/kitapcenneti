@@ -24,25 +24,66 @@ interface Props {
   onNavigate: (page: PageId) => void
 }
 
+const KIDS_LAUNCHERS: { id: PageId; emoji: string; label: string; note: string; tone: string }[] = [
+  { id: 'audio', emoji: '🎧', label: 'Masal dinle', note: '3–8 dakika', tone: 'cyan' },
+  { id: 'playground', emoji: '🕹️', label: 'Arenaya gir', note: 'Hızlı oyunlar', tone: 'violet' },
+  { id: 'coloring', emoji: '🖍️', label: 'Bir şey boya', note: 'Yaratıcı mola', tone: 'amber' },
+  { id: 'create', emoji: '✨', label: 'Hikaye kur', note: 'Senin fikrinle', tone: 'coral' },
+]
+
+const FAMILY_TOOLS: { id: PageId; emoji: string; label: string; note: string }[] = [
+  { id: 'calendar', emoji: '📅', label: 'Haftalık plan', note: '7 güne bak' },
+  { id: 'paths', emoji: '🛤️', label: 'Öğrenme yolları', note: 'Yaşa göre ilerle' },
+  { id: 'journal', emoji: '📔', label: 'Günlük', note: 'Gelişimi gör' },
+  { id: 'teachers', emoji: '👩‍🏫', label: 'Öğretmen', note: String(TEACHER_RESOURCES.length) + ' kaynak' },
+  { id: 'shop', emoji: '🎁', label: 'Ücretsiz paketler', note: String(SHOP_PACKS.length) + ' paket' },
+  { id: 'blog', emoji: '📝', label: 'Aile blogu', note: 'Kısa rehberler' },
+]
+
+function LaunchCard({
+  item,
+  onNavigate,
+}: {
+  item: { id: PageId; emoji: string; label: string; note: string; tone?: string }
+  onNavigate: (page: PageId) => void
+}) {
+  return (
+    <button
+      type="button"
+      className={'launch-card ' + (item.tone ? 'launch-card--' + item.tone : '')}
+      onClick={() => onNavigate(item.id)}
+    >
+      <span className="launch-card__emoji" aria-hidden="true">{item.emoji}</span>
+      <span className="launch-card__copy">
+        <strong>{item.label}</strong>
+        <small>{item.note}</small>
+      </span>
+      <span className="launch-card__arrow" aria-hidden="true">↗</span>
+    </button>
+  )
+}
+
 export function PortalHomePage({ onNavigate }: Props) {
   const { mode, setMode, profile, pinEnabled, checkFamilyPin } = usePortalProfile()
-  const { spinAvailable } = useProgress()
+  const { stars, streak, stickers, todayProgress } = useProgress()
   const [lockOpen, setLockOpen] = useState(false)
   const quests = getDailyQuests()
   const path = LEARNING_PATHS.find((p) => p.age === profile.ageGroup) || LEARNING_PATHS[0]
   const story = factoryStory(hashSeed(dayKey(), 'home-feature'))
 
-  const switchMode = (m: typeof mode) => {
-    if (m === 'parent' && mode !== 'parent' && pinEnabled) {
+  const switchMode = (nextMode: typeof mode) => {
+    if (nextMode === 'parent' && mode !== 'parent' && pinEnabled) {
       setLockOpen(true)
       return
     }
-    setMode(m)
+    setMode(nextMode)
   }
+
+  const greeting = profile.childName ? 'Merhaba, ' + profile.childName + '.' : 'Merhaba, kaşif.'
 
   if (mode === 'parent') {
     return (
-      <div className="page portal-home">
+      <div className="page portal-home portal-home--parent">
         <FamilyLockModal
           open={lockOpen}
           onClose={() => setLockOpen(false)}
@@ -52,81 +93,63 @@ export function PortalHomePage({ onNavigate }: Props) {
             setMode('parent')
           }}
         />
-        <header className="page-header">
-          <h1>Aile Portalı</h1>
-          <p>
-            Planla, izle, destekle — {profile.childName || 'çocuğunuz'} için öğrenme yolları,
-            sınıf kaynakları ve gelişim günlüğü tek yerde.
-          </p>
-        </header>
+        <section className="portal-hero portal-hero--parent">
+          <div className="portal-hero__copy">
+            <div className="portal-hero__eyebrow"><span className="eyebrow-dot" /> Aile paneli · bugün</div>
+            <h1>Günü birlikte<br /><em>büyütün.</em></h1>
+            <p>{profile.childName || 'Çocuğunuz'} için plan, keşif ve küçük kazanımlar tek bakışta.</p>
+            <div className="portal-hero__actions">
+              <button type="button" className="btn btn--primary" onClick={() => onNavigate('calendar')}>Haftayı planla <span>→</span></button>
+              <button type="button" className="btn btn--ghost" onClick={() => onNavigate('journal')}>Günlüğü aç</button>
+            </div>
+            <div className="portal-hero__metrics">
+              <span><strong>{stars}</strong> yıldız</span>
+              <span><strong>{streak}</strong> günlük seri</span>
+              <span><strong>{todayProgress}%</strong> bugün</span>
+            </div>
+          </div>
+          <div
+            className="portal-hero__visual"
+            role="img"
+            aria-label="Yıldızların altında kitap okuyan tilki"
+            style={{ backgroundImage: 'linear-gradient(90deg, rgba(10, 32, 56, .46), transparent 50%), url(' + import.meta.env.BASE_URL + 'hero-observatory.png)' }}
+          />
+        </section>
         <ModeBanner mode={mode} onSwitch={switchMode} />
         <InstallPrompt />
-        <WeeklySummary />
-        <ReminderPanel />
-        <LivePulse onNavigate={onNavigate} />
-
-        <div className="portal-dash-grid">
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('calendar')}>
-            <span>📅</span>
-            <h2>Haftalık Plan</h2>
-            <p>7 güne yayılmış aile etkinlik takvimi</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('classroom')}>
-            <span>🏫</span>
-            <h2>Sınıf Merkezi</h2>
-            <p>Kod, toplu görev, plan PDF</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('paths')}>
-            <span>🛤️</span>
-            <h2>Öğrenme Yolları</h2>
-            <p>{LEARNING_PATHS.length} yaşa özel program</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('journal')}>
-            <span>📔</span>
-            <h2>Gelişim Günlüğü</h2>
-            <p>Ne dinlendi, ne oynandı — kayıt altında</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('teachers')}>
-            <span>👩‍🏫</span>
-            <h2>Öğretmen Köşesi</h2>
-            <p>{TEACHER_RESOURCES.length} sınıf etkinliği</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('shop')}>
-            <span>🎁</span>
-            <h2>Ücretsiz Paketler</h2>
-            <p>{SHOP_PACKS.length} indirilebilir içerik paketi</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('blog')}>
-            <span>📝</span>
-            <h2>Aile Blog</h2>
-            <p>Rutin, ekran ve okuma rehberleri</p>
-          </button>
-        </div>
-
-        <section className="section">
-          <h2 className="section__title">Önerilen yol</h2>
-          <article className="panel path-card">
-            <div className="path-card__top">
-              <span>{path.emoji}</span>
-              <div>
-                <h3>{path.title}</h3>
-                <p>{path.summary}</p>
-                <small>
-                  {path.age} yaş · {path.weeks} hafta · {path.steps.length} adım
-                </small>
+        <div className="portal-home__layout">
+          <div className="portal-home__main-column">
+            <WeeklySummary />
+            <ReminderPanel />
+            <LivePulse onNavigate={onNavigate} />
+            <section className="section">
+              <div className="section-heading-row">
+                <div><span className="section-kicker">Ailenin kısayolları</span><h2 className="section__title">Bugün neye ihtiyacınız var?</h2></div>
+                <span className="section-heading-note">Tek dokunuşla aç</span>
               </div>
+              <div className="launch-grid launch-grid--family">
+                {FAMILY_TOOLS.map((item) => <LaunchCard key={item.id} item={item} onNavigate={onNavigate} />)}
+              </div>
+            </section>
+          </div>
+          <aside className="portal-home__rail">
+            <div className="rail-card rail-card--path">
+              <div className="rail-card__top"><span className="rail-card__icon">{path.emoji}</span><span className="rail-card__label">Önerilen yol</span></div>
+              <h2>{path.title}</h2>
+              <p>{path.summary}</p>
+              <div className="rail-card__meta"><span>{path.age} yaş</span><span>{path.weeks} hafta</span><span>{path.steps.length} adım</span></div>
+              <button type="button" className="text-link" onClick={() => onNavigate('paths')}>Yolu incele <span>↗</span></button>
             </div>
-            <button type="button" className="btn btn--primary" onClick={() => onNavigate('paths')}>
-              Yolları incele
-            </button>
-          </article>
-        </section>
+            <ProgressHub compact onNavigate={onNavigate} />
+            <div className="rail-card rail-card--quiet"><span className="rail-card__icon">🗺️</span><h2>Dünyayı açın</h2><p>{WORLD_REGIONS.length} temalı bölgede yeni bir merak noktası var.</p><button type="button" className="text-link" onClick={() => onNavigate('world')}>Haritaya git <span>↗</span></button></div>
+          </aside>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="page portal-home">
+    <div className="page portal-home portal-home--kids">
       <FamilyLockModal
         open={lockOpen}
         onClose={() => setLockOpen(false)}
@@ -136,119 +159,57 @@ export function PortalHomePage({ onNavigate }: Props) {
           setMode('parent')
         }}
       />
-      <header className="page-header">
-        <h1>
-          Merhaba{profile.childName ? `, ${profile.childName}` : ''}! {profile.avatar}
-        </h1>
-        <p>
-          Kitap Cenneti Portalı’na hoş geldin — kütüphane, dünya haritası, görevler, oyunlar ve
-          sürprizler seni bekliyor.
-        </p>
-      </header>
+      <section className="portal-hero">
+        <div className="portal-hero__copy">
+          <div className="portal-hero__eyebrow"><span className="eyebrow-dot" /> Bugünün keşfi hazır</div>
+          <h1>{greeting}<br /><em>yeni bir sayfa aç.</em></h1>
+          <p>Bir masal, küçük bir oyun ya da kendi hikayen. Nereden başlayacağını sen seç.</p>
+          <div className="portal-hero__actions">
+            <button type="button" className="btn btn--primary" onClick={() => onNavigate('audio')}>Günün masalını aç <span>→</span></button>
+            <button type="button" className="btn btn--ghost" onClick={() => onNavigate('playground')}>Arenaya git</button>
+          </div>
+          <div className="portal-hero__metrics">
+            <span><strong>{stars}</strong> yıldız</span>
+            <span><strong>{streak}</strong> günlük seri</span>
+            <span><strong>{stickers.length}</strong> sticker</span>
+          </div>
+        </div>
+        <div
+          className="portal-hero__visual"
+          role="img"
+          aria-label="Yıldızların altında kitap okuyan tilki"
+          style={{ backgroundImage: 'linear-gradient(90deg, rgba(10, 32, 56, .46), transparent 50%), url(' + import.meta.env.BASE_URL + 'hero-observatory.png)' }}
+        >
+          <div className="hero-visual__label"><span>{story.emoji}</span><div><small>Günün masalı</small><strong>{story.title}</strong></div></div>
+        </div>
+      </section>
       <ModeBanner mode={mode} onSwitch={switchMode} />
-      <ContinueCard onNavigate={onNavigate} />
       <InstallPrompt />
-      <SmartPicks ageGroup={profile.ageGroup} interests={profile.interests} onNavigate={onNavigate} />
-      <LivePulse onNavigate={onNavigate} />
-      <section className="section">
-        <h2 className="section__title">Portal dostun</h2>
-        <PetCare />
-      </section>
-      <ProgressHub onNavigate={onNavigate} />
-
-      <section className="section">
-        <h2 className="section__title">Bugünün portalı</h2>
-        <div className="portal-dash-grid">
-          <button
-            type="button"
-            className="portal-dash-card portal-dash-card--accent"
-            onClick={() => onNavigate('live')}
-          >
-            <span>⚡</span>
-            <h2>Canlı Arena</h2>
-            <p>Saatlik görev · gizemli kutu · düşüşler</p>
-          </button>
-          <button
-            type="button"
-            className="portal-dash-card portal-dash-card--accent"
-            onClick={() => onNavigate('playground')}
-          >
-            <span>🕹️</span>
-            <h2>Etkileşim Arenası</h2>
-            <p>Ritim · macera · dost · hazine</p>
-          </button>
-          <button
-            type="button"
-            className="portal-dash-card portal-dash-card--accent"
-            onClick={() => onNavigate('challenge')}
-          >
-            <span>🤝</span>
-            <h2>Meydan Okuma</h2>
-            <p>Kod paylaş, birlikte tamamla</p>
-          </button>
-          <button
-            type="button"
-            className="portal-dash-card portal-dash-card--accent"
-            onClick={() => onNavigate('quests')}
-          >
-            <span>⭐</span>
-            <h2>Görevler</h2>
-            <p>{quests.length} görev hazır</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('audio')}>
-            <span>{story.emoji}</span>
-            <h2>Günün Masalı</h2>
-            <p>{story.title}</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('library')}>
-            <span>📚</span>
-            <h2>Kütüphane</h2>
-            <p>Tüm içerikler tek katalogda</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('world')}>
-            <span>🗺️</span>
-            <h2>Dünya Haritası</h2>
-            <p>{WORLD_REGIONS.length} temalı bölge</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('fun')}>
-            <span>🎡</span>
-            <h2>Eğlence</h2>
-            <p>{spinAvailable ? 'Çark seni bekliyor' : 'Sticker albümüne bak'}</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('discover')}>
-            <span>🧭</span>
-            <h2>Koleksiyonlar</h2>
-            <p>{COLLECTIONS.length} küratör seçkisi</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('create')}>
-            <span>✨</span>
-            <h2>AI Hikaye</h2>
-            <p>Kendi kitabını yap</p>
-          </button>
-          <button type="button" className="portal-dash-card" onClick={() => onNavigate('activities')}>
-            <span>🎮</span>
-            <h2>Oyun Salonu</h2>
-            <p>4+ mini oyun</p>
-          </button>
+      <div className="portal-home__layout">
+        <div className="portal-home__main-column">
+          <ContinueCard onNavigate={onNavigate} />
+          <section className="today-focus">
+            <div className="today-focus__header"><div><span className="section-kicker">Şimdi başla</span><h2>Bugün için seçtiklerimiz</h2></div><span className="today-focus__count">{quests.length} görev hazır</span></div>
+            <div className="today-focus__story">
+              <div className="today-focus__story-art"><span>{story.emoji}</span></div>
+              <div className="today-focus__story-copy"><span className="story-tag">{story.theme} · {story.duration}</span><h3>{story.title}</h3><p>{story.summary}</p><button type="button" className="text-link" onClick={() => onNavigate('audio')}>Masalı aç <span>→</span></button></div>
+            </div>
+            <div className="today-focus__quest"><span className="quest-icon">{quests[0]?.emoji || '⭐'}</span><div><small>Sıradaki mini görev</small><strong>{quests[0]?.title || 'Kendi keşfini seç'}</strong></div><button type="button" className="btn btn--small" onClick={() => onNavigate('quests')}>Görevlere git</button></div>
+          </section>
+          <LivePulse onNavigate={onNavigate} />
+          <SmartPicks ageGroup={profile.ageGroup} interests={profile.interests} onNavigate={onNavigate} />
+          <section className="section">
+            <div className="section-heading-row"><div><span className="section-kicker">Tek dokunuş</span><h2 className="section__title">Keşif masan</h2></div><span className="section-heading-note">İstediğini seç</span></div>
+            <div className="launch-grid">{KIDS_LAUNCHERS.map((item) => <LaunchCard key={item.id} item={item} onNavigate={onNavigate} />)}</div>
+          </section>
         </div>
-      </section>
-
-      <section className="section">
-        <h2 className="section__title">Hızlı koleksiyonlar</h2>
-        <div className="collection-row">
-          {COLLECTIONS.slice(0, 6).map((c) => (
-            <button
-              key={c.id}
-              type="button"
-              className="collection-chip"
-              onClick={() => onNavigate('discover')}
-            >
-              <span>{c.emoji}</span>
-              <strong>{c.title}</strong>
-            </button>
-          ))}
-        </div>
-      </section>
+        <aside className="portal-home__rail">
+          <ProgressHub compact onNavigate={onNavigate} />
+          <div className="rail-card rail-card--pet"><div className="rail-card__top"><span className="rail-card__icon">🦊</span><span className="rail-card__label">Portal dostun</span></div><h2>Biraz bakım zamanı</h2><p>Dostunla ilgilen, sonra yeni bir oyuna geç.</p><button type="button" className="text-link" onClick={() => document.querySelector('.pet-care')?.scrollIntoView({ behavior: 'smooth' })}>Dostuma git <span>↓</span></button></div>
+          <div className="rail-card rail-card--collection"><div className="rail-card__top"><span className="rail-card__icon">🧭</span><span className="rail-card__label">Küratör seçkisi</span></div><h2>{COLLECTIONS[0]?.title || 'Merak köşesi'}</h2><p>{COLLECTIONS[0]?.description || 'Bugün için küçük bir keşif.'}</p><button type="button" className="text-link" onClick={() => onNavigate('discover')}>Seçkiyi aç <span>↗</span></button></div>
+        </aside>
+      </div>
+      <section className="section portal-home__pet-section"><div className="section-heading-row"><div><span className="section-kicker">Yavaşla</span><h2 className="section__title">Portal dostun</h2></div><span className="section-heading-note">İyi hissetmek de ilerlemedir</span></div><PetCare /></section>
     </div>
   )
 }
