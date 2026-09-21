@@ -26,7 +26,7 @@ const PLUS_FEATURES = [
 
 export function MembershipPage({ onNavigate }: Props) {
   const { profile } = usePortalProfile()
-  const { membership, isPlus, busy, checkout, refresh } = useMembership()
+  const { membership, isPlus, busy, checkout, openPortal, refresh } = useMembership()
   const [billing, setBilling] = useState<'monthly' | 'annual'>('annual')
   const [email, setEmail] = useState(membership.email)
 
@@ -62,7 +62,10 @@ export function MembershipPage({ onNavigate }: Props) {
             <h2>Aile+ ile keşif devam ediyor.</h2>
             <p>{membership.email || profile.childName || 'Aileniz'} için premium içerikler açık.</p>
           </div>
-          <button type="button" className="btn btn--ghost" onClick={() => onNavigate('profile')}>Hesap ayarları</button>
+          <div className="membership-active__actions">
+            <button type="button" className="btn btn--ghost" onClick={() => onNavigate('profile')}>Hesap ayarları</button>
+            <button type="button" className="btn btn--primary" disabled={busy} onClick={() => void openPortal()}>{busy ? 'Açılıyor…' : 'Üyeliği yönet'}</button>
+          </div>
         </section>
       )}
 
@@ -104,7 +107,7 @@ export function MembershipPage({ onNavigate }: Props) {
               <small>Çocuk profilleri ebeveyn alanından yönetilir. İptal işlemi dilediğiniz zaman yapılabilir.</small>
             </div>
           )}
-          {isPlus && <button type="button" className="btn btn--primary membership-plan__button" onClick={() => onNavigate('profile')}>Aile alanını aç <span>→</span></button>}
+          {isPlus && <button type="button" className="btn btn--primary membership-plan__button" onClick={() => void openPortal()}>Fatura ve iptal ayarları <span>→</span></button>}
         </article>
       </div>
 

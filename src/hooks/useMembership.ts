@@ -178,6 +178,30 @@ export function useMembership() {
     }
   }, [membership.customerId, membership.subscriptionId, update])
 
+  const openPortal = useCallback(async () => {
+    const base = apiBase()
+    if (!base) {
+      showToast('Üyelik yönetimi henüz bağlanmadı')
+      return false
+    }
+    setBusy(true)
+    try {
+      const response = await fetch(base + '/membership/portal', { method: 'POST', credentials: 'include' })
+      const payload = (await response.json()) as { url?: string; error?: string }
+      if (!response.ok || !payload.url) {
+        showToast(payload.error || 'Üyelik yönetim ekranı açılamadı')
+        return false
+      }
+      window.location.href = payload.url
+      return true
+    } catch {
+      showToast('Üyelik yönetim ekranına ulaşılamadı')
+      return false
+    } finally {
+      setBusy(false)
+    }
+  }, [])
+
   useEffect(() => {
     const query = new URLSearchParams(window.location.search)
     const sessionId = query.get('session_id')
@@ -194,7 +218,8 @@ export function useMembership() {
     isPlus,
     busy,
     checkout,
+    openPortal,
     refresh,
     update,
-  }), [busy, checkout, isPlus, membership, refresh, update])
+  }), [busy, checkout, isPlus, membership, openPortal, refresh, update])
 }

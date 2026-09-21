@@ -121,6 +121,16 @@
   margin-left: auto;
 }
 
+.membership-active__actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.membership-active__actions .btn {
+  margin-left: 0;
+}
+
 .membership-plans {
   display: grid;
   grid-template-columns: .9fr 1.1fr;
@@ -442,6 +452,15 @@
   .membership-active .btn {
     width: 100%;
     margin-left: 0;
+  }
+
+  .membership-active__actions {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .membership-active__actions .btn {
+    flex: 1;
   }
 }
 
