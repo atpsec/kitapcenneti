@@ -26,7 +26,8 @@ export function CookieBanner() {
   if (!visible) return null
 
   return (
-    <div className="cookie-banner" role="dialog" aria-label="Çerez bildirimi">
+    <div className="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-banner-title">
+      <h2 id="cookie-banner-title" className="sr-only">Çerez bildirimi</h2>
       <p>
         Kitap Cenneti deneyimi iyileştirmek ve (onay sonrası) reklam göstermek için çerezler
         kullanabilir. Detaylar için{' '}

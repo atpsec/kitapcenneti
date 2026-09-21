@@ -34,13 +34,15 @@ export function PrivacyPage() {
     <div className="page legal-page">
       <header className="page-header">
         <h1>🔒 Gizlilik Politikası</h1>
-        <p>Son güncelleme: 9 Ağustos 2026</p>
+        <p>Son güncelleme: 22 Eylül 2026</p>
       </header>
       <div className="panel prose">
         <h3>1. Toplanan veriler</h3>
         <p>
-          Çoğu özellik tarayıcınızda çalışır. Günlük görevler, yıldızlar ve kayıtlı hikayeler
-          <strong> localStorage</strong> ile cihazınızda saklanır; sunucuya gönderilmez.
+          Çoğu özellik tarayıcınızda çalışır. Hesap oluşturmadan kullanılan günlük görevler, yıldızlar
+          ve kayıtlı hikayeler <strong>localStorage</strong> ile cihazınızda saklanır. Ebeveyn hesabına
+          giriş yaptığınızda hesap e-postası, çocuk profilleri ve seçtiğiniz ilerleme özeti cihazlarınız
+          arasında senkronlanmak üzere güvenli sunucuya aktarılır.
         </p>
         <h3>2. Yapay zeka hikaye</h3>
         <p>
@@ -53,12 +55,18 @@ export function PrivacyPage() {
           çerez kullanabilir. AdSense kendi gizlilik politikasına tabidir:
           {' '}<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noreferrer">Google Ads</a>.
         </p>
-        <h3>4. Çocuklar</h3>
+        <h3>4. Üyelik ve ödeme</h3>
+        <p>
+          Aile+ satın alımında ödeme bilgileri Kitap Cenneti sunucularında tutulmaz; Stripe tarafından
+          işlenir. Üyelik durumu, plan ve dönem bilgisi premium özellikleri açmak için saklanır.
+          Hesabınızı veya üyeliğinizi kaldırma talebinizi iletişim sayfasından iletebilirsiniz.
+        </p>
+        <h3>5. Çocuklar</h3>
         <p>
           Platform aile kullanımı içindir. 13 yaş altı çocukların ebeveyn gözetiminde kullanması önerilir.
           Çocuklardan bilinçli olarak kişisel bilgi toplanmaz.
         </p>
-        <h3>5. İletişim</h3>
+        <h3>6. İletişim</h3>
         <p>Gizlilik talepleri için iletişim sayfasındaki e-posta adresini kullanın.</p>
       </div>
     </div>
@@ -101,8 +109,8 @@ export function ContactPage() {
         </p>
         <p>
           GitHub:{' '}
-          <a href="https://github.com/security-master/kitapcenneti" target="_blank" rel="noreferrer">
-            security-master/kitapcenneti
+          <a href="https://github.com/atpsec/kitapcenneti" target="_blank" rel="noreferrer">
+            atpsec/kitapcenneti
           </a>
         </p>
         <p>Reklam / AdSense işbirliği notlarınızı e-posta konu satırına “AdSense” yazarak gönderin.</p>
