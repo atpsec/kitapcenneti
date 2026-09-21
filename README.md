@@ -4,7 +4,7 @@
 
 ## Canlı
 
-https://security-master.github.io/kitapcenneti/
+https://atpsec.github.io/kitapcenneti/
 
 ## Ne var?
 

@@ -3,7 +3,7 @@ import type { PageId } from '../types/nav'
 const BASE =
   typeof window !== 'undefined'
     ? `${window.location.origin}${window.location.pathname.replace(/\/$/, '') || ''}`
-    : 'https://security-master.github.io/kitapcenneti'
+    : 'https://atpsec.github.io/kitapcenneti'
 
 export interface SharePayload {
   title: string
