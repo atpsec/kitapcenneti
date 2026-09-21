@@ -46,7 +46,9 @@ function writeState(next: MembershipState) {
 
 function apiBase() {
   const configured = import.meta.env.VITE_MEMBERSHIP_API_BASE
-  return typeof configured === 'string' && configured.trim() ? configured.replace(/\/$/, '') : ''
+  if (typeof configured === 'string' && configured.trim()) return configured.replace(/\/$/, '')
+  if (typeof window !== 'undefined' && !window.location.hostname.endsWith('github.io')) return '/api'
+  return ''
 }
 
 function paymentLink(plan: 'monthly' | 'annual') {

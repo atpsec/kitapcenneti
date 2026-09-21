@@ -12,6 +12,7 @@ import { parseContentHash } from './utils/share'
 import { adsAllowedOnPage } from './config/ads'
 import { recordLastVisit } from './utils/lastVisit'
 import { scheduleTick } from './components/ReminderPanel'
+import { AccountSync } from './components/AccountSync'
 
 const PortalHomePage = lazy(() =>
   import('./pages/PortalHomePage').then((m) => ({ default: m.PortalHomePage })),
@@ -214,6 +215,7 @@ export default function App() {
             {showAdRail && <AdSlot slot="bottom" className="ad-slot--footer-rail" />}
           </main>
         </PortalShell>
+        <AccountSync />
         <Footer onNavigate={navigate} />
         <CookieBanner />
         <ToastHost />

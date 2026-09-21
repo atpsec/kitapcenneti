@@ -21,7 +21,7 @@ async function persistEvent(env: MembershipEnv, event: { type?: string; data?: {
   const status = typeof object.status === 'string' ? object.status : event.type === 'customer.subscription.deleted' ? 'canceled' : 'active'
   const email = typeof object.customer_email === 'string' ? object.customer_email : ''
   await env.DB.prepare(
-    "INSERT INTO memberships (subscription_id, customer_id, email, status, updated_at) VALUES (?, ?, ?, ?, datetime('now')) ON CONFLICT(subscription_id) DO UPDATE SET customer_id=excluded.customer_id, email=excluded.email, status=excluded.status, updated_at=excluded.updated_at",
+    "INSERT INTO memberships (subscription_id, customer_id, email, status, updated_at) VALUES (?, ?, ?, ?, datetime('now')) ON CONFLICT(subscription_id) DO UPDATE SET customer_id=excluded.customer_id, email=CASE WHEN excluded.email <> '' THEN excluded.email ELSE memberships.email END, status=excluded.status, updated_at=excluded.updated_at",
   ).bind(subscriptionId, customerId, email, status).run()
 }
 

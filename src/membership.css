@@ -471,7 +471,6 @@
     margin-left: 0;
   }
 }
-+
 .account-strip {
   display: flex;
   align-items: center;
@@ -513,4 +512,63 @@
 
 .account-strip .btn {
   margin-left: auto;
+}
+
+.account-access {
+  margin-top: 14px;
+}
+
+.account-access form,
+.account-access__signed-in {
+  display: grid;
+  gap: 14px;
+}
+
+.account-access__signed-in {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.account-access p {
+  margin: 0;
+  color: #91a9c2;
+  line-height: 1.55;
+}
+
+.account-access__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.account-access label {
+  display: grid;
+  gap: 6px;
+  color: #c4d4e5;
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.account-access input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid rgba(174,215,255,.16);
+  border-radius: 12px;
+  color: #eaf4ff;
+  background: rgba(5,17,33,.52);
+}
+
+.account-access small {
+  color: #8099b3;
+}
+
+@media (max-width: 650px) {
+  .account-access__fields,
+  .account-access__signed-in {
+    grid-template-columns: 1fr;
+  }
+
+  .account-access__signed-in .btn {
+    justify-self: start;
+  }
 }

@@ -10,6 +10,7 @@ import { useProgress } from '../hooks/useProgress'
 import { STICKERS } from '../data/stickers'
 import { SocialShare } from '../components/SocialShare'
 import { useMembership } from '../hooks/useMembership'
+import { useAccount } from '../hooks/useAccount'
 
 const AVATARS = ['🦊', '🐻', '🦄', '🐱', '🐼', '🦁', '🐸', '🦉', '🐯', '🐨']
 const INTERESTS = ['masal', 'oyun', 'boyama', 'uzay', 'hayvan', 'stem', 'müzik', 'duygu']
@@ -30,9 +31,13 @@ export function ProfilePage({ onNavigate }: Props) {
   } = usePortalProfile()
   const { stars, streak, badges, stickers } = useProgress()
   const { membership, isPlus } = useMembership()
+  const { account, busy: accountBusy, configured: accountConfigured, login, register, logout } = useAccount()
   const [draft, setDraft] = useState<PortalProfile>(profile)
   const [pin, setPin] = useState('')
   const [pin2, setPin2] = useState('')
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login')
+  const [authEmail, setAuthEmail] = useState(membership.email)
+  const [authPassword, setAuthPassword] = useState('')
 
   useEffect(() => {
     setDraft(profile)
@@ -64,6 +69,51 @@ export function ProfilePage({ onNavigate }: Props) {
         <button type="button" className="btn btn--small btn--primary" onClick={() => onNavigate('membership')}>
           {isPlus ? 'Üyeliği yönet' : 'Aile+ planlarını gör'} <span>→</span>
         </button>
+      </section>
+
+      <section className="section">
+        <div className="section-heading-row">
+          <div>
+            <span className="section-kicker">Ebeveyn hesabı</span>
+            <h2 className="section__title">Ailenizin keşiflerini koruyun</h2>
+          </div>
+        </div>
+        <div className="panel account-access">
+          {account ? (
+            <div className="account-access__signed-in">
+              <div>
+                <strong>{account.email}</strong>
+                <p>Çocuk profilleri ve gelişim özeti hesabınıza güvenli olarak senkronlanıyor.</p>
+              </div>
+              <button type="button" className="btn btn--ghost" disabled={accountBusy} onClick={() => void logout()}>Çıkış yap</button>
+            </div>
+          ) : (
+            <form onSubmit={(event) => {
+              event.preventDefault()
+              const action = authMode === 'login' ? login : register
+              void action(authEmail, authPassword).then((ok) => { if (ok) setAuthPassword('') })
+            }}>
+              <p>Ücretsiz hesabınızla profilleri ve ilerlemeyi farklı cihazlarda sürdürebilirsiniz.</p>
+              <div className="account-access__fields">
+                <label>
+                  Ebeveyn e-postası
+                  <input type="email" autoComplete="email" value={authEmail} onChange={(event) => setAuthEmail(event.target.value)} placeholder="siz@ornek.com" required />
+                </label>
+                <label>
+                  Şifre
+                  <input type="password" autoComplete={authMode === 'login' ? 'current-password' : 'new-password'} minLength={8} value={authPassword} onChange={(event) => setAuthPassword(event.target.value)} placeholder="En az 8 karakter" required />
+                </label>
+              </div>
+              <div className="btn-row">
+                <button type="submit" className="btn btn--primary" disabled={accountBusy || !accountConfigured}>{accountBusy ? 'Bağlanıyor…' : authMode === 'login' ? 'Giriş yap' : 'Hesap oluştur'}</button>
+                <button type="button" className="btn btn--ghost" onClick={() => setAuthMode((mode) => mode === 'login' ? 'register' : 'login')}>
+                  {authMode === 'login' ? 'Yeni hesap oluştur' : 'Zaten hesabım var'}
+                </button>
+              </div>
+              {!accountConfigured && <small>Hesap senkronizasyonu, Cloudflare Pages API adresi bağlandığında açılır.</small>}
+            </form>
+          )}
+        </div>
       </section>
 
       <section className="section">

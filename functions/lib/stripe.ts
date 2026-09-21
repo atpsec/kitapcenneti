@@ -4,10 +4,13 @@ export interface MembershipEnv {
   STRIPE_PRICE_ANNUAL?: string
   STRIPE_WEBHOOK_SECRET?: string
   SITE_URL?: string
+  AUTH_ALLOWED_ORIGIN?: string
   DB?: {
     prepare: (query: string) => {
       bind: (...values: unknown[]) => {
         run: () => Promise<unknown>
+        first?: <T = unknown>() => Promise<T | null>
+        all?: <T = unknown>() => Promise<{ results: T[] }>
       }
     }
   }

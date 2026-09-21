@@ -155,6 +155,13 @@ export function usePortalProfile() {
     persistProfiles(list, next.id)
   }
 
+  const mergeProfiles = (incoming: PortalProfile[]) => {
+    if (!incoming.length) return
+    const list = incoming.slice(0, 5).map((item) => ({ ...DEFAULT_PROFILE, ...item, id: item.id }))
+    const nextActive = list.some((item) => item.id === activeId) ? activeId : list[0].id
+    persistProfiles(list, nextActive)
+  }
+
   const switchProfile = (id: string) => {
     if (!profiles.find((p) => p.id === id)) return
     persistProfiles(profiles, id)
@@ -194,6 +201,7 @@ export function usePortalProfile() {
     profiles,
     activeId,
     saveProfile,
+    mergeProfiles,
     switchProfile,
     addProfile,
     removeProfile,

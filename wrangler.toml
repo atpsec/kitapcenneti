@@ -6,3 +6,9 @@
 name = "kitapcenneti"
 compatibility_date = "2024-11-01"
 pages_build_output_dir = "dist"
+
+# After creating the D1 database, uncomment and fill in the binding below.
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "kitapcenneti"
+# database_id = "<cloudflare-d1-database-id>"
