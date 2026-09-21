@@ -78,7 +78,7 @@ export function authResponse(body: unknown, status: number, context: AuthContext
     ...extraHeaders,
     'Access-Control-Allow-Origin': allowedOrigin,
     'Access-Control-Allow-Credentials': 'true',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Kitap-Request',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
     Vary: 'Origin',
   })
@@ -92,11 +92,15 @@ export function authOptions(context: AuthContext) {
       ...CORS_HEADERS,
       'Access-Control-Allow-Origin': configuredOrigin || new URL(siteUrl(context.env)).origin,
       'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Headers': 'Content-Type, X-Kitap-Request',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
       Vary: 'Origin',
     },
   })
+}
+
+export function hasTrustedRequestHeader(context: AuthContext): boolean {
+  return context.request.headers.get('X-Kitap-Request') === '1'
 }
 
 export function validEmail(value: unknown): string {

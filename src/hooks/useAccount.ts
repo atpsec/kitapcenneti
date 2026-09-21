@@ -141,7 +141,7 @@ export function useAccount() {
   const logout = useCallback(async () => {
     setBusy(true)
     try {
-      await request('/auth/logout', { method: 'POST' })
+      await request('/auth/logout', { method: 'POST', headers: { 'X-Kitap-Request': '1' } })
     } finally {
       setAccount(null)
       setChildren([])

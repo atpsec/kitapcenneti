@@ -186,7 +186,7 @@ export function useMembership() {
     }
     setBusy(true)
     try {
-      const response = await fetch(base + '/membership/portal', { method: 'POST', credentials: 'include' })
+      const response = await fetch(base + '/membership/portal', { method: 'POST', credentials: 'include', headers: { 'X-Kitap-Request': '1' } })
       const payload = (await response.json()) as { url?: string; error?: string }
       if (!response.ok || !payload.url) {
         showToast(payload.error || 'Üyelik yönetim ekranı açılamadı')

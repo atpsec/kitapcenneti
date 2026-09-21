@@ -1,10 +1,11 @@
-import { authOptions, authResponse, getAccountFromRequest, type AuthContext } from '../../lib/auth'
+import { authOptions, authResponse, getAccountFromRequest, hasTrustedRequestHeader, type AuthContext } from '../../lib/auth'
 import { envString, siteUrl, stripeFetch } from '../../lib/stripe'
 
 export const onRequestOptions = (context: AuthContext) => authOptions(context)
 
 export const onRequestPost = async (context: AuthContext) => {
   try {
+    if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Geçersiz istek' }, 400, context)
     const account = await getAccountFromRequest(context)
     if (!account) return authResponse({ error: 'Giriş gerekli', code: 'unauthorized' }, 401, context)
     if (!context.env.DB || !envString(context.env.STRIPE_SECRET_KEY)) {
