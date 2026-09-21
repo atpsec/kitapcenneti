@@ -67,9 +67,11 @@ export function useMembership() {
     const sync = () => setMembership(readState())
     window.addEventListener('storage', sync)
     window.addEventListener(MEMBERSHIP_EVENT, sync)
+    window.addEventListener('kitapcenneti-account', sync)
     return () => {
       window.removeEventListener('storage', sync)
       window.removeEventListener(MEMBERSHIP_EVENT, sync)
+      window.removeEventListener('kitapcenneti-account', sync)
     }
   }, [])
 
