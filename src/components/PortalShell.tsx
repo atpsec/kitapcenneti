@@ -5,6 +5,9 @@ import { usePortalProfile } from '../hooks/usePortalProfile'
 import { useProgress } from '../hooks/useProgress'
 import { FamilyLockModal } from './FamilyLockModal'
 
+const KIDS_PRIMARY_IDS: PageId[] = ['portal', 'audio', 'coloring', 'playground', 'quests', 'create']
+const PARENT_PRIMARY_IDS: PageId[] = ['portal', 'calendar', 'paths', 'journal', 'parents', 'membership']
+
 interface PortalShellProps {
   current: PageId
   onNavigate: (page: PageId, query?: string) => void
@@ -17,12 +20,27 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
   const { stars, streak, stickers } = useProgress()
   const [query, setQuery] = useState('')
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarMoreOpen, setSidebarMoreOpen] = useState(false)
   const [lockOpen, setLockOpen] = useState(false)
   const nav = mode === 'kids' ? KIDS_NAV : PARENT_NAV
+  const primaryIds = mode === 'kids' ? KIDS_PRIMARY_IDS : PARENT_PRIMARY_IDS
+  const allNavItems = Array.from(
+    new Map(
+      [
+        ...nav,
+        ...SIDEBAR_EXTRA,
+      ].map((item) => [item.id, item]),
+    ).values(),
+  )
+  const primaryNav = primaryIds
+    .map((id) => allNavItems.find((item) => item.id === id))
+    .filter((item): item is (typeof allNavItems)[number] => Boolean(item))
+  const secondaryNav = allNavItems.filter((item) => !primaryIds.includes(item.id))
 
   useEffect(() => {
     setSidebarOpen(false)
-  }, [current])
+    if (!primaryIds.includes(current)) setSidebarMoreOpen(true)
+  }, [current, mode])
 
   const requestParentMode = () => {
     if (mode === 'parent') return
@@ -128,9 +146,9 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
 
       <div className="portal-body">
         <aside className={`portal-sidebar ${sidebarOpen ? 'is-open' : ''}`}>
-          <p className="portal-sidebar__label">{mode === 'kids' ? 'Keşfet' : 'Aile Araçları'}</p>
+          <p className="portal-sidebar__label">{mode === 'kids' ? 'Başla' : 'Öncelikler'}</p>
           <nav className="portal-sidebar__nav">
-            {nav.map((item) => (
+            {primaryNav.map((item) => (
               <button
                 key={item.id}
                 type="button"
@@ -142,20 +160,34 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
               </button>
             ))}
           </nav>
-          <p className="portal-sidebar__label">Tüm Bölümler</p>
-          <nav className="portal-sidebar__nav portal-sidebar__nav--compact">
-            {SIDEBAR_EXTRA.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                className={`portal-side-link ${current === item.id ? 'is-active' : ''}`}
-                onClick={() => onNavigate(item.id)}
-              >
-                <span>{item.emoji}</span>
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          <button
+            type="button"
+            className="portal-sidebar__more"
+            aria-expanded={sidebarMoreOpen}
+            aria-controls="portal-sidebar-more"
+            onClick={() => setSidebarMoreOpen((value) => !value)}
+          >
+            <span>{sidebarMoreOpen ? 'Daha az göster' : 'Tüm bölümler'}</span>
+            <span aria-hidden="true">{sidebarMoreOpen ? '−' : '+'}</span>
+          </button>
+          {sidebarMoreOpen && (
+            <div id="portal-sidebar-more">
+              <p className="portal-sidebar__label">Diğer bölümler</p>
+              <nav className="portal-sidebar__nav portal-sidebar__nav--compact">
+                {secondaryNav.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className={`portal-side-link ${current === item.id ? 'is-active' : ''}`}
+                    onClick={() => onNavigate(item.id)}
+                  >
+                    <span>{item.emoji}</span>
+                    {item.label}
+                  </button>
+                ))}
+              </nav>
+            </div>
+          )}
         </aside>
 
         {sidebarOpen && (

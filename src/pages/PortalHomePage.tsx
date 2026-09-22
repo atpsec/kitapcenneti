@@ -97,11 +97,12 @@ export function PortalHomePage({ onNavigate }: Props) {
         <section className="portal-hero portal-hero--parent">
           <div className="portal-hero__copy">
             <div className="portal-hero__eyebrow"><span className="eyebrow-dot" /> Aile paneli · bugün</div>
-            <h1>Günü birlikte<br /><em>büyütün.</em></h1>
+            <h1>Günü birlikte <em>büyütün.</em></h1>
             <p>{profile.childName || 'Çocuğunuz'} için plan, keşif ve küçük kazanımlar tek bakışta.</p>
             <div className="portal-hero__actions">
               <button type="button" className="btn btn--primary" onClick={() => onNavigate('calendar')}>Haftayı planla <span>→</span></button>
               <button type="button" className="btn btn--ghost" onClick={() => onNavigate('journal')}>Günlüğü aç</button>
+              <button type="button" className="btn btn--quiet" onClick={() => onNavigate('coloring')}>Boyamaya geç</button>
             </div>
             <div className="portal-hero__metrics">
               <span><strong>{stars}</strong> yıldız</span>
@@ -163,11 +164,12 @@ export function PortalHomePage({ onNavigate }: Props) {
       <section className="portal-hero">
         <div className="portal-hero__copy">
           <div className="portal-hero__eyebrow"><span className="eyebrow-dot" /> Bugünün keşfi hazır</div>
-          <h1>{greeting}<br /><em>yeni bir sayfa aç.</em></h1>
+          <h1>{greeting} <em>yeni bir sayfa aç.</em></h1>
           <p>Bir masal, küçük bir oyun ya da kendi hikayen. Nereden başlayacağını sen seç.</p>
           <div className="portal-hero__actions">
             <button type="button" className="btn btn--primary" onClick={() => onNavigate('audio')}>Günün masalını aç <span>→</span></button>
-            <button type="button" className="btn btn--ghost" onClick={() => onNavigate('playground')}>Arenaya git</button>
+            <button type="button" className="btn btn--ghost" onClick={() => onNavigate('coloring')}>Boyama seç</button>
+            <button type="button" className="btn btn--quiet" onClick={() => onNavigate('quests')}>Bugünkü görev</button>
           </div>
           <div className="portal-hero__metrics">
             <span><strong>{stars}</strong> yıldız</span>
