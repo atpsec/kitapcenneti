@@ -15,7 +15,7 @@ const STORAGE_KEY = 'kitapcenneti-voice-profile'
 function scoreVoice(voice: SpeechSynthesisVoice, profile: VoiceProfile): number {
   const name = `${voice.name} ${voice.lang}`.toLowerCase()
   let score = 0
-  if (voice.lang.toLowerCase().startsWith('tr')) score += 50
+  if (voice.lang.toLowerCase().startsWith('de')) score += 50
   else if (voice.lang.toLowerCase().startsWith('en')) score += 5
 
   if (profile === 'female') {
@@ -38,7 +38,7 @@ function pickVoice(profile: VoiceProfile): SpeechSynthesisVoice | null {
   const voices = window.speechSynthesis?.getVoices() || []
   if (!voices.length) return null
   if (profile === 'auto') {
-    return voices.find((v) => v.lang.startsWith('tr')) || voices[0]
+    return voices.find((v) => v.lang.toLowerCase().startsWith('de')) || voices[0]
   }
   const ranked = [...voices].sort((a, b) => scoreVoice(b, profile) - scoreVoice(a, profile))
   return ranked[0] || null
@@ -94,7 +94,7 @@ export function useSpeech() {
     window.speechSynthesis.cancel()
     const settings = profileSettings(profile)
     const u = new SpeechSynthesisUtterance(text)
-    u.lang = 'tr-TR'
+    u.lang = 'de-DE'
     u.rate = rateOverride ?? settings.rate
     u.pitch = settings.pitch
     const voice = pickVoice(profile)
