@@ -32,11 +32,11 @@ async function generateImage(
   )
   const seed = pageIndex * 42 + 7
 
-  // 1) Hosting function (CF/Netlify) → base64
+  // 1) Cloudflare Pages Function → base64
   const data = await callApi<{ imageUrl?: string }>('generate-image', { prompt, seed })
   if (isUsableDataUrl(data?.imageUrl)) return data!.imageUrl!
 
-  // 2) Client-side fetch + validate (GitHub Pages path)
+  // 2) Client-side fetch + validate (static-host fallback)
   const fetched = await fetchPollinationsImage(prompt, seed, 3)
   if (fetched) return fetched
 

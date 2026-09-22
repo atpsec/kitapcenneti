@@ -25,7 +25,6 @@ export type TextModel =
 
 export type ImageProvider =
   | 'pollinations'
-  | 'netlify-gemini'
 
 export interface StoryPage {
   pageNumber: number

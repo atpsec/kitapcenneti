@@ -1,4 +1,4 @@
-/** Hosting-agnostic API helpers (Cloudflare Pages, Netlify, GitHub Pages). */
+/** API helpers for Cloudflare Pages, with a client-side fallback on static hosting. */
 
 function withBase(path: string): string {
   const base = import.meta.env.BASE_URL || '/'
@@ -18,15 +18,13 @@ async function postJson(url: string, body: unknown): Promise<Response | null> {
   }
 }
 
-/** Tries Cloudflare `/api/*` then Netlify `/.netlify/functions/*`. */
+/** Calls the Cloudflare Pages Function when the current host provides one. */
 export async function callApi<T>(
   name: 'generate-story' | 'generate-image',
   body: unknown,
 ): Promise<T | null> {
   const candidates = [
     withBase(`api/${name}`),
-    `/.netlify/functions/${name}`,
-    withBase(`.netlify/functions/${name}`),
   ]
 
   for (const url of candidates) {

@@ -14,10 +14,6 @@ export default defineConfig({
         target: 'http://localhost:8788',
         changeOrigin: true,
       },
-      '/.netlify/functions': {
-        target: 'http://localhost:8888',
-        changeOrigin: true,
-      },
     },
   },
 })

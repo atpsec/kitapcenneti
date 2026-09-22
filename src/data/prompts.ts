@@ -175,7 +175,6 @@ export const TEXT_MODELS = [
 
 export const IMAGE_PROVIDERS = [
   { id: 'pollinations' as const, name: 'Pollinations-KI', emoji: '🆓', description: 'Völlig kostenlos, kein API-Schlüssel erforderlich' },
-  { id: 'netlify-gemini' as const, name: 'Zwillinge (Netlify)', emoji: '✨', description: 'Hohe Qualität mit Netlify AI Gateway' },
 ]
 
 export const AGE_GROUPS = [
