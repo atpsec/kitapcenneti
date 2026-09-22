@@ -87,5 +87,13 @@ const legalPageSource = readFileSync(join(root, 'src/pages/LegalPages.tsx'), 'ut
 for (const marker of ['LegalUnavailablePage', '!LEGAL_DETAILS_READY']) {
   if (!legalPageSource.includes(marker)) throw new Error(`Legal page fail-closed marker is missing: ${marker}`)
 }
+const questSource = readFileSync(join(root, 'src/data/quests.ts'), 'utf8')
+for (const marker of ['QUEST_AREA_LABELS', 'QUEST_TEXT_REPLACEMENTS', 'localiseQuestText']) {
+  if (!questSource.includes(marker)) throw new Error(`Quest localization marker is missing: ${marker}`)
+}
+const blogSource = readFileSync(join(root, 'src/data/blog.ts'), 'utf8')
+for (const marker of ['BLOG_LABELS', 'Digitale Übungen', 'Wöchentliche kleine Rückschau']) {
+  if (!blogSource.includes(marker)) throw new Error(`Blog localization marker is missing: ${marker}`)
+}
 
 console.log(`Membership smoke check passed: ${requiredFiles.length} routes/files, 9 D1 tables, ${jsFiles.length} bundles.`)
