@@ -27,6 +27,10 @@ Migrations’ı sırayla uygulayın:
 npx wrangler d1 migrations apply kitapcenneti --remote
 ```
 
+`0003_billing_hardening.sql` üyeliği ebeveyn hesabına bağlar, Stripe event idempotency kaydı
+oluşturur ve fatura/dönem alanlarını ekler. Bu migration uygulanmadan ödeme akışını production’da
+etkinleştirmeyin.
+
 ## 3. Stripe
 
 Stripe Dashboard’da iki recurring Price oluşturun (aylık/yıllık). Stripe webhook endpoint’i:
@@ -45,9 +49,12 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 SITE_URL=https://<cloudflare-pages-domain>
 AUTH_ALLOWED_ORIGIN=https://<cloudflare-pages-domain>
 AUTH_SESSION_TTL_DAYS=30
+AUTH_COOKIE_SAMESITE=Lax
 ```
 
-Stripe webhook olayları olarak en az `checkout.session.completed`, `customer.subscription.updated` ve `customer.subscription.deleted` seçin.
+Stripe webhook olayları olarak `checkout.session.completed`, `customer.subscription.created`,
+`customer.subscription.updated`, `customer.subscription.deleted`, `invoice.payment_succeeded` ve
+`invoice.payment_failed` seçin.
 
 ## 4. Smoke test
 
@@ -60,6 +67,9 @@ GET  /api/family/children
 GET  /api/membership/account-status
 POST /api/membership/portal
 ```
+
+Checkout yalnızca giriş yapılmış ebeveyn hesabı için açılır. Kullanıcı önce Profil sayfasından hesap
+oluşturmalı veya giriş yapmalıdır; üyelik kaydı Stripe e-postasıyla değil hesap ID’siyle bağlanır.
 
 GitHub Pages üzerinde frontend’i Cloudflare API’ye bağlamak için build ortamına şu değişkeni ekleyin:
 

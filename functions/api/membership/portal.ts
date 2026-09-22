@@ -12,8 +12,8 @@ export const onRequestPost = async (context: AuthContext) => {
       return authResponse({ error: 'Üyelik yönetimi henüz yapılandırılmadı', code: 'configuration_missing' }, 503, context)
     }
     const membership = await context.env.DB.prepare(
-      'SELECT customer_id as customerId FROM memberships WHERE lower(email) = lower(?) AND status IN (\'active\', \'trialing\', \'past_due\') ORDER BY updated_at DESC LIMIT 1',
-    ).bind(account.email).first?.<{ customerId?: string }>()
+      "SELECT customer_id as customerId FROM memberships WHERE (account_id = ? OR (account_id IS NULL AND lower(email) = lower(?))) AND status IN ('active', 'trialing', 'past_due') ORDER BY updated_at DESC LIMIT 1",
+    ).bind(account.id, account.email).first?.<{ customerId?: string }>()
     if (!membership?.customerId) return authResponse({ error: 'Aktif bir üyelik bulunamadı', code: 'membership_missing' }, 404, context)
 
     const params = new URLSearchParams()

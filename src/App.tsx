@@ -72,6 +72,7 @@ const PlaygroundPage = lazy(() =>
   import('./pages/PlaygroundPage').then((m) => ({ default: m.PlaygroundPage })),
 )
 const AboutPage = lazy(() => import('./pages/LegalPages').then((m) => ({ default: m.AboutPage })))
+const ImpressumPage = lazy(() => import('./pages/LegalPages').then((m) => ({ default: m.ImpressumPage })))
 const ContactPage = lazy(() => import('./pages/LegalPages').then((m) => ({ default: m.ContactPage })))
 const MembershipPage = lazy(() => import('./pages/MembershipPage').then((m) => ({ default: m.MembershipPage })))
 const PrivacyPage = lazy(() => import('./pages/LegalPages').then((m) => ({ default: m.PrivacyPage })))
@@ -161,6 +162,8 @@ function RoutedPage({
       return <LivePage onNavigate={navigate} />
     case 'about':
       return <AboutPage />
+    case 'impressum':
+      return <ImpressumPage />
     case 'privacy':
       return <PrivacyPage />
     case 'terms':

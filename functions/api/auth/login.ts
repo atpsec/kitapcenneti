@@ -2,8 +2,10 @@ import {
   accountPayload,
   authOptions,
   authResponse,
+  checkRateLimit,
   createSession,
   findAccountByEmail,
+  hasTrustedRequestHeader,
   sessionCookie,
   validEmail,
   validPassword,
@@ -15,10 +17,12 @@ export const onRequestOptions = (context: AuthContext) => authOptions(context)
 
 export const onRequestPost = async (context: AuthContext) => {
   try {
+    if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Geçersiz istek' }, 400, context)
     const body = (await context.request.json()) as { email?: unknown; password?: unknown }
     const email = validEmail(body.email)
     const password = validPassword(body.password)
     if (!email || !password) return authResponse({ error: 'E-posta veya şifre hatalı' }, 401, context)
+    if (!await checkRateLimit(context, 'login', email, 10)) return authResponse({ error: 'Çok fazla deneme yapıldı. Lütfen 15 dakika sonra tekrar deneyin.', code: 'rate_limited' }, 429, context)
     const account = await findAccountByEmail(context.env, email)
     if (!account || !(await verifyPassword(password, account.passwordHash, account.salt))) {
       return authResponse({ error: 'E-posta veya şifre hatalı' }, 401, context)

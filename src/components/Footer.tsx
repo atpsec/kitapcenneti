@@ -25,6 +25,7 @@ export function Footer({ onNavigate }: FooterProps) {
           <button onClick={() => go('blog')}>Aile Blog</button>
           <button onClick={() => go('membership')}>Aile+ Üyelik</button>
           <button onClick={() => go('about')}>Hakkımızda</button>
+          <button onClick={() => go('impressum')}>Impressum</button>
           <button onClick={() => go('privacy')}>Gizlilik</button>
           <button onClick={() => go('terms')}>Koşullar</button>
           <button onClick={() => go('contact')}>İletişim</button>

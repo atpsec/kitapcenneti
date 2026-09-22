@@ -3,6 +3,7 @@ import { CalendarDays, Check, Download, LockKeyhole, ShieldCheck, Sparkles, User
 import type { PageId } from '../types/nav'
 import { useMembership } from '../hooks/useMembership'
 import { usePortalProfile } from '../hooks/usePortalProfile'
+import { useAccount } from '../hooks/useAccount'
 
 interface Props {
   onNavigate: (page: PageId) => void
@@ -27,12 +28,17 @@ const PLUS_FEATURES = [
 export function MembershipPage({ onNavigate }: Props) {
   const { profile } = usePortalProfile()
   const { membership, isPlus, busy, checkout, openPortal, refresh } = useMembership()
+  const { account } = useAccount()
   const [billing, setBilling] = useState<'monthly' | 'annual'>('annual')
   const [email, setEmail] = useState(membership.email)
 
   useEffect(() => {
     if (membership.email && !email) setEmail(membership.email)
   }, [email, membership.email])
+
+  useEffect(() => {
+    if (account?.email) setEmail(account.email)
+  }, [account?.email])
 
   useEffect(() => {
     void refresh()
@@ -101,10 +107,11 @@ export function MembershipPage({ onNavigate }: Props) {
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="siz@ornek.com"
               />
-              <button type="button" className="btn btn--primary membership-plan__button" disabled={busy} onClick={() => void checkout(billing, email)}>
-                {busy ? 'Bağlanıyor…' : 'Aile+ planını başlat'} <span>→</span>
+              {!account && <p className="membership-checkout__notice">Abonelik için önce ebeveyn hesabınıza giriş yapın.</p>}
+              <button type="button" className="btn btn--primary membership-plan__button" disabled={busy} onClick={() => account ? void checkout(billing, account.email) : onNavigate('profile')}>
+                {busy ? 'Bağlanıyor…' : account ? 'Ödeme yükümlülüğüyle abone ol' : 'Ebeveyn hesabıyla devam et'} <span>→</span>
               </button>
-              <small>Çocuk profilleri ebeveyn alanından yönetilir. İptal işlemi dilediğiniz zaman yapılabilir.</small>
+              <small>Çocuk profilleri ebeveyn alanından yönetilir. Ödeme Stripe Checkout’ta tamamlanır; iptal işlemi hesap alanından yapılır.</small>
             </div>
           )}
           {isPlus && <button type="button" className="btn btn--primary membership-plan__button" onClick={() => void openPortal()}>Fatura ve iptal ayarları <span>→</span></button>}

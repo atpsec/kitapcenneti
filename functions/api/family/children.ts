@@ -1,4 +1,4 @@
-import { authOptions, authResponse, getAccountFromRequest, type AccountRecord, type AuthContext } from '../../lib/auth'
+import { authOptions, authResponse, getAccountFromRequest, hasTrustedRequestHeader, type AccountRecord, type AuthContext } from '../../lib/auth'
 
 interface ChildRow {
   id: string
@@ -50,8 +50,8 @@ async function account(context: AuthContext): Promise<AccountRecord | null> {
 
 async function isPlus(context: AuthContext, current: AccountRecord): Promise<boolean> {
   const row = await context.env.DB?.prepare(
-    "SELECT status FROM memberships WHERE lower(email) = lower(?) ORDER BY updated_at DESC LIMIT 1",
-  ).bind(current.email).first?.<{ status?: string }>()
+    "SELECT status FROM memberships WHERE account_id = ? OR (account_id IS NULL AND lower(email) = lower(?)) ORDER BY updated_at DESC LIMIT 1",
+  ).bind(current.id, current.email).first?.<{ status?: string }>()
   return row?.status === 'active' || row?.status === 'trialing'
 }
 
@@ -75,6 +75,7 @@ export const onRequestGet = async (context: AuthContext) => {
 }
 
 async function saveChild(context: AuthContext, method: 'POST' | 'PUT') {
+  if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Geçersiz istek' }, 400, context)
   const current = await account(context)
   if (!current) return authResponse({ error: 'Giriş gerekli', code: 'unauthorized' }, 401, context)
   if (!context.env.DB) return authResponse({ error: 'Aile servisi henüz yapılandırılmadı', code: 'configuration_missing' }, 503, context)
@@ -106,6 +107,7 @@ export const onRequestPut = async (context: AuthContext) => {
 
 export const onRequestDelete = async (context: AuthContext) => {
   try {
+    if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Geçersiz istek' }, 400, context)
     const current = await account(context)
     if (!current) return authResponse({ error: 'Giriş gerekli', code: 'unauthorized' }, 401, context)
     const id = new URL(context.request.url).searchParams.get('id') || ''

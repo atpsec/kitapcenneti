@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { ADS_ENABLED, ADSENSE_CLIENT, hasAdConsent, type AdSlotId } from '../config/ads'
 
 interface AdSlotProps {
@@ -10,7 +11,17 @@ interface AdSlotProps {
  * Google AdSense — yalnızca onay + aile sayfalarında (App katmanı sayfa filtresi uygular).
  */
 export function AdSlot({ slot = 'in-article', format = 'auto', className = '' }: AdSlotProps) {
-  if (!ADS_ENABLED || !hasAdConsent()) {
+  const [consented, setConsented] = useState(() => hasAdConsent())
+
+  useEffect(() => {
+    const sync = () => setConsented(hasAdConsent())
+    window.addEventListener('kitapcenneti-cookie-consent', sync)
+    return () => {
+      window.removeEventListener('kitapcenneti-cookie-consent', sync)
+    }
+  }, [])
+
+  if (!ADS_ENABLED || !consented) {
     return (
       <aside className={`ad-slot ad-slot--placeholder ${className}`} aria-label="Reklam alanı">
         <span>📢 Reklam alanı</span>

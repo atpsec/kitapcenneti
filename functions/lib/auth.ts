@@ -2,6 +2,7 @@ import { CORS_HEADERS, envString, json, siteUrl, type MembershipEnv } from './st
 
 export interface AuthEnv extends MembershipEnv {
   AUTH_SESSION_TTL_DAYS?: string
+  AUTH_COOKIE_SAMESITE?: string
 }
 
 export interface AccountRecord {
@@ -174,12 +175,32 @@ export async function destroySession(context: AuthContext): Promise<void> {
   await context.env.DB.prepare('DELETE FROM sessions WHERE token_hash = ?').bind(await digestHex(token)).run()
 }
 
-export function sessionCookie(token: string, env: AuthEnv): string {
-  return `${SESSION_COOKIE}=${token}; Max-Age=${sessionTtlSeconds(env)}; Path=/; HttpOnly; Secure; SameSite=None`
+export async function checkRateLimit(context: AuthContext, bucket: string, identity: string, limit: number, windowSeconds = 900): Promise<boolean> {
+  if (!context.env.DB) return true
+  const address = context.request.headers.get('CF-Connecting-IP') || context.request.headers.get('X-Forwarded-For')?.split(',')[0].trim() || 'unknown'
+  const key = await digestHex(`${bucket}:${address}:${identity}`)
+  const now = Math.floor(Date.now() / 1000)
+  const row = await context.env.DB.prepare('SELECT window_started as windowStarted, attempts FROM auth_rate_limits WHERE rate_key = ? LIMIT 1').bind(key).first?.<{ windowStarted?: number; attempts?: number }>()
+  if (!row || now - Number(row.windowStarted || 0) >= windowSeconds) {
+    await context.env.DB.prepare('INSERT OR REPLACE INTO auth_rate_limits (rate_key, window_started, attempts) VALUES (?, ?, 1)').bind(key, now).run()
+    return true
+  }
+  if (Number(row.attempts || 0) >= limit) return false
+  await context.env.DB.prepare('UPDATE auth_rate_limits SET attempts = attempts + 1 WHERE rate_key = ?').bind(key).run()
+  return true
 }
 
-export function expiredSessionCookie(): string {
-  return `${SESSION_COOKIE}=; Max-Age=0; Path=/; HttpOnly; Secure; SameSite=None`
+export function sessionCookie(token: string, env: AuthEnv): string {
+  return `${SESSION_COOKIE}=${token}; Max-Age=${sessionTtlSeconds(env)}; Path=/; HttpOnly; Secure; SameSite=${cookieSameSite(env)}`
+}
+
+export function expiredSessionCookie(env?: AuthEnv): string {
+  return `${SESSION_COOKIE}=; Max-Age=0; Path=/; HttpOnly; Secure; SameSite=${cookieSameSite(env)}`
+}
+
+function cookieSameSite(env?: AuthEnv): 'Lax' | 'Strict' | 'None' {
+  const value = envString(env?.AUTH_COOKIE_SAMESITE).toLowerCase()
+  return value === 'none' ? 'None' : value === 'strict' ? 'Strict' : 'Lax'
 }
 
 export function accountPayload(account: AccountRecord) {

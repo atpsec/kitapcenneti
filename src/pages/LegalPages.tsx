@@ -1,4 +1,5 @@
 import { AdSlot } from '../components/AdSlot'
+import { LEGAL_DETAILS, LEGAL_DETAILS_READY } from '../config/legal'
 
 export function AboutPage() {
   return (
@@ -25,6 +26,26 @@ export function AboutPage() {
         <p>Öneri ve işbirliği için <a href="#contact">İletişim</a> sayfasını kullanın.</p>
       </div>
       <AdSlot slot="bottom" />
+    </div>
+  )
+}
+
+export function ImpressumPage() {
+  return (
+    <div className="page legal-page">
+      <header className="page-header">
+        <h1>Impressum</h1>
+        <p>Angaben nach § 5 DDG</p>
+      </header>
+      <div className="panel prose">
+        <p><strong>{LEGAL_DETAILS.company}</strong></p>
+        <p>{LEGAL_DETAILS.address}</p>
+        <p>Vertreten durch: {LEGAL_DETAILS.representative}</p>
+        <p>Register: {LEGAL_DETAILS.register}</p>
+        <p>USt-IdNr.: {LEGAL_DETAILS.vatId}</p>
+        <p>E-Mail: <a href={LEGAL_DETAILS.email.startsWith('[') ? undefined : `mailto:${LEGAL_DETAILS.email}`}>{LEGAL_DETAILS.email}</a></p>
+        {!LEGAL_DETAILS_READY && <p className="notice notice--warning">Şirket bilgileri yayınlanmadan önce Cloudflare Pages production değişkenleriyle doldurulmalıdır.</p>}
+      </div>
     </div>
   )
 }
@@ -61,13 +82,19 @@ export function PrivacyPage() {
           işlenir. Üyelik durumu, plan ve dönem bilgisi premium özellikleri açmak için saklanır.
           Hesabınızı veya üyeliğinizi kaldırma talebinizi iletişim sayfasından iletebilirsiniz.
         </p>
-        <h3>5. Çocuklar</h3>
+        <h3>5. Veri işleyenler ve aktarım</h3>
+        <p>
+          Hesap ve abonelik işlemlerinde Cloudflare D1/Pages, Stripe ve yapılandırılmış e-posta veya AI
+          sağlayıcıları kullanılabilir. Güncel sağlayıcı listesi, işleme amaçları, saklama süreleri ve
+          üçüncü ülke aktarım güvenceleri production gizlilik metninde açıkça belirtilmelidir.
+        </p>
+        <h3>6. Çocuklar</h3>
         <p>
           Platform aile kullanımı içindir. 13 yaş altı çocukların ebeveyn gözetiminde kullanması önerilir.
           Çocuklardan bilinçli olarak kişisel bilgi toplanmaz.
         </p>
-        <h3>6. İletişim</h3>
-        <p>Gizlilik talepleri için iletişim sayfasındaki e-posta adresini kullanın.</p>
+        <h3>7. İletişim</h3>
+        <p>Gizlilik talepleri için <a href="#contact">İletişim</a> sayfasındaki e-posta adresini kullanın.</p>
       </div>
     </div>
   )
@@ -88,6 +115,18 @@ export function TermsPage() {
           <li>Site “olduğu gibi” sunulur; kesintisiz hizmet garantisi verilmez.</li>
           <li>Kötüye kullanım, yasalara aykırı içerik üretimi yasaktır.</li>
         </ul>
+        <h3>Aile+ aboneliği</h3>
+        <p>
+          Aile+ aboneliği seçilen dönemde otomatik yenilenir. Güncel fiyat, vergi bilgisi, dönem,
+          ödeme yöntemi, cayma hakkı ve iptal koşulları ödeme öncesinde açıkça gösterilir. Kullanıcı
+          aboneliğini hesap alanındaki iptal düğmesinden yönetebilir.
+        </p>
+        <h3>Widerruf ve dijital içerik</h3>
+        <p>
+          Tüketici hakları ve dijital içeriğin hemen başlatılması için gereken açık onay ayrı bir
+          Widerrufsbelehrung ve onay akışıyla sunulur. Bu metinler Almanya hukuk danışmanı tarafından
+          yayına alınmadan önce gözden geçirilmelidir.
+        </p>
         <p>Koşullar güncellenebilir; önemli değişiklikler bu sayfada yayınlanır.</p>
       </div>
     </div>
@@ -104,8 +143,7 @@ export function ContactPage() {
       <div className="panel prose">
         <p>
           E-posta:{' '}
-          <a href="mailto:hello@kitapcenneti.example">hello@kitapcenneti.example</a>
-          {' '}(örnek adres — kendi e-postanızla değiştirin)
+          <a href={LEGAL_DETAILS.email.startsWith('[') ? undefined : `mailto:${LEGAL_DETAILS.email}`}>{LEGAL_DETAILS.email}</a>
         </p>
         <p>
           GitHub:{' '}

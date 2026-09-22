@@ -47,6 +47,8 @@ function accountApiBase() {
 async function request(path: string, init: RequestInit = {}): Promise<{ response: Response; payload: ApiPayload }> {
   const headers = new Headers(init.headers)
   if (init.body && !headers.has('Content-Type')) headers.set('Content-Type', 'application/json')
+  const method = (init.method || 'GET').toUpperCase()
+  if (!['GET', 'HEAD', 'OPTIONS'].includes(method) && !headers.has('X-Kitap-Request')) headers.set('X-Kitap-Request', '1')
   const response = await fetch(accountApiBase() + path, { ...init, headers, credentials: 'include' })
   const text = await response.text()
   let payload: ApiPayload = {}

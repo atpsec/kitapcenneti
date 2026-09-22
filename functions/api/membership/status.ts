@@ -1,32 +1,25 @@
-import { CORS_HEADERS, json, safeId, stripeFetch, type MembershipEnv } from '../../lib/stripe'
+import { authOptions, authResponse, getAccountFromRequest, type AuthContext } from '../../lib/auth'
 
-export const onRequestOptions = async () => new Response(null, { status: 204, headers: CORS_HEADERS })
+export const onRequestOptions = (context: AuthContext) => authOptions(context)
 
-export const onRequestGet = async (context: { request: Request; env: MembershipEnv }) => {
+export const onRequestGet = async (context: AuthContext) => {
   try {
-    const url = new URL(context.request.url)
-    const customerId = safeId(url.searchParams.get('customerId'), 'cus_')
-    const subscriptionId = safeId(url.searchParams.get('subscriptionId'), 'sub_')
-    if (!customerId || !subscriptionId) return json({ error: 'Üyelik kimliği eksik' }, 400)
-
-    const response = await stripeFetch(context.env, 'subscriptions/' + encodeURIComponent(subscriptionId))
-    const subscription = (await response.json()) as {
-      customer?: string
-      status?: string
-      current_period_end?: number
-    }
-
-    if (!response.ok || subscription.customer !== customerId) return json({ error: 'Üyelik bulunamadı' }, 404)
-
-    return json({
-      plan: subscription.status === 'active' || subscription.status === 'trialing' ? 'family_plus' : 'free',
-      status: subscription.status || 'canceled',
-      currentPeriodEnd: subscription.current_period_end
-        ? new Date(subscription.current_period_end * 1000).toISOString()
-        : undefined,
-    })
+    const account = await getAccountFromRequest(context)
+    if (!account) return authResponse({ error: 'Giriş gerekli', code: 'unauthorized' }, 401, context)
+    if (!context.env.DB) return authResponse({ plan: 'free', status: 'inactive' }, 200, context)
+    const membership = await context.env.DB.prepare(
+      "SELECT status, current_period_end as currentPeriodEnd, customer_id as customerId, subscription_id as subscriptionId FROM memberships WHERE account_id = ? OR (account_id IS NULL AND lower(email) = lower(?)) ORDER BY updated_at DESC LIMIT 1",
+    ).bind(account.id, account.email).first?.<{ status?: string; currentPeriodEnd?: string; customerId?: string; subscriptionId?: string }>()
+    const status = membership?.status || 'inactive'
+    return authResponse({
+      plan: status === 'active' || status === 'trialing' ? 'family_plus' : 'free',
+      status,
+      currentPeriodEnd: membership?.currentPeriodEnd,
+      customerId: membership?.customerId,
+      subscriptionId: membership?.subscriptionId,
+    }, 200, context)
   } catch (error) {
     console.error('Membership status error', error)
-    return json({ error: 'Üyelik durumu alınamadı' }, 500)
+    return authResponse({ error: 'Üyelik durumu alınamadı' }, 500, context)
   }
 }

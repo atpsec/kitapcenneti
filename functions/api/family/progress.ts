@@ -1,4 +1,4 @@
-import { authOptions, authResponse, getAccountFromRequest, type AuthContext } from '../../lib/auth'
+import { authOptions, authResponse, getAccountFromRequest, hasTrustedRequestHeader, type AuthContext } from '../../lib/auth'
 
 function boundedNumber(value: unknown, fallback = 0, maximum = 1_000_000): number {
   const number = typeof value === 'number' && Number.isFinite(value) ? Math.floor(value) : fallback
@@ -30,6 +30,7 @@ export const onRequestGet = async (context: AuthContext) => {
 
 export const onRequestPost = async (context: AuthContext) => {
   try {
+    if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Geçersiz istek' }, 400, context)
     const current = await getAccountFromRequest(context)
     if (!current) return authResponse({ error: 'Giriş gerekli', code: 'unauthorized' }, 401, context)
     if (!context.env.DB) return authResponse({ error: 'İlerleme servisi henüz yapılandırılmadı', code: 'configuration_missing' }, 503, context)

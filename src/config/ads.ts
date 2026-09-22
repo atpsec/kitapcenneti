@@ -23,7 +23,10 @@ export function adsAllowedOnPage(page: string): boolean {
 
 export function hasAdConsent(): boolean {
   try {
-    return localStorage.getItem('kitapcenneti-cookie-consent') === 'accepted'
+    const raw = localStorage.getItem('kitapcenneti-cookie-consent')
+    if (!raw) return false
+    const consent = JSON.parse(raw) as { version?: number; ads?: boolean }
+    return consent.version === 1 && consent.ads === true
   } catch {
     return false
   }
