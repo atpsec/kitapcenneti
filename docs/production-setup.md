@@ -62,9 +62,9 @@ SUPPORT_EMAIL=<echte Support-Adresse>
 
 ### Konto-E-Mail und Wiederherstellung
 
-Die Endpunkte für E-Mail-Bestätigung und Passwortzurücksetzung bleiben absichtlich deaktiviert,
-solange kein E-Mail-Dienst konfiguriert ist. Mit Resend können sie nach Prüfung der Absenderdomain
-aktiviert werden:
+Die E-Mail-Bestätigung ist standardmäßig verpflichtend. Kontoerstellung und Anmeldung bleiben
+gesperrt, solange kein E-Mail-Dienst konfiguriert ist. Mit Resend wird der Dienst nach Prüfung der
+Absenderdomain eingerichtet:
 
 ```text
 AUTH_EMAIL_PROVIDER=resend

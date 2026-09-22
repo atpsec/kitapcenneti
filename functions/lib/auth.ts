@@ -169,7 +169,9 @@ export async function findAccountByEmail(env: AuthEnv, email: string): Promise<(
 }
 
 export function emailVerificationRequired(env: AuthEnv): boolean {
-  return envString(env.AUTH_REQUIRE_EMAIL_VERIFICATION).toLowerCase() === 'true'
+  // Production defaults to verified parent email. Disable only with an explicit
+  // false value in a controlled non-production environment.
+  return envString(env.AUTH_REQUIRE_EMAIL_VERIFICATION).toLowerCase() !== 'false'
 }
 
 export async function findAccountById(env: AuthEnv, accountId: string): Promise<(AccountRecord & { passwordHash: string; salt: string }) | null> {

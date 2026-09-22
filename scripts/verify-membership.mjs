@@ -73,6 +73,8 @@ const registerSource = readFileSync(join(root, 'functions/api/auth/register.ts')
 for (const marker of ['adultConfirmed', 'termsAccepted', 'privacyAccepted', 'CONSENT_REQUIRED', 'legalConfigurationReady', 'legal_configuration_missing']) {
   if (!registerSource.includes(marker)) throw new Error(`Registration consent marker is missing: ${marker}`)
 }
+const authSource = readFileSync(join(root, 'functions/lib/auth.ts'), 'utf8')
+if (!authSource.includes("toLowerCase() !== 'false'")) throw new Error('Email verification must default to required')
 const consentSource = readFileSync(join(root, 'functions/api/auth/consent.ts'), 'utf8')
 for (const marker of ['TERMS_VERSION', 'PRIVACY_VERSION', 'UPDATE accounts', 'consent_required', 'legalConfigurationReady', 'legal_configuration_missing']) {
   if (!consentSource.includes(marker)) throw new Error(`Consent update marker is missing: ${marker}`)
