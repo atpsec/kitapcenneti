@@ -232,6 +232,29 @@ export function useAccount() {
     }
   }, [])
 
+  const acceptConsents = useCallback(async (consent: RegistrationConsent) => {
+    setBusy(true)
+    try {
+      const result = await request('/auth/consent', {
+        method: 'POST',
+        body: JSON.stringify(consent),
+      })
+      if (!result.response.ok || !result.payload.account) {
+        showToast(result.payload.error || 'Rechtliche Bestätigungen konnten nicht gespeichert werden')
+        return false
+      }
+      setAccount(result.payload.account)
+      broadcast()
+      showToast('Rechtliche Bestätigungen gespeichert')
+      return true
+    } catch {
+      showToast('Kontoservice nicht erreichbar')
+      return false
+    } finally {
+      setBusy(false)
+    }
+  }, [])
+
   const requestPasswordReset = useCallback(async (email: string) => {
     try {
       const result = await request('/auth/request-password-reset', {
@@ -354,6 +377,7 @@ export function useAccount() {
     logout,
     requestVerification,
     verifyEmailToken,
+    acceptConsents,
     requestPasswordReset,
     resetPassword,
     exportData,
@@ -361,5 +385,5 @@ export function useAccount() {
     syncChildren,
     syncProgress,
     loadProgress,
-  }), [account, busy, children, configured, deleteAccount, exportData, loadProgress, loading, logout, maxChildren, plan, refresh, requestPasswordReset, requestVerification, resetPassword, syncChildren, syncProgress, verifyEmailToken])
+  }), [account, acceptConsents, busy, children, configured, deleteAccount, exportData, loadProgress, loading, logout, maxChildren, plan, refresh, requestPasswordReset, requestVerification, resetPassword, syncChildren, syncProgress, verifyEmailToken])
 }

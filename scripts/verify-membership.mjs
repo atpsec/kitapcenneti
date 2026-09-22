@@ -8,6 +8,7 @@ const requiredFiles = [
   'functions/lib/auth.ts',
   'functions/lib/stripe.ts',
   'functions/api/auth/register.ts',
+  'functions/api/auth/consent.ts',
   'functions/api/auth/login.ts',
   'functions/api/auth/logout.ts',
   'functions/api/auth/me.ts',
@@ -71,6 +72,10 @@ for (const marker of ['legalConfigurationReady', 'productionSiteReady', 'email_u
 const registerSource = readFileSync(join(root, 'functions/api/auth/register.ts'), 'utf8')
 for (const marker of ['adultConfirmed', 'termsAccepted', 'privacyAccepted', 'CONSENT_REQUIRED']) {
   if (!registerSource.includes(marker)) throw new Error(`Registration consent marker is missing: ${marker}`)
+}
+const consentSource = readFileSync(join(root, 'functions/api/auth/consent.ts'), 'utf8')
+for (const marker of ['TERMS_VERSION', 'PRIVACY_VERSION', 'UPDATE accounts', 'consent_required']) {
+  if (!consentSource.includes(marker)) throw new Error(`Consent update marker is missing: ${marker}`)
 }
 const adSlotSource = readFileSync(join(root, 'src/components/AdSlot.tsx'), 'utf8')
 for (const marker of ['adsAllowedOnPage', 'pageAllowed', 'adActive']) {

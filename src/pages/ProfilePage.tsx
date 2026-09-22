@@ -44,6 +44,7 @@ export function ProfilePage({ onNavigate }: Props) {
     logout,
     requestVerification,
     verifyEmailToken,
+    acceptConsents: saveAccountConsents,
     requestPasswordReset,
     resetPassword,
     exportData,
@@ -67,6 +68,12 @@ export function ProfilePage({ onNavigate }: Props) {
   useEffect(() => {
     setDraft(profile)
   }, [profile])
+
+  useEffect(() => {
+    setAdultConfirmed(Boolean(account?.adultConfirmed))
+    setTermsAccepted(Boolean(account?.termsAccepted))
+    setPrivacyAccepted(Boolean(account?.privacyAccepted))
+  }, [account])
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search)
@@ -127,6 +134,34 @@ export function ProfilePage({ onNavigate }: Props) {
                 <button type="button" className="btn btn--ghost" disabled={accountBusy} onClick={() => void exportData()}>Meine Daten herunterladen</button>
                 <button type="button" className="btn btn--ghost" disabled={accountBusy} onClick={() => void logout()}>Abmelden</button>
               </div>
+              {(!account.adultConfirmed || !account.termsAccepted || !account.privacyAccepted) && (
+                <div className="panel account-consent-renewal">
+                  <strong>Rechtliche Bestätigungen erforderlich</strong>
+                  <p>Für ein kostenpflichtiges Familien+-Abonnement müssen diese Angaben einmalig in der aktuellen Fassung bestätigt werden.</p>
+                  <div className="account-consent-list">
+                    <label className="account-consent">
+                      <input type="checkbox" checked={adultConfirmed} onChange={(event) => setAdultConfirmed(event.target.checked)} required />
+                      <span>Ich bestätige, dass ich volljährig bin und das Konto für meine Familie anlege.</span>
+                    </label>
+                    <label className="account-consent">
+                      <input type="checkbox" checked={termsAccepted} onChange={(event) => setTermsAccepted(event.target.checked)} required />
+                      <span>Ich akzeptiere die <a href="#terms">Nutzungs- und Abonnementbedingungen</a>.</span>
+                    </label>
+                    <label className="account-consent">
+                      <input type="checkbox" checked={privacyAccepted} onChange={(event) => setPrivacyAccepted(event.target.checked)} required />
+                      <span>Ich habe die <a href="#privacy">Datenschutzerklärung</a> gelesen.</span>
+                    </label>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn btn--primary"
+                    disabled={accountBusy || !adultConfirmed || !termsAccepted || !privacyAccepted}
+                    onClick={() => void saveAccountConsents({ adultConfirmed, termsAccepted, privacyAccepted })}
+                  >
+                    Bestätigungen speichern
+                  </button>
+                </div>
+              )}
               <label>
                 Passwort zur Kontolöschung
                 <input type="password" autoComplete="current-password" value={deletePassword} onChange={(event) => setDeletePassword(event.target.value)} placeholder="Passwort eingeben" />

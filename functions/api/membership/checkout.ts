@@ -11,6 +11,9 @@ export const onRequestPost = async (context: AuthContext) => {
     if (!account.emailVerifiedAt) {
       return authResponse({ error: 'Bestätigen Sie Ihre E-Mail-Adresse, bevor Sie ein kostenpflichtiges Abonnement starten', code: 'email_unverified' }, 403, context)
     }
+    if (!account.adultConfirmedAt || !account.termsAcceptedAt || !account.privacyAcceptedAt) {
+      return authResponse({ error: 'Bestätigen Sie zuerst Volljährigkeit, Nutzungsbedingungen und Datenschutzerklärung', code: 'consent_required' }, 403, context)
+    }
     if (!legalConfigurationReady(context.env) || !productionSiteReady(context.env)) {
       return authResponse({ error: 'Der kostenpflichtige Abschluss ist noch nicht für den Produktionsbetrieb konfiguriert', code: 'configuration_missing' }, 503, context)
     }
