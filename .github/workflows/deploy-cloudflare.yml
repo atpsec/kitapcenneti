@@ -41,6 +41,7 @@ jobs:
 
       - run: npm ci
       - run: npm run build:cf
+      - run: npm run verify:content
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
