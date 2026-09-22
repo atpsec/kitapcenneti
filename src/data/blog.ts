@@ -3060,6 +3060,17 @@ const BLOG_LABELS: Record<string, string> = {
 function localiseBlogText(value: string): string {
   let result = value
   for (const [from, to] of Object.entries(BLOG_LABELS).sort(([a], [b]) => b.length - a.length)) result = result.split(from).join(to)
+  const replacements: Array<[string, string]> = [
+    ['Digitale Praxen', 'Digitale Übungen'],
+    ['zum Thema Gaming', 'zum Thema digitale Spiele'],
+    ['beim Gaming', 'bei digitalen Spielen'],
+    ['Kleine Schritte zur Digitalisierung', 'Kleine Schritte im digitalen Alltag'],
+    ['Kleine Schritte in der Emotion', 'Kleine Schritte im Umgang mit Gefühlen'],
+    ['Eine kurze, Umsetzbarer Leitfaden', 'Ein kurzer, umsetzbarer Leitfaden'],
+    ['Wöchentliche Mini-Bewertung', 'Wöchentliche kleine Rückschau'],
+    ['Beruhigte Eltern = ruhiges Nervensystem des Kindes.', 'Ruhige Eltern schenken dem Kind Ruhe.'],
+  ]
+  for (const [from, to] of replacements) result = result.split(from).join(to)
   return result
 }
 

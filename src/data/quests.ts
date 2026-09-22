@@ -272,11 +272,36 @@ const QUEST_AREA_LABELS: Record<string, string> = {
   Sınıf: 'Klasse', Canlı: 'Live',
 }
 
+const QUEST_TEXT_REPLACEMENTS: Array<[string, string]> = [
+  ['Naturseitenfarbe', 'Naturseite ausmalen'],
+  ['Färbe den Helden', 'Malen Sie den Helden aus'],
+  ['Male deinen Lieblingshelden aus.', 'Malen Sie Ihren Lieblingshelden aus.'],
+  ['Schreiben Sie eine Experimentbeobachtung', 'Halten Sie eine Experimentbeobachtung fest'],
+  ['Was hast du gedacht? Was ist passiert? Wovon?', 'Was haben Sie gedacht? Was ist passiert? Was haben Sie beobachtet?'],
+  ['Atemberaubende Tour nach dem Check-in.', 'Atmen Sie nach dem Check-in ruhig durch.'],
+  ['Erwägen Sie nicht, die Frage zu lernen, die Sie nicht kennen.', 'Lassen Sie eine schwierige Frage offen und versuchen Sie es später erneut.'],
+  ['Teleportieren Sie sich zum entsprechenden Abschnitt.', 'Wechseln Sie zum entsprechenden Abschnitt.'],
+  ['Bringe die Buchstaben in die richtige Reihenfolge.', 'Bringen Sie die Buchstaben in die richtige Reihenfolge.'],
+  ['Spielen Sie schnelles Aufholen', 'Spielen Sie eine schnelle Fangrunde'],
+  ['Fange die richtigen Emojis.', 'Fangen Sie die passenden Emojis.'],
+  ['löse ein Rätsel', 'Lösen Sie ein Rätsel'],
+  ['Weltkarte', 'Entdeckerkarte'],
+  ['Reiseweltkarte', 'Entdeckerkarte'],
+  ['Ex. Jeden Tag 1 Märchen.', 'Zum Beispiel: jeden Tag eine Geschichte.'],
+  ['STEM', 'MINT'],
+]
+
+function localiseQuestText(value: string): string {
+  let result = value
+  for (const [from, to] of QUEST_TEXT_REPLACEMENTS) result = result.split(from).join(to)
+  return result
+}
+
 function localiseQuest(quest: Quest): Quest {
   return {
     ...quest,
-    title: quest.title.replace(/STEM/g, 'MINT').replace(/Rainbow Village/g, 'Regenbogendorf').replace(/Fun Garden/g, 'Kreativgarten'),
-    hint: quest.hint.replace(/STEM/g, 'MINT').replace(/Rainbow Village/g, 'Regenbogendorf').replace(/Fun Garden/g, 'Kreativgarten'),
+    title: localiseQuestText(quest.title.replace(/Rainbow Village/g, 'Regenbogendorf').replace(/Fun Garden/g, 'Kreativgarten')),
+    hint: localiseQuestText(quest.hint.replace(/Rainbow Village/g, 'Regenbogendorf').replace(/Fun Garden/g, 'Kreativgarten')),
     area: QUEST_AREA_LABELS[quest.area] || quest.area,
   }
 }

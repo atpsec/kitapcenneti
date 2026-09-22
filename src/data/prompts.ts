@@ -57,7 +57,7 @@ export const CATEGORIES: CategoryInfo[] = [
   },
   {
     id: 'underwater',
-    title: 'Unterseeisch',
+    title: 'Unterwasserwelt',
     emoji: '🐠',
     description: 'Eine bunte Welt in Korallenriffen!',
     gradient: 'linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%)',
@@ -178,9 +178,9 @@ export const IMAGE_PROVIDERS = [
 ]
 
 export const AGE_GROUPS = [
-  { id: '3-5' as const, label: '3-5 Jahre unter', emoji: '🐣' },
-  { id: '6-8' as const, label: '6-8 Jahre unter', emoji: '🌟' },
-  { id: '9-12' as const, label: '9-12 Jahre alt', emoji: '🚀' },
+  { id: '3-5' as const, label: '3–5 Jahre', emoji: '🐣' },
+  { id: '6-8' as const, label: '6–8 Jahre', emoji: '🌟' },
+  { id: '9-12' as const, label: '9–12 Jahre', emoji: '🚀' },
 ]
 
 export const PAGE_COUNTS = [4, 6, 8]
