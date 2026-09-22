@@ -649,6 +649,13 @@ const WORLD_REGIONS_RAW: WorldRegion[] = [
 const WORLD_LABELS: Record<string, string> = {
   'Bölge': 'Region',
   'Mega bölge': 'Mega-Region',
+  'Çiçek Vadisi': 'Blumental',
+  'Buzul Diyarı': 'Gletscherwelt',
+  'Volkan Adası': 'Vulkaninsel',
+  'Çöl Vahası': 'Wüstenoase',
+  'Bulut Şehri': 'Wolkenstadt',
+  'Yıldız Limanı': 'Sternhafen',
+  'Pınar Köyü': 'Quellendorf',
   'Dostluk': 'Freundschaft',
   'Doğa': 'Natur',
   'Uzay': 'Weltraum',
@@ -673,11 +680,19 @@ const WORLD_LABELS: Record<string, string> = {
   'temalı keşif bölgesi': 'Themenregion',
   'diyar': 'Welt',
   'diyarı': 'Welt',
+  'çiçek': 'Blume', 'bahar': 'Frühling', 'kış': 'Winter', 'kutup': 'Polar',
+  'Güvenli mesafeden volkan ve jeoloji merakı adası.': 'Eine Insel für sichere Vulkan- und Geologiebeobachtung.',
+  'Kutup ayıları ve ışıklar; sakin ve berrak bir dünya.': 'Eisbären und Polarlichter in einer ruhigen, klaren Welt.',
+  'Kumul arasında su ve hayat; sabır ve dayanıklılık.': 'Wasser und Leben zwischen Dünen – eine Geschichte über Geduld und Ausdauer.',
+  'Gökyüzünde yumuşak binalar; hayal ve sanat şehri.': 'Weiche Gebäude am Himmel – eine Stadt der Fantasie und Kunst.',
+  'Renkli balıklar ve mercanlar; deniz koruma koyu.': 'Bunte Fische und Korallen in einer geschützten Meeresbucht.',
+  'Uzay gemileri ve yıldız haritaları limanı.': 'Ein Hafen für Raumschiffe und Sternkarten.',
+  'Temiz su kaynakları ve bahçeler; doğa dostu köy.': 'Saubere Quellen und Gärten in einem naturfreundlichen Dorf.',
 }
 
 function localiseWorldText(value: string): string {
   let result = value
-  for (const [from, to] of Object.entries(WORLD_LABELS)) result = result.split(from).join(to)
+  for (const [from, to] of Object.entries(WORLD_LABELS).sort(([a], [b]) => b.length - a.length)) result = result.split(from).join(to)
   return result
 }
 

@@ -5668,7 +5668,7 @@ const AUDIO_LABELS: Record<string, string> = {
 
 function localiseAudioText(value: string): string {
   let result = value
-  for (const [from, to] of Object.entries(AUDIO_LABELS)) result = result.split(from).join(to)
+  for (const [from, to] of Object.entries(AUDIO_LABELS).sort(([a], [b]) => b.length - a.length)) result = result.split(from).join(to)
   return result
 }
 

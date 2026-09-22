@@ -20,7 +20,7 @@ export function contentDeepLink(page: PageId, itemId?: string): string {
 
 export function buildShareText(payload: SharePayload): string {
   const url = contentDeepLink(payload.page, payload.itemId)
-  const tags = (payload.hashtags || ['KitapCenneti', 'Cocuk', 'Aile'])
+  const tags = (payload.hashtags || ['KitapCenneti', 'Kinder', 'Familie'])
     .map((t) => `#${t.replace(/\s+/g, '')}`)
     .join(' ')
   return `${payload.title}\n\n${payload.text}\n\n${url}\n${tags}`

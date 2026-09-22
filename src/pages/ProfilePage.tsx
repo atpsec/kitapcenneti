@@ -149,7 +149,7 @@ export function ProfilePage({ onNavigate }: Props) {
               <div className="account-access__fields">
                 <label>
                   E-Mail der Eltern
-                  <input type="email" autoComplete="email" value={authEmail} onChange={(event) => setAuthEmail(event.target.value)} placeholder="siz@ornek.com" required />
+                  <input type="email" autoComplete="email" value={authEmail} onChange={(event) => setAuthEmail(event.target.value)} placeholder="name@beispiel.de" required />
                 </label>
                 <label>
                   Passwort

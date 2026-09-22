@@ -4,6 +4,7 @@ import type { PageId } from '../types/nav'
 import { useMembership } from '../hooks/useMembership'
 import { usePortalProfile } from '../hooks/usePortalProfile'
 import { useAccount } from '../hooks/useAccount'
+import { LEGAL_DETAILS_READY } from '../config/legal'
 
 interface Props {
   onNavigate: (page: PageId) => void
@@ -80,7 +81,7 @@ export function MembershipPage({ onNavigate }: Props) {
                   if (window.confirm('Möchten Sie das Abonnement zum Ende des bezahlten Zeitraums kündigen?')) void cancel()
                 }}
               >
-                Verträge hier erfahren
+                Vertrag hier kündigen
               </button>
             )}
           </div>
@@ -118,13 +119,14 @@ export function MembershipPage({ onNavigate }: Props) {
                 autoComplete="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                placeholder="siz@ornek.com"
+                placeholder="name@beispiel.de"
               />
               {!account && <p className="membership-checkout__notice">Meldet euch für ein Abonnement zuerst mit einem Elternkonto an.</p>}
-              <button type="button" className="btn btn--primary membership-plan__button" disabled={busy} onClick={() => account ? void checkout(billing, account.email) : onNavigate('profile')}>
-                {busy ? 'Wird verbunden …' : account ? 'Kostenpflichtig abonnieren' : 'Mit Elternkonto fortfahren'} <span>→</span>
+              {!LEGAL_DETAILS_READY && <p className="membership-checkout__notice">Der kostenpflichtige Abschluss bleibt gesperrt, bis Impressum und Unternehmensangaben für diese Produktionsumgebung hinterlegt sind.</p>}
+              <button type="button" className="btn btn--primary membership-plan__button" disabled={busy || !LEGAL_DETAILS_READY} onClick={() => account ? void checkout(billing, account.email) : onNavigate('profile')}>
+                {busy ? 'Wird verbunden …' : !LEGAL_DETAILS_READY ? 'Nach rechtlicher Konfiguration verfügbar' : account ? 'Kostenpflichtig abonnieren' : 'Mit Elternkonto fortfahren'} <span>→</span>
               </button>
-              <small>Kinderprofile werden im Elternbereich verwaltet. Die Zahlung wird über Stripe Checkout abgeschlossen; Kündigungen erfolgen im Kontobereich.</small>
+              <small>Kinderprofile werden im Elternbereich verwaltet. Die Zahlung wird über Stripe Checkout abgeschlossen; Kündigungen erfolgen im Kontobereich. <a href="#terms">Nutzungsbedingungen und Widerruf</a></small>
             </div>
           )}
           {isPlus && <button type="button" className="btn btn--primary membership-plan__button" onClick={() => void openPortal()}>Abrechnungs- und Stornierungseinstellungen <span>→</span></button>}

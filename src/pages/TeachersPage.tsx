@@ -124,7 +124,7 @@ export function TeachersPage() {
               text: `${res.summary} (${res.subject}, ${res.age})`,
               page: 'teachers',
               itemId: res.id,
-              hashtags: ['KitapCenneti', 'Ogretmen', res.subject.replace(/\s+/g, '')],
+              hashtags: ['KitapCenneti', 'Lehrkräfte', res.subject.replace(/\s+/g, '')],
             }}
           />
         </article>

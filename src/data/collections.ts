@@ -1106,19 +1106,21 @@ const COLLECTIONS_RAW: Collection[] = [
 
 const COLLECTION_LABELS: Record<string, string> = {
   'koleksiyon': 'Sammlung', 'Koleksiyon': 'Sammlung', 'Mega koleksiyon': 'Mega-Sammlung',
-  'mevsim': 'Jahreszeit', 'dostluk': 'Freundschaft', 'hayvan': 'Tiere',
+  'mevsim': 'Jahreszeit', 'Mevsim': 'Jahreszeit', 'dostluk': 'Freundschaft', 'Dostluk': 'Freundschaft', 'hayvan': 'Tiere',
   'duygu': 'Gefühle', 'Masal seç': 'Geschichte auswählen', 'Kısa oyun': 'Kurzes Spiel',
   'Duygu check-in': 'Gefühls-Check-in', 'Boyama': 'Malen', 'Keşfet': 'Entdecken',
   'Oyna': 'Spielen', 'Paylaş': 'Teilen', 'Küratör demeti': 'Kuratierte Auswahl',
-  'cesaret': 'Mut', 'Uyku': 'Schlaf', 'Doğa': 'Natur', 'Uzay': 'Weltraum',
-  'Okul': 'Schule', 'Müzik': 'Musik', 'Sanat': 'Kunst', 'Spor': 'Sport',
+  'Nazik kahramanlar': 'Sanfte Heldinnen und Helden', 'ebeveyn': 'Eltern',
+  'Mevsim Dönence Paketi': 'Jahreszeitenkreis-Paket', 'Sanat Atölyesi': 'Kunstwerkstatt',
+  'cesaret': 'Mut', 'Cesaret': 'Mut', 'Uyku': 'Schlaf', 'Doğa': 'Natur', 'Uzay': 'Weltraum',
+  'okul': 'Schule', 'Okul': 'Schule', 'Müzik': 'Musik', 'müzik': 'Musik', 'Sanat': 'Kunst', 'sanat': 'Kunst', 'Spor': 'Sport', 'spor': 'Sport',
+  'macera': 'Abenteuer', 'deniz': 'Meer', 'rutin': 'Routine', 'Duygu': 'Gefühl',
   'Masal': 'Geschichte', 'masal': 'Geschichte', 'Oyun': 'Spiel', 'oyun': 'Spiel',
-  'Duygu': 'Gefühl', 'macera': 'Abenteuer', 'deniz': 'Meer',
 }
 
 function localiseCollectionText(value: string): string {
   let result = value
-  for (const [from, to] of Object.entries(COLLECTION_LABELS)) result = result.split(from).join(to)
+  for (const [from, to] of Object.entries(COLLECTION_LABELS).sort(([a], [b]) => b.length - a.length)) result = result.split(from).join(to)
   return result
 }
 

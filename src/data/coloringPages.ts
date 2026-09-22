@@ -20,7 +20,7 @@ export const COLORING_CATEGORIES = [
   'Saison',
 ] as const
 
-export const COLORING_PAGES: ColoringPage[] = [
+const COLORING_PAGES_RAW: ColoringPage[] = [
   { id: 'unicorn', title: 'Glückliches Einhorn', emoji: '🦄', age: '3+', category: 'Tiere', description: 'Süßes Einhorn mit Regenbogenmähne' },
   { id: 'cat', title: 'Verspielte Katze', emoji: '🐱', age: '3+', category: 'Tiere', description: 'Katze spielt mit Ball' },
   { id: 'puppy', title: 'Kleiner Hund', emoji: '🐶', age: '3+', category: 'Tiere', description: 'Süßer Hund mit hängenden Ohren' },
@@ -353,6 +353,30 @@ export const COLORING_PAGES: ColoringPage[] = [
   { id: 'mega-boyama-200', title: 'Mega Coloring 200', emoji: '⭐', age: '3+', category: 'Märchen', description: 'Lizenzfreie Portal-Färbung Nr. 200' }
 ]
 
+const COLORING_LABELS: Record<string, string> = {
+  'Minik Köpek': 'Kleiner Hund', 'Bilge Baykuş': 'Weise Eule', 'Küçük Astronot': 'Kleiner Astronaut',
+  'İyi Ejderha': 'Guter Drache', 'Çiçek Peri': 'Blumenfee', 'Mercan Balığı': 'Korallenfisch',
+  'Gülen Ahtapot': 'Lachender Oktopus', 'Sarı Denizaltı': 'Gelbes U-Boot', 'Ağaç Ev': 'Baumhaus',
+  'Kelebek Bahçesi': 'Schmetterlingsgarten', 'Gökkuşağı': 'Regenbogen', 'Çiçek Buketi': 'Blumenstrauß',
+  'Neşeli Araba': 'Fröhliches Auto', 'Uçan Balon': 'Fliegender Ballon', 'Ayçiçeği': 'Sonnenblume',
+  'Doğum Günü': 'Geburtstag', 'Zıplayan Tavşan': 'Springendes Kaninchen', 'Kırmızı Yengeç': 'Rote Krabbe',
+  'Deniz Yıldızı': 'Seestern', 'Ay Yüzeyi': 'Mondoberfläche', 'Çalışkan Arı': 'Fleißige Biene',
+  'Uçan Uçurtma': 'Fliegender Drachen', 'Orman Mantarı': 'Waldpilz', 'Piknik Sepeti': 'Picknickkorb',
+  'Renkli Bisiklet': 'Buntes Fahrrad', 'Volkan': 'Vulkan', 'Minik': 'Klein', 'Büyük': 'Groß',
+}
+
+function localiseColoringText(value: string): string {
+  let result = value
+  for (const [from, to] of Object.entries(COLORING_LABELS).sort(([a], [b]) => b.length - a.length)) result = result.split(from).join(to)
+  return result
+}
+
+export const COLORING_PAGES: ColoringPage[] = COLORING_PAGES_RAW.map((page) => ({
+  ...page,
+  title: localiseColoringText(page.title),
+  description: localiseColoringText(page.description),
+}))
+
 const S = `fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"`
 const S2 = `fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"`
 const ambientFor = (label: string) => {
@@ -405,8 +429,11 @@ const ambientFor = (label: string) => {
     <circle cx="58" cy="205" r="8" ${S2}/><circle cx="350" cy="225" r="7" ${S2}/>
   </g>`
 }
-const vb = (inner: string, footer = 'Kitap Cenneti', ambientLabel = footer) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" width="400" height="420" role="img" aria-label="${footer}"><title>${footer}</title><rect x="15" y="15" width="370" height="365" rx="24" ${S2}/><path d="M34 365 Q200 347 366 365" ${S2}/><path d="M39 50 l5 10 11 1-8 7 3 11-11-6-10 6 3-11-8-7 11-1z M350 50 l5 10 11 1-8 7 3 11-11-6-10 6 3-11-8-7 11-1z" ${S2}/>${ambientFor(ambientLabel)}${inner}<text x="200" y="408" text-anchor="middle" font-family="Nunito,Arial,sans-serif" font-size="14" fill="#777">${footer}</text></svg>`
+const vb = (inner: string, footer = 'Kitap Cenneti', ambientLabel = footer) => {
+  const localizedFooter = localiseColoringText(footer)
+  const localizedAmbient = localiseColoringText(ambientLabel)
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" width="400" height="420" role="img" aria-label="${localizedFooter}"><title>${localizedFooter}</title><rect x="15" y="15" width="370" height="365" rx="24" ${S2}/><path d="M34 365 Q200 347 366 365" ${S2}/><path d="M39 50 l5 10 11 1-8 7 3 11-11-6-10 6 3-11-8-7 11-1z M350 50 l5 10 11 1-8 7 3 11-11-6-10 6 3-11-8-7 11-1z" ${S2}/>${ambientFor(localizedAmbient)}${inner}<text x="200" y="408" text-anchor="middle" font-family="Nunito,Arial,sans-serif" font-size="14" fill="#777">${localizedFooter}</text></svg>`
+}
 
 const hashId = (id: string) => Array.from(id).reduce((sum, char) => (sum * 31 + char.charCodeAt(0)) >>> 0, 7)
 

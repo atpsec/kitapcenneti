@@ -212,7 +212,7 @@ export function CreateStoryPage() {
         <section className="create-panel" aria-labelledby="create-step-3-title">
           <h2 id="create-step-3-title" className="section__title">
             <span className="section__title-emoji">⚙️</span>
-            3. Stil & Ayarlar
+            3. Stil und Einstellungen
           </h2>
           <p className="section-hint">Wählen Sie Bildstil, Altersgruppe und Seitenanzahl.</p>
           <OptionsPanel

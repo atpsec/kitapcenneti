@@ -27,6 +27,17 @@ export const onRequestPost = async (context: AuthContext) => {
       return authResponse({ error: 'Dieses Konto hat bereits ein Familien+-Abonnement', code: 'membership_exists' }, 409, context)
     }
 
+    const requireTerms = envString(context.env.STRIPE_REQUIRE_TERMS).toLowerCase() !== 'false'
+    if (requireTerms) {
+      const termsUrl = envString(context.env.STRIPE_TERMS_URL)
+      try {
+        const parsedTermsUrl = new URL(termsUrl)
+        if (parsedTermsUrl.protocol !== 'https:') throw new Error('invalid_terms_url')
+      } catch {
+        return authResponse({ error: 'Nutzungsbedingungen sind noch nicht für den Checkout hinterlegt', code: 'configuration_missing' }, 503, context)
+      }
+    }
+
     const params = new URLSearchParams()
     params.set('mode', 'subscription')
     params.set('line_items[0][price]', priceId)
@@ -39,7 +50,7 @@ export const onRequestPost = async (context: AuthContext) => {
     params.set('billing_address_collection', 'auto')
     params.set('locale', envString(context.env.STRIPE_CHECKOUT_LOCALE) || 'de')
     params.set('tax_id_collection[enabled]', 'true')
-    if (envString(context.env.STRIPE_REQUIRE_TERMS).toLowerCase() === 'true') {
+    if (requireTerms) {
       // Configure the current Terms of Service URL in Stripe Dashboard first.
       params.set('consent_collection[terms_of_service]', 'required')
     }

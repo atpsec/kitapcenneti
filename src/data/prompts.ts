@@ -38,7 +38,7 @@ export const CATEGORIES: CategoryInfo[] = [
     samplePrompts: [
       'Der mutigste Hase im Wald und seine Freunde',
       'Ein Nachtabenteuer in der geheimen Stadt der Katzen',
-      'Penguen ailesinin kutup yolculuğu',
+      'Eine Pinguinfamilie auf einer Reise durch die Polarregion',
       'Der erste Schultag eines Elefantenbabys',
     ],
   },
@@ -78,7 +78,7 @@ export const CATEGORIES: CategoryInfo[] = [
       'Eine kleine Fee weckt die schlafende Prinzessin',
       'Ein Feenmädchen verliert seinen Zauberstab',
       'Der erste Tag in der Feenschule über den Wolken',
-      'Eine Prinzessin lebt in einer burg ohne Drachen',
+      'Eine Prinzessin lebt in einer Burg ohne Drachen',
     ],
   },
   {
@@ -115,9 +115,9 @@ export const CATEGORIES: CategoryInfo[] = [
     gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
     samplePrompts: [
       'Ein lustiges Abenteuer, an dem sich eines Tages alles umkehrt',
-      'Konuşan ayakkabılarla şehir turu',
-      'Bulut fabrikasında çalışan minik işçiler',
-      'Zaman makinesiyle geçmişe yolculuk',
+      'Ein Stadtrundgang mit sprechenden Schuhen',
+      'Kleine Arbeiter in einer Wolkenfabrik',
+      'Eine Reise mit der Zeitmaschine in die Vergangenheit',
     ],
   },
 ]
@@ -174,7 +174,7 @@ export const TEXT_MODELS = [
 ]
 
 export const IMAGE_PROVIDERS = [
-  { id: 'pollinations' as const, name: 'Bestäubungs-KI', emoji: '🆓', description: 'Völlig kostenlos, kein API-Schlüssel erforderlich' },
+  { id: 'pollinations' as const, name: 'Pollinations-KI', emoji: '🆓', description: 'Völlig kostenlos, kein API-Schlüssel erforderlich' },
   { id: 'netlify-gemini' as const, name: 'Zwillinge (Netlify)', emoji: '✨', description: 'Hohe Qualität mit Netlify AI Gateway' },
 ]
 

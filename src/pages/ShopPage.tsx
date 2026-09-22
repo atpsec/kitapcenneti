@@ -126,7 +126,7 @@ export function ShopPage({ onNavigate }: Props) {
                   text: pack.description,
                   page: 'shop',
                   itemId: pack.id,
-                  hashtags: ['KitapCenneti', 'Ucretsiz', ...pack.tags.slice(0, 2)],
+                  hashtags: ['KitapCenneti', 'Kostenlos', ...pack.tags.slice(0, 2)],
                 }}
               />
             )}
@@ -143,7 +143,7 @@ export function ShopPage({ onNavigate }: Props) {
             text: `${activePack.description} — ${activePack.includes.slice(0, 2).join(', ')}`,
             page: 'shop',
             itemId: activePack.id,
-            hashtags: ['KitapCenneti', 'Ucretsiz', ...activePack.tags.slice(0, 2)],
+            hashtags: ['KitapCenneti', 'Kostenlos', ...activePack.tags.slice(0, 2)],
           }}
         />
       </div>

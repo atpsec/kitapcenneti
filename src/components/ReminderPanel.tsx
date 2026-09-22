@@ -41,7 +41,7 @@ export function ReminderPanel() {
     const p = await Notification.requestPermission()
     setPerm(p)
     if (p !== 'granted') {
-      showToast('Bildirim izni verilmedi')
+      showToast('Benachrichtigungserlaubnis wurde nicht erteilt')
       return
     }
     save({ ...prefs, enabled: true })
@@ -94,10 +94,10 @@ export function ReminderPanel() {
             } else showToast('Erteile zuerst die Benachrichtigungserlaubnis')
           }}
         >
-          Test bildirimi
+          Testbenachrichtigung
         </button>
       </div>
-      <small>Durum: {perm} · {prefs.enabled ? 'aktiv' : 'inaktiv'}</small>
+      <small>Status: {perm} · {prefs.enabled ? 'aktiv' : 'inaktiv'}</small>
     </div>
   )
 }

@@ -1,32 +1,32 @@
 # Kitap Cenneti 📚
 
-Ücretsiz çocuk & aile içerik platformu — **Google AdSense odaklı** içerik merkezi.
+Eine deutschsprachige Familienplattform für Geschichten, Spiele, MINT-Entdeckungen und ruhige Lernmomente.
 
-## Canlı
+## Live
 
-https://atpsec.github.io/kitapcenneti/
+<https://atpsec.github.io/kitapcenneti/>
 
-## Ne var?
+## Funktionen
 
-- ⭐ Günlük görevler (yıldız + streak, üyelik yok)
-- 🎧 Sesli masallar · 🖍️ Boyama PDF · ✨ AI hikaye
-- 🔬 STEM deneyleri · 💛 Duygu köşesi · 🦸 Telifsiz kahramanlar
-- 📝 **Aile Blog** (AdSense için ebeveyn odaklı uzun yazılar)
-- 🖨️ Çıktılar · 🏆 Sertifika · 👨‍👩‍👧 Aile rehberi
-- 🔒 Gizlilik / Koşullar / İletişim + çerez bildirimi
-- 📢 AdSense yer tutucuları (`VITE_ADSENSE_CLIENT`)
+- ⭐ Tagesaufgaben mit Sternen und Fortschritt
+- 🎧 Hörgeschichten, 🖍️ Malvorlagen und KI-Geschichten
+- 🔬 MINT-Experimente, 💛 Gefühlsbereich und eigene Heldinnen und Helden
+- 📝 Familienblog mit alltagstauglichen Elternratgebern
+- 🖨️ Druckvorlagen, 🏆 Urkunden und Familienplanung
+- 🔒 Datenschutz, Nutzungsbedingungen, Kontakt und Cookie-Einstellungen
+- 👨‍👩‍👧 Kostenloser Bereich plus Familien+-Mitgliedschaft
 
-## AdSense kurulumu
+## Werbeeinstellungen
 
-1. [Google AdSense](https://www.google.com/adsense/) başvurusu yap (site URL’si ile)
-2. Onay sonrası Publisher ID al (`ca-pub-...`)
-3. Repo’da `.env` veya GitHub Actions secret:
-   `VITE_ADSENSE_CLIENT=ca-pub-xxxxxxxx`
-4. Rebuild / redeploy
+Werbung wird erst nach einer ausdrücklichen Einwilligung geladen und bleibt auf Eltern- und redaktionelle Bereiche beschränkt. Auf Kinderseiten werden keine personalisierten Anzeigen eingebunden.
 
-> Not: Google, çocuk odaklı sitelerde reklam kurallarını sıkı tutar. Reklamları özellikle **Aile Blog / Aile Köşesi** gibi ebeveyn içeriklerinde tutuyoruz.
+Nach der AdSense-Freigabe:
 
-## Geliştirme
+1. Publisher-ID in `VITE_ADSENSE_CLIENT=ca-pub-…` hinterlegen.
+2. Die Einwilligungstexte, Anbieterinformationen und Auftragsverarbeitungen prüfen.
+3. Neu bauen und bereitstellen.
+
+## Lokale Entwicklung
 
 ```bash
 npm install
@@ -34,20 +34,20 @@ npm run dev
 npm run build:gh
 ```
 
-## Aile+ üyelik altyapısı
+## Familien+-Mitgliedschaft
 
-Üyelik ekranı ücretsiz ve Aile+ planlarını içerir. Gerçek ödeme için Cloudflare Pages Functions ortamında Stripe anahtarlarını tanımlayın: `STRIPE_SECRET_KEY`, `STRIPE_PRICE_MONTHLY`, `STRIPE_PRICE_ANNUAL`, `STRIPE_WEBHOOK_SECRET` ve `SITE_URL`. D1 kullanacaksanız `migrations/0001_membership.sql` dosyasını çalıştırıp `DB` binding'ini Pages projesine ekleyin.
+Der kostenlose Bereich bleibt nutzbar. Für echte Zahlungen werden Cloudflare Pages Functions, Stripe und D1 benötigt. Hinterlegen Sie serverseitig `STRIPE_SECRET_KEY`, `STRIPE_PRICE_MONTHLY`, `STRIPE_PRICE_ANNUAL`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_TERMS_URL` und `SITE_URL`. Der Checkout verlangt die aktuellen Nutzungsbedingungen auch im Stripe-Dashboard. Das D1-Binding muss `DB` heißen; die Migrationen werden in der Reihenfolge `0001` bis `0004` ausgeführt.
 
-Tarayıcı tarafında `VITE_MEMBERSHIP_API_BASE` değerini Functions adresine bağlayın. `migrations/0001_membership.sql` ve `migrations/0002_accounts.sql` dosyalarını D1 veritabanında sırayla çalıştırın. `AUTH_ALLOWED_ORIGIN` ve `AUTH_SESSION_TTL_DAYS` ile ebeveyn oturumlarını yönetin. Anahtarlar istemciye açılmamalı; ödeme, webhook, hesap ve ilerleme uçları yalnızca sunucu ortamında çalışmalıdır.
+Die kostenpflichtige Schaltfläche bleibt gesperrt, solange die vollständigen Unternehmensangaben für Impressum und Datenschutz nicht als Build-Variablen gesetzt sind. Verwenden Sie dafür `VITE_LEGAL_COMPANY`, `VITE_LEGAL_ADDRESS`, `VITE_LEGAL_REPRESENTATIVE`, `VITE_LEGAL_REGISTER`, `VITE_LEGAL_VAT_ID` und `VITE_SUPPORT_EMAIL`.
 
-Hesap API uçları:
+Konten, Fortschritt und Zahlungen laufen ausschließlich über serverseitige Functions. Passwörter werden mit PBKDF2-SHA-256 verarbeitet; Sitzungen verwenden HttpOnly-, Secure- und SameSite-Cookies.
+
+Wichtige Endpunkte:
 
 - `POST /api/auth/register`, `POST /api/auth/login`, `POST /api/auth/logout`, `GET /api/auth/me`
 - `GET/POST/PUT/DELETE /api/family/children`
-- `GET/POST /api/family/progress?childId=...`
+- `GET/POST /api/family/progress?childId=…`
 - `GET /api/membership/account-status`
 - `POST /api/membership/portal`
 
-Cloudflare Pages üzerinde hesabın ve senkronizasyonun çalışması için Functions ortamına `DB` adlı D1 binding'i ekleyin. Şifreler PBKDF2-SHA-256 ile hashlenir; oturumlar HttpOnly, Secure ve SameSite=None cookie ile tutulur.
-
-Üretim kurulumu için [`docs/production-setup.md`](docs/production-setup.md) adımlarını uygulayın.
+Die vollständige Produktions-Checkliste steht in [`docs/production-setup.md`](docs/production-setup.md).

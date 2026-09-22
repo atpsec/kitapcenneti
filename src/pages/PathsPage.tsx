@@ -84,7 +84,7 @@ export function PathsPage({ onNavigate }: Props) {
             text: `${path.summary} (${path.weeks} Wochen, ${path.steps.length} Schritte)`,
             page: 'paths',
             itemId: path.id,
-            hashtags: ['KitapCenneti', 'Ogrenme', path.age.replace(/\s+/g, '')],
+            hashtags: ['KitapCenneti', 'Lernen', path.age.replace(/\s+/g, '')],
           }}
         />
       </article>

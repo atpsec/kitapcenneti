@@ -45,8 +45,9 @@ STRIPE_PRICE_MONTHLY=price_...
 STRIPE_PRICE_ANNUAL=price_...
 STRIPE_WEBHOOK_SECRET=whsec_...
 STRIPE_CHECKOUT_LOCALE=de
-# Erst auf true setzen, wenn im Stripe-Dashboard eine aktuelle URL zu den Nutzungsbedingungen hinterlegt ist.
-STRIPE_REQUIRE_TERMS=false
+# Der Checkout verlangt standardmäßig aktuelle Nutzungsbedingungen im Stripe-Dashboard.
+STRIPE_REQUIRE_TERMS=true
+STRIPE_TERMS_URL=https://<ihre-domain>/#terms
 SITE_URL=https://<cloudflare-pages-domain>
 AUTH_ALLOWED_ORIGIN=https://<cloudflare-pages-domain>
 AUTH_SESSION_TTL_DAYS=30
@@ -71,7 +72,7 @@ AUTH_REQUIRE_EMAIL_VERIFICATION=true
 Werte melden die Endpunkte `email_service_not_configured`; Konten werden dadurch nicht mit einem
 falschen Bestätigungsstatus versehen.
 
-Für Deutschland wird Stripe Checkout standardmäßig auf Deutsch geöffnet und die Eingabe einer USt-IdNr. ermöglicht. Setzen Sie `STRIPE_REQUIRE_TERMS=true` erst, nachdem im Stripe-Dashboard eine aktuelle URL zu den Nutzungsbedingungen hinterlegt wurde; andernfalls kann die Checkout-Konfiguration fehlschlagen.
+Für Deutschland wird Stripe Checkout standardmäßig auf Deutsch geöffnet und die Eingabe einer USt-IdNr. ermöglicht. `STRIPE_REQUIRE_TERMS` bleibt standardmäßig aktiv. Hinterlegen Sie dieselbe aktuelle URL in `STRIPE_TERMS_URL` und im Stripe-Dashboard; fehlt sie, bleibt der Checkout absichtlich gesperrt.
 
 Wählen Sie als Stripe-Webhook-Ereignisse `checkout.session.completed`, `customer.subscription.created`,
 `customer.subscription.updated`, `customer.subscription.deleted`, `invoice.payment_succeeded` und

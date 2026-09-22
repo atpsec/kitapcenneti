@@ -1962,7 +1962,7 @@ const TEACHER_LABELS: Record<string, string> = {
 
 function localiseTeacherText(value: string): string {
   let result = value
-  for (const [from, to] of Object.entries(TEACHER_LABELS)) result = result.split(from).join(to)
+  for (const [from, to] of Object.entries(TEACHER_LABELS).sort(([a], [b]) => b.length - a.length)) result = result.split(from).join(to)
   return result
 }
 

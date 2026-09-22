@@ -88,7 +88,7 @@ function PageFallback() {
   return (
     <div className="page-loading" role="status" aria-live="polite">
       <div className="page-loading-orb" aria-hidden="true" />
-      <p>Sayfa yükleniyor…</p>
+      <p>Seite wird geladen …</p>
     </div>
   )
 }

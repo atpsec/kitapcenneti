@@ -30,7 +30,7 @@ export function OptionsPanel({
     <div className="options-panel">
       <h2 className="section__title">
         <span className="section__title-emoji">⚙️</span>
-        Ayarlar
+        Einstellungen
       </h2>
 
       <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 16 }}>🎨 Zeichenstil</h3>
@@ -100,7 +100,7 @@ export function OptionsPanel({
             onClick={() => onPageCountChange(count)}
           >
             <span className="option-chip__emoji">📖</span>
-            <span className="option-chip__name">{count} Sayfa</span>
+            <span className="option-chip__name">{count} Seiten</span>
           </button>
         ))}
       </div>

@@ -7,6 +7,7 @@ export interface MembershipEnv {
   AUTH_ALLOWED_ORIGIN?: string
   STRIPE_CHECKOUT_LOCALE?: string
   STRIPE_REQUIRE_TERMS?: string
+  STRIPE_TERMS_URL?: string
   DB?: {
     prepare: (query: string) => {
       bind: (...values: unknown[]) => {

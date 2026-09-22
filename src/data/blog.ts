@@ -3049,13 +3049,15 @@ const BLOG_POSTS_RAW: BlogPost[] = [
 const BLOG_LABELS: Record<string, string> = {
   'Book Paradise': 'Kitap Cenneti', 'Book Heaven': 'Kitap Cenneti', 'Audio Tales': 'Hörgeschichten',
   'Okul': 'Schule', 'Spor': 'Sport', 'Sanat': 'Kunst', 'Rutin': 'Routine', 'Dijital': 'Digital',
+  'Hareket': 'Bewegung', 'Okul öncesi': 'Vorschule', 'Dil': 'Sprache', 'Müzik': 'Musik',
+  'Oyun': 'Spiel', 'Oyunlar': 'Spiele', 'Çocuk': 'Kind', 'Çocuklar': 'Kinder',
   'Macera': 'Abenteuer', 'Hayvan': 'Tiere', 'Deniz': 'Meer', 'Mevsim': 'Jahreszeit',
-  'Dostluk': 'Freundschaft', 'Uzay': 'Weltraum', 'Duygu': 'Gefühl',
+  'Dostluk': 'Freundschaft', 'Uzay': 'Weltraum', 'Duygu': 'Gefühl', 'Ebeveyn': 'Eltern',
 }
 
 function localiseBlogText(value: string): string {
   let result = value
-  for (const [from, to] of Object.entries(BLOG_LABELS)) result = result.split(from).join(to)
+  for (const [from, to] of Object.entries(BLOG_LABELS).sort(([a], [b]) => b.length - a.length)) result = result.split(from).join(to)
   return result
 }
 

@@ -9,7 +9,7 @@ const ACHIEVEMENTS = [
   'Eine Malvorlage abgeschlossen',
   'Mit KI ein eigenes Geschichtenbuch erstellt',
   'Im Memory-Spiel alle Paare gefunden',
-  'Bir tekerlemeyi ezberledi',
+  'Einen Kinderreim auswendig gelernt',
   'Eine Woche lang jeden Tag gelesen',
   'Etwas Gutes für die Natur getan',
   'Eine Geschichte für Geschwister oder Freunde erzählt',

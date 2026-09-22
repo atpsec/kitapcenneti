@@ -57,7 +57,7 @@ export function QuestsPage({ onNavigate }: QuestsPageProps) {
           text: `${done.length}/${quests.length} erledigt · ${questSummary}`,
           page: 'quests',
           itemId: todayKey,
-          hashtags: ['KitapCenneti', 'Gorev', 'Cocuk'],
+          hashtags: ['KitapCenneti', 'Aufgabe', 'Kinder'],
         }}
       />
 

@@ -45,7 +45,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
 
   const handleDownloadTxt = () => {
     const content = story.pages
-      .map((p) => `--- Sayfa ${p.pageNumber} ---\n${p.text}\n`)
+      .map((p) => `--- Seite ${p.pageNumber} ---\n${p.text}\n`)
       .join('\n')
     const blob = new Blob([`${story.title}\n\n${content}`], { type: 'text/plain;charset=utf-8' })
     const url = URL.createObjectURL(blob)
@@ -197,7 +197,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
             </div>
             <div className="storybook__content">
               <p className="storybook__page-number">
-                Sayfa {page.pageNumber} / {story.pages.length}
+                Seite {page.pageNumber} / {story.pages.length}
               </p>
               <p className="storybook__text">{page.text}</p>
             </div>
@@ -216,7 +216,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
               key={i}
               className={`page-dot ${i === currentPage ? 'page-dot--active' : ''}`}
               onClick={() => setCurrentPage(i)}
-              aria-label={`Sayfa ${i + 1}`}
+          aria-label={`Seite ${i + 1}`}
             />
           ))}
         </div>
@@ -239,7 +239,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
             onClick={() => setCurrentPage(i)}
           >
             {p.imageUrl ? (
-              <img src={p.imageUrl} alt={`Sayfa ${i + 1}`} />
+              <img src={p.imageUrl} alt={`Seite ${i + 1}`} />
             ) : (
               <span>📄</span>
             )}

@@ -1013,6 +1013,32 @@ const SHOP_PACKS_RAW: ShopPack[] = [
 ]
 
 const SHOP_LABELS: Record<string, string> = {
+  '3 uyku masalı önerisi': '3 Vorschläge für Schlafgeschichten', '2 sakin boyama': '2 ruhige Malvorlagen',
+  'Nefes kartı fikri': 'Atemkarten-Idee', 'Akşam kontrol listesi': 'Abend-Checkliste',
+  'Boyama sayfaları': 'Malvorlagen', 'Tekerleme listesi': 'Reimliste', 'Duygu yüzleri': 'Gefühlsgesichter',
+  '5 dk aktivite menüsü': '5-Minuten-Aktivitätsmenü', '6 deney kartı': '6 Experimentkarten',
+  'Malzeme listesi': 'Materialliste', 'Gözlem sayfası': 'Beobachtungsseite', 'Güvenlik ipuçları': 'Sicherheitstipps',
+  '12 duygu etiketi': '12 Gefühletiketten', '3 sakinleşme oyunu': '3 Beruhigungsspiele',
+  'Aile rehberi özeti': 'Zusammenfassung des Familienratgebers', '10+ boyama önerisi': '10+ Malideen',
+  'Renk paleti fikri': 'Farbpalettenidee', 'Sergi çerçevesi çıktısı': 'Ausstellungsrahmen zum Ausdrucken',
+  'Sanat görevi': 'Kunstaufgabe', '7 gün masal rotası': '7-Tage-Geschichtenroute',
+  '2 soru kartı seti': 'Set mit 2 Fragekarten', 'Okuma rozeti fikri': 'Idee für ein Lesebadge',
+  'Blog ipuçları': 'Blogtipps', 'Kahraman okuma listesi': 'Helden-Leseliste',
+  'Güç / değer çalışma sayfası': 'Arbeitsblatt zu Stärke und Werten', 'Kendi kahramanını çiz': 'Eigene Heldin oder eigenen Helden zeichnen',
+  'Görev fikirleri': 'Aufgabenideen', '21 günlük fikir takvimi': '21-Tage-Ideenkalender',
+  'STEM seçkisi': 'MINT-Auswahl', 'Boyama listesi': 'Malvorlagenliste', 'Aile proje günü': 'Familien-Projekttag',
+  '15 dk çalışma şablonu': '15-Minuten-Arbeitsvorlage', 'Mola kartları': 'Pausenkarten',
+  'Görev panosu fikri': 'Idee für eine Aufgaben-Tafel', 'Ebeveyn blog özeti': 'Zusammenfassung des Elternblogs',
+  'Oyun salonu rotası': 'Spielplatzroute', 'STEM yağmur deneyi': 'MINT-Regenexperiment', 'Boyama + doodle': 'Malen + Doodle',
+  'Eğlence çarkı': 'Glücksrad', '7 gün uyku planı': '7-Tage-Schlafplan', 'Sabah rutini kartı': 'Morgenroutine-Karte',
+  'Duygu check-in': 'Gefühls-Check-in', 'Motivasyon görevleri': 'Motivationsaufgaben', 'Mini quiz rotası': 'Mini-Quiz-Route',
+  'Hafıza ile eşleştirme': 'Memory-Matching', 'Yazdırılabilir sayı sayfası': 'Druckbare Zahlenseite', 'Görev yıldızları': 'Aufgabensterne',
+  'Doğa yürüyüş listesi': 'Natur-Spazierliste', 'Yaprak/gözlem sayfası': 'Blatt-/Beobachtungsseite', 'STEM bitki fikri': 'MINT-Pflanzenidee',
+  'Doğa masalı': 'Naturgeschichte', '4 istasyon kartı': '4 Stationskarten', 'Değerlendirme soruları': 'Reflexionsfragen',
+  'Öğretmen köşesi linkleri': 'Links zur Lehrkräfte-Ecke', 'Sabah menüsü': 'Morgenmenü', 'Birlikte boyama': 'Gemeinsam malen',
+  'Duygu soruları': 'Gefühlsfragen', 'Ekran menüsü şablonu': 'Bildschirmmenü-Vorlage', 'Kaliteli içerik listesi': 'Liste hochwertiger Inhalte',
+  'Mola zili fikri': 'Pausenglocken-Idee', 'Blog rehberi': 'Blog-Ratgeber', 'Görev fikri': 'Aufgabenidee',
+  'Masal listesi': 'Geschichtenliste',
   'uyku': 'Schlaf', 'masalı': 'Geschichte', 'masal': 'Geschichte', 'sakin': 'ruhige',
   'boyama': 'Mal', 'Boyama': 'Malen', 'Nefes': 'Atem', 'Akşam': 'Abend',
   'Tekerleme': 'Reim', 'Duygu': 'Gefühl', 'duygu': 'Gefühl', 'Aile': 'Familie',
@@ -1024,16 +1050,23 @@ const SHOP_LABELS: Record<string, string> = {
   'Sergi': 'Ausstellung', 'Sanat': 'Kunst', 'Renk': 'Farb', 'Renkler': 'Farben',
   'Fikir': 'Idee', 'Fikirler': 'Ideen', 'Sabah': 'Morgen', 'Birlikte': 'Gemeinsam',
   'Mini oyun': 'Mini-Spiel', 'Öneri listesi': 'Vorschlagsliste', 'Aile ipucu': 'Familientipp',
-  'İçerik önerisi': 'Inhaltsidee', 'yazdırma fikri': 'Druckidee', 'etiketi': 'etikett',
+  'İçerik önerisi': 'Inhaltsidee', 'yazdırma fikri': 'Druckidee', 'etiketi': 'Etikett',
   'listesi': 'Liste', 'kartı': 'Karte', 'kartları': 'Karten', 'seti': 'Set',
   'soruları': 'Fragen', 'planı': 'Plan', 'rotası': 'Route', 'seçkisi': 'Auswahl',
   'deneyi': 'Experiment', 'çalışma': 'Arbeits', 'şablonu': 'Vorlage', 'günlük': 'täglich',
   'haftalık': 'wöchentlich', 'Motivasyon': 'Motivation', 'Eğlence': 'Spaß',
+  'önerisi': 'Vorschlag', 'öneri': 'Vorschlag', 'sayfaları': 'Seiten', 'sayfası': 'Seite',
+  'menüsü': 'Menü', 'aktivite': 'Aktivität', 'aktiviteleri': 'Aktivitäten', 'deney': 'Experiment',
+  'Malzeme': 'Material', 'malzeme': 'Material', 'Gözlem': 'Beobachtung', 'gözlem': 'Beobachtung',
+  'Güvenlik': 'Sicherheit', 'ip uçları': 'Tipps', 'ipucu': 'Tipp', 'sakinleşme': 'Beruhigung',
+  'oyunu': 'Spiel', 'rehberi': 'Ratgeber', 'özeti': 'Zusammenfassung', 'proje': 'Projekt',
+  'günü': 'Tag', 'gün': 'Tag', 'dk': 'Min.', 'Ekran': 'Bildschirm', 'Kaliteli': 'Hochwertige',
+  'İstasyon': 'Station', 'istasyon': 'Station', 'Değerlendirme': 'Reflexions', 'sabah': 'Morgen',
 }
 
 function localiseShopText(value: string): string {
   let result = value
-  for (const [from, to] of Object.entries(SHOP_LABELS)) result = result.split(from).join(to)
+  for (const [from, to] of Object.entries(SHOP_LABELS).sort(([a], [b]) => b.length - a.length)) result = result.split(from).join(to)
   return result
 }
 

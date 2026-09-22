@@ -31,7 +31,7 @@ export function RhymesPage() {
 
       <ContentPortalBar
         count={list.length}
-        label="Tekerleme"
+        label="Kinderreim"
         query={query}
         onQuery={setQuery}
         placeholder="Reim oder Text suchen …"
@@ -77,7 +77,7 @@ export function RhymesPage() {
             text: rhyme.lyrics.slice(0, 120) + (rhyme.lyrics.length > 120 ? '…' : ''),
             page: 'rhymes',
             itemId: rhyme.id,
-            hashtags: ['KitapCenneti', 'Tekerleme', 'Cocuk'],
+            hashtags: ['KitapCenneti', 'Reim', 'Kinder'],
           }}
         />
       </div>

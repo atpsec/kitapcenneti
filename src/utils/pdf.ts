@@ -108,7 +108,7 @@ export function downloadCertificatePdf(childName: string, achievement: string) {
   const w = pdf.internal.pageSize.getWidth()
   const h = pdf.internal.pageSize.getHeight()
   pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, w, h)
-  pdf.save(`sertifika-${(childName || 'kahraman').replace(/\s+/g, '_')}.pdf`)
+  pdf.save(`zertifikat-${(childName || 'held').replace(/\s+/g, '_')}.pdf`)
 }
 
 function wrapText(
@@ -357,7 +357,7 @@ export function downloadQuestChecklistPdf(
 
   const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
   pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 8, 8, 194, 280)
-  pdf.save('gunluk-gorevler.pdf')
+  pdf.save('tagesaufgaben.pdf')
 }
 
 /** Feeling cards printable pack */

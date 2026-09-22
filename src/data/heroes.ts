@@ -1673,6 +1673,19 @@ const HEROES_RAW: Hero[] = [
 // Some of the long-tail generated figures predate the German launch. Keep their
 // stable IDs while normalising the remaining labels and descriptions at runtime.
 const HERO_LABELS: Record<string, string> = {
+  'Es produziert Lösungen statt Plastik.': 'Sie entwickelt Lösungen und schützt das Meer vor Plastik.',
+  'Sein Pinsel ist keine Magie; Sein Mut ist magisch.': 'Ihr Pinsel ist nicht magisch, doch ihr Mut ist es.',
+  'Es erfüllte den ergrauenden Park mit Farben; Die Kinder fingen wieder an zu lachen.': 'Sie füllte den grauen Park mit Farben; die Kinder begannen wieder zu lachen.',
+  'Solange Sie sich darüber keine Sorgen machen müssen, machen Sie sich keine Sorgen.': 'Er erinnert alle daran, dass Sorgen leichter werden, wenn man darüber spricht.',
+  'besagte Hoffnung gibt, die Angst haben.': 'Kindern mit Angst Hoffnung gibt.',
+  'Es wurde zu einer Taschenlampe für seinen Freund, der im dunklen Tunnel Angst hatte.': 'Er wurde zu einer Taschenlampe für seinen Freund, der im dunklen Tunnel Angst hatte.',
+  'ist mitten in einem lizenzfreien Heldin': 'ist eine lizenzfreie Heldin',
+  'im lizenzfreien Heldin': 'eine lizenzfreie Heldin',
+  'im Buchhimmel': 'bei Kitap Cenneti',
+  'im Kitap Cenneti': 'bei Kitap Cenneti',
+  'bei Kitap Cennet': 'bei Kitap Cenneti',
+  'ist der gebräuchlichste Held': 'ist ein besonderer Held',
+  'Heroic ': 'Held ',
   'Kahraman': 'Held',
   'Hero': 'Held',
   'bir sorunu dostlarıyla çözdü ve herkes güvende kaldı.': 'hat mit seinen Freunden ein Problem gelöst und alle blieben sicher.',
@@ -1681,6 +1694,7 @@ const HERO_LABELS: Record<string, string> = {
   'Kitap Heaven': 'Kitap Cenneti',
   'Book Paradise': 'Kitap Cenneti',
   'Book Heaven': 'Kitap Cenneti',
+  'Buchhimmel': 'Kitap Cenneti',
   'Dostluk en güzel hediyedir!': 'Freundschaft ist das schönste Geschenk!',
   'Gökyüzü tuvaldir!': 'Der Himmel ist eine Leinwand!',
   'Nazik söz yara sarar!': 'Ein freundliches Wort heilt.',
@@ -1688,7 +1702,7 @@ const HERO_LABELS: Record<string, string> = {
 
 function localiseHeroText(value: string): string {
   let result = value
-  for (const [from, to] of Object.entries(HERO_LABELS)) result = result.split(from).join(to)
+  for (const [from, to] of Object.entries(HERO_LABELS).sort(([a], [b]) => b.length - a.length)) result = result.split(from).join(to)
   return result
 }
 
