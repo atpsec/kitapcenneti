@@ -22,7 +22,7 @@ export const STICKERS: Sticker[] = [
   { id: 'panda', emoji: '🐼', title: 'Ruhiger Panda', hint: 'Atemtour' },
   { id: 'lion', emoji: '🦁', title: 'Tapferer Löwe', hint: 'Lesen Sie Held' },
   { id: 'frog', emoji: '🐸', title: 'Springender Frosch', hint: 'Geschwindigkeitsspiel' },
-  { id: 'butterfly', emoji: '🦋', title: 'Bunter Schmetterling', hint: 'Lackieren beenden' },
+  { id: 'butterfly', emoji: '🦋', title: 'Bunter Schmetterling', hint: 'Ausmalen beenden' },
   { id: 'turtle', emoji: '🐢', title: 'Geduldige Schildkröte', hint: 'Lernpfadschritt' },
   { id: 'whale', emoji: '🐋', title: 'Riesenwal', hint: 'Weltkarte' },
   { id: 'book', emoji: '📖', title: 'Zauberbuch', hint: 'Suche in der Bibliothek' },
