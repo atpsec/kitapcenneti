@@ -30,7 +30,7 @@ export function QuestsPage({ onNavigate }: QuestsPageProps) {
 
       <div className="quest-stats">
         <div className="quest-stat"><strong>{stars}</strong><span>Gesamtzahl der Sterne</span></div>
-        <div className="quest-stat"><strong>{streak}🔥</strong><span>Tagesserie</span></div>
+        <div className="quest-stat"><strong>{streak}🔥</strong><span>Tage in Folge</span></div>
         <div className="quest-stat"><strong>{done.length}/{quests.length}</strong><span>heute</span></div>
       </div>
 

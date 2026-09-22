@@ -173,7 +173,7 @@ export function PortalHomePage({ onNavigate }: Props) {
           </div>
           <div className="portal-hero__metrics">
             <span><strong>{stars}</strong> Sterne</span>
-            <span><strong>{streak}</strong> Tage Serie</span>
+            <span><strong>{streak}</strong> Tage in Folge</span>
             <span><strong>{stickers.length}</strong> Sticker</span>
           </div>
         </div>

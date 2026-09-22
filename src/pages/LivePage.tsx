@@ -77,8 +77,8 @@ export function LivePage({ onNavigate }: Props) {
           <p>Nächste Stundenaufgabe: {formatMs(msLeft)}</p>
         </div>
         <div className="live-ticker__stats">
-          <span>🔥 Saatlik seri {live.hourlyStreak}</span>
-          <span>👀 Ziyaret {live.visitCount}</span>
+          <span>🔥 Stundenserie {live.hourlyStreak}</span>
+          <span>👀 Besuche {live.visitCount}</span>
         </div>
       </div>
 
@@ -91,7 +91,7 @@ export function LivePage({ onNavigate }: Props) {
               <h3>{live.challenge.title}</h3>
               <p>{live.challenge.hint}</p>
               <small>
-                +{live.challenge.stars}⭐ · ~{live.challenge.minutes} dk
+                +{live.challenge.stars}⭐ · ~{live.challenge.minutes} Min.
                 {live.hourlyDone ? ' · erledigt ✓' : ''}
               </small>
             </div>
@@ -122,7 +122,7 @@ export function LivePage({ onNavigate }: Props) {
       </section>
 
       <section className="section">
-        <h2 className="section__title">Scheiben des Tages</h2>
+        <h2 className="section__title">Aufgaben des Tages</h2>
         <div className="live-slot-grid">
           {live.slots.map((c) => {
             const done = live.slotDone.includes(c.id)
@@ -136,7 +136,7 @@ export function LivePage({ onNavigate }: Props) {
                   className="btn btn--small btn--primary"
                   onClick={() => onNavigate(c.page)}
                 >
-                  offen
+                  Öffnen
                 </button>
                 <button
                   type="button"
@@ -158,7 +158,7 @@ export function LivePage({ onNavigate }: Props) {
       </section>
 
       <section className="section">
-        <h2 className="section__title">Gizemli kutu (3 saatte bir)</h2>
+        <h2 className="section__title">Geheimnisvolle Box (alle 3 Stunden)</h2>
         <div className="panel live-mystery">
           <span>🎁</span>
           <div>
@@ -199,7 +199,7 @@ export function LivePage({ onNavigate }: Props) {
               {speaking ? '⏹ Stoppen' : '🎧 Anhören'}
             </button>
             <button type="button" className="btn btn--ghost" onClick={() => onNavigate('audio')}>
-              Gehen Sie zum Märchenportal
+              Zum Geschichtenportal
             </button>
           </div>
           <SocialShare
@@ -207,18 +207,18 @@ export function LivePage({ onNavigate }: Props) {
               title: story.title,
               text: story.summary,
               page: 'live',
-              hashtags: ['KitapCenneti', 'CanliArena', story.theme],
+              hashtags: ['KitapCenneti', 'LiveArena', story.theme],
             }}
           />
         </article>
       </section>
 
       <section className="section">
-        <h2 className="section__title">Saatlik mini quiz</h2>
+        <h2 className="section__title">Stündliches Mini-Quiz</h2>
         <div className="panel">
           <p>
             <strong>
-              Soru {quizIdx + 1}/{quizzes.length}
+              Frage {quizIdx + 1}/{quizzes.length}
             </strong>
           </p>
           <h3>{q.question}</h3>

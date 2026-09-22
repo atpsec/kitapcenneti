@@ -170,12 +170,12 @@ export function ProfilePage({ onNavigate }: Props) {
         <div className="portal-dash-card">
           <span>🔥</span>
           <h2>{streak}</h2>
-          <p>Tagesserie</p>
+          <p>Tage in Folge</p>
         </div>
         <div className="portal-dash-card">
           <span>🏅</span>
           <h2>{badges.length}</h2>
-          <p>Rozet</p>
+          <p>Abzeichen</p>
         </div>
         <div className="portal-dash-card">
           <span>🏷️</span>

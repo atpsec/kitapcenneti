@@ -22,7 +22,7 @@ export function WeeklySummary() {
     const lines = [
       `Kitap Cenneti — Wochenübersicht`,
       `${profile.childName || 'Kind'} ${profile.avatar}`,
-      `⭐ ${stars} Sterne · 🔥 ${streak} Tage Serie`,
+      `⭐ ${stars} Sterne · 🔥 ${streak} Tage in Folge`,
       `🏷️ ${stickers.length} Sticker · 🏅 ${badges.length} Abzeichen`,
       `⚡ Stundenserie ${live.hourlyStreak} · Besuche ${live.visitCount}`,
       `Diese Woche: ${week.count} Einträge`,
@@ -41,7 +41,7 @@ export function WeeklySummary() {
         </p>
         <ul className="weekly-summary__stats">
           <li>⭐ {stars} Sterne</li>
-          <li>🔥 {streak} Tage Serie</li>
+          <li>🔥 {streak} Tage in Folge</li>
           <li>🏷️ {stickers.length} sticker</li>
           <li>⚡ Stundenserie {live.hourlyStreak}</li>
         </ul>
