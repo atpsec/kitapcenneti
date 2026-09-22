@@ -9,7 +9,8 @@
     "build:gh": "BASE_PATH=/kitapcenneti/ tsc -b && BASE_PATH=/kitapcenneti/ vite build",
     "build:cf": "BASE_PATH=/ tsc -b && BASE_PATH=/ vite build",
     "preview": "vite preview",
-    "pages:deploy": "npm run build:gh"
+    "pages:deploy": "npm run build:gh",
+    "verify:membership": "node scripts/verify-membership.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.4.7",
