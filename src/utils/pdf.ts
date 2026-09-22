@@ -27,7 +27,7 @@ export async function downloadSvgAsPdf(svgMarkup: string, filename: string, titl
   ctx.fillText(title, 500, 50)
   ctx.fillStyle = '#888'
   ctx.font = '600 20px Nunito, Arial, sans-serif'
-  ctx.fillText('Kitap Cenneti — Telifsiz boyama sayfası', 500, 85)
+  ctx.fillText('Kitap Cenneti — Lizenzfreie Malvorlage', 500, 85)
   // Keep the SVG's original aspect ratio so circles, faces and frames stay
   // round when the printable is rasterized for the PDF.
   const maxWidth = 800
@@ -38,7 +38,7 @@ export async function downloadSvgAsPdf(svgMarkup: string, filename: string, titl
   ctx.drawImage(img, (canvas.width - drawWidth) / 2, 110, drawWidth, drawHeight)
   ctx.fillStyle = '#666'
   ctx.font = '500 18px Nunito, Arial, sans-serif'
-  ctx.fillText('Evde eğitim ve eğlence için serbestçe kullanılabilir.', 500, 960)
+  ctx.fillText('Für Bildung und Freude zu Hause frei nutzbar.', 500, 960)
   URL.revokeObjectURL(url)
 
   const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
@@ -55,7 +55,7 @@ export function downloadCertificatePdf(childName: string, achievement: string) {
   canvas.height = height
   const ctx = canvas.getContext('2d')
   if (!ctx) {
-    alert('Sertifika oluşturulamadı.')
+    alert('Zertifikat konnte nicht erstellt werden.')
     return
   }
 
@@ -77,19 +77,19 @@ export function downloadCertificatePdf(childName: string, achievement: string) {
   ctx.textAlign = 'center'
   ctx.fillStyle = '#ff6b9d'
   ctx.font = '800 72px Fredoka, Nunito, Arial, sans-serif'
-  ctx.fillText('BAŞARI SERTİFİKASI', width / 2, 220)
+  ctx.fillText('ERFOLGSZERTIFIKAT', width / 2, 220)
 
   ctx.fillStyle = '#2d3436'
   ctx.font = '600 36px Nunito, Arial, sans-serif'
-  ctx.fillText('Kitap Cenneti gururla sunar', width / 2, 300)
+  ctx.fillText('Präsentiert von Kitap Cenneti', width / 2, 300)
 
   ctx.fillStyle = '#667eea'
   ctx.font = '800 64px Fredoka, Nunito, Arial, sans-serif'
-  ctx.fillText(childName || 'Küçük Kahraman', width / 2, 430)
+  ctx.fillText(childName || 'Kleiner Held', width / 2, 430)
 
   ctx.fillStyle = '#2d3436'
   ctx.font = '600 34px Nunito, Arial, sans-serif'
-  ctx.fillText('aşağıdaki başarıyı kazandı:', width / 2, 520)
+  ctx.fillText('hat diesen Erfolg erreicht:', width / 2, 520)
 
   ctx.fillStyle = '#a66cff'
   ctx.font = '700 40px Nunito, Arial, sans-serif'
@@ -97,9 +97,9 @@ export function downloadCertificatePdf(childName: string, achievement: string) {
 
   ctx.fillStyle = '#636e72'
   ctx.font = '600 28px Nunito, Arial, sans-serif'
-  const date = new Date().toLocaleDateString('tr-TR')
-  ctx.fillText(`Tarih: ${date}`, width / 2, 820)
-  ctx.fillText('Okumaya, hayal etmeye ve paylaşmaya devam!', width / 2, 880)
+  const date = new Date().toLocaleDateString('de-DE')
+  ctx.fillText(`Datum: ${date}`, width / 2, 820)
+  ctx.fillText('Lies, träume und teile weiter!', width / 2, 880)
   ctx.font = '700 26px Nunito, Arial, sans-serif'
   ctx.fillStyle = '#ff6b9d'
   ctx.fillText('📚 Kitap Cenneti', width / 2, 960)
@@ -138,7 +138,7 @@ function wrapText(
 export function printHtml(title: string, bodyHtml: string) {
   const win = window.open('', '_blank', 'noopener,noreferrer,width=800,height=900')
   if (!win) {
-    alert('Açılır pencere engellendi. Lütfen tarayıcıda izin ver.')
+    alert('Das Pop-up wurde blockiert. Bitte erlaube es im Browser.')
     return
   }
   const safeTitle = escapeHtml(title)
@@ -245,11 +245,11 @@ export async function downloadStoryPdf(story: Story) {
     wrapCanvasText(ctx, story.title, 800, 420, 1200, 72, 3)
     ctx.fillStyle = '#636e72'
     ctx.font = '600 32px Nunito, Arial, sans-serif'
-    ctx.fillText(story.heroName ? `Kahraman: ${story.heroName}` : 'Özel masal kitabı', 800, 620)
-    ctx.fillText(new Date().toLocaleDateString('tr-TR'), 800, 680)
+    ctx.fillText(story.heroName ? `Held: ${story.heroName}` : 'Dein eigenes Geschichtenbuch', 800, 620)
+    ctx.fillText(new Date().toLocaleDateString('de-DE'), 800, 680)
     ctx.fillStyle = '#a66cff'
     ctx.font = '700 28px Nunito, Arial, sans-serif'
-    ctx.fillText('Evde okumak ve paylaşmak için hazırlandı', 800, 900)
+    ctx.fillText('Für gemeinsames Lesen zu Hause erstellt', 800, 900)
     pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, pageW, pageH)
   }
 
@@ -286,7 +286,7 @@ export async function downloadStoryPdf(story: Story) {
     ctx.textAlign = 'left'
     ctx.fillStyle = '#ff6b9d'
     ctx.font = '800 28px Nunito, Arial, sans-serif'
-    ctx.fillText(`Sayfa ${page.pageNumber}`, 1000, 140)
+    ctx.fillText(`Seite ${page.pageNumber}`, 1000, 140)
 
     ctx.fillStyle = '#2d3436'
     ctx.font = '700 34px Nunito, Arial, sans-serif'
@@ -321,13 +321,13 @@ export function downloadQuestChecklistPdf(
   ctx.textAlign = 'center'
   ctx.fillStyle = '#ff6b9d'
   ctx.font = '800 54px Fredoka, Nunito, Arial, sans-serif'
-  ctx.fillText('Bugünün Görevleri', 600, 100)
+  ctx.fillText('Heutige Aufgaben', 600, 100)
   ctx.fillStyle = '#2d3436'
   ctx.font = '700 32px Nunito, Arial, sans-serif'
-  ctx.fillText(childName || 'Küçük Kahraman', 600, 160)
+  ctx.fillText(childName || 'Kleiner Held', 600, 160)
   ctx.fillStyle = '#636e72'
   ctx.font = '600 24px Nunito, Arial, sans-serif'
-  ctx.fillText(new Date().toLocaleDateString('tr-TR'), 600, 210)
+  ctx.fillText(new Date().toLocaleDateString('de-DE'), 600, 210)
 
   quests.forEach((q, i) => {
     const y = 300 + i * 200
@@ -347,13 +347,13 @@ export function downloadQuestChecklistPdf(
     ctx.fillText(`${q.emoji}  ${q.title}`, 220, y + 75)
     ctx.fillStyle = '#636e72'
     ctx.font = '600 26px Nunito, Arial, sans-serif'
-    ctx.fillText(`~${q.minutes} dk · ${q.stars} yıldız`, 220, y + 120)
+    ctx.fillText(`~${q.minutes} Min. · ${q.stars} Sterne`, 220, y + 120)
   })
 
   ctx.textAlign = 'center'
   ctx.fillStyle = '#ff6b9d'
   ctx.font = '700 24px Nunito, Arial, sans-serif'
-  ctx.fillText('Kitap Cenneti — Evde yazdır, işaretle, kutla!', 600, 1500)
+  ctx.fillText('Kitap Cenneti — Zu Hause drucken, abhaken und feiern!', 600, 1500)
 
   const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
   pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 8, 8, 194, 280)
@@ -379,7 +379,7 @@ export function downloadFeelingsPackPdf(
     ctx.textAlign = 'center'
     ctx.fillStyle = '#ff6b9d'
     ctx.font = '800 44px Fredoka, Nunito, Arial, sans-serif'
-    ctx.fillText('Duygu Kartları', 600, 70)
+    ctx.fillText('Gefühlskarten', 600, 70)
     ctx.fillStyle = '#999'
     ctx.font = '600 22px Nunito, Arial, sans-serif'
     ctx.fillText('Kitap Cenneti', 600, 110)

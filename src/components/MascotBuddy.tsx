@@ -7,16 +7,16 @@ interface MascotBuddyProps {
 }
 
 const LINES = [
-  'Bugün nereye bakalım?',
-  'Kısa bir oyun ister misin?',
-  'Bir masal dinleyelim mi?',
-  'Sürpriz çarkı seni bekliyor.',
-  'Yeni bir sticker açabilirsin.',
-  'Canlı Arena’da saatlik görev var!',
-  'Gizemli kutu şarj olmuş olabilir…',
-  'Portal dostun karnı acıkmış olabilir!',
-  'Etkileşim Arenası’nda ritim dansı var!',
-  'Haritada açılmamış bir hazine olabilir…',
+  'Wohin schauen wir heute?',
+  'Möchtest du ein kurzes Spiel?',
+  'Sollen wir eine Geschichte hören?',
+  'Das Überraschungsrad wartet auf dich.',
+  'Du kannst einen neuen Sticker öffnen.',
+  'In der Live-Arena wartet eine Stundenaufgabe!',
+  'Die geheimnisvolle Box könnte geladen sein …',
+  'Dein Portal-Freund könnte hungrig sein!',
+  'In der Interaktionsarena gibt es einen Rhythmustanz!',
+  'Auf der Karte wartet vielleicht ein Schatz …',
 ]
 
 export function MascotBuddy({ onNavigate }: MascotBuddyProps) {
@@ -45,14 +45,14 @@ export function MascotBuddy({ onNavigate }: MascotBuddyProps) {
             className="mascot__shuffle"
             onClick={() => setTick((t) => t + 1)}
           >
-            Başka öneri
+            Noch ein Vorschlag
           </button>
         </div>
       )}
       <button
         type="button"
         className="mascot__btn"
-        aria-label="Yardımsever maskot"
+        aria-label="Hilfreicher Begleiter"
         onClick={() => {
           setOpen((v) => !v)
           setTick((t) => t + 1)

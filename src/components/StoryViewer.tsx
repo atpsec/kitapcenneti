@@ -62,7 +62,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
       await downloadStoryPdf(story)
       announceActivityResult(completeActivity('print'))
     } catch {
-      alert('PDF oluşturulamadı. Görseller yüklenene kadar bekleyip tekrar dene.')
+      alert('PDF konnte nicht erstellt werden. Warte, bis die Bilder geladen sind, und versuche es erneut.')
     } finally {
       setPdfBusy(false)
     }
@@ -93,11 +93,11 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
       <div className="story-viewer__actions">
         <button className="action-btn action-btn--secondary" onClick={onReset}>
           <RotateCcw size={18} />
-          Yeni Hikaye
+          Neue Geschichte
         </button>
         <button className="action-btn action-btn--primary" onClick={handleDownloadPdf} disabled={pdfBusy}>
           <FileDown size={18} />
-          {pdfBusy ? 'PDF hazırlanıyor...' : 'Kitap PDF'}
+          {pdfBusy ? 'PDF wird vorbereitet …' : 'Buch-PDF'}
         </button>
         <button className="action-btn action-btn--secondary" onClick={handleDownloadTxt}>
           <Download size={18} />
@@ -110,7 +110,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
             disabled={saved}
           >
             <Bookmark size={18} />
-            {saved ? 'Kaydedildi!' : 'Kaydet'}
+            {saved ? 'Gespeichert!' : 'Speichern'}
           </button>
         )}
         <button
@@ -118,7 +118,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
           onClick={() => setIsFullscreen(!isFullscreen)}
         >
           {isFullscreen ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
-          {isFullscreen ? 'Küçült' : 'Tam Ekran'}
+          {isFullscreen ? 'Verkleinern' : 'Vollbild'}
         </button>
       </div>
 
@@ -191,7 +191,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
               ) : (
                 <div className="storybook__image-placeholder">
                   <span>🎨</span>
-                  <p>Resim yükleniyor...</p>
+                  <p>Bild wird geladen...</p>
                 </div>
               )}
             </div>
@@ -206,7 +206,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
       </div>
 
       <div className="storybook__nav">
-        <button className="nav-btn" onClick={goPrev} disabled={currentPage === 0} aria-label="Önceki sayfa">
+        <button className="nav-btn" onClick={goPrev} disabled={currentPage === 0} aria-label="Vorherige Seite">
           <ChevronLeft size={24} />
         </button>
 

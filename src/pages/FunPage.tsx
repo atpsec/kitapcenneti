@@ -44,7 +44,7 @@ export function FunPage({ onNavigate }: FunPageProps) {
   const spin = () => {
     if (spinning) return
     if (!canSpinToday()) {
-      showToast('Bugünkü ücretsiz çevirme hakkın bitti — yarın yine gel! 🎡')
+      showToast('Dein kostenloser Dreh für heute ist aufgebraucht – komm morgen wieder! 🎡')
       return
     }
     setSpinning(true)
@@ -62,7 +62,7 @@ export function FunPage({ onNavigate }: FunPageProps) {
       addBonusStars(reward.stars)
       if (reward.stickerId) {
         const fresh = unlockSticker(reward.stickerId)
-        if (fresh) showToast(`Sticker kazandın: ${reward.emoji}`)
+        if (fresh) showToast(`Sticker gewonnen: ${reward.emoji}`)
       }
       announceActivityResult(completeActivity('spin'))
       setConfetti(true)
@@ -102,17 +102,17 @@ export function FunPage({ onNavigate }: FunPageProps) {
       <ConfettiBurst active={confetti} onDone={() => setConfetti(false)} />
 
       <header className="page-header">
-        <h1>🎡 Eğlence Bahçesi</h1>
+        <h1>🎡 Lustiger Garten</h1>
         <p>
-          Sıkılmak yasak! Çark çevir, bulmaca çöz, çiz, sticker topla.
-          Şu an {stars}⭐ · {stickers.length}/{STICKERS.length} sticker
+          Langeweile verboten! Drehe das Rad, löse Rätsel, zeichne und sammle Sticker.
+          Aktuell {stars}⭐ · {stickers.length}/{STICKERS.length} sticker
         </p>
       </header>
 
       <section className="fun-grid">
         <div className="panel fun-panel fun-wheel-panel">
-          <h2>🎯 Sürpriz Çarkı</h2>
-          <p className="section-hint">Günde bir ücretsiz çevirme — yıldız ve sticker kazandırır.</p>
+          <h2>🎯 Rad der Überraschung</h2>
+          <p className="section-hint">Ein Gratisdreh pro Tag – bringt Sterne und Aufkleber.</p>
           <div className="wheel-wrap">
             <div className="wheel-pointer">▼</div>
             <div
@@ -137,7 +137,7 @@ export function FunPage({ onNavigate }: FunPageProps) {
             </div>
           </div>
           <button type="button" className="btn btn--primary" onClick={spin} disabled={spinning}>
-            {spinning ? 'Dönüyor...' : canSpinToday() ? 'Çevir!' : 'Yarın tekrar'}
+            {spinning ? 'Dreht sich …' : canSpinToday() ? 'Drehen!' : 'Morgen wieder'}
           </button>
           {rewardIdx != null && (
             <div className="win-banner" style={{ marginTop: 14 }}>
@@ -158,7 +158,7 @@ export function FunPage({ onNavigate }: FunPageProps) {
         </div>
 
         <div className="panel fun-panel">
-          <h2>🎲 Şimdi ne yapalım?</h2>
+          <h2>🎲 Was sollen wir jetzt tun?</h2>
           <div className="idea-card">
             <span>{tip.emoji}</span>
             <div>
@@ -168,27 +168,27 @@ export function FunPage({ onNavigate }: FunPageProps) {
           </div>
           <div className="btn-row">
             <button type="button" className="btn btn--primary" onClick={() => onNavigate(tip.page as PageId)}>
-              Hadi başla
+              Lasst uns anfangen
             </button>
             <button type="button" className="btn btn--ghost" onClick={() => setIdea((i) => i + 1)}>
-              Başka öner
+              Schlagen Sie einen anderen vor
             </button>
           </div>
 
-          <h3 style={{ marginTop: 22 }}>😂 Günün Şakası</h3>
+          <h3 style={{ marginTop: 22 }}>😂 Witz des Tages</h3>
           <p className="fun-joke">{joke}</p>
 
           <h3 style={{ marginTop: 18 }}>🧩 Bilmece</h3>
           <p className="fun-joke">{riddle.q}</p>
           <button type="button" className="btn btn--ghost" onClick={() => setRiddleOpen((v) => !v)}>
-            {riddleOpen ? `Cevap: ${riddle.a}` : 'Cevabı göster'}
+            {riddleOpen ? `Antwort: ${riddle.a}` : 'Antwort anzeigen'}
           </button>
 
           <div style={{ marginTop: 20 }}>
             <SocialShare
               compact
               payload={{
-                title: '😂 Günün şakası',
+                title: '😂 Witz des Tages',
                 text: joke,
                 page: 'fun',
                 itemId: `joke-${day}`,
@@ -199,8 +199,8 @@ export function FunPage({ onNavigate }: FunPageProps) {
               className="social-share--spaced"
               compact
               payload={{
-                title: '🧩 Günün bilmecesi',
-                text: riddleOpen ? `${riddle.q} — Cevap: ${riddle.a}` : riddle.q,
+                title: '🧩 Rätsel des Tages',
+                text: riddleOpen ? `${riddle.q} — Antwort: ${riddle.a}` : riddle.q,
                 page: 'fun',
                 itemId: `riddle-${day}`,
                 hashtags: ['KitapCenneti', 'Bilmece', 'Eglence'],
@@ -213,9 +213,9 @@ export function FunPage({ onNavigate }: FunPageProps) {
       <section className="section">
         <h2 className="section__title">
           <span className="section__title-emoji">🎨</span>
-          Doodle Tahtası
+          Doodle-Brett
         </h2>
-        <p className="section-hint">Parmağınla veya fareyle çiz — kaydetmek zorunda değilsin, eğlen yeter.</p>
+        <p className="section-hint">Zeichnen Sie mit dem Finger oder der Maus – Sie müssen nicht speichern, sondern haben einfach Spaß.</p>
         <div className="panel doodle-panel">
           <canvas
             ref={canvasRef}
@@ -257,7 +257,7 @@ export function FunPage({ onNavigate }: FunPageProps) {
                 if (ctx) ctx.strokeStyle = colors[Math.floor(Math.random() * colors.length)]
               }}
             >
-              🎨 Renk değiştir
+              🎨 Farbe ändern
             </button>
             <button type="button" className="btn btn--ghost" onClick={initCanvas}>
               Temizle
@@ -269,9 +269,9 @@ export function FunPage({ onNavigate }: FunPageProps) {
       <section className="section">
         <h2 className="section__title">
           <span className="section__title-emoji">🏷️</span>
-          Sticker Albümü
+          Stickeralbum
         </h2>
-        <p className="section-hint">Çark çevir, görev bitir, oyun oyna — stickerlar birikir.</p>
+        <p className="section-hint">Drehen Sie das Rad, erledigen Sie Aufgaben, spielen Sie Spiele – die Aufkleber stapeln sich.</p>
         <div className="sticker-album">
           {STICKERS.map((s) => {
             const owned = ownedSet.has(s.id)

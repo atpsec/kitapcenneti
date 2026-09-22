@@ -30,9 +30,9 @@ export function HeroesPage({ onNavigate }: HeroesPageProps) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🦸 Özgün Kahramanlar</h1>
+        <h1>🦸 Originelle Helden</h1>
         <p>
-          {HEROES.length} telifsiz karakter — Marvel/DC kopyası değil. Çiz, oyna, hikayene ekle.
+          {HEROES.length} lizenzfreie Figuren – keine Kopien von Marvel oder DC. Zeichne, spiele und füge sie deiner Geschichte hinzu.
         </p>
       </header>
 
@@ -41,7 +41,7 @@ export function HeroesPage({ onNavigate }: HeroesPageProps) {
         label="Kahraman"
         query={query}
         onQuery={setQuery}
-        placeholder="Kahraman, güç veya motto ara…"
+        placeholder="Held, Fähigkeit oder Motto suchen …"
       />
 
       <VoicePicker profile={profile} onChange={setProfile} />
@@ -77,7 +77,7 @@ export function HeroesPage({ onNavigate }: HeroesPageProps) {
         <p>{hero.bio}</p>
         <h3>📖 Mini Macera</h3>
         <p>{hero.adventure}</p>
-        <h3>💡 Aile İpucu</h3>
+        <h3>💡 Familientipp</h3>
         <p>{hero.tip}</p>
         <div className="btn-row">
           <button
@@ -90,7 +90,7 @@ export function HeroesPage({ onNavigate }: HeroesPageProps) {
               }
             }}
           >
-            {speaking ? '⏹ Durdur' : '🎧 Hikayeyi Dinle'}
+            {speaking ? '⏹ Stoppen' : '🎧 Geschichte anhören'}
           </button>
           <button
             className="btn btn--ghost"
@@ -103,10 +103,10 @@ export function HeroesPage({ onNavigate }: HeroesPageProps) {
               onNavigate('create')
             }}
           >
-            ✨ Bu kahramanla AI hikaye yap
+            ✨ Machen Sie mit diesem Helden eine KI-Geschichte
           </button>
           <button className="btn btn--ghost" onClick={() => onNavigate('coloring')}>
-            🖍️ Boyama sayfalarına git
+            🖍️ Gehen Sie zu den Malvorlagen
           </button>
         </div>
         <SocialShare

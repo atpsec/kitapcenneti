@@ -11,8 +11,8 @@ export function VoicePicker({ profile, onChange }: VoicePickerProps) {
   const premium = hasPremiumVoice()
 
   return (
-    <div className="voice-picker" role="group" aria-label="Anlatıcı sesi">
-      <p className="voice-picker__label">🎙️ Anlatıcı sesi</p>
+    <div className="voice-picker" role="group" aria-label="Erzählstimme">
+      <p className="voice-picker__label">🎙️ Erzählerstimme</p>
       <div className="voice-picker__options">
         {VOICE_OPTIONS.map((opt) => (
           <button
@@ -21,7 +21,7 @@ export function VoicePicker({ profile, onChange }: VoicePickerProps) {
             className={`voice-chip ${profile === opt.id ? 'is-active' : ''}`}
             onClick={() => {
               if (opt.premium && !premium) {
-                showToast('Premium ses için Market’ten “Masal Ustası” paketini aç')
+                showToast('Öffne im Shop das Paket „Märchenmeister“ für die Premium-Stimme')
                 return
               }
               onChange(opt.id)
@@ -37,7 +37,7 @@ export function VoicePicker({ profile, onChange }: VoicePickerProps) {
         ))}
       </div>
       <p className="voice-picker__hint">
-        Çocuk sesi ince perde ile üretilir. Premium “Masal ustası” daha yavaş ve yumuşak okur.
+        Die Stimme des Kindes wird mit einer dünnen Tonlage erzeugt. Premium „Märchenmeister“ liest sich langsamer und sanfter.
       </p>
     </div>
   )

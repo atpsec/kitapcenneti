@@ -68,10 +68,10 @@ export function useLiveEngagement() {
       const lastSeen = Number(localStorage.getItem(LAST_SEEN_KEY) || 0)
       const gapH = lastSeen ? (Date.now() - lastSeen) / 3600000 : 0
       if (gapH >= 4 && gapH < 48) {
-        setWelcomeBack('Geri döndün! Saatlik sürprizler seni bekliyordu ✨')
+        setWelcomeBack('Du bist wieder da! Stündliche Überraschungen warten auf dich ✨')
         bumpStars(1)
       } else if (gapH >= 48) {
-        setWelcomeBack('Özlemiştik! Hoş geldin — yeni haftalık etkinlik hazır 🎁')
+        setWelcomeBack('Schön, dass du wieder da bist — eine neue Wochenaktion wartet 🎁')
         bumpStars(3)
       }
 
@@ -134,7 +134,7 @@ export function useLiveEngagement() {
     const reward = 2 + (now.getHours() % 4)
     bumpStars(reward)
     setMysteryReady(false)
-    return { stars: reward, title: 'Gizemli Kutu!', emoji: '🎁' }
+    return { stars: reward, title: 'Geheimnisvolle Box!', emoji: '🎁' }
   }
 
   return {

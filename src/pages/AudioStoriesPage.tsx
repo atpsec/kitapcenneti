@@ -33,13 +33,13 @@ export function AudioStoriesPage({ onNavigate }: Props) {
   const [favorites, setFavorites] = useState(() => getFavoriteAudioIds())
   const [onlyFavs, setOnlyFavs] = useState(false)
   const [query, setQuery] = useState('')
-  const [theme, setTheme] = useState('Tümü')
+  const [theme, setTheme] = useState('Alle')
   const { bedtime, toggleBedtime } = useProgress()
   const active = library.find((s) => s.id === activeId) || library[0]
   const isLiveStory = 'source' in active && active.source === 'live'
 
   const themes = useMemo(
-    () => ['Tümü', 'Canlı Düşüş', ...Array.from(new Set(AUDIO_STORIES.map((s) => s.theme)))],
+    () => ['Alle', 'Live-Drops', ...Array.from(new Set(AUDIO_STORIES.map((s) => s.theme)))],
     [],
   )
 
@@ -47,8 +47,8 @@ export function AudioStoriesPage({ onNavigate }: Props) {
     const q = query.trim().toLowerCase()
     return library.filter((s) => {
       if (onlyFavs && !favorites.includes(s.id)) return false
-      if (theme === 'Canlı Düşüş') return s.id.startsWith('live-story-')
-      if (theme !== 'Tümü' && s.theme !== theme) return false
+      if (theme === 'Live-Drops') return s.id.startsWith('live-story-')
+      if (theme !== 'Alle' && s.theme !== theme) return false
       if (!q) return true
       return `${s.title} ${s.summary} ${s.theme} ${s.age}`.toLowerCase().includes(q)
     })
@@ -57,19 +57,19 @@ export function AudioStoriesPage({ onNavigate }: Props) {
   return (
     <div className={`page ${bedtime ? 'page--bedtime' : ''}`}>
       <header className="page-header">
-        <h1>🎧 Sesli Masallar Portalı</h1>
+        <h1>🎧 Audio Tales Portal</h1>
         <p>
-          Bölümlü oynatıcı · uyku zamanlayıcı · birlikte oku · {library.length}+ masal (statik + canlı
-          düşüş).
+          Kapitel-Player · Einschlaf-Timer · gemeinsam lesen · {library.length}+ Geschichten (statisch + live
+          Drop).
         </p>
       </header>
 
       <ContentPortalBar
         count={list.length}
-        label="Masal"
+        label="Geschichte"
         query={query}
         onQuery={setQuery}
-        placeholder="Masal, tema veya yaş ara…"
+        placeholder="Geschichte, Thema oder Alter suchen …"
         filters={themes.map((t) => ({ id: t, label: t }))}
         activeFilter={theme}
         onFilter={setTheme}
@@ -82,7 +82,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
             className={`bedtime-toggle ${bedtime ? 'is-on' : ''}`}
             onClick={toggleBedtime}
           >
-            {bedtime ? '🌙 Yatmadan önce açık' : '🌙 Yatmadan önce'}
+            {bedtime ? '🌙 Vor dem Schlafengehen aktiv' : '🌙 Vor dem Schlafengehen'}
           </button>
           <button
             type="button"
@@ -96,7 +96,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
 
       <div className="split">
         <div className="story-list">
-          {list.length === 0 && <p className="section-hint">Sonuç yok — filtreyi genişlet.</p>}
+          {list.length === 0 && <p className="section-hint">Keine Ergebnisse – Filter erweitern.</p>}
           {list.map((story) => (
             <button
               key={story.id}
@@ -107,17 +107,17 @@ export function AudioStoriesPage({ onNavigate }: Props) {
               <div>
                 <strong>{story.title}</strong>
                 <small>
-                  {story.age} yaş · {story.duration} · {story.theme}
+                  {story.age} Jahre · {story.duration} · {story.theme}
                 </small>
               </div>
-              {'source' in story && <span title="Aile+ içeriği" aria-label="Aile+ içeriği">✦</span>}
+              {'source' in story && <span title="Familien+-Inhalt" aria-label="Familien+-Inhalt">✦</span>}
               {favorites.includes(story.id) && <span aria-hidden="true">❤️</span>}
             </button>
           ))}
         </div>
 
         {isLiveStory ? (
-          <PremiumGate onNavigate={onNavigate} label="Canlı düşüş masalları Aile+ ile açılır">
+          <PremiumGate onNavigate={onNavigate} label="Live-Drop-Geschichten werden mit Familien+ freigeschaltet">
             <div className="audio-player panel">
               <div className="audio-player__hero">
                 <span>{active.emoji}</span>
@@ -150,7 +150,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
                     announceActivityResult(completeActivity('print'))
                   }}
                 >
-                  🖨️ Yazdır
+                  🖨️ Drucken
                 </button>
               </div>
               <SocialShare
@@ -159,7 +159,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
                   text: active.summary,
                   page: 'audio',
                   itemId: active.id,
-                  hashtags: ['KitapCenneti', 'Masal', active.theme.replace(/\s+/g, '')],
+                  hashtags: ['KitapCenneti', 'Geschichte', active.theme.replace(/\s+/g, '')],
                 }}
               />
             </div>
@@ -197,7 +197,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
                 announceActivityResult(completeActivity('print'))
               }}
             >
-              🖨️ Yazdır
+              🖨️ Drucken
             </button>
           </div>
           <SocialShare
@@ -206,7 +206,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
               text: active.summary,
               page: 'audio',
               itemId: active.id,
-              hashtags: ['KitapCenneti', 'Masal', active.theme.replace(/\s+/g, '')],
+              hashtags: ['KitapCenneti', 'Geschichte', active.theme.replace(/\s+/g, '')],
             }}
           />
         </div>

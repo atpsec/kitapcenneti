@@ -35,7 +35,7 @@ export function ReminderPanel() {
 
   const enable = async () => {
     if (!('Notification' in window)) {
-      showToast('Bu tarayıcı bildirim desteklemiyor')
+      showToast('Dieser Browser unterstützt keine Benachrichtigungen')
       return
     }
     const p = await Notification.requestPermission()
@@ -46,17 +46,17 @@ export function ReminderPanel() {
     }
     save({ ...prefs, enabled: true })
     scheduleTick()
-    showToast('Hatırlatmalar açıldı')
+    showToast('Erinnerungen aktiviert')
     new Notification('Kitap Cenneti', {
-      body: 'Harika! Saatlik görev ve gizemli kutu için hatırlatacağız.',
+      body: 'Wir erinnern dich an die Stundenaufgabe und die geheimnisvolle Box.',
       icon: `${import.meta.env.BASE_URL}pwa-icon.svg`,
     })
   }
 
   return (
     <div className="panel reminder-panel">
-      <h3>🔔 Geri dönüş hatırlatması</h3>
-      <p>Yerel bildirim — sunucu yok. İzin verirsen günlük saat ve gizemli kutu için uyarırız.</p>
+      <h3>🔔 Rückkehr-Erinnerung</h3>
+      <p>Lokale Benachrichtigung – keine Server. Wenn Sie es zulassen, werden wir Sie vor der Tagesuhr und der geheimnisvollen Kiste warnen.</p>
       <label>
         Saat
         <input
@@ -73,16 +73,16 @@ export function ReminderPanel() {
           checked={prefs.mystery}
           onChange={(e) => save({ ...prefs, mystery: e.target.checked })}
         />
-        Gizemli kutu hatırlat
+        Mystery Box erinnert daran
       </label>
       <div className="btn-row">
         {!prefs.enabled || perm !== 'granted' ? (
           <button type="button" className="btn btn--primary" onClick={() => void enable()}>
-            Bildirimleri aç
+            Aktivieren Sie Benachrichtigungen
           </button>
         ) : (
           <button type="button" className="btn btn--ghost" onClick={() => save({ ...prefs, enabled: false })}>
-            Kapat
+            Schließen
           </button>
         )}
         <button
@@ -90,14 +90,14 @@ export function ReminderPanel() {
           className="btn btn--ghost"
           onClick={() => {
             if (perm === 'granted') {
-              new Notification('Kitap Cenneti', { body: 'Test: Canlı Arena seni bekliyor! ⚡' })
-            } else showToast('Önce bildirim izni ver')
+              new Notification('Kitap Cenneti', { body: 'Test: Die Live-Arena wartet auf dich! ⚡' })
+            } else showToast('Erteile zuerst die Benachrichtigungserlaubnis')
           }}
         >
           Test bildirimi
         </button>
       </div>
-      <small>Durum: {perm} · {prefs.enabled ? 'açık' : 'kapalı'}</small>
+      <small>Durum: {perm} · {prefs.enabled ? 'aktiv' : 'inaktiv'}</small>
     </div>
   )
 }
@@ -112,7 +112,7 @@ export function scheduleTick() {
     if (sessionStorage.getItem(stampKey)) return
     if (now.getHours() === prefs.hour && now.getMinutes() < 15) {
       new Notification('Kitap Cenneti', {
-        body: 'Günlük mola zamanı — masal veya görev için 10 dk ayır 📚',
+        body: 'Zeit für eine tägliche Pause – nimm dir 10 Minuten für eine Geschichte oder Aufgabe 📚',
         tag: 'daily',
       })
       sessionStorage.setItem(stampKey, '1')
@@ -126,7 +126,7 @@ export function scheduleTick() {
           const mKey = `kitapcenneti-mystery-ping-${Math.floor(Date.now() / 10800000)}`
           if (!sessionStorage.getItem(mKey)) {
             new Notification('Kitap Cenneti', {
-              body: 'Gizemli kutu hazır! 🎁 Canlı Arena’ya uğra.',
+              body: 'Die geheimnisvolle Box ist bereit! 🎁 Besuche die Live-Arena.',
               tag: 'mystery',
             })
             sessionStorage.setItem(mKey, '1')

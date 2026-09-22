@@ -9,7 +9,7 @@ interface Props {
   label?: string
 }
 
-export function PremiumGate({ children, onNavigate, label = 'Aile+ ile açılır' }: Props) {
+export function PremiumGate({ children, onNavigate, label = 'Mit Familien+ freischalten' }: Props) {
   const { isPlus } = useMembership()
 
   if (isPlus) return <>{children}</>
@@ -18,8 +18,8 @@ export function PremiumGate({ children, onNavigate, label = 'Aile+ ile açılır
     <div className="premium-gate">
       <div className="premium-gate__content">
         <span className="premium-gate__icon"><LockKeyhole size={19} /></span>
-        <div><strong>{label}</strong><p>Tüm aile araçlarına ve premium içeriklere erişin.</p></div>
-        <button type="button" className="btn btn--small btn--primary" onClick={() => onNavigate('membership')}><Sparkles size={15} /> Aile+’ı gör</button>
+        <div><strong>{label}</strong><p>Greifen Sie auf alle Familientools und Premium-Inhalte zu.</p></div>
+        <button type="button" className="btn btn--small btn--primary" onClick={() => onNavigate('membership')}><Sparkles size={15} /> Siehe Familien+</button>
       </div>
       <div className="premium-gate__preview" aria-hidden="true">{children}</div>
     </div>

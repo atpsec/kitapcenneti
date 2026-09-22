@@ -14,7 +14,7 @@ export function SavedStories({ stories, onLoad, onDelete }: SavedStoriesProps) {
     <section className="section saved-stories">
       <h2 className="section__title">
         <span className="section__title-emoji">💾</span>
-        Kayıtlı Hikayelerim
+        Meine gespeicherten Geschichten
       </h2>
       <div className="saved-stories__grid">
         {stories.map((story, i) => (
@@ -38,13 +38,13 @@ export function SavedStories({ stories, onLoad, onDelete }: SavedStoriesProps) {
             </div>
             <div className="saved-story-card__actions">
               <button className="saved-story-card__btn" onClick={() => onLoad(story)}>
-                Oku
+                Lesen
               </button>
               <button
                 className="saved-story-card__btn saved-story-card__btn--delete"
                 onClick={() => onDelete(story.title)}
               >
-                Sil
+                Löschen
               </button>
             </div>
           </motion.div>

@@ -20,10 +20,10 @@ export function PathsPage({ onNavigate }: Props) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🛤️ Öğrenme Yolları</h1>
+        <h1>🛤️ Möglichkeiten zum Lernen</h1>
         <p>
-          {LEARNING_PATHS.length} yaşa özel program. Adım adım ilerle — her adım portalın bir
-          bölümüne bağlanır.
+          {LEARNING_PATHS.length} altersgerechte Programme. Gehe Schritt für Schritt – jeder Schritt führt zu einem
+          Portalbereich.
         </p>
       </header>
 
@@ -47,7 +47,7 @@ export function PathsPage({ onNavigate }: Props) {
         </h2>
         <p>{path.summary}</p>
         <small>
-          {path.weeks} hafta · {path.steps.length} adım · {path.tags.join(' · ')}
+          {path.weeks} Wochen · {path.steps.length} Schritte · {path.tags.join(' · ')}
         </small>
         <ol className="path-steps">
           {path.steps.map((step, i) => (
@@ -69,11 +69,11 @@ export function PathsPage({ onNavigate }: Props) {
                     note: step.tip,
                     stars: 1,
                   })
-                  showToast('Adım günlüğe işlendi')
+                  showToast('Schritt ins Tagebuch übernommen')
                   onNavigate(step.page as PageId)
                 }}
               >
-                Başla →
+                Starten →
               </button>
             </li>
           ))}
@@ -81,7 +81,7 @@ export function PathsPage({ onNavigate }: Props) {
         <SocialShare
           payload={{
             title: `${path.emoji} ${path.title}`,
-            text: `${path.summary} (${path.weeks} hafta, ${path.steps.length} adım)`,
+            text: `${path.summary} (${path.weeks} Wochen, ${path.steps.length} Schritte)`,
             page: 'paths',
             itemId: path.id,
             hashtags: ['KitapCenneti', 'Ogrenme', path.age.replace(/\s+/g, '')],

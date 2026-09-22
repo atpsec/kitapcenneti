@@ -63,9 +63,9 @@ export function LivePage({ onNavigate }: Props) {
       <ConfettiBurst active={confetti} onDone={() => setConfetti(false)} />
 
       <header className="page-header">
-        <h1>⚡ Canlı Arena</h1>
+        <h1>⚡ Live-Arena</h1>
         <p>
-          Her saat yeni görev, her dilimde sürpriz, her gün farklı etkinlik — kaçırma!
+          Stündlich neue Missionen, Überraschungen in jedem Abschnitt, jeden Tag andere Ereignisse – verpassen Sie es nicht!
         </p>
       </header>
 
@@ -74,7 +74,7 @@ export function LivePage({ onNavigate }: Props) {
           <strong>
             {slot.emoji} {slot.label}
           </strong>
-          <p>Sonraki saatlik düşüş: {formatMs(msLeft)}</p>
+          <p>Nächste Stundenaufgabe: {formatMs(msLeft)}</p>
         </div>
         <div className="live-ticker__stats">
           <span>🔥 Saatlik seri {live.hourlyStreak}</span>
@@ -83,7 +83,7 @@ export function LivePage({ onNavigate }: Props) {
       </div>
 
       <section className="section">
-        <h2 className="section__title">Saatin görevi</h2>
+        <h2 className="section__title">Aufgabe der Uhr</h2>
         <article className="panel live-mission">
           <div className="live-mission__top">
             <span className="live-mission__emoji">{live.challenge.emoji}</span>
@@ -92,7 +92,7 @@ export function LivePage({ onNavigate }: Props) {
               <p>{live.challenge.hint}</p>
               <small>
                 +{live.challenge.stars}⭐ · ~{live.challenge.minutes} dk
-                {live.hourlyDone ? ' · tamamlandı ✓' : ''}
+                {live.hourlyDone ? ' · erledigt ✓' : ''}
               </small>
             </div>
           </div>
@@ -102,7 +102,7 @@ export function LivePage({ onNavigate }: Props) {
               className="btn btn--primary"
               onClick={() => onNavigate(live.challenge.page)}
             >
-              Göreve git →
+              Gehen Sie zur Aufgabe →
             </button>
             <button
               type="button"
@@ -111,18 +111,18 @@ export function LivePage({ onNavigate }: Props) {
               onClick={() => {
                 if (live.completeHourly()) {
                   setConfetti(true)
-                  showToast(`Saatlik görev! +${live.challenge.stars}⭐`)
+                  showToast(`Stundenaufgabe! +${live.challenge.stars}⭐`)
                 }
               }}
             >
-              {live.hourlyDone ? 'Bu saat bitti' : 'Yaptım, yıldız ver'}
+              {live.hourlyDone ? 'Diese Stunde ist geschafft' : 'Erledigt, gib mir einen Stern'}
             </button>
           </div>
         </article>
       </section>
 
       <section className="section">
-        <h2 className="section__title">Günün dilimleri</h2>
+        <h2 className="section__title">Scheiben des Tages</h2>
         <div className="live-slot-grid">
           {live.slots.map((c) => {
             const done = live.slotDone.includes(c.id)
@@ -136,7 +136,7 @@ export function LivePage({ onNavigate }: Props) {
                   className="btn btn--small btn--primary"
                   onClick={() => onNavigate(c.page)}
                 >
-                  Aç
+                  offen
                 </button>
                 <button
                   type="button"
@@ -144,7 +144,7 @@ export function LivePage({ onNavigate }: Props) {
                   disabled={done}
                   onClick={() => {
                     if (live.completeSlot(c)) {
-                      showToast(`Dilım görevi! +${c.stars}⭐`)
+                      showToast(`Abschnittsaufgabe! +${c.stars}⭐`)
                       setConfetti(true)
                     }
                   }}
@@ -162,8 +162,8 @@ export function LivePage({ onNavigate }: Props) {
         <div className="panel live-mystery">
           <span>🎁</span>
           <div>
-            <h3>{live.mysteryReady ? 'Kutu hazır!' : 'Kutu şarj oluyor…'}</h3>
-            <p>Her 3 saatte bir sürpriz yıldız. Geri dönmeyi unutma.</p>
+            <h3>{live.mysteryReady ? 'Box bereit!' : 'Box lädt …'}</h3>
+            <p>Alle 3 Stunden ein Überraschungsstern. Vergessen Sie nicht, wiederzukommen.</p>
           </div>
           <button
             type="button"
@@ -177,13 +177,13 @@ export function LivePage({ onNavigate }: Props) {
               }
             }}
           >
-            {live.mysteryReady ? 'Kutuyu aç' : 'Bekle…'}
+            {live.mysteryReady ? 'Box öffnen' : 'Warten …'}
           </button>
         </div>
       </section>
 
       <section className="section">
-        <h2 className="section__title">Bu saatin özel masalı</h2>
+        <h2 className="section__title">Die besondere Geschichte dieser Stunde</h2>
         <article className="panel">
           <h3>
             {story.emoji} {story.title}
@@ -196,10 +196,10 @@ export function LivePage({ onNavigate }: Props) {
               className="btn btn--primary"
               onClick={() => (speaking ? stop() : speak(story.text))}
             >
-              {speaking ? '⏹ Durdur' : '🎧 Dinle'}
+              {speaking ? '⏹ Stoppen' : '🎧 Anhören'}
             </button>
             <button type="button" className="btn btn--ghost" onClick={() => onNavigate('audio')}>
-              Masal portalına git
+              Gehen Sie zum Märchenportal
             </button>
           </div>
           <SocialShare
@@ -230,14 +230,14 @@ export function LivePage({ onNavigate }: Props) {
                 className="quiz-option"
                 onClick={() => {
                   if (i === q.answer) {
-                    showToast('Doğru! +1⭐')
+                    showToast('Richtig! +1⭐')
                     setConfetti(true)
                     // tiny star via mystery-like bump through completeSlot noop — use stars key
                     const stars = Number(localStorage.getItem('kitapcenneti-stars') || 0) + 1
                     localStorage.setItem('kitapcenneti-stars', String(stars))
                     window.dispatchEvent(new CustomEvent('kitapcenneti-progress'))
                   } else {
-                    showToast('Tekrar dene — öğrenmek de yıldızdır')
+                    showToast('Versuch es erneut – Lernen ist auch ein Stern')
                   }
                   setQuizIdx((x) => (x + 1) % quizzes.length)
                 }}
@@ -250,7 +250,7 @@ export function LivePage({ onNavigate }: Props) {
       </section>
 
       <section className="section">
-        <h2 className="section__title">Haftanın etkinliği</h2>
+        <h2 className="section__title">Aktivität der Woche</h2>
         <button
           type="button"
           className="portal-dash-card portal-dash-card--accent"
@@ -264,7 +264,7 @@ export function LivePage({ onNavigate }: Props) {
       </section>
 
       <section className="section">
-        <h2 className="section__title">Bu saatin keşif yağmuru ({drops.length})</h2>
+        <h2 className="section__title">Entdeckungsregen dieser Stunde ({drops.length})</h2>
         <div className="library-grid">
           {drops.map((d) => (
             <button

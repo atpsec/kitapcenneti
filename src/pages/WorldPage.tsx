@@ -25,9 +25,9 @@ export function WorldPage({ onNavigate }: Props) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🗺️ Kitap Cenneti Dünyası</h1>
+        <h1>🗺️ Buchen Sie Heaven World</h1>
         <p>
-          Etkileşimli harita — bölge aç, hazine topla, maceraya atıl. Keşif: {visited.length}/{total} (
+          Interaktive Karte – Regionen öffnen, Schätze sammeln und Abenteuer erleben. Entdeckungen: {visited.length}/{total} (
           {progress}%)
         </p>
       </header>
@@ -35,16 +35,16 @@ export function WorldPage({ onNavigate }: Props) {
       <div className="world-progress panel">
         <div className="world-progress__bar" style={{ width: `${progress}%` }} />
         <span>
-          💎 Hazine {treasures.length} · 🚩 Keşif {visited.length}
+          💎 Schatz {treasures.length} · 🚩 Entdeckungen {visited.length}
         </span>
       </div>
 
       <div className="library-filters" style={{ marginBottom: 14 }}>
         {(
           [
-            ['all', 'Tümü'],
+            ['all', 'Alle'],
             ['new', 'Yeni'],
-            ['open', 'Açılanlar'],
+            ['open', 'Geöffnet'],
           ] as const
         ).map(([id, label]) => (
           <button
@@ -80,20 +80,20 @@ export function WorldPage({ onNavigate }: Props) {
                     className="btn btn--small btn--primary"
                     onClick={() => {
                       const first = visit(region.id)
-                      showToast(first ? `${region.title} keşfedildi! +⭐` : `${region.title} — yeniden hoş geldin`)
+                      showToast(first ? `${region.title} entdeckt! +⭐` : `${region.title} — willkommen zurück`)
                     }}
                   >
-                    {open ? 'Ziyaret et' : 'Keşfet & aç'}
+                    {open ? 'Besuchen' : 'Entdecken & öffnen'}
                   </button>
                   <button
                     type="button"
                     className="btn btn--small btn--sun"
                     disabled={!open || gem}
                     onClick={() => {
-                      if (collectTreasure(region.id)) showToast('Hazine bulundu! +1⭐')
+                      if (collectTreasure(region.id)) showToast('Schatz bulundu! +1⭐')
                     }}
                   >
-                    {gem ? 'Hazine alındı' : '💎 Hazine'}
+                    {gem ? 'Schatz eingesammelt' : '💎 Schatz'}
                   </button>
                 </div>
                 {open && (
@@ -116,7 +116,7 @@ export function WorldPage({ onNavigate }: Props) {
                   style={{ marginTop: 10 }}
                   onClick={() => setShareId((id) => (id === region.id ? null : region.id))}
                 >
-                  {shareId === region.id ? 'Paylaşımı gizle' : 'Paylaş'}
+                  {shareId === region.id ? 'Freigabe ausblenden' : 'Teilen'}
                 </button>
                 {shareId === region.id && (
                   <SocialShare
@@ -138,7 +138,7 @@ export function WorldPage({ onNavigate }: Props) {
 
       {active && visited.includes(active.id) && (
         <p className="section-hint" style={{ marginTop: 12 }}>
-          Son aktif bölge: {active.emoji} {active.title}
+          Zuletzt aktive Region: {active.emoji} {active.title}
         </p>
       )}
     </div>

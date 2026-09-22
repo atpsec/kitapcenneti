@@ -3,15 +3,15 @@ interface Env {
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
-  adventure: 'Büyülü Macera',
-  animals: 'Hayvan Dostları',
-  space: 'Uzay Keşfi',
-  underwater: 'Deniz Altı',
-  fairy: 'Peri Masalı',
-  dinosaurs: 'Dinozor Dünyası',
-  superhero: 'Süper Kahraman',
-  personalized: 'Kişiselleştirilmiş Masal',
-  custom: 'Özel Hikaye',
+  adventure: 'Magisches Abenteuer',
+  animals: 'Tierfreunde',
+  space: 'Weltraumentdeckung',
+  underwater: 'Unterwasserwelt',
+  fairy: 'Märchen',
+  dinosaurs: 'Dinosaurierwelt',
+  superhero: 'Superheld*innen',
+  personalized: 'Personalisierte Geschichte',
+  custom: 'Eigene Geschichte',
 }
 
 const ALLOWED_MODELS = new Set(['gpt-4o-mini', 'gpt-4o', 'gpt-4.1-mini'])
@@ -72,18 +72,18 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     const ageGroup = ALLOWED_AGES.has(ageGroupRaw) ? ageGroupRaw : '6-8'
     const pageCount = clampInt(body.pageCount, 4, 8, 6)
 
-    const categoryLabel = CATEGORY_LABELS[category] || 'Masal'
+    const categoryLabel = CATEGORY_LABELS[category] || 'Geschichte'
     const heroContext = heroName
-      ? `Kahramanın adı "${heroName}" olmalı ve hikayenin merkezinde yer almalı.`
+      ? `Der Name der Hauptfigur muss "${heroName}" sein und im Mittelpunkt der Geschichte stehen.`
       : ''
 
-    const systemPrompt = `Sen çocuklar için Türkçe görsel hikaye kitabı yazan bir masalcısın.
-Hedef yaş: ${ageGroup}. Kategori: ${categoryLabel}.
+    const systemPrompt = `Du bist eine Erzählerperson, die illustrierte Geschichtenbücher für Kinder auf Deutsch schreibt.
+Zielalter: ${ageGroup}. Kategorie: ${categoryLabel}.
 ${heroContext}
-${prompt ? `Konu: ${prompt}` : ''}
-İçerik güvenli, şiddet/nefret/uygunsuz tema yok. Her sayfa 2-3 kısa cümle.
+${prompt ? `Thema: ${prompt}` : ''}
+Die Inhalte sind sicher und enthalten keine Gewalt, keinen Hass und keine ungeeigneten Themen. Jede Seite hat 2–3 kurze Sätze.
 JSON: {"title":"...","pages":[{"pageNumber":1,"text":"...","imagePrompt":"English scene"}]}
-Tam ${pageCount} sayfa.`
+Erstelle genau ${pageCount} Seiten.`
 
     const completion = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -97,7 +97,7 @@ Tam ${pageCount} sayfa.`
         response_format: { type: 'json_object' },
         messages: [
           { role: 'system', content: systemPrompt },
-          { role: 'user', content: `${pageCount} sayfalık çocuk hikayesi yaz. Stil: ${artStyle}` },
+          { role: 'user', content: `Schreibe eine Kindergeschichte mit ${pageCount} Seiten. Stil: ${artStyle}` },
         ],
       }),
     })
@@ -123,7 +123,7 @@ Tam ${pageCount} sayfa.`
     }
 
     // Do not blindly spread untrusted keys — whitelist
-    const title = clampStr(story.title, 120) || 'Masal'
+    const title = clampStr(story.title, 120) || 'Geschichte'
     const pages = Array.isArray(story.pages) ? story.pages.slice(0, pageCount) : []
 
     return new Response(

@@ -14,10 +14,10 @@ export function FamilyLockModal({ open, onClose, onUnlock, checkPin }: Props) {
   if (!open) return null
 
   return (
-    <div className="family-lock" role="dialog" aria-modal="true" aria-label="Aile kilidi">
+    <div className="family-lock" role="dialog" aria-modal="true" aria-label="Familien-Sperre">
       <div className="family-lock__card panel">
-        <h2>🔐 Aile kilidi</h2>
-        <p>Aile moduna geçmek için 4 haneli PIN gir.</p>
+        <h2>🔐 Familiensperre</h2>
+        <p>Geben Sie eine 4-stellige PIN ein, um in den Familienmodus zu wechseln.</p>
         <input
           type="password"
           inputMode="numeric"
@@ -39,10 +39,10 @@ export function FamilyLockModal({ open, onClose, onUnlock, checkPin }: Props) {
               if (checkPin(pin)) {
                 setPin('')
                 onUnlock()
-              } else setErr('PIN hatalı')
+              } else setErr('Falsche PIN')
             }}
           >
-            Aç
+            offen
           </button>
           <button
             type="button"
@@ -53,7 +53,7 @@ export function FamilyLockModal({ open, onClose, onUnlock, checkPin }: Props) {
               onClose()
             }}
           >
-            Vazgeç
+            Abbrechen
           </button>
         </div>
       </div>

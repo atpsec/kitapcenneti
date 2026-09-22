@@ -23,12 +23,12 @@ function loadClass(): ClassroomState {
   try {
     return {
       code: '',
-      name: 'Sınıfım',
+      name: 'Meine Klasse',
       assigned: [],
       ...JSON.parse(localStorage.getItem(CLASS_KEY) || '{}'),
     }
   } catch {
-    return { code: '', name: 'Sınıfım', assigned: [] }
+    return { code: '', name: 'Meine Klasse', assigned: [] }
   }
 }
 
@@ -40,7 +40,7 @@ export function ClassroomPage({ onNavigate }: Props) {
   const [room, setRoom] = useState<ClassroomState>(() => loadClass())
   const quests = getDailyQuests()
   const weekPlan = useMemo(() => {
-    const days = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum']
+    const days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
     return days.map((d, i) => {
       const res = TEACHER_RESOURCES[(i * 7) % TEACHER_RESOURCES.length]
       return { day: d, title: res.title, subject: res.subject, id: res.id }
@@ -54,8 +54,8 @@ export function ClassroomPage({ onNavigate }: Props) {
 
   const printWeek = () => {
     const body = `
-      <h2>${escapeHtml(room.name)} — Haftalık sınıf planı</h2>
-      <p>Sınıf kodu: <strong>${escapeHtml(room.code || '—')}</strong></p>
+      <h2>${escapeHtml(room.name)} — Wöchentlicher Klassenplan</h2>
+      <p>Klassencode: <strong>${escapeHtml(room.code || '—')}</strong></p>
       <ol>
         ${weekPlan
           .map(
@@ -64,25 +64,25 @@ export function ClassroomPage({ onNavigate }: Props) {
           )
           .join('')}
       </ol>
-      <h3>Toplu görevler</h3>
+      <h3>Massenaufgaben</h3>
       <ul>
         ${quests.map((q) => `<li>${escapeHtml(q.title)} (+${q.stars}⭐)</li>`).join('')}
       </ul>
     `
-    printHtml('Haftalık Sınıf Planı', body)
-    showToast('Yazdırma / PDF hazır')
+    printHtml('Wöchentlicher Klassenplan', body)
+    showToast('Druck/PDF ist bereit')
   }
 
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🏫 Sınıf merkezi</h1>
-        <p>Sınıf kodu, toplu görevler ve haftalık plan — tek yerden yazdırıp paylaş.</p>
+        <h1>🏫 Klassenzentrum</h1>
+        <p>Klassencode, Gruppenaufgaben und Wochenplan – drucken und teilen Sie an einem Ort.</p>
       </header>
 
       <div className="panel journal-form">
         <label>
-          Sınıf adı
+          Klassenname
           <input
             value={room.name}
             onChange={(e) => persist({ ...room, name: e.target.value })}
@@ -97,17 +97,17 @@ export function ClassroomPage({ onNavigate }: Props) {
               const code = makeClassCode()
               persist({ ...room, code })
               void navigator.clipboard?.writeText(code)
-              showToast(`Sınıf kodu: ${code}`)
+              showToast(`Klassencode: ${code}`)
             }}
           >
-            Sınıf kodu oluştur
+            Klassencode generieren
           </button>
           {room.code && <strong className="class-code">{room.code}</strong>}
         </div>
       </div>
 
       <section className="section">
-        <h2 className="section__title">Toplu görevler (bugün)</h2>
+        <h2 className="section__title">Massenaufgaben (heute)</h2>
         <div className="live-slot-grid">
           {quests.map((q) => {
             const on = room.assigned.includes(q.id)
@@ -126,22 +126,22 @@ export function ClassroomPage({ onNavigate }: Props) {
                     if (!on) {
                       addJournalEntry({
                         kind: 'ödev',
-                        title: `Sınıf görevi: ${q.title}`,
+                        title: `Klassenaufgabe: ${q.title}`,
                         note: room.code || room.name,
                         stars: 0,
                       })
                     }
-                    showToast(on ? 'Görev çıkarıldı' : 'Sınıfa atandı')
+                    showToast(on ? 'Aufgabe entfernt' : 'Der Klasse zugewiesen')
                   }}
                 >
-                  {on ? 'Atandı ✓' : 'Sınıfa ata'}
+                  {on ? 'Zugewiesen ✓' : 'Der Klasse zuweisen'}
                 </button>
                 <button
                   type="button"
                   className="btn btn--small btn--ghost"
                   onClick={() => onNavigate(q.link as PageId)}
                 >
-                  Aç
+                  offen
                 </button>
               </article>
             )
@@ -150,7 +150,7 @@ export function ClassroomPage({ onNavigate }: Props) {
       </section>
 
       <section className="section">
-        <h2 className="section__title">Haftalık sınıf planı</h2>
+        <h2 className="section__title">Wöchentlicher Unterrichtsplan</h2>
         <div className="week-grid">
           {weekPlan.map((w) => (
             <button
@@ -168,10 +168,10 @@ export function ClassroomPage({ onNavigate }: Props) {
         </div>
         <div className="btn-row" style={{ marginTop: 16 }}>
           <button type="button" className="btn btn--primary" onClick={printWeek}>
-            Planı PDF / Yazdır
+            Planen Sie PDF/Drucken
           </button>
           <button type="button" className="btn btn--ghost" onClick={() => onNavigate('teachers')}>
-            Etkinlik kütüphanesi
+            Veranstaltungsbibliothek
           </button>
         </div>
       </section>

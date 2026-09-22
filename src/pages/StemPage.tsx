@@ -23,9 +23,9 @@ export function StemPage() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🔬 STEM & Bilim Portalı</h1>
+        <h1>🔬 MINT- und Wissenschaftsportal</h1>
         <p>
-          {STEM_CARDS.length} güvenli mini deney — merak et, dene, nedenini öğren, paylaş.
+          {STEM_CARDS.length} sichere Mini-Experimente – neugierig sein, ausprobieren, verstehen und teilen.
         </p>
       </header>
 
@@ -34,7 +34,7 @@ export function StemPage() {
         label="STEM"
         query={query}
         onQuery={setQuery}
-        placeholder="Deney, malzeme veya yaş ara…"
+        placeholder="Experiment, Material oder Alter suchen …"
       />
 
       <div className="stem-grid">
@@ -54,7 +54,7 @@ export function StemPage() {
           {card.emoji} {card.title}
         </h2>
         <p>
-          <strong>Yaş:</strong> {card.age} · <strong>Süre:</strong> ~{card.minutes} dk
+          <strong>Alter:</strong> {card.age} · <strong>Dauer:</strong> ~{card.minutes} dk
         </p>
         <h3>Malzemeler</h3>
         <ul className="tip-list">
@@ -62,7 +62,7 @@ export function StemPage() {
             <li key={m}>{m}</li>
           ))}
         </ul>
-        <h3>Adımlar</h3>
+        <h3>Schritte</h3>
         <ol className="tip-list">
           {card.steps.map((s) => (
             <li key={s}>{s}</li>
@@ -76,7 +76,7 @@ export function StemPage() {
             className="btn btn--primary"
             onClick={() => announceActivityResult(completeActivity('stem'))}
           >
-            ✓ Deneyimi yaptım
+            ✓ Ich habe die Erfahrung gemacht
           </button>
         </div>
         <SocialShare

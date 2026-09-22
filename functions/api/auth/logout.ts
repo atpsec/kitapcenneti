@@ -3,7 +3,7 @@ import { authOptions, authResponse, destroySession, expiredSessionCookie, hasTru
 export const onRequestOptions = (context: AuthContext) => authOptions(context)
 
 export const onRequestPost = async (context: AuthContext) => {
-  if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Geçersiz istek' }, 400, context)
+  if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Ungültige Anfrage' }, 400, context)
   await destroySession(context)
   return authResponse({ ok: true }, 200, context, { 'Set-Cookie': expiredSessionCookie(context.env) })
 }

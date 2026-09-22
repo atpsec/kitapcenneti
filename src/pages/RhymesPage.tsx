@@ -25,8 +25,8 @@ export function RhymesPage() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🎵 Şarkılar & Tekerlemeler</h1>
-        <p>{RHYMES.length} klasik çocuk tekerlemesi — ezberle, söyle, sesli okut.</p>
+        <h1>🎵 Lieder und Kinderreime</h1>
+        <p>{RHYMES.length} klassische Kinderreime – auswendig lernen, sprechen und vorlesen.</p>
       </header>
 
       <ContentPortalBar
@@ -34,7 +34,7 @@ export function RhymesPage() {
         label="Tekerleme"
         query={query}
         onQuery={setQuery}
-        placeholder="Tekerleme veya söz ara…"
+        placeholder="Reim oder Text suchen …"
       />
 
       <VoicePicker profile={profile} onChange={setProfile} />
@@ -68,7 +68,7 @@ export function RhymesPage() {
               }
             }}
           >
-            {speaking ? '⏹ Durdur' : '🎧 Sesli Oku'}
+            {speaking ? '⏹ Stoppen' : '🎧 Vorlesen'}
           </button>
         </div>
         <SocialShare

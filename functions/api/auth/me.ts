@@ -12,6 +12,6 @@ export const onRequestGet = async (context: AuthContext) => {
       return authResponse({ authenticated: false, code: 'configuration_missing' }, 200, context)
     }
     console.error('Account session error', error)
-    return authResponse({ error: 'Hesap durumu alınamadı' }, 500, context)
+    return authResponse({ error: 'Kontostatus konnte nicht geladen werden' }, 500, context)
   }
 }

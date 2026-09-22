@@ -28,8 +28,8 @@ export function ActivitiesPage() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🎮 Oyun Salonu</h1>
-        <p>6 oyun: hafıza, quiz, kelime, yakalama, desen ve baloncuk — sıkılmaya fırsat yok!</p>
+        <h1>🎮 Arcade</h1>
+        <p>6 Spiele: Gedächtnis, Quiz, Wort, Fangen, Muster und Blase – keine Langeweile!</p>
       </header>
 
       {mode === 'menu' && (
@@ -37,41 +37,41 @@ export function ActivitiesPage() {
           <div className="activity-menu activity-menu--rich">
             <button className="panel activity-tile" onClick={() => setMode('memory')}>
               <span>🧠</span>
-              <h2>Hafıza Kartları</h2>
-              <p>Eşleri bul, beynini çalıştır!</p>
+              <h2>Speicherkarten</h2>
+              <p>Finden Sie Übereinstimmungen, trainieren Sie Ihr Gehirn!</p>
             </button>
             <button className="panel activity-tile" onClick={() => setMode('quiz')}>
               <span>❓</span>
               <h2>Mini Quiz</h2>
-              <p>Genel kültür — ailece yarışın.</p>
+              <p>Allgemeine Kultur – Rasse als Familie.</p>
             </button>
             <button className="panel activity-tile" onClick={() => setMode('scramble')}>
               <span>🔤</span>
-              <h2>Kelime Karıştır</h2>
-              <p>Harfleri doğru sıraya diz.</p>
+              <h2>Worträtsel</h2>
+              <p>Ordne die Buchstaben in der richtigen Reihenfolge an.</p>
             </button>
             <button className="panel activity-tile" onClick={() => setMode('speed')}>
               <span>⚡</span>
-              <h2>Hızlı Yakalama</h2>
-              <p>Doğru emojilere tıkla, skor kır!</p>
+              <h2>Schnelle Aufnahme</h2>
+              <p>Klicken Sie auf die richtigen Emojis und knacken Sie die Punktzahl!</p>
             </button>
             <button className="panel activity-tile" onClick={() => setMode('pattern')}>
               <span>🔆</span>
               <h2>Desen Tekrar</h2>
-              <p>Işık sırasını ezberle.</p>
+              <p>Merken Sie sich die Lichtsequenz.</p>
             </button>
             <button className="panel activity-tile" onClick={() => setMode('bubbles')}>
               <span>🫧</span>
-              <h2>Sayı Baloncukları</h2>
-              <p>Hedef sayıyı patlat.</p>
+              <h2>Zahlenblasen</h2>
+              <p>Geben Sie die Zielnummer ein.</p>
             </button>
           </div>
           <SocialShare
             payload={{
-              title: '🎮 Oyun Salonu',
-              text: 'Hafıza, quiz, kelime, yakalama, desen ve baloncuk — Kitap Cenneti oyunları!',
+              title: '🎮 Arcade',
+              text: 'Memory, Quiz, Wörter, Fangen, Muster und Blasen – Spiele von Kitap Cenneti!',
               page: 'activities',
-              hashtags: ['KitapCenneti', 'Oyun', 'Cocuk'],
+              hashtags: ['KitapCenneti', 'Spiele', 'Kinder'],
             }}
           />
         </>
@@ -132,9 +132,9 @@ function MemoryGame({ onBack }: { onBack: () => void }) {
     <div className="panel">
       <div className="btn-row" style={{ marginBottom: 16 }}>
         <button className="btn btn--ghost" onClick={onBack}>← Menü</button>
-        <strong>{matched.length}/{MEMORY_EMOJIS.length} çift</strong>
+        <strong>{matched.length}/{MEMORY_EMOJIS.length} Paare</strong>
       </div>
-      {won && <p className="win-banner">🎉 Harika! Tüm çiftleri buldun!</p>}
+      {won && <p className="win-banner">🎉 Großartig! Du hast alle Paare gefunden!</p>}
       <div className="memory-grid">
         {cards.map((card) => {
           const open = flipped.includes(card.id) || matched.includes(card.key)
@@ -285,7 +285,7 @@ function ScrambleGame({ onBack }: { onBack: () => void }) {
             setWon(false)
           }}
         >
-          Karıştır / Sıfırla
+          Zufallswiedergabe / Zurücksetzen
         </button>
         {won && (
           <button
@@ -351,7 +351,7 @@ function SpeedGame({ onBack }: { onBack: () => void }) {
         <div className="win-banner">
           ⚡ Süre bitti! Skorun: {score}
           <div className="btn-row" style={{ justifyContent: 'center', marginTop: 12 }}>
-            <button className="btn btn--primary" onClick={onBack}>Menüye dön</button>
+            <button className="btn btn--primary" onClick={onBack}>Zurück zum Menü</button>
           </div>
         </div>
       ) : (
@@ -416,7 +416,7 @@ function MiniPattern({ onBack }: { onBack: () => void }) {
         ← Menü
       </button>
       <h2>🔆 Desen Tekrar</h2>
-      <p>{phase === 'watch' ? 'İzle…' : phase === 'win' ? 'Harika!' : phase === 'play' ? 'Tekrarla' : 'Başla'}</p>
+      <p>{phase === 'watch' ? 'Beobachten …' : phase === 'win' ? 'Wunderbar!' : phase === 'play' ? 'Wiederholen' : 'Starten'}</p>
       <div className="pattern-grid">
         {colors.map((c, i) => (
           <button
@@ -457,7 +457,7 @@ function MiniPattern({ onBack }: { onBack: () => void }) {
           void playSeq(s)
         }}
       >
-        Başlat
+        beginnen
       </button>
     </div>
   )
@@ -493,7 +493,7 @@ function MiniBubbles({ onBack }: { onBack: () => void }) {
       <button type="button" className="btn btn--ghost" onClick={onBack}>
         ← Menü
       </button>
-      <h2>🫧 Sayı Baloncukları</h2>
+      <h2>🫧 Zahlenblasen</h2>
       <p>
         Sadece <strong>{target}</strong> ({got}/{need})
       </p>

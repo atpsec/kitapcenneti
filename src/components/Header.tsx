@@ -19,7 +19,7 @@ export function Header() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
-        Hayal gücünle sihirli hikaye kitapları oluştur!
+        Erschaffe mit deiner Fantasie magische Geschichten!
       </motion.p>
     </header>
   )

@@ -124,16 +124,16 @@ export function useAccount() {
         body: JSON.stringify({ email: email.trim().toLowerCase(), password }),
       })
       if (!result.response.ok || !result.payload.account) {
-        showToast(result.payload.error || 'Hesap işlemi tamamlanamadı')
+        showToast(result.payload.error || 'Die Kontoaktion konnte nicht abgeschlossen werden')
         return false
       }
       setAccount(result.payload.account)
       await loadChildren()
       broadcast()
-      showToast(mode === 'register' ? 'Ebeveyn hesabınız oluşturuldu' : 'Hesabınıza giriş yapıldı')
+      showToast(mode === 'register' ? 'Elternkonto erstellt' : 'Anmeldung erfolgreich')
       return true
     } catch {
-      showToast('Hesap servisine ulaşılamadı')
+      showToast('Kontoservice nicht erreichbar')
       return false
     } finally {
       setBusy(false)
@@ -151,7 +151,7 @@ export function useAccount() {
       setMaxChildren(1)
       setBusy(false)
       broadcast()
-      showToast('Hesaptan çıkış yapıldı')
+      showToast('Abgemeldet')
     }
   }, [])
 

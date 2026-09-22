@@ -5,7 +5,7 @@ import { LEARNING_PATHS } from '../data/paths'
 import { getDailyQuests } from '../data/quests'
 import { showToast } from '../components/Toast'
 
-const DAYS = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz']
+const DAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 
 const DEFAULT_SLOTS = [
   ['audio', 'feelings'],
@@ -37,21 +37,21 @@ export function CalendarPage({ onNavigate }: Props) {
 
   const persistDefault = () => {
     saveWeekPlan(plan)
-    showToast('Haftalık plan kaydedildi')
+    showToast('Wochenplan gespeichert')
   }
 
   return (
     <div className="page">
       <header className="page-header">
-        <h1>📅 Haftalık Aile Planı</h1>
+        <h1>📅 Wöchentlicher Familienplan</h1>
         <p>
-          7 güne yayılmış öneriler + bugünün görevleri. İstersen planı kaydet; cihazında kalsın.
+          Empfehlungen verteilt auf 7 Tage + heutige Aufgaben. Speichern Sie den Plan, wenn Sie möchten; Behalten Sie es auf Ihrem Gerät.
         </p>
       </header>
 
       <div className="btn-row" style={{ marginBottom: 16 }}>
         <button type="button" className="btn btn--primary" onClick={persistDefault}>
-          Planı kaydet
+          Plan speichern
         </button>
         <button type="button" className="btn btn--ghost" onClick={() => onNavigate('paths')}>
           Yol: {path.emoji} {path.title}
@@ -76,7 +76,7 @@ export function CalendarPage({ onNavigate }: Props) {
       </div>
 
       <section className="section">
-        <h2 className="section__title">Bugünün görevleri</h2>
+        <h2 className="section__title">Die heutigen Aufgaben</h2>
         <div className="library-grid">
           {quests.map((q) => (
             <button key={q.id} type="button" className="library-card" onClick={() => onNavigate(q.link)}>

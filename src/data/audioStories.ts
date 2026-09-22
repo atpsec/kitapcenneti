@@ -12,150 +12,150 @@ export interface AudioStory {
 export const AUDIO_STORIES: AudioStory[] = [
   {
     id: 'yildiz-uyku',
-    title: 'Uyuyan Yıldız',
+    title: 'Der Schlafstern',
     emoji: '⭐',
     age: '3-6',
-    duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Küçük bir yıldızın sakin uykuya dalma yolculuğu.',
-    text: `Bir varmış bir yokmuş, gökyüzünde Uykucu adında minik bir yıldız varmış.
-Uykucu her gece diğer yıldızlarla parlamak istermiş ama gözleri çok ağır gelirmiş.
-Ay teyze ona yumuşak bir bulut yastığı vermiş.
-Rüzgar ninni söylemiş: "Uyku uykucuk, rüyalar tatlı olsun."
-Uykucu gülümsemiş, gözlerini yummuş ve bütün dünya ile birlikte huzurla uykuya dalmış.
-Sen de şimdi Uykucu gibi derin bir nefes al… ve tatlı rüyalara dal.`,
+    duration: '3 Min.',
+    theme: 'Schlaf',
+    summary: 'Ein kleiner Stern findet ganz ruhig in den Schlaf.',
+    text: `Es war einmal ein kleiner Stern am Himmel. Er hieß Schlummerstern.
+Jede Nacht wollte er mit den anderen Sternen leuchten, doch seine Augen wurden schwer.
+Tante Mond schenkte ihm ein weiches Wolkenkissen.
+Der Wind sang ein Wiegenlied: „Schlaf nun ein, träum etwas Schönes.“
+Der Schlummerstern lächelte, schloss die Augen und schlief friedlich mit der ganzen Welt ein.
+Atme jetzt wie der kleine Stern tief ein … und gleite in schöne Träume.`,
   },
   {
     id: 'orman-dostlari',
-    title: 'Ormanın Dostları',
+    title: 'Freunde im Wald',
     emoji: '🐻',
     age: '4-8',
-    duration: '4 dk',
-    theme: 'Dostluk',
-    summary: 'Tavşan, ayı ve kuşun birlikte çözdüğü bir sorun.',
-    text: `Ormanın kenarında üç iyi dost yaşarmış: Mıymıy Tavşan, Ballı Ayı ve Cıvıl Kuş.
-Bir sabah yağmur yağmış ve köprüdeki tahta kırılmış.
-Kimse karşıya geçemiyormuş.
-Mıymıy plan yapmış, Ballı güçlü kollarıyla yeni tahta taşımış, Cıvıl da yukarıdan yön göstermiş.
-Birlikte yeni bir köprü kurmuşlar.
-O gün ormandaki herkes öğrenmiş: Birlikte olunca her zorluk kolaylaşırmış.`,
+    duration: '4 Min.',
+    theme: 'Freundschaft',
+    summary: 'Hase, Bär und Vogel lösen gemeinsam ein Problem.',
+    text: `Am Waldrand lebten drei gute Freunde: Hoppelhase, Honigbär und Zwitschi.
+Eines Morgens regnete es, und ein Brett der Brücke brach.
+Niemand kam auf die andere Seite.
+Hoppel machte einen Plan, Honigbär trug mit seinen kräftigen Armen ein neues Brett, und Zwitschi zeigte den Weg von oben.
+Gemeinsam bauten sie eine neue Brücke.
+An diesem Tag lernten alle im Wald: Zusammen wird jede Schwierigkeit leichter.`,
   },
   {
     id: 'deniz-koruyucu',
-    title: 'Deniz Koruyucusu Luna',
+    title: 'Luna, die Meeresschützerin',
     emoji: '🌊',
     age: '5-9',
-    duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Luna mercanları temizleyip dostlarına yardım eder.',
-    text: `Luna, denizin altında yaşayan cesur bir koruyucuymuş.
-Bir gün mercan bahçesinin arasına plastik bir torba takılmış.
-Balıklar korkmuş, yengeçler saklanmış.
-Luna ahtapot arkadaşıyla torbayı dikkatle çıkarmış ve kıyıya bırakmış.
-Sonra bütün denizi temiz tutmak için bir söz vermişler.
-Luna demiş ki: "Denizi seversek, deniz de bizi sever."`,
+    duration: '5 Min.',
+    theme: 'Natur',
+    summary: 'Luna schützt das Meer und hilft ihren Freunden.',
+    text: `Luna war eine mutige Beschützerin, die unter dem Meer lebte.
+Eines Tages verfing sich eine Plastiktüte zwischen den Korallen.
+Die Fische bekamen Angst und die Krebse versteckten sich.
+Gemeinsam mit ihrer Oktopusfreundin entfernte Luna die Tüte vorsichtig und brachte sie an den Strand.
+Dann versprachen sie, das Meer sauber zu halten.
+Luna sagte: „Wenn wir das Meer lieben, sorgt es auch für uns.“`,
   },
   {
     id: 'gokkusagi-sehir',
-    title: 'Gökkuşağı Şehri',
+    title: 'Die Regenbogenstadt',
     emoji: '🌈',
     age: '4-8',
-    duration: '4 dk',
-    theme: 'Cesaret',
-    summary: 'Renkler kaybolunca minik bir kahraman onları geri getirir.',
-    text: `Bir sabah Gökkuşağı Şehri'nde bütün renkler solmuş.
-Araba gri, çiçekler gri, hatta dondurmalar bile griymiş!
-Küçük Mira elindeki fırçayı almış ve ilk kırmızıyı bir elmaya boyamış.
-Sonra maviyi gökyüzüne, yeşili çimene, sarıyı güneşe vermiş.
-Herkes alkışlamış.
-Mira gülerek demiş: "Renkler kalbimizde yaşar, paylaşınca çoğalır."`,
+    duration: '4 Min.',
+    theme: 'Mut',
+    summary: 'Als die Farben verschwinden, bringt eine kleine Heldin sie zurück.',
+    text: `Eines Morgens waren in der Regenbogenstadt alle Farben verblasst.
+Die Autos waren grau, die Blumen grau und sogar das Eis war grau!
+Die kleine Mira nahm ihren Pinsel und malte einen Apfel rot.
+Dann schenkte sie dem Himmel Blau, dem Gras Grün und der Sonne Gelb.
+Alle klatschten.
+Mira lachte: „Farben wohnen in unseren Herzen und werden mehr, wenn wir sie teilen.“`,
   },
   {
     id: 'cesur-kaplumbaga',
-    title: 'Cesur Kaplumbağa Tiko',
+    title: 'Tiko, die mutige Schildkröte',
     emoji: '🐢',
     age: '3-7',
-    duration: '3 dk',
-    theme: 'Cesaret',
-    summary: 'Yavaş ama kararlı Tiko yarışı nasıl kazanır?',
-    text: `Tiko çok yavaş yürürmüş ama asla vazgeçmezmiş.
-Bir gün ormanda "Kim daha sabırlı?" yarışı yapılmış.
-Tavşan hızla koşup uykuya dalmış.
-Tiko adım adım, nefes nefese ama durmadan ilerlemış.
-Sonunda ipi göğüsleyen Tiko olmuş.
-Herkes öğrenmiş: Acele etmek değil, devam etmek kazanırmış.`,
+    duration: '3 Min.',
+    theme: 'Mut',
+    summary: 'Tiko zeigt, wie Geduld und Ausdauer ein Ziel erreichen.',
+    text: `Tiko ging sehr langsam, aber er gab niemals auf.
+Eines Tages veranstalteten die Tiere im Wald ein Rennen: „Wer ist am geduldigsten?“
+Der Hase rannte los und schlief bald ein.
+Tiko ging Schritt für Schritt weiter, atmete ruhig und blieb in Bewegung.
+Am Ende überquerte Tiko als Erster die Ziellinie.
+Alle lernten: Nicht die Eile gewinnt, sondern das Dranbleiben.`,
   },
   {
     id: 'ay-bahcesi',
-    title: 'Ay Bahçesi',
+    title: 'Der Mondgarten',
     emoji: '🌙',
     age: '3-6',
-    duration: '3 dk',
-    theme: 'Uyku',
-    summary: "Ay'da büyüyen rüya çiçeklerinin hikayesi.",
-    text: `Ay'ın arkasında gizli bir bahçe varmış.
-Orada rüya çiçekleri açarmış: mavi huzur, pembe sevgi, sarı neşe.
-Bahçıvan Nila her akşam çiçekleri sulayıp dünyadaki çocuklara rüya gönderirmiş.
-Bu gece senin için en güzel rüya çiçeğini seçmiş.
-Şimdi gözlerini kapat, Nila'nın çiçeği yastığına konuyor… Tatlı rüyalar.`,
+    duration: '3 Min.',
+    theme: 'Schlaf',
+    summary: 'Im Mondgarten wachsen Blumen für schöne Träume.',
+    text: `Hinter dem Mond lag ein geheimer Garten.
+Dort blühten Traumblumen: Blau stand für Ruhe, Rosa für Liebe und Gelb für Freude.
+Gärtnerin Nila goss die Blumen jeden Abend und schickte Kindern auf der Erde Träume.
+Heute hat sie die schönste Traumblume für dich ausgesucht.
+Schließe die Augen: Nila legt sie auf dein Kissen … Gute Nacht.`,
   },
   {
     id: 'kutup-isiklari',
-    title: 'Kutup Işıkları',
+    title: 'Das Nordlicht',
     emoji: '❄️',
     age: '5-10',
-    duration: '5 dk',
-    theme: 'Keşif',
-    summary: 'Penguen Pati kuzey ışıklarını ilk kez görür.',
-    text: `Penguen Pati hep güneyde yaşamış.
-Bir gece gökyüzü yeşil ve mor ışıklarla dans etmiş.
-Pati korkmuş ama arkadaşı Fok ona elini uzatmış.
-"Bu kutup ışıkları," demiş, "gökyüzünün şarkısı."
-Pati dans etmiş, gülmüş ve yeni şeyler öğrenmenin ne kadar güzel olduğunu anlamış.`,
+    duration: '5 Min.',
+    theme: 'Entdecken',
+    summary: 'Pinguin Pati sieht zum ersten Mal das Nordlicht.',
+    text: `Pinguin Pati hatte immer im Süden gelebt.
+Eines Nachts tanzte der Himmel in grünen und violetten Lichtern.
+Pati bekam Angst, doch sein Freund Robbe reichte ihm die Flosse.
+„Das ist das Nordlicht“, sagte er, „das Lied des Himmels.“
+Pati tanzte und lachte. Er merkte, wie schön es ist, Neues zu lernen.`,
   },
   {
     id: 'kucuk-astronot',
-    title: 'Küçük Astronot Ela',
+    title: 'Die kleine Astronautin Ela',
     emoji: '🚀',
     age: '6-10',
-    duration: '5 dk',
-    theme: 'Bilim',
-    summary: 'Ela ilk uzay yolculuğunda dostluk keşfeder.',
-    text: `Ela küçük bir astronot olmayı hayal edermiş.
-Bir gece rüyasında gerçek bir rokete binmiş.
-Ay'da gri toz, yıldızlarda parıltı varmış.
-Orada yalnız bir uzaylı yavrusu bulmuş: Zuzu.
-Zuzu Türkçe bilmezmiş ama gülüş aynıymış.
-Ela ona Dünya'dan bir ayıcık hediye etmiş.
-Eve döndüğünde demiş ki: "Uzay büyük, ama dostluk daha büyük."`,
+    duration: '5 Min.',
+    theme: 'Wissenschaft',
+    summary: 'Auf ihrer ersten Reise ins All entdeckt Ela Freundschaft.',
+    text: `Ela träumte davon, Astronautin zu werden.
+Eines Nachts flog sie in ihrem Traum mit einer echten Rakete los.
+Auf dem Mond glitzerte grauer Staub und die Sterne funkelten.
+Dort fand sie ein einsames Alienkind namens Zuzu.
+Zuzu sprach kein Deutsch, aber sein Lachen klang genauso fröhlich.
+Ela schenkte ihm einen kleinen Teddybären von der Erde.
+Zu Hause sagte sie: „Das All ist groß, aber Freundschaft ist größer.“`,
   },
   {
     id: 'kucuk-sef',
-    title: 'Küçük Şef Mert',
+    title: 'Mert, der kleine Koch',
     emoji: '🍪',
     age: '4-8',
-    duration: '4 dk',
-    theme: 'Paylaşmak',
-    summary: 'Mutfakta yapılan kurabiyeler komşulara neşe taşır.',
-    text: `Mert annesiyle kurabiye yapmayı çok severmiş.
-Bir gün fazla hamur kalmış.
-"Komşulara götürsek?" demiş Mert.
-Kapı kapı dolaşmışlar; herkes gülümsemiş.
-Mert öğrenmiş: Paylaşmak, kurabiyeyi daha tatlı yaparmış.`,
+    duration: '4 Min.',
+    theme: 'Teilen',
+    summary: 'Selbst gebackene Kekse bringen den Nachbarn Freude.',
+    text: `Mert backte sehr gern mit seiner Mutter.
+Eines Tages blieb Teig übrig.
+„Sollen wir den Nachbarn etwas bringen?“, fragte Mert.
+Sie gingen von Tür zu Tür und alle lächelten.
+Mert lernte: Teilen macht jeden Keks noch süßer.`,
   },
   {
     id: 'gece-kutuphanesi',
-    title: 'Gece Kütüphanesi',
+    title: 'Die Nachtbibliothek',
     emoji: '📚',
     age: '5-9',
-    duration: '5 dk',
-    theme: 'Okuma',
-    summary: 'Kitaplar gece yarısı fısıldayınca macera başlar.',
-    text: `Leyla bir gece uyandığında raftaki kitapların fısıldadığını duymuş.
-Bir kitap açılmış: "Bizi oku, dünyamız yaşasın."
-Leyla her gece bir sayfa okumuş.
-Kitaplar mutlu olmuş, Leyla'nın hayal gücü büyümüş.
-Sen de bu gece bir sayfa oku; kütüphane seni bekliyor.`,
+    duration: '5 Min.',
+    theme: 'Lesen',
+    summary: 'Als Bücher um Mitternacht flüstern, beginnt ein Abenteuer.',
+    text: `Eines Nachts wachte Leyla auf und hörte die Bücher im Regal flüstern.
+Ein Buch schlug sich auf: „Lies uns vor, damit unsere Welt weiterlebt.“
+Leyla las jeden Abend eine Seite.
+Die Bücher waren glücklich und Leylas Fantasie wuchs.
+Lies heute auch eine Seite – die Bibliothek wartet auf dich.`,
   },
   {
     id: 'ruzgarin-mektubu',

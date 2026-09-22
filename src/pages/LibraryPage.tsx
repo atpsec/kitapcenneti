@@ -7,15 +7,15 @@ interface Props {
 }
 
 const KINDS: { id: CatalogKind | 'all'; label: string }[] = [
-  { id: 'all', label: 'Tümü' },
-  { id: 'audio', label: 'Masallar' },
-  { id: 'coloring', label: 'Boyama' },
+  { id: 'all', label: 'Alle' },
+  { id: 'audio', label: 'Geschichten' },
+  { id: 'coloring', label: 'Malen' },
   { id: 'stem', label: 'STEM' },
   { id: 'hero', label: 'Kahraman' },
   { id: 'path', label: 'Yollar' },
   { id: 'blog', label: 'Blog' },
   { id: 'shop', label: 'Paketler' },
-  { id: 'teacher', label: 'Öğretmen' },
+  { id: 'teacher', label: 'Lehrkräfte' },
   { id: 'collection', label: 'Koleksiyon' },
 ]
 
@@ -38,9 +38,9 @@ export function LibraryPage({ onNavigate }: Props) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>📚 Portal Kütüphanesi</h1>
+        <h1>📚 Portalbibliothek</h1>
         <p>
-          {all.length}+ içerik tek katalogda. Filtrele, ara, tıkla — istediğin bölüme ışınlan.
+          {all.length}+ Inhalte in einem Katalog. Filtern, suchen und direkt zum Bereich springen.
         </p>
       </header>
 
@@ -49,7 +49,7 @@ export function LibraryPage({ onNavigate }: Props) {
           className="library-search"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Başlık, etiket veya konu ara…"
+          placeholder="Titel, Tag oder Thema suchen …"
         />
         <div className="library-filters">
           {KINDS.map((k) => (
@@ -71,12 +71,12 @@ export function LibraryPage({ onNavigate }: Props) {
               className={`stem-chip ${age === a ? 'is-active' : ''}`}
               onClick={() => setAge(a)}
             >
-              {a ? `${a}+ yaş` : 'Tüm yaşlar'}
+              {a ? `${a}+ yaş` : 'Alle Altersstufen'}
             </button>
           ))}
         </div>
         <p className="section-hint" style={{ margin: 0 }}>
-          {filtered.length} sonuç
+          {filtered.length} Ergebnisse
         </p>
       </div>
 

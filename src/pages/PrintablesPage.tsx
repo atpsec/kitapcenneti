@@ -30,7 +30,7 @@ export function PrintablesPage({ onNavigate }: PrintablesPageProps) {
         if (item) onNavigate(item.link)
       }
     } catch {
-      alert('PDF oluşturulamadı.')
+      alert('PDF konnte nicht erstellt werden.')
     } finally {
       setBusy(null)
     }
@@ -39,10 +39,10 @@ export function PrintablesPage({ onNavigate }: PrintablesPageProps) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🖨️ Çıktılar & Çalışma Kağıtları</h1>
+        <h1>🖨️ Ausdrucke und Arbeitsblätter</h1>
         <p>
-          Bazı paketler doğrudan PDF indirir; diğerleri ilgili bölüme götürür.
-          Günlük görev listesi ve duygu kartları burada hazır.
+          Einige Pakete laden PDF direkt herunter; andere führen zum entsprechenden Abschnitt.
+          Tägliche Aufgabenliste und Emotionskarten stehen hier bereit.
         </p>
       </header>
 
@@ -63,17 +63,17 @@ export function PrintablesPage({ onNavigate }: PrintablesPageProps) {
                     disabled={busy === p.id}
                     onClick={() => downloadPack(p.id)}
                   >
-                    {busy === p.id ? 'Hazırlanıyor...' : '⬇️ PDF İndir'}
+                    {busy === p.id ? 'Wird vorbereitet …' : '⬇️ PDF herunterladen'}
                   </button>
                 ) : (
                   <button type="button" className="btn btn--primary" onClick={() => onNavigate(p.link)}>
-                    Bölüme git →
+                    Gehen Sie zum Abschnitt →
                   </button>
                 )}
               </div>
             </article>
           )
-          return p.premium ? <PremiumGate key={p.id} onNavigate={onNavigate} label="Bu paket Aile+ ile açılır">{card}</PremiumGate> : card
+          return p.premium ? <PremiumGate key={p.id} onNavigate={onNavigate} label="Dieses Paket wird mit Familien+ freigeschaltet">{card}</PremiumGate> : card
         })}
       </div>
 

@@ -12,27 +12,27 @@ export function JournalPage() {
 
   const save = () => {
     if (!title.trim()) {
-      alert('Kısa bir başlık yaz')
+      alert('Schreibe einen kurzen Titel')
       return
     }
     addJournalEntry({ kind, title: title.trim(), note: note.trim(), stars: 1 })
     setTitle('')
     setNote('')
-    showToast('Günlüğe eklendi 📔')
+    showToast('Ins Tagebuch aufgenommen 📔')
   }
 
   return (
     <div className="page">
       <header className="page-header">
-        <h1>📔 Gelişim Günlüğü</h1>
+        <h1>📔 Fortschrittstagebuch</h1>
         <p>
-          {profile.childName || 'Çocuğunuz'} ne dinledi, ne oynadı, ne öğrendi — ailece kaydedin.
-          Cihazda saklanır, üyelik gerekmez.
+          {profile.childName || 'Euer Kind'} – was gehört, gespielt oder gelernt wurde, gemeinsam festhalten.
+          Wird auf dem Gerät gespeichert, keine Mitgliedschaft erforderlich.
         </p>
       </header>
 
       <div className="panel journal-form">
-        <h2>Yeni kayıt</h2>
+        <h2>neuer Rekord</h2>
         <div className="library-filters">
           {KINDS.map((k) => (
             <button
@@ -46,21 +46,21 @@ export function JournalPage() {
           ))}
         </div>
         <label>
-          Başlık
-          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Örn. Uzay masalı dinledik" maxLength={80} />
+          Titel
+          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="z. B. Wir haben eine Weltraumgeschichte gehört" maxLength={80} />
         </label>
         <label>
           Not
-          <textarea value={note} onChange={(e) => setNote(e.target.value)} placeholder="Ne güzeldi? Zorlanan ne vardı?" rows={3} maxLength={300} />
+          <textarea value={note} onChange={(e) => setNote(e.target.value)} placeholder="Was war schön? Was war schwierig?" rows={3} maxLength={300} />
         </label>
         <button type="button" className="btn btn--primary" onClick={save}>
-          Kaydet
+          Speichern
         </button>
       </div>
 
       <section className="section">
-        <h2 className="section__title">Kayıtlar ({journal.length})</h2>
-        {journal.length === 0 && <p className="section-hint">Henüz kayıt yok — ilkini ekle.</p>}
+        <h2 className="section__title">Einträge ({journal.length})</h2>
+        {journal.length === 0 && <p className="section-hint">Noch keine Datensätze – fügen Sie den ersten hinzu.</p>}
         <div className="journal-list">
           {journal.map((j) => (
             <article key={j.id} className="panel journal-item">

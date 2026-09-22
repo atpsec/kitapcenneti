@@ -10,24 +10,24 @@ interface Props {
 }
 
 const FREE_FEATURES = [
-  'Her gün seçili masal, oyun ve görevler',
-  'Bir çocuk profili',
-  'Temel yıldız ve rozet takibi',
-  'Seçili boyama ve STEM içerikleri',
+  'Ausgewählte Geschichten, Spiele und Aufgaben jeden Tag',
+  'Ein Kinderprofil',
+  'Grundlegendes Sterne- und Abzeichen-Tracking',
+  'Ausgewählte Mal- und MINT-Inhalte',
 ]
 
 const PLUS_FEATURES = [
-  'Tüm masal, oyun ve etkinlik arşivi',
-  '5 çocuk profiline kadar aile alanı',
-  'Kişiye özel öğrenme yolları',
-  'Aylık yazdırılabilir etkinlik paketleri',
-  'Haftalık gelişim özeti ve aile planı',
-  'Çevrimdışı sesli masal desteği',
+  'Das vollständige Archiv mit Geschichten, Spielen und Aktivitäten',
+  'Familienbereich mit bis zu 5 Kinderprofilen',
+  'Personalisierte Lernwege',
+  'Monatliche druckbare Aktivitätspakete',
+  'Wöchentliche Entwicklungsübersicht und Familienplanung',
+  'Offline-Unterstützung für Hörgeschichten',
 ]
 
 export function MembershipPage({ onNavigate }: Props) {
   const { profile } = usePortalProfile()
-  const { membership, isPlus, busy, checkout, openPortal, refresh } = useMembership()
+  const { membership, isPlus, busy, checkout, cancel, openPortal, refresh } = useMembership()
   const { account } = useAccount()
   const [billing, setBilling] = useState<'monthly' | 'annual'>('annual')
   const [email, setEmail] = useState(membership.email)
@@ -48,13 +48,13 @@ export function MembershipPage({ onNavigate }: Props) {
     <div className="page membership-page">
       <header className="membership-hero">
         <div>
-          <span className="membership-eyebrow"><Sparkles size={15} /> Aile+ üyelik</span>
-          <h1>Ailenin keşif alanını<br /><em>büyütün.</em></h1>
-          <p>Kitap Cenneti’ni reklamsız, daha kişisel ve her hafta yeni içeriklerle kullanın.</p>
+          <span className="membership-eyebrow"><Sparkles size={15} /> Familienmitgliedschaft+</span>
+          <h1>Vergrößert euren<br /><em>Entdeckungsraum.</em></h1>
+          <p>Nutzt Kitap Cenneti werbefrei, persönlicher und jede Woche mit neuen Inhalten.</p>
           <div className="membership-trust">
-            <span><ShieldCheck size={16} /> Ebeveyn kontrolü</span>
-            <span><LockKeyhole size={16} /> Güvenli ödeme</span>
-            <span><Users size={16} /> 5 çocuk profili</span>
+            <span><ShieldCheck size={16} /> Elternkontrolle</span>
+            <span><LockKeyhole size={16} /> Sichere Zahlung</span>
+            <span><Users size={16} /> 5 Kinderprofile</span>
           </div>
         </div>
         <div className="membership-hero__orb" aria-hidden="true"><span>✦</span></div>
@@ -64,41 +64,54 @@ export function MembershipPage({ onNavigate }: Props) {
         <section className="membership-active">
           <div className="membership-active__icon"><Check size={22} /></div>
           <div>
-            <span className="membership-eyebrow">Üyeliğiniz aktif</span>
-            <h2>Aile+ ile keşif devam ediyor.</h2>
-            <p>{membership.email || profile.childName || 'Aileniz'} için premium içerikler açık.</p>
+            <span className="membership-eyebrow">Eure Mitgliedschaft ist aktiv</span>
+            <h2>Mit Familien+ geht die Entdeckung weiter.</h2>
+            <p>Premium-Inhalte sind für {membership.email || profile.childName || 'eure Familie'} freigeschaltet.</p>
           </div>
           <div className="membership-active__actions">
-            <button type="button" className="btn btn--ghost" onClick={() => onNavigate('profile')}>Hesap ayarları</button>
-            <button type="button" className="btn btn--primary" disabled={busy} onClick={() => void openPortal()}>{busy ? 'Açılıyor…' : 'Üyeliği yönet'}</button>
+            <button type="button" className="btn btn--ghost" onClick={() => onNavigate('profile')}>Kontoeinstellungen</button>
+            <button type="button" className="btn btn--primary" disabled={busy} onClick={() => void openPortal()}>{busy ? 'Wird geöffnet …' : 'Mitgliedschaft verwalten'}</button>
+            {!membership.cancelAtPeriodEnd && (
+              <button
+                type="button"
+                className="btn btn--ghost"
+                disabled={busy}
+                onClick={() => {
+                  if (window.confirm('Möchten Sie das Abonnement zum Ende des bezahlten Zeitraums kündigen?')) void cancel()
+                }}
+              >
+                Verträge hier erfahren
+              </button>
+            )}
           </div>
+          {membership.cancelAtPeriodEnd && <p className="notice notice--warning">Ihr Familien+-Abonnement endet am Ende des bereits bezahlten Zeitraums.</p>}
         </section>
       )}
 
       <div className="membership-plans">
         <article className="membership-plan membership-plan--free">
-          <div className="membership-plan__top"><span className="plan-symbol">○</span><div><span className="membership-eyebrow">Başlangıç</span><h2>Ücretsiz</h2></div></div>
-          <p className="membership-plan__lead">Kitap Cenneti’ni deneyin, her gün küçük bir keşif yapın.</p>
+          <div className="membership-plan__top"><span className="plan-symbol">○</span><div><span className="membership-eyebrow">Zum Start</span><h2>Kostenlos</h2></div></div>
+          <p className="membership-plan__lead">Probiert Kitap Cenneti aus und entdeckt jeden Tag etwas Kleines.</p>
           <ul className="membership-feature-list">
             {FREE_FEATURES.map((feature) => <li key={feature}><Check size={16} /> {feature}</li>)}
           </ul>
-          <button type="button" className="btn btn--ghost membership-plan__button" onClick={() => onNavigate('portal')}>Keşfe devam et</button>
+          <button type="button" className="btn btn--ghost membership-plan__button" onClick={() => onNavigate('portal')}>Weiter entdecken</button>
         </article>
 
         <article className="membership-plan membership-plan--plus">
-          <div className="membership-plan__ribbon">Aileler için önerilen</div>
-          <div className="membership-plan__top"><span className="plan-symbol plan-symbol--plus">✦</span><div><span className="membership-eyebrow">Tam erişim</span><h2>Aile+</h2></div></div>
-          <p className="membership-plan__lead">Çocuğunuzun merakını destekleyen tüm araçlar tek aile alanında.</p>
-          <div className="billing-toggle" role="group" aria-label="Ödeme periyodu">
-            <button type="button" className={billing === 'monthly' ? 'is-active' : ''} onClick={() => setBilling('monthly')}>Aylık</button>
-            <button type="button" className={billing === 'annual' ? 'is-active' : ''} onClick={() => setBilling('annual')}>Yıllık <span>avantajlı</span></button>
+          <div className="membership-plan__ribbon">Für Familien empfohlen</div>
+          <div className="membership-plan__top"><span className="plan-symbol plan-symbol--plus">✦</span><div><span className="membership-eyebrow">Vollzugang</span><h2>Familien+</h2></div></div>
+          <p className="membership-plan__lead">Alle Werkzeuge, die die Neugier eures Kindes unterstützen, in einem Familienbereich.</p>
+          <div className="billing-toggle" role="group" aria-label="Abrechnungszeitraum">
+            <button type="button" className={billing === 'monthly' ? 'is-active' : ''} onClick={() => setBilling('monthly')}>Monatlich</button>
+              <button type="button" className={billing === 'annual' ? 'is-active' : ''} onClick={() => setBilling('annual')}>Jährlich <span>Tagesvorteil</span></button>
           </div>
           <ul className="membership-feature-list">
             {PLUS_FEATURES.map((feature) => <li key={feature}><Check size={16} /> {feature}</li>)}
           </ul>
           {!isPlus && (
             <div className="membership-checkout">
-              <label htmlFor="membership-email">Ebeveyn e-postası</label>
+              <label htmlFor="membership-email">E-Mail der erwachsenen Person</label>
               <input
                 id="membership-email"
                 type="email"
@@ -107,31 +120,31 @@ export function MembershipPage({ onNavigate }: Props) {
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="siz@ornek.com"
               />
-              {!account && <p className="membership-checkout__notice">Abonelik için önce ebeveyn hesabınıza giriş yapın.</p>}
+              {!account && <p className="membership-checkout__notice">Meldet euch für ein Abonnement zuerst mit einem Elternkonto an.</p>}
               <button type="button" className="btn btn--primary membership-plan__button" disabled={busy} onClick={() => account ? void checkout(billing, account.email) : onNavigate('profile')}>
-                {busy ? 'Bağlanıyor…' : account ? 'Ödeme yükümlülüğüyle abone ol' : 'Ebeveyn hesabıyla devam et'} <span>→</span>
+                {busy ? 'Wird verbunden …' : account ? 'Kostenpflichtig abonnieren' : 'Mit Elternkonto fortfahren'} <span>→</span>
               </button>
-              <small>Çocuk profilleri ebeveyn alanından yönetilir. Ödeme Stripe Checkout’ta tamamlanır; iptal işlemi hesap alanından yapılır.</small>
+              <small>Kinderprofile werden im Elternbereich verwaltet. Die Zahlung wird über Stripe Checkout abgeschlossen; Kündigungen erfolgen im Kontobereich.</small>
             </div>
           )}
-          {isPlus && <button type="button" className="btn btn--primary membership-plan__button" onClick={() => void openPortal()}>Fatura ve iptal ayarları <span>→</span></button>}
+          {isPlus && <button type="button" className="btn btn--primary membership-plan__button" onClick={() => void openPortal()}>Abrechnungs- und Stornierungseinstellungen <span>→</span></button>}
         </article>
       </div>
 
       <section className="membership-value">
-        <div className="section-heading-row"><div><span className="section-kicker">Aile+ ile neler değişir?</span><h2 className="section__title">Ekran süresi değil, iyi anlar birikir.</h2></div></div>
+        <div className="section-heading-row"><div><span className="section-kicker">Was verändert sich mit Familien+?</span><h2 className="section__title">Nicht mehr Bildschirmzeit, sondern mehr gute Momente.</h2></div></div>
         <div className="membership-value__grid">
-          <article><span><CalendarDays size={19} /></span><h3>Ritmi siz belirleyin</h3><p>Haftalık planı çocuğunuzun yaşına ve meraklarına göre şekillendirin.</p></article>
-          <article><span><Download size={19} /></span><h3>Evde devam edin</h3><p>Yazdırılabilir paketleri indirin; masal ve etkinlikleri bağlantısız da açın.</p></article>
-          <article><span><ShieldCheck size={19} /></span><h3>Güven sizde kalsın</h3><p>Yetişkin alanı PIN ile korunur, çocuk deneyimi sakin ve reklamsız kalır.</p></article>
+          <article><span><CalendarDays size={19} /></span><h3>Ihr bestimmt den Rhythmus</h3><p>Gestaltet den Wochenplan nach Alter und Interessen eures Kindes.</p></article>
+          <article><span><Download size={19} /></span><h3>Zu Hause weitermachen</h3><p>Ladet das Paket herunter und öffnet Geschichten und Aktivitäten auch offline.</p></article>
+          <article><span><ShieldCheck size={19} /></span><h3>Sicherheit bleibt bei euch</h3><p>Der Erwachsenenbereich ist per PIN geschützt; das Kindererlebnis bleibt ruhig und werbefrei.</p></article>
         </div>
       </section>
 
       <section className="membership-faq">
-        <div><span className="section-kicker">Kısa cevaplar</span><h2 className="section__title">Ailelerin merak ettikleri</h2></div>
-        <details><summary>Ücretsiz kullanım devam edecek mi?</summary><p>Evet. Ücretsiz plan, her gün seçili içeriklerle kullanılmaya devam eder.</p></details>
-        <details><summary>Birden fazla çocuk ekleyebilir miyim?</summary><p>Aile+ planında beş ayrı çocuk profili oluşturabilir, her birinin ilerlemesini ayrı takip edebilirsiniz.</p></details>
-        <details><summary>Çocuklar ödeme bilgilerini görür mü?</summary><p>Hayır. Üyelik ve ödeme işlemleri yalnızca ebeveyn alanında görünür.</p></details>
+        <div><span className="section-kicker">Kurze Antworten</span><h2 className="section__title">Was Familien wissen möchten</h2></div>
+        <details><summary>Bleibt die kostenlose Nutzung bestehen?</summary><p>Ja. Der kostenlose Plan bietet weiterhin jeden Tag ausgewählte Inhalte.</p></details>
+        <details><summary>Kann ich mehrere Kinder hinzufügen?</summary><p>Mit Familien+ könnt ihr fünf eigene Kinderprofile anlegen und den Fortschritt jedes Kindes getrennt verfolgen.</p></details>
+        <details><summary>Sehen Kinder Zahlungsdaten?</summary><p>Nein. Mitgliedschaft und Zahlungen sind ausschließlich im Elternbereich sichtbar.</p></details>
       </section>
     </div>
   )

@@ -31,25 +31,25 @@ export function HomePage({ onNavigate }: HomePageProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
         >
-          <p className="home-hero__eyebrow">Bugün de maceradasın</p>
+          <p className="home-hero__eyebrow">Auch Sie erleben heute ein Abenteuer</p>
           <h1 className="home-hero__title">Kitap Cenneti</h1>
           <p className="home-hero__desc">
-            Masallar, oyunlar ve yaratıcı etkinlikler — ailece keşfedilecek, net ve davetkâr bir dünya.
+            Märchen, Spiele und kreative Aktivitäten – eine übersichtliche und einladende Welt zum Erkunden mit der Familie.
           </p>
           <div className="home-hero__actions">
             <button className="btn btn--primary btn--pop" onClick={() => onNavigate('fun')}>
-              🎡 Eğlence Bahçesi
+              🎡 Lustiger Garten
             </button>
             <button className="btn btn--sun" onClick={() => onNavigate('activities')}>
-              🎮 Oyun Salonu
+              🎮 Arcade
             </button>
             <button className="btn btn--ghost" onClick={() => onNavigate('create')}>
-              ✨ Hikaye Yap
+              ✨ Erstelle eine Geschichte
             </button>
           </div>
           <div className="home-hero__meta">
             <span>{stickers.length}/{STICKERS.length} sticker</span>
-            <span>{spinAvailable ? 'Çark hazır 🎯' : 'Çark yarın 🌅'}</span>
+            <span>{spinAvailable ? 'Rad bereit 🎯' : 'Rad morgen 🌅'}</span>
             <button type="button" className={`bedtime-toggle ${bedtime ? 'is-on' : ''}`} onClick={toggleBedtime}>
               {bedtime ? '🌙 Gece' : '🌙 Gece modu'}
             </button>
@@ -65,22 +65,22 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <div className="playground-stage">
             <button type="button" className="stage-bubble stage-bubble--a" onClick={() => onNavigate('audio')}>
               <span aria-hidden="true">🎧</span>
-              <small>Masal</small>
+              <small>Märchen</small>
             </button>
             <button type="button" className="stage-bubble stage-bubble--b" onClick={() => onNavigate('coloring')}>
               <span aria-hidden="true">🖍️</span>
-              <small>Boyama</small>
+              <small>Malerei</small>
             </button>
             <button type="button" className="stage-bubble stage-bubble--c" onClick={() => onNavigate('fun')}>
               <span aria-hidden="true">🎡</span>
-              <small>Eğlence</small>
+              <small>Unterhaltung</small>
             </button>
             <button type="button" className="stage-bubble stage-bubble--d" onClick={() => onNavigate('heroes')}>
               <span aria-hidden="true">🦸</span>
               <small>Kahraman</small>
             </button>
             <div className="stage-mascot" aria-hidden="true">🦊</div>
-            <p className="stage-caption">Bir yere dokun — keşfe çık</p>
+            <p className="stage-caption">Irgendwo antippen – erkunden</p>
           </div>
         </motion.div>
       </section>
@@ -89,15 +89,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="surprise-card">
           <span>{tip.emoji}</span>
           <div>
-            <h2>Şimdi ne yapsak?</h2>
+            <h2>Was sollen wir jetzt tun?</h2>
             <p>{tip.title} — {tip.blurb}</p>
           </div>
           <div className="btn-row">
             <button className="btn btn--primary" onClick={() => onNavigate(tip.page as PageId)}>
-              Başla
+              beginnen
             </button>
             <button className="btn btn--ghost" onClick={() => setIdea((i) => i + 1)}>
-              Değiştir
+              Veränderung
             </button>
           </div>
         </div>
@@ -106,13 +106,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="section">
         <h2 className="section__title">
           <span className="section__title-emoji">🌈</span>
-          Senin Dünyan
+          Deine Welt
         </h2>
         <ProgressHub onNavigate={onNavigate} />
       </section>
 
       <section className="section">
-        <h2 className="section__title"><span className="section__title-emoji">🗺️</span> Keşfet</h2>
+        <h2 className="section__title"><span className="section__title-emoji">🗺️</span> Entdecken</h2>
         <div className="feature-grid feature-grid--lively">
           {FEATURE_CARDS.map((card, i) => (
             <motion.button
@@ -138,38 +138,38 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="highlight-card" onClick={() => onNavigate('audio')}>
           <span>{featuredStory.emoji}</span>
           <div>
-            <h3>Günün Masalı</h3>
+            <h3>Geschichte des Tages</h3>
             <p>{featuredStory.title} · {featuredStory.duration}</p>
           </div>
         </div>
         <div className="highlight-card" onClick={() => onNavigate('heroes')}>
           <span>{featuredHero.emoji}</span>
           <div>
-            <h3>Günün Kahramanı</h3>
+            <h3>Held des Tages</h3>
             <p>{featuredHero.name}</p>
           </div>
         </div>
         <div className="highlight-card" onClick={() => onNavigate('coloring')}>
           <span>🖍️</span>
           <div>
-            <h3>Boyama Arşivi</h3>
+            <h3>Gemäldearchiv</h3>
             <p>{COLORING_PAGES.length} telifsiz PDF sayfa</p>
           </div>
         </div>
         <div className="highlight-card" onClick={() => onNavigate('fun')}>
           <span>🏷️</span>
           <div>
-            <h3>Sticker Albümü</h3>
-            <p>{stickers.length} / {STICKERS.length} toplandı</p>
+            <h3>Stickeralbum</h3>
+            <p>{stickers.length} / {STICKERS.length} gesammelt</p>
           </div>
         </div>
       </section>
 
       <section className="section trust-strip trust-strip--bright">
-        <div>🎡 Sürpriz çarkı</div>
-        <div>🎮 4 mini oyun</div>
+        <div>🎡 Rad der Überraschung</div>
+        <div>🎮 4 Minispiele</div>
         <div>🏷️ Sticker koleksiyonu</div>
-        <div>📕 Görselli hikaye PDF</div>
+        <div>📕 Visuelles Story-PDF</div>
       </section>
     </div>
   )

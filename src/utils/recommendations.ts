@@ -36,39 +36,39 @@ export function editorPicks(d = new Date()): SmartPick[] {
       title: story.title,
       blurb: story.summary,
       page: 'audio',
-      reason: 'Editörün masalı',
+      reason: 'Geschichte der Redaktion',
     },
     {
       id: 'ed-live',
       emoji: '⚡',
-      title: 'Canlı Arena saati',
-      blurb: 'Saatlik görev ve gizemli kutu seni bekliyor.',
+      title: 'Zeit für die Live-Arena',
+      blurb: 'Eine Stundenaufgabe und eine geheimnisvolle Box warten.',
       page: 'live',
-      reason: 'Bugünün ritmi',
+      reason: 'Heute im Rhythmus',
     },
     {
       id: 'ed-feel',
       emoji: '💛',
-      title: 'Duygu check-in',
-      blurb: '2 dakikalık sakinleşme ve duygu radarı.',
+      title: 'Gefühls-Check-in',
+      blurb: 'Zwei Minuten zum Ankommen und ein Gefühlsradar.',
       page: 'feelings',
-      reason: 'Zihin sağlığı',
+      reason: 'Wohlbefinden',
     },
     {
       id: 'ed-stem',
       emoji: '🔬',
-      title: 'Mini bilim kartı',
-      blurb: 'Ev malzemeleriyle merak kıvılcımı.',
+      title: 'Mini-Wissenschaftskarte',
+      blurb: 'Ein neugieriger Moment mit Dingen aus dem Haushalt.',
       page: 'stem',
-      reason: 'STEM seçkisi',
+      reason: 'STEM-Auswahl',
     },
     {
       id: 'ed-color',
       emoji: '🖍️',
-      title: 'Günün boyaması',
-      blurb: 'Sakin tempo, bol renk.',
+      title: 'Malvorlage des Tages',
+      blurb: 'Ruhiges Tempo, viele Farben.',
       page: 'coloring',
-      reason: 'Sanat molası',
+      reason: 'Kreativpause',
     },
   ]
   // rotate order by day
@@ -86,12 +86,12 @@ export function smartRecommendations(age: AgeGroup, interests: string[]): SmartP
   return pages.slice(0, 6).map((page, i) => {
     const base = pick(
       [
-        { emoji: '🎧', title: 'Sana özel masal', blurb: story.summary, page: 'audio' as PageId },
-        { emoji: '🎮', title: 'Hızlı oyun turu', blurb: 'Quiz veya hafıza — 5 dk.', page: 'activities' as PageId },
-        { emoji: '🗺️', title: 'Haritada bir durak', blurb: 'Yeni bir bölge keşfet.', page: 'world' as PageId },
-        { emoji: '✨', title: 'Kısa AI hikaye', blurb: 'Kendi kahramanını yaz.', page: 'create' as PageId },
-        { emoji: '🖍️', title: 'Renk molası', blurb: 'Bir sayfa boya, rahatla.', page: 'coloring' as PageId },
-        { emoji: '🦸', title: 'Kahraman selamı', blurb: 'Cesaret ve dostluk.', page: 'heroes' as PageId },
+        { emoji: '🎧', title: 'Geschichte für dich', blurb: story.summary, page: 'audio' as PageId },
+        { emoji: '🎮', title: 'Kurze Spielrunde', blurb: 'Quiz oder Memory – 5 Min.', page: 'activities' as PageId },
+        { emoji: '🗺️', title: 'Ein Kartenstopp', blurb: 'Entdecke eine neue Region.', page: 'world' as PageId },
+        { emoji: '✨', title: 'Kurze KI-Geschichte', blurb: 'Erfinde deinen eigenen Helden.', page: 'create' as PageId },
+        { emoji: '🖍️', title: 'Farbpause', blurb: 'Male eine Seite und komm zur Ruhe.', page: 'coloring' as PageId },
+        { emoji: '🦸', title: 'Heldengruß', blurb: 'Mut und Freundschaft.', page: 'heroes' as PageId },
       ],
       seed + i * 13,
     )
@@ -121,7 +121,7 @@ function interestPages(interests: string[]): PageId[] {
 }
 
 function reasonFor(page: PageId, mood: MoodId, age: AgeGroup): string {
-  if (MOOD_PAGES[mood].includes(page)) return `${mood} ruh haline uygun`
-  if (AGE_BIAS[age].includes(page)) return `${age} yaş önerisi`
-  return 'İlgi alanına yakın'
+  if (MOOD_PAGES[mood].includes(page)) return 'Passend zur Stimmung'
+  if (AGE_BIAS[age].includes(page)) return 'Altersgerechte Empfehlung'
+  return 'Passt zu deinen Interessen'
 }

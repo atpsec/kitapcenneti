@@ -11,12 +11,12 @@ export function Navbar({ current, onNavigate }: NavbarProps) {
   const [moreOpen, setMoreOpen] = useState(false)
 
   return (
-    <nav className="navbar" aria-label="Ana menü">
+    <nav className="navbar" aria-label="Hauptmenü">
       <div className="navbar__brand" onClick={() => onNavigate('home')} role="button" tabIndex={0}>
         <span className="navbar__logo">📚</span>
         <div>
           <div className="navbar__title">Kitap Cenneti</div>
-          <div className="navbar__tag">Çocuk & Aile Platformu</div>
+          <div className="navbar__tag">Kinder- & Familienportal</div>
         </div>
       </div>
       <div className="navbar__links">
@@ -37,7 +37,7 @@ export function Navbar({ current, onNavigate }: NavbarProps) {
             onClick={() => setMoreOpen((v) => !v)}
           >
             <span>⋯</span>
-            <span className="navbar__link-label">Daha</span>
+            <span className="navbar__link-label">Mehr</span>
           </button>
           {moreOpen && (
             <div className="navbar__dropdown">

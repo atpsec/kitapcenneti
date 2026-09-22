@@ -33,7 +33,7 @@ export function OptionsPanel({
         Ayarlar
       </h2>
 
-      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 16 }}>🎨 Çizim Stili</h3>
+      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 16 }}>🎨 Zeichenstil</h3>
       <div className="options-grid">
         {ART_STYLES.map((style) => (
           <button
@@ -47,7 +47,7 @@ export function OptionsPanel({
         ))}
       </div>
 
-      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 20 }}>🤖 Hikaye Modeli</h3>
+      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 20 }}>🤖 Story-Modell</h3>
       <div className="options-grid">
         {TEXT_MODELS.map((model) => (
           <button
@@ -62,7 +62,7 @@ export function OptionsPanel({
         ))}
       </div>
 
-      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 20 }}>🖼️ Görsel API</h3>
+      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 20 }}>🖼️ Visuelle API</h3>
       <div className="options-grid">
         {IMAGE_PROVIDERS.map((provider) => (
           <button
@@ -77,7 +77,7 @@ export function OptionsPanel({
         ))}
       </div>
 
-      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 20 }}>👶 Yaş Grubu</h3>
+      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 20 }}>👶 Altersgruppe</h3>
       <div className="options-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
         {AGE_GROUPS.map((age) => (
           <button
@@ -91,7 +91,7 @@ export function OptionsPanel({
         ))}
       </div>
 
-      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 20 }}>📄 Sayfa Sayısı</h3>
+      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 20 }}>📄 Anzahl der Seiten</h3>
       <div className="options-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
         {PAGE_COUNTS.map((count) => (
           <button

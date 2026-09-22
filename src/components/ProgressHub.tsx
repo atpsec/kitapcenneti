@@ -15,7 +15,7 @@ export function ProgressHub({ onNavigate, compact = false }: ProgressHubProps) {
       <div className="progress-hub__stats">
         <div className="progress-hub__stat">
           <strong>{stars}</strong>
-          <span>Yıldız</span>
+          <span>Stern</span>
         </div>
         <div className="progress-hub__stat">
           <strong>{streak}🔥</strong>
@@ -23,7 +23,7 @@ export function ProgressHub({ onNavigate, compact = false }: ProgressHubProps) {
         </div>
         <div className="progress-hub__stat">
           <strong>{doneToday.length}/{todayQuests.length}</strong>
-          <span>Bugün</span>
+          <span>heute</span>
         </div>
         <div className="progress-hub__stat">
           <strong>{badges.length}</strong>
@@ -43,16 +43,16 @@ export function ProgressHub({ onNavigate, compact = false }: ProgressHubProps) {
               type="button"
               className={`bedtime-toggle ${bedtime ? 'is-on' : ''}`}
               onClick={toggleBedtime}
-              title="Ekranı yumuşatır, gece okumaya uygun hale getirir"
+              title="Macht den Bildschirm sanfter für das Lesen am Abend"
             >
-              {bedtime ? '🌙 Gece açık' : '☀️ Gündüz'}
+              {bedtime ? '🌙 Abendmodus aktiv' : '☀️ Tag'}
             </button>
           </div>
 
           <div className="badge-row">
             {badges.length === 0 && (
               <p className="section-hint" style={{ margin: 0 }}>
-                Görev bitir, oyun oyna, masal dinle — rozetler burada birikir.
+                Erledige Aufgaben, spiele Spiele, höre dir Geschichten an – hier sammeln sich Abzeichen.
               </p>
             )}
             {badges.map((b) => (
@@ -72,13 +72,13 @@ export function ProgressHub({ onNavigate, compact = false }: ProgressHubProps) {
           {onNavigate && (
             <div className="progress-hub__actions">
               <button type="button" className="btn btn--primary" onClick={() => onNavigate('quests')}>
-                ⭐ Görevlere git
+                ⭐ Gehe zu Quests
               </button>
               <button type="button" className="btn btn--ghost" onClick={() => onNavigate('certificates')}>
-                🏆 Sertifika
+                🏆 Zertifikat
               </button>
               <button type="button" className="btn btn--ghost" onClick={() => onNavigate('create')}>
-                ✨ Hikaye yap
+                ✨ Erstelle eine Geschichte
               </button>
             </div>
           )}

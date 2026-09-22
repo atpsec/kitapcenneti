@@ -11,16 +11,16 @@ export function HeroBanner() {
       <div className="hero-banner__content">
         <div className="hero-banner__text">
           <h2 className="hero-banner__title">
-            Hayal Et, Yaz, Oku! 🌈
+            Stellen Sie sich vor, schreiben Sie, lesen Sie! 🌈
           </h2>
           <p className="hero-banner__desc">
-            Yapay zeka ile sana özel, renkli resimli hikaye kitapları oluştur.
-            İsmini yaz, masalın kahramanı sen ol!
+            Erstellen Sie personalisierte, farbenfrohe illustrierte Geschichtenbücher mit künstlicher Intelligenz.
+            Schreiben Sie Ihren Namen, seien Sie der Held der Geschichte!
           </p>
           <div className="hero-banner__stats">
             <span className="hero-stat">📚 9 Kategori</span>
             <span className="hero-stat">🎨 7 Stil</span>
-            <span className="hero-stat">🆓 Ücretsiz</span>
+            <span className="hero-stat">🆓 Kostenlos</span>
           </div>
         </div>
         <div className="hero-banner__visual" aria-hidden="true">

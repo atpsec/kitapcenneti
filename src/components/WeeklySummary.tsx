@@ -20,12 +20,12 @@ export function WeeklySummary() {
 
   const shareText = () => {
     const lines = [
-      `Kitap Cenneti — Haftalık özet`,
-      `${profile.childName || 'Çocuk'} ${profile.avatar}`,
-      `⭐ ${stars} yıldız · 🔥 ${streak} gün seri`,
-      `🏷️ ${stickers.length} sticker · 🏅 ${badges.length} rozet`,
-      `⚡ Saatlik seri ${live.hourlyStreak} · ziyaret ${live.visitCount}`,
-      `Bu hafta günlük: ${week.count} kayıt`,
+      `Kitap Cenneti — Wochenübersicht`,
+      `${profile.childName || 'Kind'} ${profile.avatar}`,
+      `⭐ ${stars} Sterne · 🔥 ${streak} Tage Serie`,
+      `🏷️ ${stickers.length} Sticker · 🏅 ${badges.length} Abzeichen`,
+      `⚡ Stundenserie ${live.hourlyStreak} · Besuche ${live.visitCount}`,
+      `Diese Woche: ${week.count} Einträge`,
       ...Object.entries(week.byKind).map(([k, n]) => `· ${k}: ${n}`),
     ]
     return lines.join('\n')
@@ -33,17 +33,17 @@ export function WeeklySummary() {
 
   return (
     <section className="section weekly-summary">
-      <h2 className="section__title">Haftalık aile özeti</h2>
+      <h2 className="section__title">Wöchentliche Familienübersicht</h2>
       <article className="panel weekly-summary__card">
         <p>
-          <strong>{profile.childName || 'Çocuğunuz'}</strong> bu hafta{' '}
-          <strong>{week.count}</strong> günlük kaydı biriktirdi.
+          <strong>{profile.childName || 'Euer Kind'}</strong> hat diese Woche{' '}
+          <strong>{week.count}</strong> Einträge gesammelt.
         </p>
         <ul className="weekly-summary__stats">
-          <li>⭐ {stars} yıldız</li>
-          <li>🔥 {streak} gün seri</li>
+          <li>⭐ {stars} Sterne</li>
+          <li>🔥 {streak} Tage Serie</li>
           <li>🏷️ {stickers.length} sticker</li>
-          <li>⚡ Saatlik seri {live.hourlyStreak}</li>
+          <li>⚡ Stundenserie {live.hourlyStreak}</li>
         </ul>
         {Object.keys(week.byKind).length > 0 && (
           <p className="section-hint">
@@ -60,19 +60,19 @@ export function WeeklySummary() {
               void navigator.clipboard?.writeText(shareText())
             }}
           >
-            Özeti kopyala
+            Übersicht kopieren
           </button>
           <button
             type="button"
             className="btn btn--ghost"
             onClick={() =>
               printHtml(
-                'Haftalık Aile Özeti',
+                'Wöchentliche Familienübersicht',
                 `<pre style="white-space:pre-wrap;font-family:Nunito,sans-serif">${escapeHtml(shareText())}</pre>`,
               )
             }
           >
-            PDF / Yazdır
+            PDF / Drucken
           </button>
         </div>
       </article>

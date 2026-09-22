@@ -32,7 +32,7 @@ export function ColoringPagesPage() {
       await downloadSvgAsPdf(svg, `boyama-${page.id}`, page.title)
       announceActivityResult(completeActivity('color'))
     } catch {
-      alert('PDF oluşturulamadı. Tekrar dene.')
+      alert('PDF konnte nicht erstellt werden. Bitte erneut versuchen.')
     } finally {
       setBusy(false)
     }
@@ -61,21 +61,21 @@ export function ColoringPagesPage() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🖍️ Boyama Sayfaları</h1>
-        <p>{COLORING_PAGES.length} telifsiz sayfa · kategoriye göre filtrele, PDF indir veya yazdır.</p>
+        <h1>🖍️ Malvorlagen</h1>
+        <p>{COLORING_PAGES.length} lizenzfreie Seiten · nach Kategorie filtern, PDF herunterladen oder drucken.</p>
       </header>
 
       <ContentPortalBar
         count={filtered.length}
-        label="Boyama"
+        label="Malen"
         query={query}
         onQuery={setQuery}
-        placeholder="Sayfa, kategori veya yaş ara…"
+        placeholder="Seite, Kategorie oder Alter suchen …"
         filters={COLORING_CATEGORIES.map((cat) => ({ id: cat, label: cat }))}
         activeFilter={category}
         onFilter={(cat) => {
           setCategory(cat as (typeof COLORING_CATEGORIES)[number])
-          const first = cat === 'Tümü' ? COLORING_PAGES[0] : COLORING_PAGES.find((p) => p.category === cat)
+          const first = cat === 'Alle' ? COLORING_PAGES[0] : COLORING_PAGES.find((p) => p.category === cat)
           if (first) setSelected(first.id)
         }}
       />
@@ -101,9 +101,9 @@ export function ColoringPagesPage() {
           <div className="coloring-preview__svg" dangerouslySetInnerHTML={{ __html: svg }} />
           <div className="btn-row">
             <button className="btn btn--primary" onClick={handleDownload} disabled={busy}>
-              {busy ? 'Hazırlanıyor...' : '⬇️ PDF İndir'}
+              {busy ? 'Wird vorbereitet …' : '⬇️ PDF herunterladen'}
             </button>
-            <button className="btn btn--ghost" onClick={handlePrint}>🖨️ Yazdır</button>
+            <button className="btn btn--ghost" onClick={handlePrint}>🖨️ Drucken</button>
           </div>
           <SocialShare
             payload={{
@@ -111,7 +111,7 @@ export function ColoringPagesPage() {
               text: page.description,
               page: 'coloring',
               itemId: page.id,
-              hashtags: ['KitapCenneti', 'Boyama', page.category.replace(/\s+/g, '')],
+              hashtags: ['KitapCenneti', 'Malen', page.category.replace(/\s+/g, '')],
             }}
           />
         </div>

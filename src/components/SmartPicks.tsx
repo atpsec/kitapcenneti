@@ -6,8 +6,8 @@ import { useState } from 'react'
 
 const MOODS: { id: MoodId; emoji: string; label: string }[] = [
   { id: 'mutlu', emoji: '😄', label: 'Mutlu' },
-  { id: 'sakin', emoji: '😌', label: 'Sakin' },
-  { id: 'meraklı', emoji: '🧐', label: 'Meraklı' },
+  { id: 'sakin', emoji: '😌', label: 'Ruhig' },
+  { id: 'meraklı', emoji: '🧐', label: 'Neugierig' },
   { id: 'yorgun', emoji: '😴', label: 'Yorgun' },
   { id: 'cesur', emoji: '🦸', label: 'Cesur' },
 ]
@@ -25,7 +25,7 @@ export function SmartPicks({ ageGroup, interests, onNavigate }: Props) {
 
   return (
     <section className="section smart-picks">
-      <h2 className="section__title">Bugünün 5’lisi & sana özel</h2>
+      <h2 className="section__title">Die fünf Empfehlungen des Tages – passend zu euch</h2>
       <div className="mood-row" role="group" aria-label="Ruh hali">
         {MOODS.map((m) => (
           <button

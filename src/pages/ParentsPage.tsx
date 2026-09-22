@@ -10,24 +10,24 @@ export function ParentsPage() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>👨‍👩‍👧 Aile Köşesi</h1>
+        <h1>👨‍👩‍👧 Familien-Ecke</h1>
         <p>
-          {PARENT_TIPS.length} ebeveyn ipucu — yaş rehberi, ekran süresi, uyku rutini ve güvenli içerik. Daha uzun yazılar için Aile Blog'a bakın.
+          {PARENT_TIPS.length} Tipps für Eltern – Altersstufen, Bildschirmzeit, Schlafroutinen und sichere Inhalte. Weitere Beiträge findet ihr im Familienblog.
         </p>
       </header>
 
       <AdSlot slot="top" format="horizontal" />
 
       <div className="panel" style={{ marginBottom: 20 }}>
-        <h2>📅 Bu Haftanın İlhamları</h2>
+        <h2>📅 Inspiration für diese Woche</h2>
         <ul className="tip-list">
           {DAILY_CHALLENGES.map((c) => (
             <li key={c}>{c}</li>
           ))}
         </ul>
         <div className="btn-row">
-          <a className="btn btn--primary" href="#blog">📝 Aile Blog'u oku</a>
-          <a className="btn btn--ghost" href="#quests">⭐ Çocuk görev panosu</a>
+          <a className="btn btn--primary" href="#blog">📝 Familienblog lesen</a>
+          <a className="btn btn--ghost" href="#quests">⭐ Kinder-Aufgaben</a>
         </div>
       </div>
 
@@ -73,10 +73,10 @@ export function ParentsPage() {
       <AdSlot slot="in-article" />
 
       <div className="panel safety-box">
-        <h2>🛡️ Güvenlik Notu</h2>
+        <h2>🛡️ Sicherheitshinweis</h2>
         <p>
-          Küçük çocuklar uygulamayı ebeveyn eşliğinde kullanmalıdır. Reklamlar (AdSense)
-          onay sonrası özellikle ebeveyn içeriklerinde gösterilir. Detaylar için Gizlilik Politikası'na bakın.
+          Kleine Kinder sollten die Anwendung gemeinsam mit einer erwachsenen Person nutzen. Werbung (AdSense)
+          wird erst nach Einwilligung und nur auf Elterninhalten angezeigt. Weitere Informationen stehen in der Datenschutzerklärung.
         </p>
       </div>
     </div>

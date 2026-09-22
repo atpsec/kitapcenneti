@@ -20,22 +20,22 @@ export function ShopPage({ onNavigate }: Props) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🎁 Ücretsiz İçerik Marketi</h1>
+        <h1>🎁 Kostenloser Content-Markt</h1>
         <p>
-          {SHOP_PACKS.length} paket — hepsi ücretsiz. "Al" demek: ilgili bölüme git ve kullanmaya başla.
+          {SHOP_PACKS.length} Pakete – alle kostenlos. „Öffnen“ führt direkt zum passenden Bereich.
         </p>
       </header>
 
       <article className="panel premium-pack">
         <span>✨</span>
         <div>
-          <h2>Masal Ustası — premium ses paketi</h2>
+          <h2>Tale Master – Premium-Soundpaket</h2>
           <p>
-            Yumuşak tempo, birlikte oku uyumlu anlatıcı. Ödeme yok — aile hediye kodu veya tek tıkla
-            açılır (yerel).
+            Sanftes Tempo, mitlesender, harmonischer Erzähler. Keine Zahlungen – Familiengeschenkcode oder ein Klick
+            erscheint (lokal).
           </p>
           {premium ? (
-            <strong>Açık ✓ — Sesli Masallar’da “Masal ustası”nı seç</strong>
+            <strong>Ein ✓ – Wählen Sie „Märchenmeister“ in Audio Tales</strong>
           ) : (
             <div className="btn-row">
               <button
@@ -44,11 +44,11 @@ export function ShopPage({ onNavigate }: Props) {
                 onClick={() => {
                   unlockPremiumVoice()
                   setPremium(true)
-                  showToast('Premium ses açıldı')
+                  showToast('Premium-Stimme aktiviert')
                   onNavigate('audio')
                 }}
               >
-                Ücretsiz aç
+                Kostenlos geöffnet
               </button>
               <input
                 value={code}
@@ -64,15 +64,15 @@ export function ShopPage({ onNavigate }: Props) {
                   if (code.trim() === PREMIUM_UNLOCK_CODE) {
                     unlockPremiumVoice()
                     setPremium(true)
-                    showToast('Kod kabul — premium ses açık')
-                  } else showToast('Kod geçersiz')
+                    showToast('Code akzeptiert – Premium-Stimme aktiv')
+                  } else showToast('Ungültiger Code')
                 }}
               >
-                Kodla aç
+                Mit Code öffnen
               </button>
             </div>
           )}
-          <small>Örnek kod: {PREMIUM_UNLOCK_CODE}</small>
+          <small>Beispielcode: {PREMIUM_UNLOCK_CODE}</small>
         </div>
       </article>
       <div className="shop-grid">
@@ -112,11 +112,11 @@ export function ShopPage({ onNavigate }: Props) {
                   note: pack.description,
                   stars: 1,
                 })
-                showToast('Paket açıldı — bölüme gidiyorsun')
+                showToast('Paket geöffnet – du wirst zum Bereich weitergeleitet')
                 onNavigate(pack.page as PageId)
               }}
             >
-              Ücretsiz aç →
+              Kostenlos geöffnet →
             </button>
             {activeId === pack.id && (
               <SocialShare

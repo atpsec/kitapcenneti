@@ -60,35 +60,35 @@ export const onRequestOptions = (context: AuthContext) => authOptions(context)
 export const onRequestGet = async (context: AuthContext) => {
   try {
     const current = await account(context)
-    if (!current) return authResponse({ error: 'Giriş gerekli', code: 'unauthorized' }, 401, context)
-    if (!context.env.DB) return authResponse({ error: 'Aile servisi henüz yapılandırılmadı', code: 'configuration_missing' }, 503, context)
+    if (!current) return authResponse({ error: 'Anmeldung erforderlich', code: 'unauthorized' }, 401, context)
+    if (!context.env.DB) return authResponse({ error: 'Familienservice ist noch nicht eingerichtet', code: 'configuration_missing' }, 503, context)
     const rows = await context.env.DB.prepare(
       'SELECT id, child_name as childName, avatar, age_group as ageGroup, interests_json as interestsJson, goal, created_at as createdAt, updated_at as updatedAt FROM child_profiles WHERE account_id = ? ORDER BY created_at ASC',
     ).bind(current.id).all?.<ChildRow>()
     const plus = await isPlus(context, current)
     return authResponse({ children: (rows?.results || []).map(parseRow), plan: plus ? 'family_plus' : 'free', maxChildren: plus ? 5 : 1 }, 200, context)
   } catch (error) {
-    if (error instanceof Error && error.message === 'DB_NOT_CONFIGURED') return authResponse({ error: 'Aile servisi henüz yapılandırılmadı', code: 'configuration_missing' }, 503, context)
+    if (error instanceof Error && error.message === 'DB_NOT_CONFIGURED') return authResponse({ error: 'Familienservice ist noch nicht eingerichtet', code: 'configuration_missing' }, 503, context)
     console.error('Children list error', error)
-    return authResponse({ error: 'Çocuk profilleri alınamadı' }, 500, context)
+    return authResponse({ error: 'Kinderprofile konnten nicht geladen werden' }, 500, context)
   }
 }
 
 async function saveChild(context: AuthContext, method: 'POST' | 'PUT') {
-  if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Geçersiz istek' }, 400, context)
+  if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Ungültige Anfrage' }, 400, context)
   const current = await account(context)
-  if (!current) return authResponse({ error: 'Giriş gerekli', code: 'unauthorized' }, 401, context)
-  if (!context.env.DB) return authResponse({ error: 'Aile servisi henüz yapılandırılmadı', code: 'configuration_missing' }, 503, context)
+  if (!current) return authResponse({ error: 'Anmeldung erforderlich', code: 'unauthorized' }, 401, context)
+  if (!context.env.DB) return authResponse({ error: 'Familienservice ist noch nicht eingerichtet', code: 'configuration_missing' }, 503, context)
   const body = (await context.request.json()) as Record<string, unknown>
   const cleaned = cleanProfile(body)
-  if (!cleaned.childName) return authResponse({ error: 'Çocuk adı gerekli' }, 400, context)
+  if (!cleaned.childName) return authResponse({ error: 'Name des Kindes erforderlich' }, 400, context)
   const incomingId = typeof body.id === 'string' && /^[A-Za-z0-9_-]{1,64}$/.test(body.id) ? body.id : ''
   const id = incomingId || crypto.randomUUID()
   const existing = await context.env.DB.prepare('SELECT id FROM child_profiles WHERE account_id = ? AND id = ? LIMIT 1').bind(current.id, id).first?.()
   const countRow = await context.env.DB.prepare('SELECT COUNT(*) as count FROM child_profiles WHERE account_id = ?').bind(current.id).first?.<{ count?: number }>()
   const plus = await isPlus(context, current)
   if (!existing && Number(countRow?.count || 0) >= (plus ? 5 : 1)) {
-    return authResponse({ error: 'Aile+ ile beş çocuk profiline kadar açabilirsiniz', code: 'upgrade_required' }, 402, context)
+    return authResponse({ error: 'Mit Familien+ können bis zu fünf Kinderprofile angelegt werden', code: 'upgrade_required' }, 402, context)
   }
   const now = new Date().toISOString()
   await context.env.DB.prepare(
@@ -98,21 +98,21 @@ async function saveChild(context: AuthContext, method: 'POST' | 'PUT') {
 }
 
 export const onRequestPost = async (context: AuthContext) => {
-  try { return await saveChild(context, 'POST') } catch (error) { console.error('Child create error', error); return authResponse({ error: 'Profil kaydedilemedi' }, 500, context) }
+  try { return await saveChild(context, 'POST') } catch (error) { console.error('Child create error', error); return authResponse({ error: 'Profil konnte nicht gespeichert werden' }, 500, context) }
 }
 
 export const onRequestPut = async (context: AuthContext) => {
-  try { return await saveChild(context, 'PUT') } catch (error) { console.error('Child update error', error); return authResponse({ error: 'Profil kaydedilemedi' }, 500, context) }
+  try { return await saveChild(context, 'PUT') } catch (error) { console.error('Child update error', error); return authResponse({ error: 'Profil konnte nicht gespeichert werden' }, 500, context) }
 }
 
 export const onRequestDelete = async (context: AuthContext) => {
   try {
-    if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Geçersiz istek' }, 400, context)
+    if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Ungültige Anfrage' }, 400, context)
     const current = await account(context)
-    if (!current) return authResponse({ error: 'Giriş gerekli', code: 'unauthorized' }, 401, context)
+    if (!current) return authResponse({ error: 'Anmeldung erforderlich', code: 'unauthorized' }, 401, context)
     const id = new URL(context.request.url).searchParams.get('id') || ''
-    if (!/^[A-Za-z0-9_-]{1,64}$/.test(id)) return authResponse({ error: 'Geçersiz profil' }, 400, context)
+    if (!/^[A-Za-z0-9_-]{1,64}$/.test(id)) return authResponse({ error: 'Ungültiges Profil' }, 400, context)
     await context.env.DB?.prepare('DELETE FROM child_profiles WHERE account_id = ? AND id = ?').bind(current.id, id).run()
     return authResponse({ ok: true }, 200, context)
-  } catch (error) { console.error('Child delete error', error); return authResponse({ error: 'Profil silinemedi' }, 500, context) }
+  } catch (error) { console.error('Child delete error', error); return authResponse({ error: 'Profil konnte nicht gelöscht werden' }, 500, context) }
 }

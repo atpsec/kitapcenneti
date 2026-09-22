@@ -33,16 +33,16 @@ export function SocialShare({ payload, compact = false, className = '' }: Social
       const result = await nativeShare(payload)
       if (result === 'unsupported') {
         const ok = await copyText(buildShareText(payload))
-        showToast(ok ? 'Bağlantı panoya kopyalandı' : 'Paylaşım desteklenmiyor')
+        showToast(ok ? 'Link in die Zwischenablage kopiert' : 'Teilen wird nicht unterstützt')
       } else if (result === 'shared') {
-        showToast('Paylaşıldı')
+        showToast('Geteilt')
       }
       return
     }
 
     if (platform.action === 'copy') {
       const ok = await copyText(buildShareText(payload))
-      showToast(ok ? 'Metin ve bağlantı kopyalandı' : 'Kopyalanamadı')
+      showToast(ok ? 'Text und Link kopiert' : 'Kopieren nicht möglich')
       return
     }
 
@@ -53,7 +53,7 @@ export function SocialShare({ payload, compact = false, className = '' }: Social
       } else {
         openShareWindow(url)
       }
-      showToast(`${platform.label} açıldı`)
+      showToast(`${platform.label} geöffnet`)
     }
   }
 
@@ -63,14 +63,14 @@ export function SocialShare({ payload, compact = false, className = '' }: Social
 
   return (
     <div className={`social-share ${compact ? 'social-share--compact' : ''} ${className}`}>
-      <div className="social-share__quick" role="group" aria-label="Sosyal paylaşım">
+      <div className="social-share__quick" role="group" aria-label="Soziales Teilen">
         {quick.map((p) => (
           <button
             key={p.id}
             type="button"
             className="social-share__btn"
             title={p.label}
-            aria-label={`${p.label} ile paylaş`}
+            aria-label={`${p.label} teilen`}
             onClick={() => void run(p.id)}
           >
             <SocialMarkIcon color={p.color} mark={p.mark} size={compact ? 36 : 42} />
@@ -83,7 +83,7 @@ export function SocialShare({ payload, compact = false, className = '' }: Social
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
         >
-          {open ? 'Daha az' : `Tüm platformlar (${SOCIAL_PLATFORMS.length})`}
+          {open ? 'Weniger' : `Alle Plattformen (${SOCIAL_PLATFORMS.length})`}
         </button>
       </div>
 
@@ -95,7 +95,7 @@ export function SocialShare({ payload, compact = false, className = '' }: Social
               className={`stem-chip ${filter === 'all' ? 'is-active' : ''}`}
               onClick={() => setFilter('all')}
             >
-              Tümü
+              Alle
             </button>
             {SOCIAL_CATEGORIES.map((c) => (
               <button

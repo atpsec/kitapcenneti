@@ -8,1477 +8,1477 @@ export interface Rhyme {
 export const RHYMES: Rhyme[] = [
   {
     id: 'mini-mini',
-    title: 'Mini Mini Bir Kuş',
+    title: 'Ein winziger kleiner Vogel',
     emoji: '🐦',
-    lyrics: `Mini mini bir kuş donmuştu,
-Pencereme konmuştu.
-Almışım onu içeriye,
-Vermiştim bir parça yemyeşil.`,
+    lyrics: `Ein kleiner Vogel war gefroren,
+Es wurde an meinem Fenster angebracht.
+Ich habe ihn aufgenommen,
+Ich habe ihm ein Stück üppiges Grün geschenkt.`,
   },
   {
     id: 'ali-baba',
-    title: 'Ali Baba\'nın Çiftliği',
+    title: 'Ali Babas Bauernhof',
     emoji: '🐄',
-    lyrics: `Ali Baba'nın bir çiftliği var,
-Çiftliğinde kuzular var.
-Me me me diye bağırırlar,
-Ali Baba'nın çiftliğinde.`,
+    lyrics: `Ali Baba hat eine Farm,
+Auf Ihrem Bauernhof gibt es Lämmer.
+Sie rufen „Meme Meme“
+Auf Ali Babas Farm.`,
   },
   {
     id: 'yumurta',
-    title: 'Yumurta',
+    title: 'Ei',
     emoji: '🥚',
-    lyrics: `Yumurta yumurta kırıldı,
-Tavuk tavuk üzüldü.
-Civciv civciv çıktı,
-Herkes çok mutlu oldu.`,
+    lyrics: `Ei, Ei zerbrochen,
+Das Hühnerhuhn war traurig.
+Das Küken ist geschlüpft,
+Alle waren sehr glücklich.`,
   },
   {
     id: 'kelebek',
-    title: 'Kelebek',
+    title: 'Schmetterling',
     emoji: '🦋',
-    lyrics: `Kelebekler uçuşur,
-Çiçeklere konuşur.
-Renk renk kanatları,
-Bahçenin süsü olur.`,
+    lyrics: `Schmetterlinge fliegen,
+Er spricht mit den Blumen.
+Bunte Flügel,
+Es wird zur Zierde des Gartens.`,
   },
   {
     id: 'el-el',
-    title: 'El Ele',
+    title: 'Hand in Hand',
     emoji: '🤝',
-    lyrics: `El ele tutuşalım,
-Güle güle koşalım.
-Bir, iki, üç, dört,
-Dostlukla dolu bir dört!`,
+    lyrics: `Lasst uns Händchen halten,
+Lass uns auf Wiedersehen laufen.
+Eins, zwei, drei, vier,
+Ein Vierer voller Freundschaft!`,
   },
   {
     id: 'ay-dede',
-    title: 'Ay Dede',
+    title: 'Mond-Opa',
     emoji: '🌙',
-    lyrics: `Ay dede ay dede,
-Senin evin nerede?
-Bulutların arasında,
-Yıldızlarla sahnede.`,
+    lyrics: `Oh Opa, oh Opa,
+Wo ist dein Haus?
+zwischen den Wolken,
+Auf der Bühne mit den Stars.`,
   },
   {
     id: 'sayalim',
-    title: 'Birden Ona',
+    title: 'Eins bis zehn',
     emoji: '🔢',
-    lyrics: `Bir elma, iki armut,
-Üç kiraz, dört kayısı.
-Beş, altı, yedi, sekiz,
-Dokuz, on — aferin size!`,
+    lyrics: `Ein Apfel, zwei Birnen,
+Drei Kirschen, vier Aprikosen.
+Fünf, sechs, sieben, acht,
+Neun, zehn – gut für dich!`,
   },
   {
     id: 'iyi-geceler',
-    title: 'İyi Geceler',
+    title: 'Gute Nacht',
     emoji: '😴',
-    lyrics: `Güneş battı, ay geldi,
-Yıldızlar ışık saçtı.
-Yastığa başını koy,
-Tatlı rüyalara dal.`,
+    lyrics: `Die Sonne ist untergegangen, der Mond ist gekommen,
+Die Sterne spenden Licht.
+Leg deinen Kopf auf das Kissen,
+Tauchen Sie ein in süße Träume.`,
   },
   {
     id: 'horoz',
-    title: 'Horozum',
+    title: 'mein Schwanz',
     emoji: '🐓',
-    lyrics: `Horozum kırmızı,
-Sabah olunca öter.
-Güneş doğar, kuşlar uçar,
-Herkes uyanır neşeyle.`,
+    lyrics: `Mein Hahn ist rot,
+Es singt morgens.
+Die Sonne geht auf, Vögel fliegen,
+Jeder wacht mit Freude auf.`,
   },
   {
     id: 'balikci',
-    title: 'Balıkçı Dede',
+    title: 'Fischer-Großvater',
     emoji: '🎣',
-    lyrics: `Balıkçı dede denize gitti,
-Olta attı, balık tuttu.
-Küçük balık geri bıraktı,
-Denizi sevdi, eve döndü.`,
+    lyrics: `Der Großvater des Fischers ging ans Meer,
+Er warf eine Angelrute und fing Fische.
+Der kleine Fisch ist zurückgeblieben,
+Er liebte das Meer und kehrte nach Hause zurück.`,
   },
   {
     id: 'cicekler',
-    title: 'Çiçekler Açtı',
+    title: 'Blumen blühten',
     emoji: '🌷',
-    lyrics: `Çiçekler açtı bahçede,
-Arılar vız vız gezer.
-Kırmızı, sarı, mor renkler,
-Bahar geldi ne güzel!`,
+    lyrics: `Blumen blühten im Garten,
+Bienen summen umher.
+Rote, gelbe, violette Farben,
+Der Frühling ist da, wie schön er ist!`,
   },
   {
     id: 'top',
-    title: 'Top Oynayalım',
+    title: 'Lass uns Ball spielen',
     emoji: '⚽',
-    lyrics: `Top oynayalım bahçede,
-Zıpla, koş, gül biraz da.
-Arkadaşınla el ele,
-Paylaşmak en güzel oyun.`,
+    lyrics: `Lass uns im Garten Ball spielen,
+Springen, rennen, ein wenig lachen.
+Hand in Hand mit deinem Freund,
+Teilen ist das beste Spiel.`,
   },
   {
     id: 'yagmur',
-    title: 'Yağmur Damlası',
+    title: 'Regentropfen',
     emoji: '🌧️',
-    lyrics: `Yağmur damlası pencereden,
-Tık tık tık diye vurur.
-Gökkuşağı sonra gelir,
-Toprak kokar, çiçek açar.`,
+    lyrics: `Regentropfen aus dem Fenster,
+Es klickt, klickt, klickt.
+Der Regenbogen kommt später,
+Der Boden duftet und Blumen blühen.`,
   },
   {
     id: 'kitap',
-    title: 'Kitap Dostum',
+    title: 'Buch, Alter',
     emoji: '📚',
-    lyrics: `Kitap dostum, sırdaşım,
-Sayfalarında macera.
-Bir masal, bir şiir okurum,
-Hayal kurarım her akşam.`,
+    lyrics: `Das Buch ist mein Freund, mein Vertrauter,
+Abenteuer auf seinen Seiten.
+Ich lese ein Märchen, ein Gedicht,
+Ich träume jeden Abend.`,
   },
   {
     id: 'papatya',
-    title: 'Papatya Kopar',
+    title: 'Gänseblümchen zupfen',
     emoji: '🌼',
-    lyrics: `Papatya kopar sevdim mi,
-Yaprak yaprak sayarım.
-Seviyorum, sevmiyorum,
-Gülümserim, mutlu olurum.`,
+    lyrics: `Hat mir ein Gänseblümchenpflücker gefallen?
+Ich zähle Blatt für Blatt.
+Ich liebe, ich liebe nicht,
+Ich lächle, ich bin glücklich.`,
   },
   {
     id: 'uzay',
-    title: 'Uzay Gemisi',
+    title: 'Raumschiff',
     emoji: '🛸',
-    lyrics: `Uzay gemisi fırladı,
-Yıldızlara doğru gitti.
-Merkür, Mars, Jüpiter,
-Gezegenler sırayla geldi.`,
+    lyrics: `Das Raumschiff startete,
+Er ging den Sternen entgegen.
+Merkur, Mars, Jupiter,
+Die Planeten kamen in Ordnung.`,
   },
   {
     id: 'anne',
-    title: 'Annem',
+    title: 'meine Mutter',
     emoji: '💐',
-    lyrics: `Annem en güzel sözüm,
-Sarılırım her an ona.
-Sıcak sarılması bana,
-Evim gibidir kalbimde.`,
+    lyrics: `Meine Mutter ist mein bestes Wort,
+Ich umarme ihn jeden Moment.
+Umarme mich herzlich,
+Es ist wie mein Zuhause in meinem Herzen.`,
   },
   {
     id: 'kardan-adam',
-    title: 'Kardan Adam',
+    title: 'Schneemann',
     emoji: '⛄',
-    lyrics: `Kardan adam yaptık biz,
-Havuç burnu, taş gözleri.
-Atkı taktık, şapka verdik,
-Kış oyunu ne eğlenceli!`,
+    lyrics: `Wir haben einen Schneemann gemacht,
+Karottennase, steinerne Augen.
+Wir trugen Schals, gaben Mützen,
+Was für ein Spaß ist das Winterspiel!`,
   },
   {
     id: 'tren',
-    title: 'Tren Geliyor',
+    title: 'Der Zug kommt',
     emoji: '🚂',
-    lyrics: `Tren geliyor çuf çuf çuf,
-Vagon vagon peş peşe.
-İstasyonda durur bir an,
-Sonra yola devam eder.`,
+    lyrics: `Der Zug kommt, tschu tschu tschu,
+Wagen um Wagen.
+Er bleibt einen Moment am Bahnhof stehen,
+Dann setzt er seinen Weg fort.`,
   },
   {
     id: 'sabah',
-    title: 'Günaydın',
+    title: 'Guten Morgen',
     emoji: '☀️',
-    lyrics: `Günaydın güneş doğdu,
-Kuşlar şarkı söylüyor.
-Dişlerini fırçala,
-Okula neşeyle git.`,
+    lyrics: `Guten Morgen, die Sonne ist aufgegangen,
+Die Vögel singen.
+Putzen Sie Ihre Zähne,
+Geh fröhlich zur Schule.`,
   },
   {
     id: 'deniz',
-    title: 'Deniz Kenarı',
+    title: 'Meer',
     emoji: '🏖️',
-    lyrics: `Deniz kenarında yürürüm,
-Dalgalar ayaklarıma vurur.
-Kumdan kale yaparım,
-Deniz kabuğu toplarım.`,
+    lyrics: `Ich gehe am Meer entlang,
+Die Wellen trafen meine Füße.
+Ich baue eine Sandburg,
+Ich sammle Muscheln.`,
   },
   {
     id: 'yildiz-say',
-    title: 'Yıldız Sayalım',
+    title: 'Zählen wir die Sterne',
     emoji: '✨',
-    lyrics: `Bir yıldız, iki yıldız,
-Gökyüzü parlıyor.
-Üç yıldız, dört yıldız,
-Dilek tut, hayal kur.`,
+    lyrics: `Ein Stern, zwei Sterne,
+Der Himmel scheint.
+Drei Sterne, vier Sterne,
+Wünsch dir etwas, träume.`,
   },
   {
     id: 'yagmur-damlasi',
-    title: 'Yağmur Damlası',
+    title: 'Regentropfen',
     emoji: '🌧️',
-    lyrics: `Damla damla yağmur yağar,
-Pencereye vurur tık tık.
-Şemsiyemi açarım,
-Su birikintisinde zıplarım.`,
+    lyrics: `Es regnet Tropfen für Tropfen,
+Klopf, klopf, klopf ans Fenster.
+Ich öffne meinen Regenschirm,
+Ich springe in die Pfütze.`,
   },
   {
     id: 'kedi-miyav',
-    title: 'Kedi Miyav',
+    title: 'Katzenmiau',
     emoji: '🐱',
-    lyrics: `Minik kedi miyav der,
-Süt kabına koşar.
-Yumakla oynar, zıplar,
-Gün boyu neşe saçar.`,
+    lyrics: `Die kleine Katze sagt miau,
+Er rennt zum Milchkännchen.
+Spielt mit Ball, springt,
+Es verbreitet den ganzen Tag Freude.`,
   },
   {
     id: 'okula-giderken',
-    title: 'Okula Giderken',
+    title: 'Auf dem Weg zur Schule',
     emoji: '🎒',
-    lyrics: `Çantam sırtımda hafif,
-Ayakkabım temiz parlar.
-Öğretmenim gülümser,
-Yeni gün başlar.`,
+    lyrics: `Meine Tasche liegt leicht auf meinem Rücken,
+Meine Schuhe glänzen sauber.
+Mein Lehrer lächelt,
+Ein neuer Tag beginnt.`,
   },
   {
     id: 'sonbahar-yaprak',
-    title: 'Sonbahar Yaprakları',
+    title: 'Herbstblätter',
     emoji: '🍂',
-    lyrics: `Yapraklar dökülür yavaş,
-Rüzgâr onları dans ettirir.
-Altın sarı, kızıl kırmızı,
-Sonbahar gelmiş ne güzel.`,
+    lyrics: `Die Blätter fallen langsam,
+Der Wind lässt sie tanzen.
+Goldgelb, Purpurrot,
+Der Herbst ist da, wie schön er ist.`,
   },
   {
     id: 'uzay-roket',
-    title: 'Uzay Roketi',
+    title: 'Weltraumrakete',
     emoji: '🚀',
-    lyrics: `Roket fırlar yukarı,
-Yıldızlara doğru gider.
-Meraklı çocuk bakar,
-Hayal kurar büyük.`,
+    lyrics: `Die Rakete schießt hoch,
+Er geht den Sternen entgegen.
+Neugierige Kinderblicke,
+Er träumt große Träume.`,
   },
   {
     id: 'deniz-dalgasi',
-    title: 'Deniz Dalgası',
+    title: 'Meereswelle',
     emoji: '🌊',
-    lyrics: `Dalga gelir, dalga gider,
-Kumda ayak izi kalır.
-Deniz kabuğu toplarım,
-Güneş batana dek oynarım.`,
+    lyrics: `Wellen kommen, Wellen gehen,
+Spuren bleiben im Sand.
+Ich sammle Muscheln,
+Ich spiele, bis die Sonne untergeht.`,
   },
   {
     id: 'kardes-sevgi',
-    title: 'Kardeş Sevgisi',
+    title: 'Brüderliche Liebe',
     emoji: '👫',
-    lyrics: `Kardeşimle el ele,
-Paylaşırız oyuncağı.
-Bazen kısırız ama sonra,
-Barışırız kucaklaşırız.`,
+    lyrics: `Hand in Hand mit meinem Bruder,
+Wir teilen das Spielzeug.
+Manchmal sind wir unfruchtbar, aber dann
+Wir schließen Frieden und umarmen uns.`,
   },
   {
     id: 'sabah-gunes',
-    title: 'Sabah Güneşi',
+    title: 'Morgensonne',
     emoji: '🌅',
-    lyrics: `Güneş doğar pencereden,
-Kuşlar şarkı söyler.
-Dişlerimi fırçalarım,
-Güne enerjiyle girerim.`,
+    lyrics: `Die Sonne geht aus dem Fenster auf,
+Vögel singen.
+Ich putze meine Zähne,
+Ich gehe voller Energie in den Tag.`,
   },
   {
     id: 'kis-kar',
-    title: 'Kış Karı',
+    title: 'Winterschnee',
     emoji: '❄️',
-    lyrics: `Kar yağar beyaz beyaz,
-Kardan adam yaparım.
-Eldivenler, atkı, bere,
-Kış oyunu ne güzel.`,
+    lyrics: `Schnee fällt weiß, weiß,
+Ich mache einen Schneemann.
+Handschuhe, Schal, Mütze,
+Was für ein wunderschönes Winterspiel.`,
   },
   {
     id: 'bahar-cicek',
-    title: 'Bahar Çiçekleri',
+    title: 'Frühlingsblumen',
     emoji: '🌷',
-    lyrics: `Bahar geldi renk renk,
-Lale, papatya, menekşe.
-Arılar vızıldar,
-Doğa uyanır neşeyle.`,
+    lyrics: `Der Frühling ist in vielen Farben gekommen,
+Tulpe, Gänseblümchen, Veilchen.
+Bienen summen,
+Die Natur erwacht voller Freude.`,
   },
   {
     id: 'gece-yildiz',
-    title: 'Gece Yıldızı',
+    title: 'Nachtstern',
     emoji: '⭐',
-    lyrics: `Gece olunca yıldızlar,
-Gökyüzünde parlar.
-Ninni dinlerim yatakta,
-Tatlı rüyalara dalarm.`,
+    lyrics: `Wenn die Nacht kommt, die Sterne
+Es leuchtet am Himmel.
+Ich höre Schlaflieder im Bett,
+Ich tauche in süße Träume ein.`,
   },
   {
     id: 'orman-yuruyus',
-    title: 'Orman Yürüyüşü',
+    title: 'Waldspaziergang',
     emoji: '🌲',
-    lyrics: `Ormanda yürürüm sessiz,
-Kuş sesi duyarım.
-Yaprak hışırtısı,
-Doğanın ninni gibi.`,
+    lyrics: `Ich gehe schweigend durch den Wald,
+Ich höre Vogelgezwitscher.
+Rascheln der Blätter,
+Es ist wie das Schlaflied der Natur.`,
   },
   {
     id: 'bisiklet-sur',
-    title: 'Bisiklet Sür',
+    title: 'Fahrrad fahren',
     emoji: '🚲',
-    lyrics: `Pedallara bas bas gider,
-Rüzgâr yüzümü okşar.
-Kaskım takılı güvenle,
-Yol boyu neşeyle giderim.`,
+    lyrics: `Er tritt in die Pedale,
+Der Wind streichelt mein Gesicht.
+Mit sicher aufgesetztem Helm,
+Ich werde fröhlich den Weg gehen.`,
   },
   {
     id: 'piknik-gunu',
-    title: 'Piknik Günü',
+    title: 'Picknicktag',
     emoji: '🧺',
-    lyrics: `Sepet dolu lezzetler,
-Battaniye serilmiş çimen.
-Ailemle otururuz,
-Güneşte güleriz.`,
+    lyrics: `Korb voller Köstlichkeiten,
+Decke auf Gras ausgebreitet.
+Wir sitzen mit meiner Familie,
+Wir lachen in der Sonne.`,
   },
   {
     id: 'duygu-paylas',
-    title: 'Duygu Paylaş',
+    title: 'Teilen Sie das Gefühl',
     emoji: '💛',
-    lyrics: `Mutluysam söylerim,
-Üzgünsem anlatırım.
-Duygularım değerli,
-Paylaşınca hafiflerim.`,
+    lyrics: `Wenn ich glücklich bin, sage ich es
+Wenn es mir leid tut, werde ich es dir sagen.
+Meine Gefühle sind kostbar,
+Ich fühle mich leichter, wenn ich teile.`,
   },
   {
     id: 'kitap-okur',
-    title: 'Kitap Okur',
+    title: 'Liest ein Buch',
     emoji: '📖',
-    lyrics: `Kitap açar sayfa sayfa,
-Kahramanlar canlanır.
-Hayal kurarım büyük,
-Okumak çok eğlenceli.`,
+    lyrics: `Öffnet ein Buch Seite für Seite,
+Die Helden werden lebendig.
+Ich träume groß,
+Es macht viel Spaß zu lesen.`,
   },
   {
     id: 'ari-vizildama',
-    title: 'Arı Vızıldama',
+    title: 'Bienensummen',
     emoji: '🐝',
-    lyrics: `Arı vız vız uçar,
-Çiçekten çiçeğe gider.
-Bal yapar çalışkan,
-Doğaya hizmet eder.`,
+    lyrics: `Die Biene fliegt summend,
+Es geht von Blüte zu Blüte.
+Der harte Arbeiter macht Honig,
+Es dient der Natur.`,
   },
   {
     id: 'tren-istikamet',
-    title: 'Tren İstasyonu',
+    title: 'Bahnhof',
     emoji: '🚂',
-    lyrics: `Tren gelir vagon vagon,
-Düdük çalar tren.
-Yolculuk başlar neşeyle,
-Pencereden dünya geçer.`,
+    lyrics: `Der Zug kommt, Wagen für Wagen,
+Der Zug pfeift.
+Die Reise beginnt mit Freude,
+Die Welt geht durch das Fenster.`,
   },
   {
     id: 'bulut-sekil',
-    title: 'Bulut Şekli',
+    title: 'Wolkenform',
     emoji: '☁️',
-    lyrics: `Buluta bakarım gökyüzünde,
-Fil mi, köpek mi?
-Hayal kurarım büyük,
-Gökyüzü tuvalim.`,
+    lyrics: `Ich schaue auf die Wolken am Himmel,
+Elefant oder Hund?
+Ich träume groß,
+Der Himmel ist meine Leinwand.`,
   },
   {
     id: 'yaz-deniz',
-    title: 'Yaz Denizi',
+    title: 'Sommermeer',
     emoji: '🏖️',
-    lyrics: `Yaz geldi deniz çağırır,
-Kumda kale yaparım.
-Güneş kremi, şapka, su,
-Yaz tatili ne güzel.`,
+    lyrics: `Der Sommer ist gekommen, das Meer ruft,
+Ich baue eine Burg im Sand.
+Sonnencreme, Hut, Wasser,
+Wie schön ist der Sommerurlaub.`,
   },
   {
     id: 'cesaret-adim',
-    title: 'Cesaret Adımı',
+    title: 'Schritt des Mutes',
     emoji: '💪',
-    lyrics: `Korksam da denerim,
-Küçük adım atarım.
-Cesaret büyür içimde,
-Başarınca gurur duyarım.`,
+    lyrics: `Auch wenn ich Angst habe, werde ich es versuchen
+Ich werde kleine Schritte machen.
+Der Mut wächst in mir,
+Ich bin stolz, wenn es mir gelingt.`,
   },
   {
     id: 'paylasim-elma',
-    title: 'Paylaşım Elması',
+    title: 'Apfel des Teilens',
     emoji: '🍎',
-    lyrics: `Elmayı ikiye bölerim,
-Arkadaşıma veririm.
-Paylaşınca tatlanır,
-Dostluk güçlenir.`,
+    lyrics: `Ich habe den Apfel halbiert,
+Ich gebe es meinem Freund.
+Es wird süßer, wenn man es teilt,
+Freundschaft wird stärker.`,
   },
   {
     id: 'uyku-ninni',
-    title: 'Uyku Ninnisi',
+    title: 'Schlaflied',
     emoji: '🌙',
-    lyrics: `Gözlerim ağırlaşır,
-Ay pencereden bakar.
-Ninni dinler, uyurum,
-Rüyalar kapıda bekler.`,
+    lyrics: `Meine Augen werden schwer,
+Der Mond schaut aus dem Fenster.
+Ich höre Schlaflieder, ich schlafe,
+Träume warten an der Tür.`,
   },
   {
     id: 'rhyme-portal-1',
-    title: 'Neşeli Tekerleme 1',
+    title: 'Fröhlicher Kinderreim 1',
     emoji: '🎶',
-    lyrics: `El çırp el çiz, 1 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir einmal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-2',
-    title: 'Neşeli Tekerleme 2',
+    title: 'Fröhlicher Kinderreim 2',
     emoji: '🎤',
-    lyrics: `El çırp el çiz, 2 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir zweimal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-3',
-    title: 'Neşeli Tekerleme 3',
+    title: 'Fröhlicher Kinderreim 3',
     emoji: '🥁',
-    lyrics: `El çırp el çiz, 3 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir dreimal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-4',
-    title: 'Neşeli Tekerleme 4',
+    title: 'Fröhlicher Kinderreim 4',
     emoji: '🎵',
-    lyrics: `El çırp el çiz, 4 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 4 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-5',
-    title: 'Neşeli Tekerleme 5',
+    title: 'Fröhlicher Kinderreim 5',
     emoji: '🎶',
-    lyrics: `El çırp el çiz, 5 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 5 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-6',
-    title: 'Neşeli Tekerleme 6',
+    title: 'Fröhlicher Kinderreim 6',
     emoji: '🎤',
-    lyrics: `El çırp el çiz, 6 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 6 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-7',
-    title: 'Neşeli Tekerleme 7',
+    title: 'Fröhlicher Kinderreim 7',
     emoji: '🥁',
-    lyrics: `El çırp el çiz, 7 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 7 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-8',
-    title: 'Neşeli Tekerleme 8',
+    title: 'Fröhlicher Kinderreim 8',
     emoji: '🎵',
-    lyrics: `El çırp el çiz, 8 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 8 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-9',
-    title: 'Neşeli Tekerleme 9',
+    title: 'Fröhlicher Kinderreim 9',
     emoji: '🎶',
-    lyrics: `El çırp el çiz, 9 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 9 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-10',
-    title: 'Neşeli Tekerleme 10',
+    title: 'Fröhlicher Kinderreim 10',
     emoji: '🎤',
-    lyrics: `El çırp el çiz, 10 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 10 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-11',
-    title: 'Neşeli Tekerleme 11',
+    title: 'Fröhlicher Kinderreim 11',
     emoji: '🥁',
-    lyrics: `El çırp el çiz, 11 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 11 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-12',
-    title: 'Neşeli Tekerleme 12',
+    title: 'Fröhlicher Kinderreim 12',
     emoji: '🎵',
-    lyrics: `El çırp el çiz, 12 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 12 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-13',
-    title: 'Neşeli Tekerleme 13',
+    title: 'Fröhlicher Kinderreim 13',
     emoji: '🎶',
-    lyrics: `El çırp el çiz, 13 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 13 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-14',
-    title: 'Neşeli Tekerleme 14',
+    title: 'Fröhlicher Kinderreim 14',
     emoji: '🎤',
-    lyrics: `El çırp el çiz, 14 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 14 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-15',
-    title: 'Neşeli Tekerleme 15',
+    title: 'Fröhlicher Kinderreim 15',
     emoji: '🥁',
-    lyrics: `El çırp el çiz, 15 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 15 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-16',
-    title: 'Neşeli Tekerleme 16',
+    title: 'Fröhlicher Kinderreim 16',
     emoji: '🎵',
-    lyrics: `El çırp el çiz, 16 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 16 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-17',
-    title: 'Neşeli Tekerleme 17',
+    title: 'Fröhlicher Kinderreim 17',
     emoji: '🎶',
-    lyrics: `El çırp el çiz, 17 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 17 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-18',
-    title: 'Neşeli Tekerleme 18',
+    title: 'Fröhlicher Kinderreim 18',
     emoji: '🎤',
-    lyrics: `El çırp el çiz, 18 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 18 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-19',
-    title: 'Neşeli Tekerleme 19',
+    title: 'Fröhlicher Kinderreim 19',
     emoji: '🥁',
-    lyrics: `El çırp el çiz, 19 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 19 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-20',
-    title: 'Neşeli Tekerleme 20',
+    title: 'Fröhlicher Kinderreim 20',
     emoji: '🎵',
-    lyrics: `El çırp el çiz, 20 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 20 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-21',
-    title: 'Neşeli Tekerleme 21',
+    title: 'Fröhlicher Kinderreim 21',
     emoji: '🎶',
-    lyrics: `El çırp el çiz, 21 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 21 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-22',
-    title: 'Neşeli Tekerleme 22',
+    title: 'Fröhlicher Kinderreim 22',
     emoji: '🎤',
-    lyrics: `El çırp el çiz, 22 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 22 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-23',
-    title: 'Neşeli Tekerleme 23',
+    title: 'Fröhlicher Kinderreim 23',
     emoji: '🥁',
-    lyrics: `El çırp el çiz, 23 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 23 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-24',
-    title: 'Neşeli Tekerleme 24',
+    title: 'Fröhlicher Kinderreim 24',
     emoji: '🎵',
-    lyrics: `El çırp el çiz, 24 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 24 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-25',
-    title: 'Neşeli Tekerleme 25',
+    title: 'Fröhlicher Kinderreim 25',
     emoji: '🎶',
-    lyrics: `El çırp el çiz, 25 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 25 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-26',
-    title: 'Neşeli Tekerleme 26',
+    title: 'Fröhlicher Kinderreim 26',
     emoji: '🎤',
-    lyrics: `El çırp el çiz, 26 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 26 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-27',
-    title: 'Neşeli Tekerleme 27',
+    title: 'Fröhlicher Kinderreim 27',
     emoji: '🥁',
-    lyrics: `El çırp el çiz, 27 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 27 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-28',
-    title: 'Neşeli Tekerleme 28',
+    title: 'Fröhlicher Kinderreim 28',
     emoji: '🎵',
-    lyrics: `El çırp el çiz, 28 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 28 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-29',
-    title: 'Neşeli Tekerleme 29',
+    title: 'Fröhlicher Kinderreim 29',
     emoji: '🎶',
-    lyrics: `El çırp el çiz, 29 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 29 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'rhyme-portal-30',
-    title: 'Neşeli Tekerleme 30',
+    title: 'Fröhlicher Kinderreim 30',
     emoji: '🎤',
-    lyrics: `El çırp el çiz, 30 kez sayalım,
-Gülümse biraz, birlikte oynayalım.
-Yavaşça nefes al, sonra söyle bakalım,
-Bugün ne öğrendik, bir cümle kuralım.`,
+    lyrics: `Klatschen Sie in die Hände und zeichnen Sie, zählen wir 30 Mal,
+Lächle ein wenig, lass uns zusammen spielen.
+Atme langsam und sage es dann:
+Machen wir einen Satz über das, was wir heute gelernt haben.`,
   },
   {
     id: 'mega-rhyme-1',
-    title: 'Mega Tekerleme 1',
+    title: 'Mega-Kinderreim 1',
     emoji: '🎵',
-    lyrics: `El çırp 1 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Einmal in die Hände klatschen, ein wenig lächeln,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-2',
-    title: 'Mega Tekerleme 2',
+    title: 'Mega-Kinderreim 2',
     emoji: '🎵',
-    lyrics: `El çırp 2 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie zweimal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-3',
-    title: 'Mega Tekerleme 3',
+    title: 'Mega-Kinderreim 3',
     emoji: '🎵',
-    lyrics: `El çırp 3 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie dreimal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-4',
-    title: 'Mega Tekerleme 4',
+    title: 'Mega-Kinderreim 4',
     emoji: '🎵',
-    lyrics: `El çırp 4 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 4 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-5',
-    title: 'Mega Tekerleme 5',
+    title: 'Mega-Kinderreim 5',
     emoji: '🎵',
-    lyrics: `El çırp 5 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 5 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-6',
-    title: 'Mega Tekerleme 6',
+    title: 'Mega-Kinderreim 6',
     emoji: '🎵',
-    lyrics: `El çırp 6 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 6 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-7',
-    title: 'Mega Tekerleme 7',
+    title: 'Mega-Kinderreim 7',
     emoji: '🎵',
-    lyrics: `El çırp 7 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 7 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-8',
-    title: 'Mega Tekerleme 8',
+    title: 'Mega-Kinderreim 8',
     emoji: '🎵',
-    lyrics: `El çırp 8 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 8 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-9',
-    title: 'Mega Tekerleme 9',
+    title: 'Mega-Kinderreim 9',
     emoji: '🎵',
-    lyrics: `El çırp 9 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 9 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-10',
-    title: 'Mega Tekerleme 10',
+    title: 'Mega-Kinderreim 10',
     emoji: '🎵',
-    lyrics: `El çırp 10 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 10 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-11',
-    title: 'Mega Tekerleme 11',
+    title: 'Mega-Kinderreim 11',
     emoji: '🎵',
-    lyrics: `El çırp 11 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 11 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-12',
-    title: 'Mega Tekerleme 12',
+    title: 'Mega-Kinderreim 12',
     emoji: '🎵',
-    lyrics: `El çırp 12 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 12 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-13',
-    title: 'Mega Tekerleme 13',
+    title: 'Mega-Kinderreim 13',
     emoji: '🎵',
-    lyrics: `El çırp 13 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 13 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-14',
-    title: 'Mega Tekerleme 14',
+    title: 'Mega-Kinderreim 14',
     emoji: '🎵',
-    lyrics: `El çırp 14 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 14 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-15',
-    title: 'Mega Tekerleme 15',
+    title: 'Mega-Kinderreim 15',
     emoji: '🎵',
-    lyrics: `El çırp 15 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 15 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-16',
-    title: 'Mega Tekerleme 16',
+    title: 'Mega-Kinderreim 16',
     emoji: '🎵',
-    lyrics: `El çırp 16 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 16 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-17',
-    title: 'Mega Tekerleme 17',
+    title: 'Mega-Kinderreim 17',
     emoji: '🎵',
-    lyrics: `El çırp 17 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 17 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-18',
-    title: 'Mega Tekerleme 18',
+    title: 'Mega-Kinderreim 18',
     emoji: '🎵',
-    lyrics: `El çırp 18 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 18 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-19',
-    title: 'Mega Tekerleme 19',
+    title: 'Mega-Kinderreim 19',
     emoji: '🎵',
-    lyrics: `El çırp 19 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 19 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-20',
-    title: 'Mega Tekerleme 20',
+    title: 'Mega-Kinderreim 20',
     emoji: '🎵',
-    lyrics: `El çırp 20 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 20 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-21',
-    title: 'Mega Tekerleme 21',
+    title: 'Mega-Kinderreim 21',
     emoji: '🎵',
-    lyrics: `El çırp 21 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 21 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-22',
-    title: 'Mega Tekerleme 22',
+    title: 'Mega-Kinderreim 22',
     emoji: '🎵',
-    lyrics: `El çırp 22 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 22 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-23',
-    title: 'Mega Tekerleme 23',
+    title: 'Mega-Kinderreim 23',
     emoji: '🎵',
-    lyrics: `El çırp 23 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 23 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-24',
-    title: 'Mega Tekerleme 24',
+    title: 'Mega-Kinderreim 24',
     emoji: '🎵',
-    lyrics: `El çırp 24 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 24 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-25',
-    title: 'Mega Tekerleme 25',
+    title: 'Mega-Kinderreim 25',
     emoji: '🎵',
-    lyrics: `El çırp 25 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 25 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-26',
-    title: 'Mega Tekerleme 26',
+    title: 'Mega-Kinderreim 26',
     emoji: '🎵',
-    lyrics: `El çırp 26 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 26 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-27',
-    title: 'Mega Tekerleme 27',
+    title: 'Mega-Kinderreim 27',
     emoji: '🎵',
-    lyrics: `El çırp 27 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 27 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-28',
-    title: 'Mega Tekerleme 28',
+    title: 'Mega-Kinderreim 28',
     emoji: '🎵',
-    lyrics: `El çırp 28 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 28 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-29',
-    title: 'Mega Tekerleme 29',
+    title: 'Mega-Kinderreim 29',
     emoji: '🎵',
-    lyrics: `El çırp 29 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 29 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-30',
-    title: 'Mega Tekerleme 30',
+    title: 'Mega-Kinderreim 30',
     emoji: '🎵',
-    lyrics: `El çırp 30 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 30 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-31',
-    title: 'Mega Tekerleme 31',
+    title: 'Mega-Kinderreim 31',
     emoji: '🎵',
-    lyrics: `El çırp 31 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 31 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-32',
-    title: 'Mega Tekerleme 32',
+    title: 'Mega-Kinderreim 32',
     emoji: '🎵',
-    lyrics: `El çırp 32 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 32 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-33',
-    title: 'Mega Tekerleme 33',
+    title: 'Mega-Kinderreim 33',
     emoji: '🎵',
-    lyrics: `El çırp 33 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 33 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-34',
-    title: 'Mega Tekerleme 34',
+    title: 'Mega-Kinderreim 34',
     emoji: '🎵',
-    lyrics: `El çırp 34 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 34 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-35',
-    title: 'Mega Tekerleme 35',
+    title: 'Mega-Kinderreim 35',
     emoji: '🎵',
-    lyrics: `El çırp 35 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 35 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-36',
-    title: 'Mega Tekerleme 36',
+    title: 'Mega-Kinderreim 36',
     emoji: '🎵',
-    lyrics: `El çırp 36 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 36 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-37',
-    title: 'Mega Tekerleme 37',
+    title: 'Mega-Kinderreim 37',
     emoji: '🎵',
-    lyrics: `El çırp 37 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 37 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-38',
-    title: 'Mega Tekerleme 38',
+    title: 'Mega-Kinderreim 38',
     emoji: '🎵',
-    lyrics: `El çırp 38 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 38 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-39',
-    title: 'Mega Tekerleme 39',
+    title: 'Mega-Kinderreim 39',
     emoji: '🎵',
-    lyrics: `El çırp 39 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 39 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-40',
-    title: 'Mega Tekerleme 40',
+    title: 'Mega-Kinderreim 40',
     emoji: '🎵',
-    lyrics: `El çırp 40 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 40 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-41',
-    title: 'Mega Tekerleme 41',
+    title: 'Mega-Kinderreim 41',
     emoji: '🎵',
-    lyrics: `El çırp 41 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 41 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-42',
-    title: 'Mega Tekerleme 42',
+    title: 'Mega-Kinderreim 42',
     emoji: '🎵',
-    lyrics: `El çırp 42 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 42 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-43',
-    title: 'Mega Tekerleme 43',
+    title: 'Mega-Kinderreim 43',
     emoji: '🎵',
-    lyrics: `El çırp 43 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 43 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-44',
-    title: 'Mega Tekerleme 44',
+    title: 'Mega-Kinderreim 44',
     emoji: '🎵',
-    lyrics: `El çırp 44 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 44 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-45',
-    title: 'Mega Tekerleme 45',
+    title: 'Mega-Kinderreim 45',
     emoji: '🎵',
-    lyrics: `El çırp 45 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 45 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-46',
-    title: 'Mega Tekerleme 46',
+    title: 'Mega-Kinderreim 46',
     emoji: '🎵',
-    lyrics: `El çırp 46 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 46 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-47',
-    title: 'Mega Tekerleme 47',
+    title: 'Mega-Kinderreim 47',
     emoji: '🎵',
-    lyrics: `El çırp 47 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 47 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-48',
-    title: 'Mega Tekerleme 48',
+    title: 'Mega-Kinderreim 48',
     emoji: '🎵',
-    lyrics: `El çırp 48 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 48 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-49',
-    title: 'Mega Tekerleme 49',
+    title: 'Mega-Kinderreim 49',
     emoji: '🎵',
-    lyrics: `El çırp 49 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 49 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-50',
-    title: 'Mega Tekerleme 50',
+    title: 'Mega-Kinderreim 50',
     emoji: '🎵',
-    lyrics: `El çırp 50 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 50 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-51',
-    title: 'Mega Tekerleme 51',
+    title: 'Mega-Kinderreim 51',
     emoji: '🎵',
-    lyrics: `El çırp 51 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 51 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-52',
-    title: 'Mega Tekerleme 52',
+    title: 'Mega-Kinderreim 52',
     emoji: '🎵',
-    lyrics: `El çırp 52 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 52 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-53',
-    title: 'Mega Tekerleme 53',
+    title: 'Mega-Kinderreim 53',
     emoji: '🎵',
-    lyrics: `El çırp 53 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 53 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-54',
-    title: 'Mega Tekerleme 54',
+    title: 'Mega-Kinderreim 54',
     emoji: '🎵',
-    lyrics: `El çırp 54 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 54 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-55',
-    title: 'Mega Tekerleme 55',
+    title: 'Mega-Kinderreim 55',
     emoji: '🎵',
-    lyrics: `El çırp 55 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 55 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-56',
-    title: 'Mega Tekerleme 56',
+    title: 'Mega-Kinderreim 56',
     emoji: '🎵',
-    lyrics: `El çırp 56 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 56 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-57',
-    title: 'Mega Tekerleme 57',
+    title: 'Mega-Kinderreim 57',
     emoji: '🎵',
-    lyrics: `El çırp 57 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 57 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-58',
-    title: 'Mega Tekerleme 58',
+    title: 'Mega-Kinderreim 58',
     emoji: '🎵',
-    lyrics: `El çırp 58 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 58 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-59',
-    title: 'Mega Tekerleme 59',
+    title: 'Mega-Kinderreim 59',
     emoji: '🎵',
-    lyrics: `El çırp 59 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 59 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-60',
-    title: 'Mega Tekerleme 60',
+    title: 'Mega-Kinderreim 60',
     emoji: '🎵',
-    lyrics: `El çırp 60 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 60 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-61',
-    title: 'Mega Tekerleme 61',
+    title: 'Mega-Kinderreim 61',
     emoji: '🎵',
-    lyrics: `El çırp 61 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 61 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-62',
-    title: 'Mega Tekerleme 62',
+    title: 'Mega-Kinderreim 62',
     emoji: '🎵',
-    lyrics: `El çırp 62 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 62 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-63',
-    title: 'Mega Tekerleme 63',
+    title: 'Mega-Kinderreim 63',
     emoji: '🎵',
-    lyrics: `El çırp 63 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 63 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-64',
-    title: 'Mega Tekerleme 64',
+    title: 'Mega-Kinderreim 64',
     emoji: '🎵',
-    lyrics: `El çırp 64 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 64 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-65',
-    title: 'Mega Tekerleme 65',
+    title: 'Mega-Kinderreim 65',
     emoji: '🎵',
-    lyrics: `El çırp 65 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 65 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-66',
-    title: 'Mega Tekerleme 66',
+    title: 'Mega-Kinderreim 66',
     emoji: '🎵',
-    lyrics: `El çırp 66 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 66 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-67',
-    title: 'Mega Tekerleme 67',
+    title: 'Mega-Kinderreim 67',
     emoji: '🎵',
-    lyrics: `El çırp 67 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 67 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-68',
-    title: 'Mega Tekerleme 68',
+    title: 'Mega-Kinderreim 68',
     emoji: '🎵',
-    lyrics: `El çırp 68 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 68 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-69',
-    title: 'Mega Tekerleme 69',
+    title: 'Mega-Kinderreim 69',
     emoji: '🎵',
-    lyrics: `El çırp 69 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 69 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-70',
-    title: 'Mega Tekerleme 70',
+    title: 'Mega-Kinderreim 70',
     emoji: '🎵',
-    lyrics: `El çırp 70 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `70 Mal in die Hände klatschen, ein wenig lächeln,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-71',
-    title: 'Mega Tekerleme 71',
+    title: 'Mega-Kinderreim 71',
     emoji: '🎵',
-    lyrics: `El çırp 71 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `71 Mal in die Hände klatschen, ein wenig lächeln,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-72',
-    title: 'Mega Tekerleme 72',
+    title: 'Mega-Kinderreim 72',
     emoji: '🎵',
-    lyrics: `El çırp 72 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 72 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-73',
-    title: 'Mega Tekerleme 73',
+    title: 'Mega-Kinderreim 73',
     emoji: '🎵',
-    lyrics: `El çırp 73 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 73 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-74',
-    title: 'Mega Tekerleme 74',
+    title: 'Mega-Kinderreim 74',
     emoji: '🎵',
-    lyrics: `El çırp 74 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 74 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-75',
-    title: 'Mega Tekerleme 75',
+    title: 'Mega-Kinderreim 75',
     emoji: '🎵',
-    lyrics: `El çırp 75 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 75 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-76',
-    title: 'Mega Tekerleme 76',
+    title: 'Mega-Kinderreim 76',
     emoji: '🎵',
-    lyrics: `El çırp 76 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 76 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-77',
-    title: 'Mega Tekerleme 77',
+    title: 'Mega-Kinderreim 77',
     emoji: '🎵',
-    lyrics: `El çırp 77 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 77 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-78',
-    title: 'Mega Tekerleme 78',
+    title: 'Mega-Kinderreim 78',
     emoji: '🎵',
-    lyrics: `El çırp 78 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 78 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-79',
-    title: 'Mega Tekerleme 79',
+    title: 'Mega-Kinderreim 79',
     emoji: '🎵',
-    lyrics: `El çırp 79 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 79 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-80',
-    title: 'Mega Tekerleme 80',
+    title: 'Mega-Kinderreim 80',
     emoji: '🎵',
-    lyrics: `El çırp 80 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `80 Mal in die Hände klatschen, ein wenig lächeln,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-81',
-    title: 'Mega Tekerleme 81',
+    title: 'Mega-Kinderreim 81',
     emoji: '🎵',
-    lyrics: `El çırp 81 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 81 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-82',
-    title: 'Mega Tekerleme 82',
+    title: 'Mega-Kinderreim 82',
     emoji: '🎵',
-    lyrics: `El çırp 82 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 82 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-83',
-    title: 'Mega Tekerleme 83',
+    title: 'Mega-Kinderreim 83',
     emoji: '🎵',
-    lyrics: `El çırp 83 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 83 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-84',
-    title: 'Mega Tekerleme 84',
+    title: 'Mega-Kinderreim 84',
     emoji: '🎵',
-    lyrics: `El çırp 84 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 84 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-85',
-    title: 'Mega Tekerleme 85',
+    title: 'Mega-Kinderreim 85',
     emoji: '🎵',
-    lyrics: `El çırp 85 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `85 Mal in die Hände klatschen, ein wenig lächeln,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-86',
-    title: 'Mega Tekerleme 86',
+    title: 'Mega-Kinderreim 86',
     emoji: '🎵',
-    lyrics: `El çırp 86 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 86 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-87',
-    title: 'Mega Tekerleme 87',
+    title: 'Mega-Kinderreim 87',
     emoji: '🎵',
-    lyrics: `El çırp 87 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 87 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-88',
-    title: 'Mega Tekerleme 88',
+    title: 'Mega-Kinderreim 88',
     emoji: '🎵',
-    lyrics: `El çırp 88 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 88 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-89',
-    title: 'Mega Tekerleme 89',
+    title: 'Mega-Kinderreim 89',
     emoji: '🎵',
-    lyrics: `El çırp 89 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 89 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-90',
-    title: 'Mega Tekerleme 90',
+    title: 'Mega-Kinderreim 90',
     emoji: '🎵',
-    lyrics: `El çırp 90 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 90 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-91',
-    title: 'Mega Tekerleme 91',
+    title: 'Mega-Kinderreim 91',
     emoji: '🎵',
-    lyrics: `El çırp 91 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 91 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-92',
-    title: 'Mega Tekerleme 92',
+    title: 'Mega-Kinderreim 92',
     emoji: '🎵',
-    lyrics: `El çırp 92 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 92 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-93',
-    title: 'Mega Tekerleme 93',
+    title: 'Mega-Kinderreim 93',
     emoji: '🎵',
-    lyrics: `El çırp 93 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 93 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-94',
-    title: 'Mega Tekerleme 94',
+    title: 'Mega-Kinderreim 94',
     emoji: '🎵',
-    lyrics: `El çırp 94 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 94 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-95',
-    title: 'Mega Tekerleme 95',
+    title: 'Mega-Kinderreim 95',
     emoji: '🎵',
-    lyrics: `El çırp 95 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 95 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-96',
-    title: 'Mega Tekerleme 96',
+    title: 'Mega-Kinderreim 96',
     emoji: '🎵',
-    lyrics: `El çırp 96 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 96 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-97',
-    title: 'Mega Tekerleme 97',
+    title: 'Mega-Kinderreim 97',
     emoji: '🎵',
-    lyrics: `El çırp 97 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 97 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-98',
-    title: 'Mega Tekerleme 98',
+    title: 'Mega-Kinderreim 98',
     emoji: '🎵',
-    lyrics: `El çırp 98 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 98 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-99',
-    title: 'Mega Tekerleme 99',
+    title: 'Mega-Kinderreim 99',
     emoji: '🎵',
-    lyrics: `El çırp 99 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 99 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   },
   {
     id: 'mega-rhyme-100',
-    title: 'Mega Tekerleme 100',
+    title: 'Mega-Kinderreime 100',
     emoji: '🎵',
-    lyrics: `El çırp 100 kez, gülümse biraz,
-Birlikte sayalım, sonra bir nefes.
-Bugün ne öğrendik, söyle bakalım!`,
+    lyrics: `Klatschen Sie 100 Mal in die Hände, lächeln Sie ein wenig,
+Lasst uns gemeinsam zählen und dann durchatmen.
+Erzählen Sie uns, was wir heute gelernt haben!`,
   }
 ]

@@ -5,15 +5,26 @@ export const onRequestOptions = (context: AuthContext) => authOptions(context)
 
 export const onRequestPost = async (context: AuthContext) => {
   try {
-    if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Geçersiz istek' }, 400, context)
+    if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Ungültige Anfrage' }, 400, context)
     const account = await getAccountFromRequest(context)
-    if (!account) return authResponse({ error: 'Ödeme için ebeveyn hesabıyla giriş yapın', code: 'unauthorized' }, 401, context)
+    if (!account) return authResponse({ error: 'Melden Sie sich für die Zahlung mit einem Elternkonto an', code: 'unauthorized' }, 401, context)
     const body = (await context.request.json()) as { plan?: unknown }
-    const plan = body.plan === 'annual' ? 'annual' : 'monthly'
+    if (body.plan !== 'annual' && body.plan !== 'monthly') {
+      return authResponse({ error: 'Ungültiger Abonnementplan' }, 400, context)
+    }
+    const plan = body.plan
     const priceId = plan === 'annual' ? envString(context.env.STRIPE_PRICE_ANNUAL) : envString(context.env.STRIPE_PRICE_MONTHLY)
 
     if (!priceId || !envString(context.env.STRIPE_SECRET_KEY)) {
-      return authResponse({ error: 'Ödeme yapılandırması henüz tamamlanmadı', code: 'configuration_missing' }, 503, context)
+      return authResponse({ error: 'Zahlung ist noch nicht eingerichtet', code: 'configuration_missing' }, 503, context)
+    }
+
+    // Do not create a second subscription for the same family account.
+    const existingMembership = await context.env.DB?.prepare(
+      "SELECT subscription_id as subscriptionId FROM memberships WHERE (account_id = ? OR (account_id IS NULL AND lower(email) = lower(?))) AND status IN ('active', 'trialing', 'past_due') ORDER BY updated_at DESC LIMIT 1",
+    ).bind(account.id, account.email).first?.<{ subscriptionId?: string }>()
+    if (existingMembership?.subscriptionId) {
+      return authResponse({ error: 'Dieses Konto hat bereits ein Familien+-Abonnement', code: 'membership_exists' }, 409, context)
     }
 
     const params = new URLSearchParams()
@@ -26,6 +37,12 @@ export const onRequestPost = async (context: AuthContext) => {
     params.set('cancel_url', siteUrl(context.env) + '/#membership')
     params.set('allow_promotion_codes', 'true')
     params.set('billing_address_collection', 'auto')
+    params.set('locale', envString(context.env.STRIPE_CHECKOUT_LOCALE) || 'de')
+    params.set('tax_id_collection[enabled]', 'true')
+    if (envString(context.env.STRIPE_REQUIRE_TERMS).toLowerCase() === 'true') {
+      // Configure the current Terms of Service URL in Stripe Dashboard first.
+      params.set('consent_collection[terms_of_service]', 'required')
+    }
     params.set('metadata[product]', 'kitapcenneti-family-plus')
     params.set('metadata[plan]', plan)
     params.set('metadata[account_id]', account.id)
@@ -38,12 +55,12 @@ export const onRequestPost = async (context: AuthContext) => {
     })
     const payload = (await response.json()) as { url?: string; error?: { message?: string } }
     if (!response.ok || !payload.url) {
-      return authResponse({ error: payload.error?.message || 'Ödeme bağlantısı oluşturulamadı' }, 502, context)
+      return authResponse({ error: payload.error?.message || 'Zahlungslink konnte nicht erstellt werden' }, 502, context)
     }
     return authResponse({ url: payload.url }, 200, context)
   } catch (error) {
     console.error('Membership checkout error', error)
-    if (error instanceof Error && error.message === 'DB_NOT_CONFIGURED') return authResponse({ error: 'Hesap servisi henüz yapılandırılmadı', code: 'configuration_missing' }, 503, context)
-    return authResponse({ error: 'Ödeme servisine bağlanılamadı' }, 500, context)
+    if (error instanceof Error && error.message === 'DB_NOT_CONFIGURED') return authResponse({ error: 'Kontoservice ist noch nicht eingerichtet', code: 'configuration_missing' }, 503, context)
+    return authResponse({ error: 'Zahlungsdienst konnte nicht erreicht werden' }, 500, context)
   }
 }

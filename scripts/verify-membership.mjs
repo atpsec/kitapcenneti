@@ -39,7 +39,7 @@ const dist = join(root, 'dist')
 if (!existsSync(join(dist, 'index.html'))) throw new Error('Build output is missing dist/index.html')
 const jsFiles = readdirSync(join(dist, 'assets')).filter((file) => file.endsWith('.js'))
 const bundle = jsFiles.map((file) => readFileSync(join(dist, 'assets', file), 'utf8')).join('\n')
-for (const marker of ['MembershipPage', 'Aile+']) {
+for (const marker of ['MembershipPage', 'Familien+']) {
   if (!bundle.includes(marker)) throw new Error(`Build output is missing marker: ${marker}`)
 }
 

@@ -18,11 +18,11 @@ interface Props {
 }
 
 const PRESETS: { title: string; page: PageId; stars: number; emoji: string }[] = [
-  { title: '1 masal dinle', page: 'audio', stars: 2, emoji: '🎧' },
+  { title: 'Eine Geschichte hören', page: 'audio', stars: 2, emoji: '🎧' },
   { title: '1 sayfa boya', page: 'coloring', stars: 2, emoji: '🖍️' },
-  { title: 'Canlı Arena görevi', page: 'live', stars: 3, emoji: '⚡' },
-  { title: 'Mini quiz çöz', page: 'activities', stars: 2, emoji: '❓' },
-  { title: 'STEM kartı aç', page: 'stem', stars: 2, emoji: '🔬' },
+  { title: 'Live-Arena-Aufgabe', page: 'live', stars: 3, emoji: '⚡' },
+  { title: 'Mini-Quiz lösen', page: 'activities', stars: 2, emoji: '❓' },
+  { title: 'MINT-Karte öffnen', page: 'stem', stars: 2, emoji: '🔬' },
 ]
 
 export function ChallengePage({ onNavigate }: Props) {
@@ -47,33 +47,33 @@ export function ChallengePage({ onNavigate }: Props) {
       page: preset.page,
       stars: preset.stars,
       createdAt: Date.now(),
-      fromName: profile.childName || 'Bir dost',
+      fromName: profile.childName || 'Ein Freund',
     }
     saveChallenge(c)
     setCreated(c)
     const link = encodeChallengeLink(c)
     void navigator.clipboard?.writeText(link)
-    showToast('Meydan okuma kodu kopyalandı')
+    showToast('Challenge-Code kopiert')
   }
 
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🤝 Güvenli meydan okuma</h1>
+        <h1>🤝 Sichere Herausforderung</h1>
         <p>
-          Hesapsız, aile içi veya arkadaş koduyla — kimse herkese açık profil görmez. Kod paylaş, birlikte
-          tamamla.
+          Ohne Konto, mit Familien- oder Freundescode – niemand sieht Ihr öffentliches Profil. Teilen Sie den Code gemeinsam
+          abgeschlossen.
         </p>
       </header>
 
       <section className="section">
-        <h2 className="section__title">Meydan okuma oluştur</h2>
+        <h2 className="section__title">Erstellen Sie eine Herausforderung</h2>
         <div className="portal-dash-grid">
           {PRESETS.map((p) => (
             <button key={p.title} type="button" className="portal-dash-card" onClick={() => create(p)}>
               <span>{p.emoji}</span>
               <h2>{p.title}</h2>
-              <p>+{p.stars}⭐ ödül hedefi</p>
+              <p>+{p.stars}⭐ Belohnungsziel</p>
             </button>
           ))}
         </div>
@@ -85,7 +85,7 @@ export function ChallengePage({ onNavigate }: Props) {
             </p>
             <SocialShare
               payload={{
-                title: `Meydan okuma: ${created.title}`,
+                title: `Challenge: ${created.title}`,
                 text: `${created.fromName} seni Kitap Cenneti’nde meydan okuyor! Kod: ${created.code}`,
                 page: 'challenge',
                 itemId: created.code,
@@ -97,7 +97,7 @@ export function ChallengePage({ onNavigate }: Props) {
       </section>
 
       <section className="section">
-        <h2 className="section__title">Koda katıl</h2>
+        <h2 className="section__title">Treten Sie dem Code bei</h2>
         <div className="panel journal-form">
           <label>
             6 haneli kod
@@ -114,24 +114,24 @@ export function ChallengePage({ onNavigate }: Props) {
             onClick={() => {
               const c = findChallenge(joinCode) || importChallengeFromSession(joinCode)
               if (!c) {
-                showToast('Kod bulunamadı — aynı cihazda oluşturulan veya paylaşılan link gerekir')
+                showToast('Code nicht gefunden – bitte den Link vom gleichen Gerät oder aus einer Freigabe verwenden')
                 return
               }
               setJoined(c)
-              showToast('Meydan okuma bulundu!')
+              showToast('Challenge gefunden!')
             }}
           >
-            Katıl
+            Machen Sie mit
           </button>
         </div>
         {joined && (
           <article className="panel" style={{ marginTop: 12 }}>
             <h3>{joined.title}</h3>
             <p>
-              Gönderen: {joined.fromName} · Hedef +{joined.stars}⭐
+              Von: {joined.fromName} · Hedef +{joined.stars}⭐
             </p>
             <button type="button" className="btn btn--primary" onClick={() => onNavigate(joined.page)}>
-              Göreve git →
+              Gehen Sie zur Aufgabe →
             </button>
           </article>
         )}

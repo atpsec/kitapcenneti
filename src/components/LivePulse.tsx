@@ -36,17 +36,17 @@ export function LivePulse({ onNavigate }: Props) {
   return (
     <section className="live-pulse">
       <div className="live-pulse__head">
-        <h2 className="section__title">⚡ Şimdi canlı</h2>
+        <h2 className="section__title">⚡ Jetzt leben</h2>
         <button type="button" className="btn btn--small btn--primary" onClick={() => onNavigate('live')}>
-          Canlı Arena →
+          Live-Arena →
         </button>
       </div>
 
       <div className="live-pulse__grid">
         <button type="button" className="live-pulse__card" onClick={() => onNavigate(live.challenge.page)}>
           <span>{live.challenge.emoji}</span>
-          <strong>Saatin görevi</strong>
-          <p>{live.challenge.title.replace('Saatin görevi: ', '')}</p>
+          <strong>Aufgabe der Uhr</strong>
+          <p>{live.challenge.title.replace('Aufgabe der Stunde: ', '')}</p>
           <small>
             {live.hourlyDone ? 'Tamam ✓' : `+${live.challenge.stars}⭐`} · sonraki {formatMs(left)}
           </small>
@@ -55,7 +55,7 @@ export function LivePulse({ onNavigate }: Props) {
         <button type="button" className="live-pulse__card" onClick={() => onNavigate('live')}>
           <span>{slot.emoji}</span>
           <strong>{slot.label}</strong>
-          <p>{live.slots.length} dilim görevi hazır</p>
+          <p>{live.slots.length} Abschnittsaufgaben bereit</p>
           <small>🔥 seri {live.hourlyStreak}</small>
         </button>
 
@@ -66,13 +66,13 @@ export function LivePulse({ onNavigate }: Props) {
         >
           <span>🎁</span>
           <strong>Gizemli kutu</strong>
-          <p>{live.mysteryReady ? 'Açmaya hazır!' : '3 saatte bir yenilenir'}</p>
+          <p>{live.mysteryReady ? 'Bereit zum Öffnen!' : 'Wird alle 3 Stunden erneuert'}</p>
           <small>Ziyaret: {live.visitCount}</small>
         </button>
 
         <button type="button" className="live-pulse__card" onClick={() => onNavigate(weekly.page)}>
           <span>{weekly.emoji}</span>
-          <strong>Haftanın günü</strong>
+          <strong>Tag der Woche</strong>
           <p>{weekly.title}</p>
           <small>{weekly.blurb}</small>
         </button>

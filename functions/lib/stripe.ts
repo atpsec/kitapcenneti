@@ -5,6 +5,8 @@ export interface MembershipEnv {
   STRIPE_WEBHOOK_SECRET?: string
   SITE_URL?: string
   AUTH_ALLOWED_ORIGIN?: string
+  STRIPE_CHECKOUT_LOCALE?: string
+  STRIPE_REQUIRE_TERMS?: string
   DB?: {
     prepare: (query: string) => {
       bind: (...values: unknown[]) => {

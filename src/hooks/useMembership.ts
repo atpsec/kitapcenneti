@@ -12,6 +12,7 @@ export interface MembershipState {
   customerId?: string
   subscriptionId?: string
   currentPeriodEnd?: string
+  cancelAtPeriodEnd?: boolean
   updatedAt?: string
   source?: MembershipSource
 }
@@ -100,6 +101,7 @@ export function useMembership() {
         plan: payload.plan === 'family_plus' ? 'family_plus' : 'free',
         status: payload.status || 'inactive',
         currentPeriodEnd: payload.currentPeriodEnd,
+        cancelAtPeriodEnd: payload.cancelAtPeriodEnd === true,
         customerId: payload.customerId,
         subscriptionId: payload.subscriptionId,
         source: 'server',
@@ -117,13 +119,13 @@ export function useMembership() {
   const checkout = useCallback(async (plan: 'monthly' | 'annual', email: string) => {
     const normalizedEmail = email.trim().toLowerCase()
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
-      showToast('Devam etmek için geçerli bir e-posta yazın')
+      showToast('Gib eine gültige E-Mail-Adresse ein, um fortzufahren')
       return
     }
 
     const base = apiBase()
     if (!base) {
-      showToast('Üyelik servisi henüz bağlanmadı; önce Cloudflare API kurulmalı')
+      showToast('Der Mitgliedschaftsservice ist noch nicht verbunden; zuerst muss die Cloudflare-API eingerichtet werden')
       return
     }
 
@@ -141,9 +143,9 @@ export function useMembership() {
         window.location.href = payload.url
         return
       }
-      showToast(payload.error || 'Ödeme bağlantısı oluşturulamadı')
+      showToast(payload.error || 'Zahlungslink konnte nicht erstellt werden')
     } catch {
-      showToast('Ödeme servisine ulaşılamadı')
+      showToast('Zahlungsservice nicht erreichbar')
     } finally {
       setBusy(false)
     }
@@ -179,7 +181,7 @@ export function useMembership() {
   const openPortal = useCallback(async () => {
     const base = apiBase()
     if (!base) {
-      showToast('Üyelik yönetimi henüz bağlanmadı')
+      showToast('Mitgliedschaftsverwaltung ist noch nicht verbunden')
       return false
     }
     setBusy(true)
@@ -187,18 +189,47 @@ export function useMembership() {
       const response = await fetch(base + '/membership/portal', { method: 'POST', credentials: 'include', headers: { 'X-Kitap-Request': '1' } })
       const payload = (await response.json()) as { url?: string; error?: string }
       if (!response.ok || !payload.url) {
-        showToast(payload.error || 'Üyelik yönetim ekranı açılamadı')
+        showToast(payload.error || 'Mitgliedschaftsverwaltung konnte nicht geöffnet werden')
         return false
       }
       window.location.href = payload.url
       return true
     } catch {
-      showToast('Üyelik yönetim ekranına ulaşılamadı')
+      showToast('Mitgliedschaftsverwaltung nicht erreichbar')
       return false
     } finally {
       setBusy(false)
     }
   }, [])
+
+  const cancel = useCallback(async () => {
+    const base = apiBase()
+    if (!base) {
+      showToast('Mitgliedschaftsverwaltung ist noch nicht verbunden')
+      return false
+    }
+    setBusy(true)
+    try {
+      const response = await fetch(base + '/membership/cancel', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'X-Kitap-Request': '1' },
+      })
+      const payload = (await response.json()) as { canceled?: boolean; currentPeriodEnd?: string; error?: string }
+      if (!response.ok || payload.canceled !== true) {
+        showToast(payload.error || 'Mitgliedschaft konnte nicht gekündigt werden')
+        return false
+      }
+      update({ cancelAtPeriodEnd: true, currentPeriodEnd: payload.currentPeriodEnd })
+      showToast('Deine Mitgliedschaft wird zum Ende des Abrechnungszeitraums gekündigt')
+      return true
+    } catch {
+      showToast('Kündigungsservice nicht erreichbar')
+      return false
+    } finally {
+      setBusy(false)
+    }
+  }, [update])
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search)
@@ -206,7 +237,7 @@ export function useMembership() {
     if (query.get('membership') === 'success' && sessionId) {
       void confirmCheckout(sessionId).then(async (confirmed) => {
         const verified = confirmed && await refresh()
-        showToast(verified ? 'Aile+ üyeliğiniz aktif edildi' : confirmed ? 'Ödeme alındı; üyelik doğrulaması sürüyor' : 'Üyelik doğrulanamadı')
+        showToast(verified ? 'Deine Familien+-Mitgliedschaft ist aktiv' : confirmed ? 'Zahlung erhalten; Mitgliedschaft wird noch bestätigt' : 'Mitgliedschaft konnte nicht bestätigt werden')
       })
       window.history.replaceState({}, '', window.location.pathname + window.location.hash)
     }
@@ -217,8 +248,9 @@ export function useMembership() {
     isPlus,
     busy,
     checkout,
+    cancel,
     openPortal,
     refresh,
     update,
-  }), [busy, checkout, isPlus, membership, openPortal, refresh, update])
+  }), [busy, cancel, checkout, isPlus, membership, openPortal, refresh, update])
 }

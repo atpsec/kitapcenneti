@@ -116,6 +116,6 @@ export const onRequestPost = async (context: { request: Request; env: Membership
     return json({ received: true })
   } catch (error) {
     console.error('Membership webhook error', error)
-    return json({ error: 'Webhook işlenemedi' }, 500)
+    return json({ error: 'Webhook konnte nicht verarbeitet werden' }, 500)
   }
 }

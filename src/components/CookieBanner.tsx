@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
-
-const KEY = 'kitapcenneti-cookie-consent'
-type Consent = { version: 1; necessary: true; analytics: boolean; ads: boolean }
+import {
+  OPEN_COOKIE_SETTINGS_EVENT,
+  readCookieConsent,
+  saveCookieConsent,
+} from '../utils/cookieConsent'
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false)
@@ -9,18 +11,26 @@ export function CookieBanner() {
   const [ads, setAds] = useState(false)
 
   useEffect(() => {
-    try {
-      const value = localStorage.getItem(KEY)
-      if (!value || !JSON.parse(value).version) setVisible(true)
-    } catch {
+    const existing = readCookieConsent()
+    if (existing) {
+      setAnalytics(existing.analytics)
+      setAds(existing.ads)
+    }
+    setVisible(!existing)
+    const openSettings = () => {
+      const current = readCookieConsent()
+      if (current) {
+        setAnalytics(current.analytics)
+        setAds(current.ads)
+      }
       setVisible(true)
     }
+    window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, openSettings)
+    return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, openSettings)
   }, [])
 
   const save = (next: { analytics: boolean; ads: boolean }) => {
-    const consent: Consent = { version: 1, necessary: true, ...next }
-    localStorage.setItem(KEY, JSON.stringify(consent))
-    window.dispatchEvent(new CustomEvent('kitapcenneti-cookie-consent'))
+    saveCookieConsent(next)
     setVisible(false)
   }
 
@@ -28,24 +38,24 @@ export function CookieBanner() {
 
   return (
     <div className="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-banner-title">
-      <h2 id="cookie-banner-title" className="sr-only">Çerez bildirimi</h2>
+      <h2 id="cookie-banner-title" className="sr-only">Cookie-Hinweis</h2>
       <p>
-        Gerekli çerezler siteyi çalıştırır. İsteğe bağlı kategoriler yalnızca seçiminizden sonra
-        etkinleşir.{' '}
-        <a href="#privacy">Gizlilik Politikası</a>.
+        Erforderliche Cookies halten die Website am Laufen. Optionale Kategorien werden erst nach
+        Ihrer Auswahl aktiviert.{' '}
+        <a href="#privacy">Datenschutzerklärung</a>.
       </p>
       <label className="cookie-banner__option">
         <input type="checkbox" checked={analytics} onChange={(event) => setAnalytics(event.target.checked)} />
-        <span>Ölçüm ve iyileştirme</span>
+        <span>Analyse und Verbesserung</span>
       </label>
       <label className="cookie-banner__option">
         <input type="checkbox" checked={ads} onChange={(event) => setAds(event.target.checked)} />
-        <span>Ebeveyn sayfalarında kişiselleştirilmiş reklam</span>
+        <span>Personalisierte Werbung auf Elternseiten</span>
       </label>
       <div className="cookie-banner__actions">
-        <button type="button" className="btn btn--ghost" onClick={() => save({ analytics: false, ads: false })}>Yalnızca gerekli</button>
-        <button type="button" className="btn btn--ghost" onClick={() => save({ analytics, ads })}>Seçimleri kaydet</button>
-        <button type="button" className="btn btn--primary" onClick={() => save({ analytics: true, ads: true })}>Tümüne izin ver</button>
+        <button type="button" className="btn btn--ghost" onClick={() => save({ analytics: false, ads: false })}>Nur notwendige</button>
+        <button type="button" className="btn btn--ghost" onClick={() => save({ analytics, ads })}>Auswahl speichern</button>
+        <button type="button" className="btn btn--primary" onClick={() => save({ analytics: true, ads: true })}>Alle akzeptieren</button>
       </div>
     </div>
   )

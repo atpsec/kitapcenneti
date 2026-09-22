@@ -14,7 +14,7 @@ export function DiscoverPage({ onNavigate }: Props) {
     <div className="page">
       <header className="page-header">
         <h1>🧭 Koleksiyonlar</h1>
-        <p>{COLLECTIONS.length} küratör seçkisi — uyku, okul, duygu, macera… hazır demetler.</p>
+        <p>{COLLECTIONS.length} kuratierte Auswahlen – Schlaf, Schule, Gefühle und Abenteuer als fertige Sammlungen.</p>
       </header>
       <div className="discover-grid">
         {COLLECTIONS.map((c) => (
@@ -38,7 +38,7 @@ export function DiscoverPage({ onNavigate }: Props) {
               className="btn btn--ghost"
               onClick={() => setExpandedId((id) => (id === c.id ? null : c.id))}
             >
-              {expandedId === c.id ? 'Paylaşımı gizle' : 'Paylaş'}
+              {expandedId === c.id ? 'Freigabe ausblenden' : 'Teilen'}
             </button>
             {expandedId === c.id && (
               <SocialShare

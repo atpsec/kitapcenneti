@@ -18,11 +18,11 @@ export function CategoryGrid({ selected, onSelect, compact = false, onChangeRequ
         <div className="category-compact__bar" style={{ background: selectedInfo.gradient }}>
           <span className="category-compact__emoji" aria-hidden="true">{selectedInfo.emoji}</span>
           <div className="category-compact__text">
-            <small>Seçili kategori</small>
+            <small>Ausgewählte Kategorie</small>
             <strong>{selectedInfo.title}</strong>
           </div>
           <button type="button" className="category-compact__change" onClick={onChangeRequest}>
-            Değiştir
+            Veränderung
           </button>
         </div>
       </section>
@@ -33,9 +33,9 @@ export function CategoryGrid({ selected, onSelect, compact = false, onChangeRequ
     <section className="section" id="create-step-category">
       <h2 className="section__title">
         <span className="section__title-emoji">🎨</span>
-        1. Kategori Seç
+        1. Kategorie auswählen
       </h2>
-      <p className="section-hint">Bir karta dokun — hemen sonraki adıma geçersin.</p>
+      <p className="section-hint">Tippen Sie auf eine Karte – Sie gelangen sofort zum nächsten Schritt.</p>
 
       <div className="category-grid">
         {CATEGORIES.map((cat) => {
@@ -49,7 +49,7 @@ export function CategoryGrid({ selected, onSelect, compact = false, onChangeRequ
               onClick={() => onSelect(cat.id)}
               aria-pressed={isSelected}
             >
-              {cat.featured && <span className="category-card__featured-badge">⭐ Özel</span>}
+              {cat.featured && <span className="category-card__featured-badge">⭐ Privat</span>}
               {isSelected && <span className="category-card__check">✓</span>}
               <span className="category-card__bg-emoji" aria-hidden="true">{cat.emoji}</span>
               <span className="category-card__emoji">{cat.emoji}</span>

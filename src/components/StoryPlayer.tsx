@@ -53,7 +53,7 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
     if (!sleepMin) return
     const t = window.setTimeout(() => {
       stop()
-      showToast('Uyku zamanlayıcı — iyi uykular 🌙')
+      showToast('Einschlaf-Timer – gute Nacht 🌙')
       setSleepMin(0)
     }, sleepMin * 60_000)
     return () => clearTimeout(t)
@@ -65,7 +65,7 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
   const playChapter = (idx: number) => {
     const text = chapters[idx]
     if (together && idx % 2 === 1) {
-      showToast('Senin sıran — bu bölümü yüksek sesle oku, sonra Devam’a bas')
+      showToast('Du bist dran – lies diesen Abschnitt laut vor und drücke dann auf Weiter')
       setChapter(idx)
       return
     }
@@ -78,21 +78,21 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
     <div className="story-player">
       <VoicePicker profile={profile} onChange={setProfile} />
       {premiumPitchHint && (
-        <p className="section-hint">✨ Premium ses paketi açık — daha yumuşak tempo.</p>
+        <p className="section-hint">✨ Premium-Soundpaket aktiviert – flüssigeres Tempo.</p>
       )}
 
       <div className="story-player__meta">
         <span>
-          Bölüm {chapter + 1}/{chapters.length}
+          Kapitel {chapter + 1}/{chapters.length}
         </span>
         <label className="story-player__tog">
           <input type="checkbox" checked={together} onChange={(e) => setTogether(e.target.checked)} />
-          Birlikte oku
+          gemeinsam lesen
         </label>
         <label>
           Uyku
           <select value={sleepMin} onChange={(e) => setSleepMin(Number(e.target.value))}>
-            <option value={0}>Kapalı</option>
+            <option value={0}>Geschlossen</option>
             <option value={5}>5 dk</option>
             <option value={10}>10 dk</option>
             <option value={15}>15 dk</option>
@@ -104,12 +104,12 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
       <div className="audio-player__controls">
         {!speaking ? (
           <button type="button" className="btn btn--primary" onClick={() => playChapter(chapter)}>
-            ▶ Bölümü dinle
+            ▶ Kapitel anhören
           </button>
         ) : (
           <>
             <button type="button" className="btn btn--primary" onClick={togglePause}>
-              {paused ? '▶ Devam' : '⏸ Duraklat'}
+              {paused ? '▶ Weiter' : '⏸ Pause'}
             </button>
             <button type="button" className="btn btn--ghost" onClick={stop}>
               ⏹ Durdur
@@ -125,7 +125,7 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
             playChapter(Math.max(0, chapter - 1))
           }}
         >
-          ← Önceki
+          ← Zurück
         </button>
         <button
           type="button"
@@ -151,7 +151,7 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
               stop()
               playChapter(i)
             }}
-            aria-label={`Bölüm ${i + 1}`}
+            aria-label={`Kapitel ${i + 1}`}
           />
         ))}
       </div>

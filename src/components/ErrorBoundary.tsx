@@ -19,8 +19,8 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.error) {
       return (
         <div className="page" style={{ padding: 24, maxWidth: 560, margin: '40px auto' }}>
-          <h1>Bir şeyler takıldı</h1>
-          <p>Sayfa yüklenirken hata oluştu. Yenilemek genelde sorunu çözer.</p>
+          <h1>Etwas steckt fest</h1>
+          <p>Beim Laden der Seite ist ein Fehler aufgetreten. Eine Auffrischung löst in der Regel das Problem.</p>
           <pre style={{ whiteSpace: 'pre-wrap', fontSize: 12, opacity: 0.7 }}>
             {this.state.error.message}
           </pre>
@@ -36,7 +36,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 window.location.reload()
               }}
             >
-              Portala dön
+              Zurück zum Portal
             </button>
           </div>
         </div>

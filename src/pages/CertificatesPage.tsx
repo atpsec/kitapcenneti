@@ -5,40 +5,40 @@ import { downloadCertificatePdf } from '../utils/pdf'
 import { SocialShare } from '../components/SocialShare'
 
 const ACHIEVEMENTS = [
-  'Bugün bir sesli masal dinledi',
-  'Bir boyama sayfasını tamamladı',
-  'AI ile kendi hikaye kitabını oluşturdu',
-  'Hafıza oyununda tüm çiftleri buldu',
+  'Heute eine Hörgeschichte gehört',
+  'Eine Malvorlage abgeschlossen',
+  'Mit KI ein eigenes Geschichtenbuch erstellt',
+  'Im Memory-Spiel alle Paare gefunden',
   'Bir tekerlemeyi ezberledi',
-  'Bir hafta boyunca her gün okudu',
-  'Doğa için bir iyilik yaptı',
-  'Kardeşine / arkadaşına hikaye anlattı',
+  'Eine Woche lang jeden Tag gelesen',
+  'Etwas Gutes für die Natur getan',
+  'Eine Geschichte für Geschwister oder Freunde erzählt',
 ]
 
 export function CertificatesPage() {
   const [name, setName] = useState('')
   const [achievement, setAchievement] = useState(ACHIEVEMENTS[0])
-  const displayName = name.trim() || 'Küçük Kahraman'
+  const displayName = name.trim() || 'Kleiner Held'
 
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🏆 Başarı Sertifikası</h1>
-        <p>Çocuğunun başarısını PDF sertifika ile ödüllendir — yazdırılabilir.</p>
+        <h1>🏆 Leistungszertifikat</h1>
+        <p>Belohnen Sie den Erfolg Ihres Kindes mit einem PDF-Zertifikat – zum Ausdrucken.</p>
       </header>
 
       <div className="panel certificate-form">
         <label>
-          Çocuğun adı
+          Name des Kindes
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Örn. Elif"
+            placeholder="z. B. Emma"
             maxLength={40}
           />
         </label>
         <label>
-          Başarı
+          Erfolg
           <select value={achievement} onChange={(e) => setAchievement(e.target.value)}>
             {ACHIEVEMENTS.map((a) => (
               <option key={a} value={a}>{a}</option>
@@ -46,7 +46,7 @@ export function CertificatesPage() {
           </select>
         </label>
         <label>
-          Özel başarı yaz (isteğe bağlı)
+          Benutzerdefinierten Erfolg schreiben (optional)
           <input
             value={achievement}
             onChange={(e) => setAchievement(e.target.value)}
@@ -55,8 +55,8 @@ export function CertificatesPage() {
         </label>
 
         <div className="certificate-preview">
-          <p className="certificate-preview__eyebrow">Önizleme</p>
-          <h2>BAŞARI SERTİFİKASI</h2>
+          <p className="certificate-preview__eyebrow">Vorschau</p>
+          <h2>Leistungszertifikat</h2>
           <p className="certificate-preview__name">{displayName}</p>
           <p>{achievement}</p>
         </div>
@@ -68,12 +68,12 @@ export function CertificatesPage() {
             announceActivityResult(completeActivity('cert'))
           }}
         >
-          ⬇️ PDF Sertifika İndir
+          ⬇️ Laden Sie das PDF-Zertifikat herunter
         </button>
 
         <SocialShare
           payload={{
-            title: `🏆 ${displayName} — Başarı Sertifikası`,
+            title: `🏆 ${displayName} — Erfolgsurkunde`,
             text: achievement,
             page: 'certificates',
             itemId: achievement.slice(0, 40).replace(/\s+/g, '-').toLowerCase(),

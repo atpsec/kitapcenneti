@@ -73,13 +73,13 @@ export function CreateStoryPage() {
     const prompt = customPrompt || selectedPrompt || undefined
 
     if (category === 'personalized' && !heroName.trim()) {
-      alert('Lütfen kahraman ismini gir!')
+      alert('Bitte gib einen Held*innennamen ein!')
       goTo(2)
       return
     }
 
     if (category === 'custom' && !prompt) {
-      alert('Lütfen bir hikaye fikri yaz veya seç!')
+      alert('Bitte schreibe oder wähle eine Geschichtsidee!')
       goTo(2)
       return
     }
@@ -104,15 +104,15 @@ export function CreateStoryPage() {
   return (
     <div className="page create-page" id="create-wizard">
       <header className="page-header">
-        <h1>✨ AI Hikaye Kitabı</h1>
-        <p>Her adım ekranda kalır — kategori seç, detayları gir, oluştur.</p>
+        <h1>✨ KI-Märchenbuch</h1>
+        <p>Jeder Schritt bleibt auf dem Bildschirm – Kategorie auswählen, Details eingeben, erstellen.</p>
       </header>
 
-      <ol className="create-steps" aria-label="Oluşturma adımları">
+      <ol className="create-steps" aria-label="Erstellungsschritte">
         <li className={step === 1 ? 'is-current' : step > 1 ? 'is-done' : undefined}>1. Kategori</li>
         <li className={step === 2 ? 'is-current' : step > 2 ? 'is-done' : undefined}>2. Detay</li>
         <li className={step === 3 ? 'is-current' : step > 3 ? 'is-done' : undefined}>3. Stil</li>
-        <li className={step === 4 ? 'is-current' : undefined}>4. Oluştur</li>
+        <li className={step === 4 ? 'is-current' : undefined}>4. Erstellen</li>
       </ol>
 
       {step === 1 && <SavedStories stories={savedStories} onLoad={loadStory} onDelete={deleteStory} />}
@@ -134,12 +134,12 @@ export function CreateStoryPage() {
         <section className="create-panel" aria-labelledby="create-step-2-title">
           <h2 id="create-step-2-title" className="section__title">
             <span className="section__title-emoji">{catInfo.emoji}</span>
-            2. {category === 'personalized' ? 'Kahramanını Gir' : 'Hikaye Detayı'}
+            2. {category === 'personalized' ? 'Held*in eingeben' : 'Geschichtendetails'}
           </h2>
           <p className="section-hint">
             {category === 'personalized'
-              ? 'İsim yaz (fotoğraf isteğe bağlı), sonra devam et.'
-              : `${catInfo.title} için fikir seç veya kendi fikrini yaz.`}
+              ? 'Namen eingeben (Foto optional) und fortfahren.'
+              : `${catInfo.title} için fikir seç veya eigene Idee schreiben.`}
           </p>
 
           {category === 'personalized' ? (
@@ -152,15 +152,15 @@ export function CreateStoryPage() {
           ) : (
             <div className="panel create-step-note">
               <p>
-                Bu kategoride isim zorunlu değil. İstersen kahraman adı ekleyebilirsin.
+                In dieser Kategorie ist kein Name erforderlich. Wenn Sie möchten, können Sie einen Heldennamen hinzufügen.
               </p>
               <label className="create-optional-name">
-                Kahraman adı (isteğe bağlı)
+                Heldenname (optional)
                 <input
                   type="text"
                   value={heroName}
                   onChange={(e) => setHeroName(e.target.value)}
-                  placeholder="Örn. Elif"
+                  placeholder="z. B. Emma"
                   maxLength={30}
                 />
               </label>
@@ -192,17 +192,17 @@ export function CreateStoryPage() {
               className="create-nav__next"
               onClick={() => {
                 if (category === 'personalized' && !heroName.trim()) {
-                  alert('Lütfen kahraman ismini gir!')
+                  alert('Bitte gib einen Held*innennamen ein!')
                   return
                 }
                 if (category === 'custom' && !(customPrompt || selectedPrompt)) {
-                  alert('Lütfen bir hikaye fikri yaz veya seç!')
+                  alert('Bitte schreibe oder wähle eine Geschichtsidee!')
                   return
                 }
                 goTo(3)
               }}
             >
-              Devam → Stil
+              Weiter → Stil
             </button>
           </div>
         </section>
@@ -214,7 +214,7 @@ export function CreateStoryPage() {
             <span className="section__title-emoji">⚙️</span>
             3. Stil & Ayarlar
           </h2>
-          <p className="section-hint">Resim stili, yaş grubu ve sayfa sayısını seç.</p>
+          <p className="section-hint">Wählen Sie Bildstil, Altersgruppe und Seitenanzahl.</p>
           <OptionsPanel
             artStyle={artStyle}
             textModel={textModel}
@@ -232,7 +232,7 @@ export function CreateStoryPage() {
               ← Detay
             </button>
             <button type="button" className="create-nav__next" onClick={() => goTo(4)}>
-              Devam → Oluştur
+              Weiter → Erstellen
             </button>
           </div>
         </section>
@@ -242,7 +242,7 @@ export function CreateStoryPage() {
         <section className="create-panel create-panel--ready" aria-labelledby="create-step-4-title">
           <h2 id="create-step-4-title" className="section__title">
             <span className="section__title-emoji">🚀</span>
-            4. Hazırsın!
+            4. Sie sind bereit!
           </h2>
           <ul className="create-summary">
             <li>
@@ -260,17 +260,17 @@ export function CreateStoryPage() {
               <strong>
                 {selectedPrompt || customPrompt
                   ? (selectedPrompt || customPrompt).slice(0, 80) + ((selectedPrompt || customPrompt).length > 80 ? '…' : '')
-                  : 'Otomatik / kategoriye göre'}
+                  : 'Automatisch / nach Kategorie'}
               </strong>
             </li>
             <li>
               <span>Stil</span>
-              <strong>{artStyle} · {ageGroup} yaş · {pageCount} sayfa</strong>
+              <strong>{artStyle} · {ageGroup} Jahre · {pageCount} Seiten</strong>
             </li>
           </ul>
           <button className="generate-btn" onClick={handleGenerate} disabled={isGenerating}>
             <span className="generate-btn__emoji">✨</span>
-            Hikayemi Oluştur!
+            Erstelle meine Geschichte!
             <span className="generate-btn__emoji">📚</span>
           </button>
           <div className="create-nav">

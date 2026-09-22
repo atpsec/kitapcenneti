@@ -18,10 +18,10 @@ export interface PetState {
 }
 
 const SPECIES: Record<PetState['species'], { emoji: string; label: string }> = {
-  fox: { emoji: '🦊', label: 'Tilki' },
-  dragon: { emoji: '🐉', label: 'Ejderha' },
-  owl: { emoji: '🦉', label: 'Baykuş' },
-  bunny: { emoji: '🐰', label: 'Tavşan' },
+  fox: { emoji: '🦊', label: 'Fuchs' },
+  dragon: { emoji: '🐉', label: 'Drache' },
+  owl: { emoji: '🦉', label: 'Eule' },
+  bunny: { emoji: '🐰', label: 'Hase' },
 }
 
 function key() {
@@ -34,7 +34,7 @@ function clamp(n: number) {
 
 function defaultPet(): PetState {
   return {
-    name: 'Mıymıy',
+    name: 'Mimi',
     species: 'fox',
     hunger: 65,
     joy: 70,

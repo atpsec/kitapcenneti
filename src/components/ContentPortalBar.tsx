@@ -23,7 +23,7 @@ export function ContentPortalBar({
     <div className="content-portal-bar panel">
       <div className="content-portal-bar__top">
         <strong>
-          {label} portalı · {count} içerik
+          {label} Portal · {count} Inhalte
         </strong>
         <input
           className="library-search"

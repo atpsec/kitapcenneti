@@ -15,7 +15,7 @@ export function PersonalizeHero({ heroName, heroImage, onNameChange, onImageChan
     if (!file) return
 
     if (file.size > 5 * 1024 * 1024) {
-      alert('Fotoğraf en fazla 5MB olabilir.')
+      alert('Das Foto darf höchstens 5 MB groß sein.')
       return
     }
 
@@ -29,26 +29,26 @@ export function PersonalizeHero({ heroName, heroImage, onNameChange, onImageChan
   return (
     <div className="personalize-hero">
       <h3 className="personalize-hero__title">
-        <span>🦸</span> Sen Kahramansın!
+        <span>🦸</span> Du bist der Held!
       </h3>
       <p style={{ marginBottom: 16, fontWeight: 600, color: 'var(--text-light)' }}>
-        İsmini yaz veya fotoğrafını yükle — hikayenin baş kahramanı sen olacaksın!
+        Schreiben Sie Ihren Namen oder laden Sie Ihr Foto hoch – Sie werden der Protagonist der Geschichte sein!
       </p>
       <div className="personalize-row">
         <div className="personalize-input">
-          <label htmlFor="hero-name">🌟 Kahraman İsmi</label>
+          <label htmlFor="hero-name">🌟 Heldenname</label>
           <input
             id="hero-name"
             type="text"
             value={heroName}
             onChange={(e) => onNameChange(e.target.value)}
-            placeholder="Adını yaz..."
+            placeholder="Namen eingeben …"
             maxLength={30}
           />
         </div>
 
         <div className="photo-upload">
-          <label className="photo-upload__label">📸 Fotoğrafın (isteğe bağlı)</label>
+          <label className="photo-upload__label">📸 Dein Foto (optional)</label>
           <div
             className="photo-upload__area"
             onClick={() => fileInputRef.current?.click()}
@@ -57,7 +57,7 @@ export function PersonalizeHero({ heroName, heroImage, onNameChange, onImageChan
             onKeyDown={(e) => e.key === 'Enter' && fileInputRef.current?.click()}
           >
             {heroImage ? (
-              <img src={heroImage} alt="Kahraman fotoğrafı" />
+              <img src={heroImage} alt="Held*innenfoto" />
             ) : (
               <div className="photo-upload__placeholder">
                 <span>📷</span>
@@ -84,7 +84,7 @@ export function PersonalizeHero({ heroName, heroImage, onNameChange, onImageChan
                 fontWeight: 700,
               }}
             >
-              Kaldır
+              Entfernen
             </button>
           )}
         </div>

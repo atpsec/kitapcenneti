@@ -10,14 +10,14 @@ import { useContentItemId } from '../hooks/useContentItemId'
 
 export function TeachersPage() {
   const [activeId, setActiveId] = useContentItemId('teachers', TEACHER_RESOURCES[0].id)
-  const [subject, setSubject] = useState('Tümü')
+  const [subject, setSubject] = useState('Alle')
   const [query, setQuery] = useState('')
-  const subjects = ['Tümü', ...Array.from(new Set(TEACHER_RESOURCES.map((t) => t.subject)))]
+  const subjects = ['Alle', ...Array.from(new Set(TEACHER_RESOURCES.map((t) => t.subject)))]
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase()
     return TEACHER_RESOURCES.filter((t) => {
-      if (subject !== 'Tümü' && t.subject !== subject) return false
+      if (subject !== 'Alle' && t.subject !== subject) return false
       if (!q) return true
       return `${t.title} ${t.summary} ${t.subject} ${t.age} ${t.materials.join(' ')}`.toLowerCase().includes(q)
     })
@@ -28,23 +28,23 @@ export function TeachersPage() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>👩‍🏫 Öğretmen & Sınıf Köşesi</h1>
+        <h1>👩‍🏫 Lehrkräfte- & Klassen-Ecke</h1>
         <p>
-          {TEACHER_RESOURCES.length} hazır etkinlik — sabah çemberinden STEM'e. Yazdır, uygula, günlüğe işle.
+          {TEACHER_RESOURCES.length} fertige Aktivitäten – vom Morgenkreis bis MINT. Ausdrucken, umsetzen und ins Tagebuch übernehmen.
         </p>
       </header>
 
       <ContentPortalBar
         count={list.length}
-        label="Etkinlik"
+        label="Aktivität"
         query={query}
         onQuery={setQuery}
-        placeholder="Etkinlik, konu veya malzeme ara…"
+        placeholder="Aktivität, Thema oder Material suchen …"
         filters={subjects.map((s) => ({ id: s, label: s }))}
         activeFilter={subject}
         onFilter={(s) => {
           setSubject(s)
-          const first = s === 'Tümü' ? TEACHER_RESOURCES[0] : TEACHER_RESOURCES.find((t) => t.subject === s)
+          const first = s === 'Alle' ? TEACHER_RESOURCES[0] : TEACHER_RESOURCES.find((t) => t.subject === s)
           if (first) setActiveId(first.id)
         }}
       />
@@ -75,15 +75,15 @@ export function TeachersPage() {
           </h2>
           <p>{res.summary}</p>
           <p>
-            <strong>Yaş:</strong> {res.age} · <strong>Süre:</strong> {res.duration}
+            <strong>Alter:</strong> {res.age} · <strong>Dauer:</strong> {res.duration}
           </p>
-          <h3>Malzemeler</h3>
+          <h3>Materialien</h3>
           <ul className="tip-list">
             {res.materials.map((m) => (
               <li key={m}>{m}</li>
             ))}
           </ul>
-          <h3>Adımlar</h3>
+          <h3>Schritte</h3>
           <ol className="tip-list">
             {res.steps.map((s) => (
               <li key={s}>{s}</li>
@@ -96,11 +96,11 @@ export function TeachersPage() {
               onClick={() => {
                 printHtml(
                   res.title,
-                  `<p>${escapeHtml(res.summary)}</p><h3>Malzemeler</h3><ul>${res.materials.map((m) => `<li>${escapeHtml(m)}</li>`).join('')}</ul><h3>Adımlar</h3><ol>${res.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}</ol>`,
+                  `<p>${escapeHtml(res.summary)}</p><h3>Materialien</h3><ul>${res.materials.map((m) => `<li>${escapeHtml(m)}</li>`).join('')}</ul><h3>Schritte</h3><ol>${res.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}</ol>`,
                 )
               }}
             >
-              🖨️ Yazdır
+              🖨️ Drucken
             </button>
             <button
               type="button"
@@ -112,10 +112,10 @@ export function TeachersPage() {
                   note: res.summary,
                   stars: 2,
                 })
-                showToast('Etkinlik günlüğe işlendi')
+                showToast('Aktivität ins Tagebuch übernommen')
               }}
             >
-              Günlüğe işle
+              Ins Tagebuch übernehmen
             </button>
           </div>
           <SocialShare

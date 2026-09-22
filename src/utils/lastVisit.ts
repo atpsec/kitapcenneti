@@ -11,22 +11,22 @@ export interface LastVisit {
 }
 
 const LABELS: Partial<Record<PageId, string>> = {
-  audio: 'Sesli masal',
-  coloring: 'Boyama',
+  audio: 'Hörgeschichte',
+  coloring: 'Malen',
   activities: 'Oyunlar',
-  live: 'Canlı Arena',
-  create: 'AI Hikaye',
-  quests: 'Görevler',
+  live: 'Live-Arena',
+  create: 'KI-Geschichte',
+  quests: 'Aufgaben',
   stem: 'STEM',
   heroes: 'Kahramanlar',
-  fun: 'Eğlence',
-  world: 'Dünya haritası',
-  library: 'Kütüphane',
-  feelings: 'Duygular',
-  paths: 'Öğrenme yolu',
-  classroom: 'Sınıf',
-  challenge: 'Meydan okuma',
-  playground: 'Etkileşim arenası',
+  fun: 'Unterhaltung',
+  world: 'Entdeckerkarte',
+  library: 'Bibliothek',
+  feelings: 'Gefühle',
+  paths: 'Lernweg',
+  classroom: 'Klasse',
+  challenge: 'Herausforderung',
+  playground: 'Interaktionsarena',
 }
 
 export function recordLastVisit(page: PageId, itemId?: string) {

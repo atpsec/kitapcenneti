@@ -75,7 +75,7 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
         <button
           type="button"
           className="portal-topbar__menu"
-          aria-label="Menüyü aç"
+          aria-label="Menü öffnen"
           onClick={() => setSidebarOpen((v) => !v)}
         >
           ☰
@@ -84,7 +84,7 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
           <span className="portal-brand__mark">📚</span>
           <div>
             <strong>Kitap Cenneti</strong>
-            <small>Masal · Oyun · Keşif</small>
+            <small>Geschichten · Spiele · Entdeckungen</small>
           </div>
         </button>
 
@@ -92,17 +92,17 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Bir masal, oyun veya konu ara…"
-            aria-label="Portalda ara"
+            placeholder="Geschichte, Spiel oder Thema suchen …"
+            aria-label="Im Portal suchen"
           />
           <button type="submit" className="btn btn--small">
-            Ara
+            Suchen
           </button>
         </form>
 
         <div className="portal-topbar__stats">
-          <span title="Yıldız">⭐ {stars}</span>
-          <span title="Seri">🔥 {streak}</span>
+          <span title="Sterne">⭐ {stars}</span>
+          <span title="Serie">🔥 {streak}</span>
           <span title="Sticker">🏷️ {stickers.length}</span>
         </div>
 
@@ -112,21 +112,21 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
             className={mode === 'kids' ? 'is-active' : ''}
             onClick={() => setMode('kids')}
           >
-            🧒 Çocuk
+            🧒 Kinder
           </button>
           <button
             type="button"
             className={mode === 'parent' ? 'is-active' : ''}
             onClick={requestParentMode}
           >
-            👨‍👩‍👧 Aile {pinEnabled ? '🔐' : ''}
+            👨‍👩‍👧 Familie {pinEnabled ? '🔐' : ''}
           </button>
         </div>
 
         <div className="portal-profiles">
           {profiles.length > 1 && (
             <select
-              aria-label="Profil seç"
+              aria-label="Profil auswählen"
               value={profile.id}
               onChange={(e) => switchProfile(e.target.value)}
             >
@@ -146,7 +146,7 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
 
       <div className="portal-body">
         <aside className={`portal-sidebar ${sidebarOpen ? 'is-open' : ''}`}>
-          <p className="portal-sidebar__label">{mode === 'kids' ? 'Başla' : 'Öncelikler'}</p>
+          <p className="portal-sidebar__label">{mode === 'kids' ? 'Los geht’s' : 'Prioritäten'}</p>
           <nav className="portal-sidebar__nav">
             {primaryNav.map((item) => (
               <button
@@ -167,12 +167,12 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
             aria-controls="portal-sidebar-more"
             onClick={() => setSidebarMoreOpen((value) => !value)}
           >
-            <span>{sidebarMoreOpen ? 'Daha az göster' : 'Tüm bölümler'}</span>
+            <span>{sidebarMoreOpen ? 'Weniger anzeigen' : 'Alle Bereiche'}</span>
             <span aria-hidden="true">{sidebarMoreOpen ? '−' : '+'}</span>
           </button>
           {sidebarMoreOpen && (
             <div id="portal-sidebar-more">
-              <p className="portal-sidebar__label">Diğer bölümler</p>
+              <p className="portal-sidebar__label">Weitere Bereiche</p>
               <nav className="portal-sidebar__nav portal-sidebar__nav--compact">
                 {secondaryNav.map((item) => (
                   <button
@@ -194,7 +194,7 @@ export function PortalShell({ current, onNavigate, children }: PortalShellProps)
           <button
             type="button"
             className="portal-backdrop"
-            aria-label="Menüyü kapat"
+            aria-label="Menü schließen"
             onClick={() => setSidebarOpen(false)}
           />
         )}
@@ -216,15 +216,15 @@ export function ModeBanner({
     <div className="mode-banner">
       <p>
         {mode === 'kids'
-          ? 'Çocuk modundasın — oyun, masal ve görevler önde.'
-          : 'Aile modundasın — plan, blog, öğretmen ve gelişim araçları önde.'}
+          ? 'Du bist im Kindermodus – Spiele, Geschichten und Aufgaben stehen im Mittelpunkt.'
+          : 'Du bist im Familienmodus – Planung, Blog, Lehrkräfte und Entwicklungswerkzeuge stehen im Mittelpunkt.'}
       </p>
       <button
         type="button"
         className="btn btn--ghost"
         onClick={() => onSwitch(mode === 'kids' ? 'parent' : 'kids')}
       >
-        {mode === 'kids' ? 'Aile moduna geç' : 'Çocuk moduna geç'}
+        {mode === 'kids' ? 'Zum Familienmodus' : 'Zum Kindermodus'}
       </button>
     </div>
   )

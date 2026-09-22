@@ -18,7 +18,7 @@ export function SearchPage({ onNavigate }: Props) {
     <div className="page">
       <header className="page-header">
         <h1>🔎 Portal Arama</h1>
-        <p>Masal, oyun, STEM, blog, paket, öğretmen kaynağı — hepsi burada.</p>
+        <p>Märchen, Spiele, MINT, Blogs, Pakete, Ressourcen für Lehrer – alles ist hier.</p>
       </header>
       <div className="panel" style={{ marginBottom: 20 }}>
         <input
@@ -26,9 +26,9 @@ export function SearchPage({ onNavigate }: Props) {
           autoFocus
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Ne arıyorsun?"
+          placeholder="Wonach suchst du?"
         />
-        <p className="section-hint">{q ? `${results.length} sonuç` : 'Bir şey yazarak başla'}</p>
+        <p className="section-hint">{q ? `${results.length} Ergebnisse` : 'Beginne mit einer Suche'}</p>
       </div>
       <div className="library-grid">
         {results.slice(0, 60).map((item) => (

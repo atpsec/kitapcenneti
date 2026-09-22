@@ -28,10 +28,10 @@ export function PlaygroundPage({ onNavigate }: Props) {
   return (
     <div className="page playground-page">
       <header className="page-header">
-        <h1>🕹️ Etkileşim Arenası</h1>
+        <h1>🕹️ Interaktionsarena</h1>
         <p>
-          Ritim, baloncuk, desen hafızası, seçimli macera, hazine avı, nefes ve portal dostu — hepsi bir
-          yerde.
+          Rhythmus, Blase, Mustergedächtnis, Auswahlsuche, Schatzsuche, Atem- und Portalfreundlich – alles in einem
+          am Boden.
         </p>
       </header>
 
@@ -40,53 +40,53 @@ export function PlaygroundPage({ onNavigate }: Props) {
           <div className="activity-menu activity-menu--rich">
             <button type="button" className="panel activity-tile" onClick={() => setMode('rhythm')}>
               <span>🥁</span>
-              <h2>Ritim Dansı</h2>
-              <p>Dövülere zamanında dokun</p>
+              <h2>Rhythmustanz</h2>
+              <p>Tippen Sie rechtzeitig auf die Kämpfe</p>
             </button>
             <button type="button" className="panel activity-tile" onClick={() => setMode('bubbles')}>
               <span>🫧</span>
               <h2>Baloncuk Patlat</h2>
-              <p>Doğru sayıları yakala</p>
+              <p>Machen Sie die Zahlen richtig</p>
             </button>
             <button type="button" className="panel activity-tile" onClick={() => setMode('pattern')}>
               <span>🔆</span>
-              <h2>Desen Hafızası</h2>
-              <p>Işıkları sırayla tekrarla</p>
+              <h2>Musterspeicher</h2>
+              <p>Wiederholen Sie die Lichter der Reihe nach</p>
             </button>
             <button type="button" className="panel activity-tile" onClick={() => setMode('adventure')}>
               <span>📖</span>
-              <h2>Seçimli Macera</h2>
-              <p>Sen karar ver, hikâye değişsin</p>
+              <h2>Optionales Abenteuer</h2>
+              <p>Sie entscheiden, die Geschichte ändert sich</p>
             </button>
             <button type="button" className="panel activity-tile" onClick={() => setMode('hunt')}>
               <span>💎</span>
-              <h2>Hazine Izgarası</h2>
-              <p>Gizli yıldızları bul</p>
+              <h2>Schatzgitter</h2>
+              <p>Finden Sie versteckte Sterne</p>
             </button>
             <button type="button" className="panel activity-tile" onClick={() => setMode('breath')}>
               <span>🌬️</span>
-              <h2>Nefes Bahçesi</h2>
-              <p>3 tur sakinleşme</p>
+              <h2>Atemgarten</h2>
+              <p>3 Runden Cool-Down</p>
             </button>
             <button type="button" className="panel activity-tile" onClick={() => setMode('pet')}>
               <span>🐾</span>
               <h2>Portal Dostu</h2>
-              <p>Besle, oynat, büyüt</p>
+              <p>Füttern, spielen, wachsen</p>
             </button>
             <button type="button" className="panel activity-tile" onClick={() => onNavigate('world')}>
               <span>🗺️</span>
-              <h2>Dünya Keşfi</h2>
-              <p>Bölge aç, hazine topla</p>
+              <h2>Welterkundung</h2>
+              <p>Territorium öffnen, Schätze sammeln</p>
             </button>
             <button type="button" className="panel activity-tile" onClick={() => onNavigate('activities')}>
               <span>🎮</span>
               <h2>Klasik Oyunlar</h2>
-              <p>Hafıza, quiz, yakalama…</p>
+              <p>Erinnerung, Quiz, Aufnahme ...</p>
             </button>
           </div>
           <SocialShare
             payload={{
-              title: '🕹️ Etkileşim Arenası',
+              title: '🕹️ Interaktionsarena',
               text: 'Ritim, macera, hazine ve portal dostu — Kitap Cenneti’nde oyna!',
               page: 'playground',
               hashtags: ['KitapCenneti', 'Oyun', 'Etkilesim'],
@@ -97,14 +97,14 @@ export function PlaygroundPage({ onNavigate }: Props) {
 
       {mode !== 'menu' && mode !== 'pet' && mode !== 'breath' && (
         <button type="button" className="btn btn--ghost" onClick={() => setMode('menu')} style={{ marginBottom: 12 }}>
-          ← Arena menüsü
+          ← Arena-Menü
         </button>
       )}
 
       {mode === 'pet' && (
         <>
           <button type="button" className="btn btn--ghost" onClick={() => setMode('menu')}>
-            ← Arena menüsü
+            ← Arena-Menü
           </button>
           <PetCare />
         </>
@@ -112,7 +112,7 @@ export function PlaygroundPage({ onNavigate }: Props) {
       {mode === 'breath' && (
         <>
           <button type="button" className="btn btn--ghost" onClick={() => setMode('menu')}>
-            ← Arena menüsü
+            ← Arena-Menü
           </button>
           <BreathGame />
         </>
@@ -154,8 +154,8 @@ function RhythmGame() {
   return (
     <div className="panel play-game">
       <ConfettiBurst active={confetti} onDone={() => setConfetti(false)} />
-      <h2>🥁 Ritim Dansı</h2>
-      <p>Kırmızı geldiğinde dokun! Skor: {score}</p>
+      <h2>🥁 Rhythmustanz</h2>
+      <p>Tippe bei Rot! Punktestand: {score}</p>
       <button
         type="button"
         className={`rhythm-pad ${current === 'hit' ? 'is-hit' : ''}`}
@@ -163,11 +163,11 @@ function RhythmGame() {
         onClick={() => {
           if (current === 'hit') {
             setScore((s) => s + 1)
-            showToast('Tam zamanında! ✨')
-          } else showToast('Erken / geç — bir sonrakini bekle')
+            showToast('Genau richtig! ✨')
+          } else showToast('Zu früh / zu spät – warte auf das nächste Signal')
         }}
       >
-        {current === 'hit' ? 'ŞİMDİ!' : '…'}
+        {current === 'hit' ? 'JETZT!' : '…'}
       </button>
       <div className="btn-row">
         <button
@@ -180,7 +180,7 @@ function RhythmGame() {
             setConfetti(false)
           }}
         >
-          {running ? 'Çalıyor…' : 'Başlat'}
+          {running ? 'Läuft …' : 'Starten'}
         </button>
       </div>
     </div>
@@ -219,7 +219,7 @@ function BubbleGame() {
       <ConfettiBurst active={confetti} onDone={() => setConfetti(false)} />
       <h2>🫧 Baloncuk Patlat</h2>
       <p>
-        Sadece <strong>{target}</strong> olanları patlat! ({got}/{need}) · hatalı: {wrong}
+        Nur <strong>{target}</strong> die passenden Blasen platzen lassen! ({got}/{need}) · Fehler: {wrong}
       </p>
       <div className="bubble-stage">
         {bubbles.map((b) =>
@@ -233,7 +233,7 @@ function BubbleGame() {
                 if (b.n === target) setPopped((p) => [...p, b.id])
                 else {
                   setWrong((w) => w + 1)
-                  showToast('Bu sayı değil!')
+                  showToast('Das ist nicht die gesuchte Zahl!')
                 }
               }}
             >
@@ -297,9 +297,9 @@ function PatternGame() {
   return (
     <div className="panel play-game">
       <ConfettiBurst active={confetti} onDone={() => setConfetti(false)} />
-      <h2>🔆 Desen Hafızası</h2>
+      <h2>🔆 Mustergedächtnis</h2>
       <p>
-        {phase === 'watch' ? 'İzle…' : phase === 'win' ? 'Desen ustası!' : `Sıra sende (${input.length}/${seq.length})`}
+        {phase === 'watch' ? 'Beobachten …' : phase === 'win' ? 'Mustermeister!' : `Du bist dran (${input.length}/${seq.length})`}
       </p>
       <div className="pattern-grid">
         {colors.map((c, i) => (
@@ -313,7 +313,7 @@ function PatternGame() {
         ))}
       </div>
       <button type="button" className="btn btn--primary" onClick={start}>
-        {seq.length ? 'Yeniden' : 'Başla'}
+        {seq.length ? 'Nochmal' : 'Starten'}
       </button>
     </div>
   )
@@ -351,7 +351,7 @@ function AdventureGame() {
         {node.emoji} {adv.title}
       </h2>
       <p className="adventure-text">{node.text}</p>
-      <p className="section-hint">Biriken yıldız: {stars}</p>
+      <p className="section-hint">Gesammelte Sterne: {stars}</p>
       {node.ending ? (
         <button
           type="button"
@@ -365,7 +365,7 @@ function AdventureGame() {
             setStars(0)
           }}
         >
-          Ödülü al & başa dön
+          Holen Sie sich die Belohnung und kehren Sie zum Anfang zurück
         </button>
       ) : (
         <div className="btn-row" style={{ flexWrap: 'wrap' }}>
@@ -410,9 +410,9 @@ function HuntGame() {
   return (
     <div className="panel play-game">
       <ConfettiBurst active={confetti} onDone={() => setConfetti(false)} />
-      <h2>💎 Hazine Izgarası</h2>
+      <h2>💎 Schatzgitter</h2>
       <p>
-        5 gizli yıldızı bul! ({found.length}/5) · boş: {misses}
+        Finde 5 versteckte Sterne! ({found.length}/5) · leer: {misses}
       </p>
       <div className="hunt-grid">
         {Array.from({ length: size }, (_, i) => (
@@ -425,7 +425,7 @@ function HuntGame() {
               if (secret.has(i)) setFound((f) => [...f, i])
               else {
                 setMisses((m) => m + 1)
-                showToast('Boş kutu')
+                showToast('Leeres Feld')
               }
             }}
           >

@@ -25,10 +25,10 @@ export function ContinueCard({ onNavigate }: Props) {
     >
       <span>▶️</span>
       <div>
-        <strong>Kaldığın yerden devam</strong>
+        <strong>Machen Sie dort weiter, wo Sie aufgehört haben</strong>
         <p>
           {visit.label}
-          {hours < 1 ? ' · az önce' : hours < 24 ? ` · ${Math.floor(hours)} saat önce` : ' · dün'}
+          {hours < 1 ? ' · gerade eben' : hours < 24 ? ` · ${Math.floor(hours)} Stunden zuvor` : ' · gestern'}
         </p>
       </div>
       <small>Git →</small>

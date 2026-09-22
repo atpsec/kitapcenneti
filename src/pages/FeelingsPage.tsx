@@ -31,9 +31,9 @@ export function FeelingsPage() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>💛 Duygu Köşesi</h1>
+        <h1>💛 Emotionsecke</h1>
         <p>
-          {FEELINGS.length} duygu kartı + nefes oyunu — seç, dinle, bedenini yumuşat.
+          {FEELINGS.length} Gefühlskarten plus Atemspiel – wähle, höre zu und entspanne deinen Körper.
         </p>
       </header>
 
@@ -48,7 +48,7 @@ export function FeelingsPage() {
             style={{ background: f.color }}
             onClick={() => {
               setSelectedId(f.id)
-              setMood(FEEL_TO_MOOD[f.id] || 'meraklı')
+              setMood(FEEL_TO_MOOD[f.id] || 'neugierig')
               announceActivityResult(completeActivity('feel'))
             }}
           >
@@ -65,7 +65,7 @@ export function FeelingsPage() {
           </h2>
           <p>{feeling.tip}</p>
           <p>
-            <strong>Küçük aktivite:</strong> {feeling.activity}
+            <strong>Kleine Aktivität:</strong> {feeling.activity}
           </p>
           <div className="btn-row">
             <button
@@ -74,7 +74,7 @@ export function FeelingsPage() {
                 speaking ? stop() : speak(`${feeling.label}. ${feeling.tip} ${feeling.activity}`)
               }
             >
-              {speaking ? '⏹ Durdur' : '🎧 Sesli dinle'}
+              {speaking ? '⏹ Stoppen' : '🎧 Vorlesen'}
             </button>
           </div>
           <SocialShare
@@ -83,17 +83,17 @@ export function FeelingsPage() {
               text: `${feeling.tip} Aktivite: ${feeling.activity}`,
               page: 'feelings',
               itemId: feeling.id,
-              hashtags: ['KitapCenneti', 'Duygu', 'Aile'],
+              hashtags: ['KitapCenneti', 'Gefühl', 'Familie'],
             }}
           />
         </div>
       )}
 
       <div className="panel" style={{ marginTop: 16 }}>
-        <h3>🌬️ Sakinleşme scripti</h3>
+        <h3>🌬️ Beruhigungsskript</h3>
         <p>{script}</p>
         <button className="btn btn--ghost" onClick={() => speak(script, 0.8)}>
-          Dinle
+          Hör zu
         </button>
       </div>
     </div>

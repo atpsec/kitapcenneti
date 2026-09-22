@@ -3,10 +3,10 @@ import { petEmoji, petLabel, usePet, type PetState } from '../hooks/usePet'
 import { showToast } from './Toast'
 
 const MOOD_LINE = {
-  happy: 'çok mutlu ve oyun ister!',
+  happy: 'sehr glücklich und möchte spielen!',
   ok: 'keyfi yerinde.',
   sleepy: 'biraz uykusu var…',
-  hungry: 'karnı acıktı!',
+  hungry: 'hat Hunger!',
 } as const
 
 export function PetCare() {
@@ -35,7 +35,7 @@ export function PetCare() {
           <meter min={0} max={100} value={pet.hunger} />
         </label>
         <label>
-          Neşe
+          Freude
           <meter min={0} max={100} value={pet.joy} />
         </label>
         <label>
@@ -64,7 +64,7 @@ export function PetCare() {
           className="btn btn--sun"
           onClick={() => {
             play()
-            showToast('Oyun zamanı! 🎾')
+            showToast('Spielzeit! 🎾')
           }}
         >
           🎾 Oynat
@@ -74,7 +74,7 @@ export function PetCare() {
           className="btn btn--ghost"
           onClick={() => {
             rest()
-            showToast('Şekerleme… 💤')
+            showToast('Nickerchen … 💤')
           }}
         >
           💤 Dinlendir
@@ -83,7 +83,7 @@ export function PetCare() {
 
       <div className="pet-care__edit">
         <label>
-          İsim
+          Namen
           <input
             value={nameDraft}
             maxLength={16}

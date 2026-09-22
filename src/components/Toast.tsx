@@ -48,7 +48,7 @@ export function announceActivityResult(result: {
 }) {
   if (result.questCompleted) {
     showToast(
-      `${result.questCompleted.emoji} Görev tamam: ${result.questCompleted.title} (+${result.questCompleted.stars}⭐)`,
+      `${result.questCompleted.emoji} Aufgabe erledigt: ${result.questCompleted.title} (+${result.questCompleted.stars}⭐)`,
     )
   }
   for (const b of result.newBadges) {

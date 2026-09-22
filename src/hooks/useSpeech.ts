@@ -3,11 +3,11 @@ import { useState, useCallback, useEffect } from 'react'
 export type VoiceProfile = 'female' | 'child' | 'male' | 'auto' | 'storyteller'
 
 export const VOICE_OPTIONS: { id: VoiceProfile; label: string; emoji: string; desc: string; premium?: boolean }[] = [
-  { id: 'female', label: 'Kadın sesi', emoji: '👩', desc: 'Sıcak anlatıcı' },
-  { id: 'child', label: 'Çocuk sesi', emoji: '🧒', desc: 'Neşeli & ince' },
-  { id: 'male', label: 'Erkek sesi', emoji: '👨', desc: 'Derin anlatıcı' },
-  { id: 'auto', label: 'Otomatik', emoji: '🎙️', desc: 'Tarayıcı varsayılanı' },
-  { id: 'storyteller', label: 'Masal ustası', emoji: '✨', desc: 'Premium yumuşak tempo', premium: true },
+  { id: 'female', label: 'Frauenstimme', emoji: '👩', desc: 'Warme Erzählerstimme' },
+  { id: 'child', label: 'Kinderstimme', emoji: '🧒', desc: 'Fröhlich und hell' },
+  { id: 'male', label: 'Männerstimme', emoji: '👨', desc: 'Tiefe Erzählerstimme' },
+  { id: 'auto', label: 'Automatisch', emoji: '🎙️', desc: 'Browserstandard' },
+  { id: 'storyteller', label: 'Märchenstimme', emoji: '✨', desc: 'Premium, ruhiges Tempo', premium: true },
 ]
 
 const STORAGE_KEY = 'kitapcenneti-voice-profile'
@@ -88,7 +88,7 @@ export function useSpeech() {
 
   const speak = useCallback((text: string, rateOverride?: number) => {
     if (!window.speechSynthesis) {
-      alert('Tarayıcın sesli okumayı desteklemiyor. Chrome veya Edge dene.')
+      alert('Dein Browser unterstützt kein Vorlesen. Probiere Chrome oder Edge.')
       return
     }
     window.speechSynthesis.cancel()
@@ -109,7 +109,7 @@ export function useSpeech() {
     }
     setSpeaking(true)
     setPaused(false)
-    // Chrome bazen voices geç yükler
+    // Chrome lädt Stimmen manchmal verspätet
     window.setTimeout(() => window.speechSynthesis.speak(u), 50)
   }, [profile])
 

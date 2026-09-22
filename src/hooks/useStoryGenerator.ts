@@ -59,12 +59,12 @@ export function useStoryGenerator() {
 
   const generateStory = useCallback(async (request: StoryRequest) => {
     setStory(null)
-    updateState({ isGenerating: true, progress: 5, status: 'Hikaye yazılıyor...', error: null })
+    updateState({ isGenerating: true, progress: 5, status: 'Geschichte wird geschrieben …', error: null })
 
     const apiStory = await callApi<Story>('generate-story', request)
     const generatedStory = apiStory ?? generateFallbackStory(request)
 
-    updateState({ progress: 30, status: 'Görseller çiziliyor... ✨' })
+    updateState({ progress: 30, status: 'Bilder werden gezeichnet … ✨' })
 
     const pagesWithImages = [...generatedStory.pages]
     const totalPages = pagesWithImages.length
@@ -73,7 +73,7 @@ export function useStoryGenerator() {
       const page = pagesWithImages[i]
       updateState({
         progress: 30 + Math.round(((i + 1) / totalPages) * 65),
-        status: `Sayfa ${i + 1}/${totalPages} resimleniyor... 🎨`,
+        status: `Seite ${i + 1}/${totalPages} wird gestaltet … 🎨`,
       })
 
       const imageUrl = await generateImage(page.imagePrompt, request, i)
@@ -91,7 +91,7 @@ export function useStoryGenerator() {
 
     const finalStory: Story = { ...generatedStory, pages: pagesWithImages }
     setStory(finalStory)
-    updateState({ isGenerating: false, progress: 100, status: 'Hikaye hazır! 📚' })
+    updateState({ isGenerating: false, progress: 100, status: 'Geschichte ist fertig! 📚' })
   }, [])
 
   const loadStory = useCallback((saved: Story) => {

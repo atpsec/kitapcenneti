@@ -19,19 +19,19 @@ export function QuestsPage({ onNavigate }: QuestsPageProps) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>⭐ Günlük Görevler</h1>
+        <h1>⭐ Tägliche Quests</h1>
         <p>
-          Görevleri burada işaretleyebilirsin — ama masal dinlemek, oyun bitirmek veya boyama indirmek
-          de görevi otomatik tamamlar.
+          Hier können Sie Aufgaben markieren – aber auch eine Geschichte anhören, ein Spiel beenden oder eine Malvorlage herunterladen
+          Außerdem wird die Aufgabe automatisch erledigt.
         </p>
       </header>
 
       <ProgressHub compact />
 
       <div className="quest-stats">
-        <div className="quest-stat"><strong>{stars}</strong><span>Toplam yıldız</span></div>
-        <div className="quest-stat"><strong>{streak}🔥</strong><span>Gün serisi</span></div>
-        <div className="quest-stat"><strong>{done.length}/{quests.length}</strong><span>Bugün</span></div>
+        <div className="quest-stat"><strong>{stars}</strong><span>Gesamtzahl der Sterne</span></div>
+        <div className="quest-stat"><strong>{streak}🔥</strong><span>Tagesserie</span></div>
+        <div className="quest-stat"><strong>{done.length}/{quests.length}</strong><span>heute</span></div>
       </div>
 
       <div className="loading-progress" style={{ maxWidth: '100%', marginBottom: 20 }}>
@@ -47,14 +47,14 @@ export function QuestsPage({ onNavigate }: QuestsPageProps) {
             announceActivityResult(completeActivity('print'))
           }}
         >
-          🖨️ Bugünün listesini PDF indir
+          🖨️ Laden Sie die heutige Liste als PDF herunter
         </button>
       </div>
 
       <SocialShare
         payload={{
-          title: '⭐ Bugünün görevleri',
-          text: `${done.length}/${quests.length} tamamlandı · ${questSummary}`,
+          title: '⭐ Aufgaben für heute',
+          text: `${done.length}/${quests.length} erledigt · ${questSummary}`,
           page: 'quests',
           itemId: todayKey,
           hashtags: ['KitapCenneti', 'Gorev', 'Cocuk'],
@@ -82,10 +82,10 @@ export function QuestsPage({ onNavigate }: QuestsPageProps) {
 
       {progress === 100 && (
         <div className="win-banner">
-          🎉 Bugünün tüm görevleri bitti! Sertifika indirmeye ne dersin?
+          🎉 Alle Aufgaben für heute sind erledigt! Wie wäre es mit dem Herunterladen eines Zertifikats?
           <div className="btn-row" style={{ justifyContent: 'center' }}>
             <button className="btn btn--primary" onClick={() => onNavigate('certificates')}>
-              🏆 Sertifika al
+              🏆 Lassen Sie sich zertifizieren
             </button>
           </div>
         </div>

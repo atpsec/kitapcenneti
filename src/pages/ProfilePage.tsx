@@ -56,26 +56,26 @@ export function ProfilePage({ onNavigate }: Props) {
     <div className="page">
       <header className="page-header">
         <h1>🧒 Portal Profili</h1>
-        <p>Kardeş profilleri, yaş grubu, aile PIN kilidi — her çocuk kendi dünyasında.</p>
+        <p>Geschwisterprofile, Altersgruppe, Familien-PIN-Sperre – jedes Kind ist in seiner eigenen Welt.</p>
       </header>
 
       <section className="account-strip">
         <div className="account-strip__icon">✦</div>
         <div>
-          <span className="membership-eyebrow">Aile hesabı</span>
-          <strong>{isPlus ? 'Aile+ aktif' : 'Ücretsiz plan'}</strong>
-          <small>{membership.email || 'Ebeveyn e-postası henüz eklenmedi'}</small>
+          <span className="membership-eyebrow">Familienkonto</span>
+          <strong>{isPlus ? 'Familien+ aktiv' : 'Kostenloser Plan'}</strong>
+          <small>{membership.email || 'E-Mail der erwachsenen Person noch nicht hinterlegt'}</small>
         </div>
         <button type="button" className="btn btn--small btn--primary" onClick={() => onNavigate('membership')}>
-          {isPlus ? 'Üyeliği yönet' : 'Aile+ planlarını gör'} <span>→</span>
+          {isPlus ? 'Mitgliedschaft verwalten' : 'Familien+ ansehen'} <span>→</span>
         </button>
       </section>
 
       <section className="section">
         <div className="section-heading-row">
           <div>
-            <span className="section-kicker">Ebeveyn hesabı</span>
-            <h2 className="section__title">Ailenizin keşiflerini koruyun</h2>
+            <span className="section-kicker">Elternkonto</span>
+            <h2 className="section__title">Schützen Sie die Entdeckungen Ihrer Familie</h2>
           </div>
         </div>
         <div className="panel account-access">
@@ -83,9 +83,9 @@ export function ProfilePage({ onNavigate }: Props) {
             <div className="account-access__signed-in">
               <div>
                 <strong>{account.email}</strong>
-                <p>Çocuk profilleri ve gelişim özeti hesabınıza güvenli olarak senkronlanıyor.</p>
+                <p>Kinderprofile und Entwicklungszusammenfassungen werden sicher mit Ihrem Konto synchronisiert.</p>
               </div>
-              <button type="button" className="btn btn--ghost" disabled={accountBusy} onClick={() => void logout()}>Çıkış yap</button>
+              <button type="button" className="btn btn--ghost" disabled={accountBusy} onClick={() => void logout()}>Abmelden</button>
             </div>
           ) : (
             <form onSubmit={(event) => {
@@ -93,24 +93,24 @@ export function ProfilePage({ onNavigate }: Props) {
               const action = authMode === 'login' ? login : register
               void action(authEmail, authPassword).then((ok) => { if (ok) setAuthPassword('') })
             }}>
-              <p>Ücretsiz hesabınızla profilleri ve ilerlemeyi farklı cihazlarda sürdürebilirsiniz.</p>
+              <p>Mit Ihrem kostenlosen Konto können Sie Profile verwalten und Fortschritte auf verschiedenen Geräten erzielen.</p>
               <div className="account-access__fields">
                 <label>
-                  Ebeveyn e-postası
+                  E-Mail der Eltern
                   <input type="email" autoComplete="email" value={authEmail} onChange={(event) => setAuthEmail(event.target.value)} placeholder="siz@ornek.com" required />
                 </label>
                 <label>
-                  Şifre
+                  Passwort
                   <input type="password" autoComplete={authMode === 'login' ? 'current-password' : 'new-password'} minLength={8} value={authPassword} onChange={(event) => setAuthPassword(event.target.value)} placeholder="En az 8 karakter" required />
                 </label>
               </div>
               <div className="btn-row">
-                <button type="submit" className="btn btn--primary" disabled={accountBusy || !accountConfigured}>{accountBusy ? 'Bağlanıyor…' : authMode === 'login' ? 'Giriş yap' : 'Hesap oluştur'}</button>
+                <button type="submit" className="btn btn--primary" disabled={accountBusy || !accountConfigured}>{accountBusy ? 'Wird verbunden …' : authMode === 'login' ? 'Anmelden' : 'Konto erstellen'}</button>
                 <button type="button" className="btn btn--ghost" onClick={() => setAuthMode((mode) => mode === 'login' ? 'register' : 'login')}>
-                  {authMode === 'login' ? 'Yeni hesap oluştur' : 'Zaten hesabım var'}
+                  {authMode === 'login' ? 'Neues Konto erstellen' : 'Ich habe bereits ein Konto'}
                 </button>
               </div>
-              {!accountConfigured && <small>Hesap senkronizasyonu, Cloudflare Pages API adresi bağlandığında açılır.</small>}
+              {!accountConfigured && <small>Die Kontosynchronisierung ist aktiviert, wenn die Cloudflare Pages-API-Adresse verbunden ist.</small>}
             </form>
           )}
         </div>
@@ -127,7 +127,7 @@ export function ProfilePage({ onNavigate }: Props) {
               onClick={() => switchProfile(p.id)}
             >
               <span>{p.avatar}</span>
-              <strong>{p.childName || 'İsimsiz'}</strong>
+              <strong>{p.childName || 'Ohne Namen'}</strong>
               <small>{p.ageGroup}</small>
             </button>
           ))}
@@ -140,11 +140,11 @@ export function ProfilePage({ onNavigate }: Props) {
                 return
               }
               const n = addProfile(5)
-              if (n) showToast('Yeni kardeş profili eklendi')
+              if (n) showToast('Neues Geschwisterprofil hinzugefügt')
               else showToast('En fazla 5 profil')
             }}
           >
-            + {isPlus ? 'Kardeş ekle' : 'Aile+ ile kardeş ekle'}
+            + {isPlus ? 'Geschwister hinzufügen' : 'Mit Familien+ Geschwister hinzufügen'}
           </button>
           {profiles.length > 1 && (
             <button
@@ -152,10 +152,10 @@ export function ProfilePage({ onNavigate }: Props) {
               className="btn btn--ghost"
               onClick={() => {
                 removeProfile(profile.id)
-                showToast('Profil silindi')
+                showToast('Profil gelöscht')
               }}
             >
-              Bu profili sil
+              Dieses Profil löschen
             </button>
           )}
         </div>
@@ -165,12 +165,12 @@ export function ProfilePage({ onNavigate }: Props) {
         <div className="portal-dash-card">
           <span>⭐</span>
           <h2>{stars}</h2>
-          <p>Yıldız</p>
+          <p>Stern</p>
         </div>
         <div className="portal-dash-card">
           <span>🔥</span>
           <h2>{streak}</h2>
-          <p>Gün serisi</p>
+          <p>Tagesserie</p>
         </div>
         <div className="portal-dash-card">
           <span>🏅</span>
@@ -188,12 +188,12 @@ export function ProfilePage({ onNavigate }: Props) {
 
       <div className="panel journal-form">
         <label>
-          Çocuğun adı
+          Name des Kindes
           <input
             value={draft.childName}
             onChange={(e) => setDraft({ ...draft, childName: e.target.value })}
             maxLength={30}
-            placeholder="Örn. Elif"
+            placeholder="z. B. Emma"
           />
         </label>
 
@@ -214,21 +214,21 @@ export function ProfilePage({ onNavigate }: Props) {
         </div>
 
         <label>
-          Yaş grubu
+          Altersgruppe
           <select
             value={draft.ageGroup}
             onChange={(e) =>
               setDraft({ ...draft, ageGroup: e.target.value as PortalProfile['ageGroup'] })
             }
           >
-            <option value="3-5">3–5 yaş</option>
-            <option value="6-8">6–8 yaş</option>
-            <option value="9-12">9–12 yaş</option>
+            <option value="3-5">3–5 Jahre alt</option>
+            <option value="6-8">6–8 Jahre alt</option>
+            <option value="9-12">9–12 Jahre alt</option>
           </select>
         </label>
 
         <p>
-          <strong>İlgi alanları</strong>
+          <strong>Interessen</strong>
         </p>
         <div className="library-filters">
           {INTERESTS.map((tag) => (
@@ -244,12 +244,12 @@ export function ProfilePage({ onNavigate }: Props) {
         </div>
 
         <label>
-          Haftalık hedef
+          Wöchentliches Ziel
           <input
             value={draft.goal}
             onChange={(e) => setDraft({ ...draft, goal: e.target.value })}
             maxLength={80}
-            placeholder="Örn. Her gün 1 masal"
+            placeholder="z. B. Jeden Tag eine Geschichte"
           />
         </label>
 
@@ -259,13 +259,13 @@ export function ProfilePage({ onNavigate }: Props) {
             className="btn btn--primary"
             onClick={() => {
               saveProfile(draft)
-              showToast('Profil kaydedildi')
+              showToast('Profil gespeichert')
             }}
           >
-            Kaydet
+            Speichern
           </button>
           <button type="button" className="btn btn--ghost" onClick={() => onNavigate('paths')}>
-            Yaşıma uygun yol
+            Für mein Alter durchaus geeignet
           </button>
           <button type="button" className="btn btn--ghost" onClick={() => onNavigate('certificates')}>
             Sertifikalar
@@ -274,9 +274,9 @@ export function ProfilePage({ onNavigate }: Props) {
       </div>
 
       <section className="section">
-        <h2 className="section__title">🔐 Aile PIN kilidi</h2>
+        <h2 className="section__title">🔐 Familien-PIN-Sperre</h2>
         <div className="panel journal-form">
-          <p>Aile moduna geçişte 4 haneli PIN ister. Çocukların ayarlara kaçmasını zorlaştırır.</p>
+          <p>Beim Wechsel in den Familienmodus ist eine 4-stellige PIN erforderlich. Dadurch wird es für Kinder schwieriger, den Umgebungen zu entkommen.</p>
           <label>
             Yeni PIN
             <input
@@ -305,16 +305,16 @@ export function ProfilePage({ onNavigate }: Props) {
               className="btn btn--primary"
               onClick={() => {
                 if (pin.length !== 4 || pin !== pin2) {
-                  showToast('PIN 4 hane olmalı ve eşleşmeli')
+                  showToast('Die PIN muss vier Ziffern haben und übereinstimmen')
                   return
                 }
                 setFamilyPin(pin)
                 setPin('')
                 setPin2('')
-                showToast('Aile kilidi ayarlandı')
+                showToast('Familien-Sperre eingerichtet')
               }}
             >
-              PIN kaydet
+              PIN speichern
             </button>
             {pinEnabled && (
               <button
@@ -322,23 +322,23 @@ export function ProfilePage({ onNavigate }: Props) {
                 className="btn btn--ghost"
                 onClick={() => {
                   setFamilyPin(null)
-                  showToast('Aile kilidi kaldırıldı')
+                showToast('Familien-Sperre entfernt')
                 }}
               >
-                Kilidi kaldır
+                Schloss entfernen
               </button>
             )}
           </div>
-          <small>Durum: {pinEnabled ? 'aktif 🔐' : 'kapalı'}</small>
+          <small>Status: {pinEnabled ? 'aktiv 🔐' : 'inaktiv'}</small>
         </div>
       </section>
 
       <section className="section">
-        <h2 className="section__title">Aile içi paylaşım</h2>
+        <h2 className="section__title">Familie teilen</h2>
         <SocialShare
           payload={{
-            title: `${profile.avatar} ${profile.childName || 'Çocuğum'} — Kitap Cenneti`,
-            text: `⭐ ${stars} yıldız · 🔥 ${streak} gün · 🏷️ ${stickers.length} sticker. Birlikte okuyoruz!`,
+            title: `${profile.avatar} ${profile.childName || 'Mein Kind'} — Kitap Cenneti`,
+            text: `⭐ ${stars} Sterne · 🔥 ${streak} Tage · 🏷️ ${stickers.length} sticker. Wir lesen gemeinsam!`,
             page: 'profile',
             hashtags: ['KitapCenneti', 'Aile', 'Okuma'],
           }}

@@ -25,7 +25,7 @@ export function InstallPrompt() {
     return (
       <div className="install-prompt panel install-prompt--done">
         <span>📱</span>
-        <p>Uygulama modunda — çevrimdışı önbellek aktif.</p>
+        <p>Im Anwendungsmodus ist der Offline-Cache aktiv.</p>
       </div>
     )
   }
@@ -34,8 +34,8 @@ export function InstallPrompt() {
     <div className="install-prompt panel">
       <span>📲</span>
       <div>
-        <strong>Ana ekrana ekle (PWA)</strong>
-        <p>Masal ve boyama için hızlı açılış + temel çevrimdışı destek.</p>
+        <strong>Zum Startbildschirm hinzufügen (PWA)</strong>
+        <p>Schnellstart + grundlegende Offline-Unterstützung für Märchen und Malen.</p>
       </div>
       <button
         type="button"
@@ -44,14 +44,14 @@ export function InstallPrompt() {
           if (deferred) {
             await deferred.prompt()
             const choice = await deferred.userChoice
-            if (choice.outcome === 'accepted') showToast('Kurulum başladı')
+            if (choice.outcome === 'accepted') showToast('Installation gestartet')
             setDeferred(null)
           } else {
-            showToast('Tarayıcı menüsünden “Ana ekrana ekle”yi seç')
+            showToast('Wähle im Browsermenü „Zum Startbildschirm hinzufügen“')
           }
         }}
       >
-        Yükle
+        Hochladen
       </button>
     </div>
   )

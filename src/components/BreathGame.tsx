@@ -4,9 +4,9 @@ import { completeActivity } from '../hooks/useProgress'
 import { ConfettiBurst } from './ConfettiBurst'
 
 const PHASES = [
-  { id: 'in', label: 'Burnundan yavaşça nefes al…', seconds: 4 },
+  { id: 'in', label: 'Atme langsam durch die Nase ein …', seconds: 4 },
   { id: 'hold', label: 'Tut…', seconds: 2 },
-  { id: 'out', label: 'Ağzından yavaşça ver…', seconds: 4 },
+  { id: 'out', label: 'Atme langsam durch den Mund aus …', seconds: 4 },
 ] as const
 
 export function BreathGame() {
@@ -52,11 +52,11 @@ export function BreathGame() {
   return (
     <div className="breath-game panel">
       <ConfettiBurst active={confetti} onDone={() => setConfetti(false)} />
-      <h3>🌬️ Nefes Bahçesi</h3>
-      <p>3 tur sakin nefes — bedenin yumuşasın.</p>
+      <h3>🌬️ Atemgarten</h3>
+      <p>3 Runden ruhiges Atmen – lassen Sie Ihren Körper weicher werden.</p>
       <div className={`breath-orb is-${p.id} ${running ? 'is-running' : ''}`} aria-hidden="true" />
       <p className="breath-game__label">
-        {done ? 'Harika — daha sakin hissediyorsun 💛' : running ? p.label : 'Hazır olunca başla'}
+        {done ? 'Wunderbar – du fühlst dich ruhiger 💛' : running ? p.label : 'Starte, wenn du bereit bist'}
       </p>
       <p>
         Tur {Math.min(cycle + (running ? 1 : 0), 3)}/3 · {running ? `${left} sn` : done ? 'bitti' : '—'}
@@ -76,7 +76,7 @@ export function BreathGame() {
               setRunning(true)
             }}
           >
-            Başla
+            beginnen
           </button>
         )}
         {done && (

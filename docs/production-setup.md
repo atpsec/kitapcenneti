@@ -46,11 +46,19 @@ STRIPE_SECRET_KEY=sk_live_...
 STRIPE_PRICE_MONTHLY=price_...
 STRIPE_PRICE_ANNUAL=price_...
 STRIPE_WEBHOOK_SECRET=whsec_...
+STRIPE_CHECKOUT_LOCALE=de
+# Stripe Dashboard'da güncel Terms of Service URL'si tanımlandıktan sonra true yapın.
+STRIPE_REQUIRE_TERMS=false
 SITE_URL=https://<cloudflare-pages-domain>
 AUTH_ALLOWED_ORIGIN=https://<cloudflare-pages-domain>
 AUTH_SESSION_TTL_DAYS=30
 AUTH_COOKIE_SAMESITE=Lax
 ```
+
+Almanya hedefi için Stripe Checkout varsayılan olarak Almanca açılır ve müşterinin USt-IdNr.
+girebilmesi etkinleştirilir. `STRIPE_REQUIRE_TERMS=true` yalnızca Stripe Dashboard'da güncel
+Terms of Service URL'si tanımlandıktan sonra kullanılmalıdır; aksi halde Checkout yapılandırma
+hatası verebilir.
 
 Stripe webhook olayları olarak `checkout.session.completed`, `customer.subscription.created`,
 `customer.subscription.updated`, `customer.subscription.deleted`, `invoice.payment_succeeded` ve
@@ -66,7 +74,11 @@ POST /api/auth/register
 GET  /api/family/children
 GET  /api/membership/account-status
 POST /api/membership/portal
+POST /api/membership/cancel
 ```
+
+`/api/membership/cancel` iptali dönem sonuna planlar. Üretim arayüzündeki “Verträge hier kündigen”
+düğmesi bu endpoint'i kullanıcı onayından sonra çağırır. Stripe webhook'u son durumu doğrulamaya devam eder.
 
 Checkout yalnızca giriş yapılmış ebeveyn hesabı için açılır. Kullanıcı önce Profil sayfasından hesap
 oluşturmalı veya giriş yapmalıdır; üyelik kaydı Stripe e-postasıyla değil hesap ID’siyle bağlanır.
@@ -75,6 +87,15 @@ GitHub Pages üzerinde frontend’i Cloudflare API’ye bağlamak için build or
 
 ```text
 VITE_MEMBERSHIP_API_BASE=https://<cloudflare-pages-domain>/api
+VITE_SUPPORT_EMAIL=<gerçek destek adresi>
+VITE_LEGAL_COMPANY=<şirket unvanı>
+VITE_LEGAL_ADDRESS=<Almanya iş adresi>
+VITE_LEGAL_REPRESENTATIVE=<temsilci>
+VITE_LEGAL_REGISTER=<register mahkemesi ve numarası>
+VITE_LEGAL_VAT_ID=<USt-IdNr.>
+VITE_LEGAL_PHONE=<telefon, varsa>
+VITE_LEGAL_DPO_EMAIL=<veri koruma iletişim adresi, varsa>
+VITE_LEGAL_SUPERVISORY_AUTHORITY=<yetkili Datenschutzaufsichtsbehörde>
 ```
 
 Cloudflare Pages üzerinde frontend ve Functions aynı domainde olduğunda bu değişken boş bırakılabilir; frontend otomatik `/api` kullanır.

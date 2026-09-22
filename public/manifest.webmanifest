@@ -1,13 +1,13 @@
 {
   "name": "Kitap Cenneti",
   "short_name": "KitapCenneti",
-  "description": "Aile ve çocuk portalı — masal, oyun, STEM, Canlı Arena",
+  "description": "Familien- und Kinderportal — Geschichten, Spiele, MINT und Live-Arena",
   "start_url": "./#portal",
   "scope": "./",
   "display": "standalone",
   "background_color": "#fff8ef",
   "theme_color": "#2a9d8f",
-  "lang": "tr",
+  "lang": "de",
   "icons": [
     {
       "src": "pwa-icon.svg",

@@ -42,15 +42,15 @@ export interface CatalogItem {
 }
 
 export const STATIC_PAGES: CatalogItem[] = [
-  { id: 'p-create', kind: 'page', title: 'AI Hikaye Kitabı', emoji: '✨', description: 'Kendi resimli masalını oluştur', tags: ['ai', 'hikaye', 'yarat'], page: 'create' },
-  { id: 'p-quests', kind: 'page', title: 'Günlük Görevler', emoji: '⭐', description: 'Yıldız topla, seriyi bozma', tags: ['görev', 'yıldız'], page: 'quests' },
-  { id: 'p-fun', kind: 'page', title: 'Eğlence Bahçesi', emoji: '🎡', description: 'Çark, doodle, sticker', tags: ['eğlence', 'oyun'], page: 'fun' },
-  { id: 'p-activities', kind: 'page', title: 'Oyun Salonu', emoji: '🎮', description: 'Hafıza, quiz, kelime, hız', tags: ['oyun', 'beyin'], page: 'activities' },
-  { id: 'p-journal', kind: 'page', title: 'Gelişim Günlüğü', emoji: '📔', description: 'Ne yaptığını kaydet', tags: ['günlük', 'aile'], page: 'journal' },
-  { id: 'p-calendar', kind: 'page', title: 'Haftalık Plan', emoji: '📅', description: '7 günlük aile planı', tags: ['plan', 'aile'], page: 'calendar' },
-  { id: 'p-teachers', kind: 'page', title: 'Öğretmen Köşesi', emoji: '👩‍🏫', description: 'Sınıf etkinlikleri', tags: ['öğretmen', 'sınıf'], page: 'teachers' },
-  { id: 'p-shop', kind: 'page', title: 'Ücretsiz Paketler', emoji: '🎁', description: 'İndirilebilir içerik paketleri', tags: ['pdf', 'indir'], page: 'shop' },
-  { id: 'p-live', kind: 'page', title: 'Canlı Arena', emoji: '⚡', description: 'Saatlik görevler, dilimler, gizemli kutu', tags: ['canlı', 'görev', 'saatlik'], page: 'live' },
+  { id: 'p-create', kind: 'page', title: 'KI-Geschichtenbuch', emoji: '✨', description: 'Erfinde deine eigene Bildergeschichte', tags: ['ki', 'geschichte', 'kreativ'], page: 'create' },
+  { id: 'p-quests', kind: 'page', title: 'Tagesaufgaben', emoji: '⭐', description: 'Sammle Sterne und bleib dran', tags: ['Aufgabe', 'Sterne'], page: 'quests' },
+  { id: 'p-fun', kind: 'page', title: 'Kreativgarten', emoji: '🎡', description: 'Glücksrad, Doodle und Sticker', tags: ['Spaß', 'Spiel'], page: 'fun' },
+  { id: 'p-activities', kind: 'page', title: 'Spielesalon', emoji: '🎮', description: 'Memory, Quiz, Wörter und Tempo', tags: ['Spiele', 'Denken'], page: 'activities' },
+  { id: 'p-journal', kind: 'page', title: 'Entwicklungstagebuch', emoji: '📔', description: 'Halte eure gemeinsamen Momente fest', tags: ['Tagebuch', 'Familie'], page: 'journal' },
+  { id: 'p-calendar', kind: 'page', title: 'Wochenplan', emoji: '📅', description: 'Ein Familienplan für sieben Tage', tags: ['Planung', 'Familie'], page: 'calendar' },
+  { id: 'p-teachers', kind: 'page', title: 'Lehrkräfte-Ecke', emoji: '👩‍🏫', description: 'Aktivitäten für Kita und Schule', tags: ['Lehrkräfte', 'Klasse'], page: 'teachers' },
+  { id: 'p-shop', kind: 'page', title: 'Kostenlose Pakete', emoji: '🎁', description: 'Druckbare Inhalte zum Herunterladen', tags: ['PDF', 'Download'], page: 'shop' },
+  { id: 'p-live', kind: 'page', title: 'Live-Arena', emoji: '⚡', description: 'Stündliche Aufgaben und Überraschungen', tags: ['live', 'Aufgabe', 'stündlich'], page: 'live' },
 ]
 
 export function buildCatalog(): CatalogItem[] {

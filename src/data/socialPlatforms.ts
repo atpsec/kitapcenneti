@@ -19,8 +19,8 @@ function enc(s: string) {
 }
 
 export const SOCIAL_PLATFORMS: SocialPlatform[] = [
-  { id: 'native', label: 'Paylaş', color: '#2a9d8f', mark: '⇪', action: 'native', category: 'utility' },
-  { id: 'copy', label: 'Kopyala', color: '#5c6b66', mark: '⧉', action: 'copy', category: 'utility' },
+  { id: 'native', label: 'Teilen', color: '#2a9d8f', mark: '⇪', action: 'native', category: 'utility' },
+  { id: 'copy', label: 'Kopieren', color: '#5c6b66', mark: '⧉', action: 'copy', category: 'utility' },
   {
     id: 'whatsapp',
     label: 'WhatsApp',
