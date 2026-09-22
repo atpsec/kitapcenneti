@@ -169,7 +169,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div>🎡 Rad der Überraschung</div>
         <div>🎮 4 Minispiele</div>
         <div>🏷️ Sticker-Sammlung</div>
-        <div>📕 Visuelles Story-PDF</div>
+        <div>📕 Visuelles Geschichten-PDF</div>
       </section>
     </div>
   )

@@ -18,7 +18,7 @@ const COLLECTIONS_RAW: Collection[] = [
     id: 'uyku-zamani',
     title: 'Abendruhe-Korb',
     emoji: '🌙',
-    description: 'Für den Abend: ruhige Geschichten, sanfte Reime und ein kurzer Gefühls-Check-in.',
+    description: 'Für den Abend: ruhige Geschichten, sanfte Reime und ein kurzer Gefühlsmoment.',
     tags: ['Schlaf', 'Routine', 'Ruhe'],
     items: [
       { label: 'Geschichte vom Schlafstern', page: 'audio', emoji: '⭐' },
@@ -93,7 +93,7 @@ const COLLECTIONS_RAW: Collection[] = [
     tags: ['Kunst', 'Malen', 'Kreativität'],
     items: [
       { label: 'Malgalerie', page: 'coloring', emoji: '🎨' },
-      { label: 'Doodle-Garten', page: 'fun', emoji: '✏️' },
+      { label: 'Kritzelgarten', page: 'fun', emoji: '✏️' },
       { label: 'Bildergeschichte gestalten', page: 'create', emoji: '📖' },
       { label: 'Kunstaufgabe', page: 'quests', emoji: '⭐' },
       { label: 'Drucken und Malen', page: 'printables', emoji: '🖨️' },
@@ -1108,7 +1108,7 @@ const COLLECTION_LABELS: Record<string, string> = {
   'koleksiyon': 'Sammlung', 'Koleksiyon': 'Sammlung', 'Mega koleksiyon': 'Mega-Sammlung',
   'mevsim': 'Jahreszeit', 'Mevsim': 'Jahreszeit', 'dostluk': 'Freundschaft', 'Dostluk': 'Freundschaft', 'hayvan': 'Tiere',
   'duygu': 'Gefühle', 'Masal seç': 'Geschichte auswählen', 'Kısa oyun': 'Kurzes Spiel',
-  'Duygu check-in': 'Gefühls-Check-in', 'Boyama': 'Malen', 'Keşfet': 'Entdecken',
+  'Duygu check-in': 'Gefühlsmoment', 'Boyama': 'Malen', 'Keşfet': 'Entdecken',
   'Oyna': 'Spielen', 'Paylaş': 'Teilen', 'Küratör demeti': 'Kuratierte Auswahl',
   'Nazik kahramanlar': 'Sanfte Heldinnen und Helden', 'ebeveyn': 'Eltern',
   'Mevsim Dönence Paketi': 'Jahreszeitenkreis-Paket', 'Sanat Atölyesi': 'Kunstwerkstatt',

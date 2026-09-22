@@ -13,7 +13,7 @@ const LINES = [
   'Das Überraschungsrad wartet auf dich.',
   'Du kannst einen neuen Sticker öffnen.',
   'In der Live-Arena wartet eine Stundenaufgabe!',
-  'Die geheimnisvolle Box könnte geladen sein …',
+  'Die Überraschungsbox könnte geladen sein …',
   'Dein Portal-Freund könnte hungrig sein!',
   'In der Interaktionsarena gibt es einen Rhythmustanz!',
   'Auf der Karte wartet vielleicht ein Schatz …',

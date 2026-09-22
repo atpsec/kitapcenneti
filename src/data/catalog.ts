@@ -44,7 +44,7 @@ export interface CatalogItem {
 export const STATIC_PAGES: CatalogItem[] = [
   { id: 'p-create', kind: 'page', title: 'KI-Geschichtenbuch', emoji: '✨', description: 'Erfinde deine eigene Bildergeschichte', tags: ['ki', 'geschichte', 'kreativ'], page: 'create' },
   { id: 'p-quests', kind: 'page', title: 'Tagesaufgaben', emoji: '⭐', description: 'Sammle Sterne und bleib dran', tags: ['Aufgabe', 'Sterne'], page: 'quests' },
-  { id: 'p-fun', kind: 'page', title: 'Kreativgarten', emoji: '🎡', description: 'Glücksrad, Doodle und Sticker', tags: ['Spaß', 'Spiel'], page: 'fun' },
+  { id: 'p-fun', kind: 'page', title: 'Kreativgarten', emoji: '🎡', description: 'Glücksrad, Kritzelbilder und Sticker', tags: ['Spaß', 'Spiel'], page: 'fun' },
   { id: 'p-activities', kind: 'page', title: 'Spielesalon', emoji: '🎮', description: 'Memory, Quiz, Wörter und Tempo', tags: ['Spiele', 'Denken'], page: 'activities' },
   { id: 'p-journal', kind: 'page', title: 'Entwicklungstagebuch', emoji: '📔', description: 'Halte eure gemeinsamen Momente fest', tags: ['Tagebuch', 'Familie'], page: 'journal' },
   { id: 'p-calendar', kind: 'page', title: 'Wochenplan', emoji: '📅', description: 'Ein Familienplan für sieben Tage', tags: ['Planung', 'Familie'], page: 'calendar' },

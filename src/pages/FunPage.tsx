@@ -213,7 +213,7 @@ export function FunPage({ onNavigate }: FunPageProps) {
       <section className="section">
         <h2 className="section__title">
           <span className="section__title-emoji">🎨</span>
-          Doodle-Brett
+          Kritzelbrett
         </h2>
         <p className="section-hint">Zeichnen Sie mit dem Finger oder der Maus – Sie müssen nicht speichern, sondern haben einfach Spaß.</p>
         <div className="panel doodle-panel">

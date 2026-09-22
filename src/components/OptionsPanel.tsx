@@ -47,7 +47,7 @@ export function OptionsPanel({
         ))}
       </div>
 
-      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 20 }}>🤖 Story-Modell</h3>
+      <h3 style={{ fontSize: '1rem', marginBottom: 8, marginTop: 20 }}>🤖 Geschichtenmodell</h3>
       <div className="options-grid">
         {TEXT_MODELS.map((model) => (
           <button

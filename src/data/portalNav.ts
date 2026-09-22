@@ -11,7 +11,7 @@ export const KIDS_NAV: NavItem[] = [
   { id: 'fun', label: 'Kreativgarten', emoji: '🎡', short: 'Kreativ', mode: 'kids' },
   { id: 'create', label: 'KI-Geschichten', emoji: '✨', short: 'KI', mode: 'kids' },
   { id: 'world', label: 'Entdeckerwelt', emoji: '🗺️', short: 'Karte', mode: 'kids' },
-  { id: 'challenge', label: 'Team-Challenge', emoji: '🤝', short: 'Team', mode: 'kids' },
+  { id: 'challenge', label: 'Teamaufgabe', emoji: '🤝', short: 'Team', mode: 'kids' },
 ]
 
 export const PARENT_NAV: NavItem[] = [
@@ -38,7 +38,7 @@ export const SIDEBAR_EXTRA: { id: PageId; label: string; emoji: string }[] = [
   { id: 'certificates', label: 'Urkunden', emoji: '🏆' },
   { id: 'discover', label: 'Sammlungen', emoji: '🧭' },
   { id: 'profile', label: 'Mein Profil', emoji: '🧒' },
-  { id: 'challenge', label: 'Team-Challenge', emoji: '🤝' },
+  { id: 'challenge', label: 'Teamaufgabe', emoji: '🤝' },
   { id: 'playground', label: 'Spielplatz', emoji: '🕹️' },
   { id: 'classroom', label: 'Klassenraum', emoji: '🏫' },
   { id: 'search', label: 'Suche', emoji: '🔎' },

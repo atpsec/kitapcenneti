@@ -1031,7 +1031,7 @@ const SHOP_LABELS: Record<string, string> = {
   'Görev panosu fikri': 'Idee für eine Aufgaben-Tafel', 'Ebeveyn blog özeti': 'Zusammenfassung des Elternblogs',
   'Oyun salonu rotası': 'Spielplatzroute', 'STEM yağmur deneyi': 'MINT-Regenexperiment', 'Boyama + doodle': 'Malen + Doodle',
   'Eğlence çarkı': 'Glücksrad', '7 gün uyku planı': '7-Tage-Schlafplan', 'Sabah rutini kartı': 'Morgenroutine-Karte',
-  'Duygu check-in': 'Gefühls-Check-in', 'Motivasyon görevleri': 'Motivationsaufgaben', 'Mini quiz rotası': 'Mini-Quiz-Route',
+  'Duygu check-in': 'Gefühlsmoment', 'Motivasyon görevleri': 'Motivationsaufgaben', 'Mini quiz rotası': 'Mini-Quiz-Route',
   'Hafıza ile eşleştirme': 'Memory-Matching', 'Yazdırılabilir sayı sayfası': 'Druckbare Zahlenseite', 'Görev yıldızları': 'Aufgabensterne',
   'Doğa yürüyüş listesi': 'Natur-Spazierliste', 'Yaprak/gözlem sayfası': 'Blatt-/Beobachtungsseite', 'STEM bitki fikri': 'MINT-Pflanzenidee',
   'Doğa masalı': 'Naturgeschichte', '4 istasyon kartı': '4 Stationskarten', 'Değerlendirme soruları': 'Reflexionsfragen',

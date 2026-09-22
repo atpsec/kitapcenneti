@@ -53,7 +53,7 @@ export function ChallengePage({ onNavigate }: Props) {
     setCreated(c)
     const link = encodeChallengeLink(c)
     void navigator.clipboard?.writeText(link)
-    showToast('Challenge-Code kopiert')
+    showToast('Teamcode kopiert')
   }
 
   return (
@@ -61,13 +61,13 @@ export function ChallengePage({ onNavigate }: Props) {
       <header className="page-header">
         <h1>🤝 Sichere Herausforderung</h1>
         <p>
-          Ohne Konto, mit Familien- oder Freundescode – niemand sieht Ihr öffentliches Profil. Teilen Sie den Code gemeinsam
-          abgeschlossen.
+          Ohne Konto, mit Familien- oder Freundescode – niemand sieht Ihr öffentliches Profil. Teilen Sie den Code und lösen Sie
+          die Aufgabe gemeinsam.
         </p>
       </header>
 
       <section className="section">
-        <h2 className="section__title">Erstellen Sie eine Herausforderung</h2>
+        <h2 className="section__title">Teamaufgabe erstellen</h2>
         <div className="portal-dash-grid">
           {PRESETS.map((p) => (
             <button key={p.title} type="button" className="portal-dash-card" onClick={() => create(p)}>
@@ -85,7 +85,7 @@ export function ChallengePage({ onNavigate }: Props) {
             </p>
             <SocialShare
               payload={{
-                title: `Challenge: ${created.title}`,
+                title: `Teamaufgabe: ${created.title}`,
                 text: `${created.fromName} fordert dich bei Kitap Cenneti heraus! Code: ${created.code}`,
                 page: 'challenge',
                 itemId: created.code,
@@ -118,7 +118,7 @@ export function ChallengePage({ onNavigate }: Props) {
                 return
               }
               setJoined(c)
-              showToast('Challenge gefunden!')
+              showToast('Teamaufgabe gefunden!')
             }}
           >
             Machen Sie mit
@@ -128,7 +128,7 @@ export function ChallengePage({ onNavigate }: Props) {
           <article className="panel" style={{ marginTop: 12 }}>
             <h3>{joined.title}</h3>
             <p>
-              Von: {joined.fromName} · Hedef +{joined.stars}⭐
+              Von: {joined.fromName} · Ziel +{joined.stars}⭐
             </p>
             <button type="button" className="btn btn--primary" onClick={() => onNavigate(joined.page)}>
               Gehen Sie zur Aufgabe →

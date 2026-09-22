@@ -97,7 +97,7 @@ const CHALLENGE_TEMPLATES: Omit<FactoryChallenge, 'id' | 'window' | 'slot'>[] = 
   { title: 'Denkfunke', emoji: '❓', stars: 2, minutes: 5, page: 'activities', hint: 'Löse ein Mini-Quiz' },
   { title: 'Memory-Blitz', emoji: '🧠', stars: 3, minutes: 8, page: 'activities', hint: 'Beende ein Memory-Spiel' },
   { title: 'Wörtertanz', emoji: '🔤', stars: 2, minutes: 6, page: 'activities', hint: 'Spiele das Buchstabenrätsel' },
-  { title: 'Gefühlsradar', emoji: '💛', stars: 1, minutes: 3, page: 'feelings', hint: 'Mach einen Check-in' },
+  { title: 'Gefühlsradar', emoji: '💛', stars: 1, minutes: 3, page: 'feelings', hint: 'Nimm dir einen Gefühlsmoment' },
   { title: 'MINT-Funke', emoji: '🔬', stars: 2, minutes: 10, page: 'stem', hint: 'Öffne eine Experimentkarte' },
   { title: 'Reimtempo', emoji: '🎵', stars: 2, minutes: 4, page: 'rhymes', hint: 'Sag einen Reim auf' },
   { title: 'Heldengruß', emoji: '🦸', stars: 2, minutes: 5, page: 'heroes', hint: 'Lies über einen Helden' },
@@ -260,9 +260,9 @@ export function weeklyEvent(d = new Date()) {
   const events = [
     { title: 'Sonntags-Geschichtenmarathon', emoji: '📖', page: 'audio' as PageId, blurb: 'Höre drei Geschichten und sammle Sterne!' },
     { title: 'Montag ist Denktag', emoji: '🧠', page: 'activities' as PageId, blurb: 'Quiz und Memory – stark in die Woche.' },
-    { title: 'Dienstag-Kunstwerkstatt', emoji: '🎨', page: 'coloring' as PageId, blurb: 'Mal- und Doodle-Tag.' },
+    { title: 'Dienstag-Kunstwerkstatt', emoji: '🎨', page: 'coloring' as PageId, blurb: 'Mal- und Kritzel-Tag.' },
     { title: 'Mittwoch ist Wissenschaftstag', emoji: '🔬', page: 'stem' as PageId, blurb: 'Entdecke MINT-Karten.' },
-    { title: 'Donnerstag der Gefühle', emoji: '💛', page: 'feelings' as PageId, blurb: 'Check-in und zur Ruhe kommen.' },
+    { title: 'Donnerstag der Gefühle', emoji: '💛', page: 'feelings' as PageId, blurb: 'Gefühlsmoment und zur Ruhe kommen.' },
     { title: 'Freitagabend-Spaß', emoji: '🎡', page: 'fun' as PageId, blurb: 'Rad, Rätsel und Sticker!' },
     { title: 'Samstag als Familie', emoji: '👨‍👩‍👧', page: 'paths' as PageId, blurb: 'Lernweg und Tagebuch.' },
   ]

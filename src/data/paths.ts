@@ -63,7 +63,7 @@ const LEARNING_PATHS_RAW: LearningPath[] = [
     weeks: 3,
     steps: [
       { title: 'Erstes großes Figurengemälde', page: 'coloring', minutes: 15, tip: 'Wählen Sie kräftige Pastelltöne.' },
-      { title: 'Lustiges Garten-Doodle', page: 'fun', minutes: 8, tip: 'Freie Leitung = Aufwärmen der Kreativität.' },
+      { title: 'Lustiges Gartenbild', page: 'fun', minutes: 8, tip: 'Freie Leitung = Aufwärmen der Kreativität.' },
       { title: '4 quadratische Geschichten mit KI', page: 'create', minutes: 12, tip: 'Lassen Sie Ihr Kind den Helden wählen, Sie helfen beim Schreiben.' },
       { title: 'Bunter Wissenschaftstanz', page: 'stem', minutes: 10, tip: 'Das Regenbogenexperiment in Milch ist eine super Begleitung.' },
       { title: 'Drucken Sie es aus und hängen Sie es an den Kühlschrank', page: 'printables', minutes: 10, tip: 'Die Sichtbarmachung der fertigen Arbeit bringt Motivation.' },

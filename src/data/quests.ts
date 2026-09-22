@@ -26,7 +26,7 @@ const QUEST_POOL: Quest[] = [
   { id: 'parent-read', title: 'Lesen Sie 1 Beitrag aus dem Familienblog', emoji: '📝', stars: 1, minutes: 5, area: 'Aile', link: 'blog', hint: 'Mit den Eltern.' },
   { id: 'cert', title: 'Laden Sie das heutige Zertifikat herunter', emoji: '🏆', stars: 2, minutes: 3, area: 'Ödül', link: 'certificates', hint: 'Erhalten Sie Ihre Belohnung, wenn die Aufgaben erledigt sind.' },
   { id: 'fun-spin', title: 'Drehen Sie das Spaßrad', emoji: '🎡', stars: 1, minutes: 5, area: 'Eğlence', link: 'fun', hint: 'Machen Sie die kurze Belohnung vom Rad aus.' },
-  { id: 'fun-doodle', title: 'Zeichne ein 2-Minuten-Doodle', emoji: '✏️', stars: 1, minutes: 5, area: 'Sanat', link: 'fun', hint: 'Zeichnen Sie freihändig im Fun Garden.' },
+  { id: 'fun-doodle', title: 'Zeichne ein 2-Minuten-Kritzelbild', emoji: '✏️', stars: 1, minutes: 5, area: 'Sanat', link: 'fun', hint: 'Zeichne freihändig im Kreativgarten.' },
   { id: 'listen-sleep', title: 'Hören Sie sich eine Gute-Nacht-Geschichte an', emoji: '🌙', stars: 2, minutes: 5, area: 'Okuma', link: 'audio', hint: 'Wählen Sie ein Märchen mit ruhigem Thema.' },
   { id: 'listen-nature', title: 'Hören Sie Märchen zum Thema Natur', emoji: '🌿', stars: 2, minutes: 5, area: 'Okuma', link: 'audio', hint: 'Versuchen Sie es mit einem Wald- oder Meeresmärchen.' },
   { id: 'color-nature', title: 'Naturseitenfarbe', emoji: '🍃', stars: 2, minutes: 15, area: 'Sanat', link: 'coloring', hint: 'Spielen Sie mit Grün- und Blautönen.' },

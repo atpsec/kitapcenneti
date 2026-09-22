@@ -345,7 +345,7 @@ function SpeedGame({ onBack }: { onBack: () => void }) {
     <div className="panel">
       <div className="btn-row" style={{ marginBottom: 16 }}>
         <button className="btn btn--ghost" onClick={onBack}>← Menü</button>
-        <strong>Hedef: {target} · Skor {score} · {timeLeft}s</strong>
+        <strong>Ziel: {target} · Punktzahl {score} · {timeLeft}s</strong>
       </div>
       {done ? (
         <div className="win-banner">

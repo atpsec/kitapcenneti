@@ -19,7 +19,7 @@ export function QuestsPage({ onNavigate }: QuestsPageProps) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>⭐ Tägliche Quests</h1>
+        <h1>⭐ Tägliche Aufgaben</h1>
         <p>
           Hier können Sie Aufgaben markieren – aber auch eine Geschichte anhören, ein Spiel beenden oder eine Malvorlage herunterladen
           Außerdem wird die Aufgabe automatisch erledigt.

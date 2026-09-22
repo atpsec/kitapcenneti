@@ -15,7 +15,7 @@ export function PromptLibrary({ category, selectedPrompt, onSelectPrompt }: Prom
     <section className="section">
       <h2 className="section__title">
         <span className="section__title-emoji">💡</span>
-        Fertige Story-Ideen
+        Fertige Geschichtenideen
       </h2>
       <p style={{ color: 'var(--text-light)', fontWeight: 600, marginBottom: 4 }}>
         Wählen Sie unten eine Idee aus oder schreiben Sie Ihre eigene Geschichte!

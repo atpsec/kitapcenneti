@@ -102,7 +102,7 @@ export const FEATURE_CARDS = [
     id: 'fun' as const,
     title: 'Kreativgarten',
     emoji: '🎡',
-    desc: 'Glücksrad, Doodle, Stickeralbum und kleine Rätsel.',
+    desc: 'Glücksrad, Kritzelbilder, Stickeralbum und kleine Rätsel.',
     gradient: 'linear-gradient(135deg, #00b09b, #96c93d)',
   },
   {

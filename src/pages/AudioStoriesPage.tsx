@@ -39,7 +39,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
   const isLiveStory = 'source' in active && active.source === 'live'
 
   const themes = useMemo(
-    () => ['Alle', 'Live-Drops', ...Array.from(new Set(AUDIO_STORIES.map((s) => s.theme)))],
+    () => ['Alle', 'Live-Geschichten', ...Array.from(new Set(AUDIO_STORIES.map((s) => s.theme)))],
     [],
   )
 
@@ -47,7 +47,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
     const q = query.trim().toLowerCase()
     return library.filter((s) => {
       if (onlyFavs && !favorites.includes(s.id)) return false
-      if (theme === 'Live-Drops') return s.id.startsWith('live-story-')
+      if (theme === 'Live-Geschichten') return s.id.startsWith('live-story-')
       if (theme !== 'Alle' && s.theme !== theme) return false
       if (!q) return true
       return `${s.title} ${s.summary} ${s.theme} ${s.age}`.toLowerCase().includes(q)
@@ -59,8 +59,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
       <header className="page-header">
         <h1>🎧 Hörgeschichten-Portal</h1>
         <p>
-          Kapitel-Player · Einschlaf-Timer · gemeinsam lesen · {library.length}+ Geschichten (statisch + live
-          Drop).
+          Kapitelwiedergabe · Einschlaf-Timer · gemeinsam lesen · {library.length}+ Geschichten (statisch + live).
         </p>
       </header>
 
@@ -117,7 +116,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
         </div>
 
         {isLiveStory ? (
-          <PremiumGate onNavigate={onNavigate} label="Live-Drop-Geschichten werden mit Familien+ freigeschaltet">
+          <PremiumGate onNavigate={onNavigate} label="Live-Geschichten werden mit Familien+ freigeschaltet">
             <div className="audio-player panel">
               <div className="audio-player__hero">
                 <span>{active.emoji}</span>

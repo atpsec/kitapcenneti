@@ -48,7 +48,7 @@ export function ReminderPanel() {
     scheduleTick()
     showToast('Erinnerungen aktiviert')
     new Notification('Kitap Cenneti', {
-      body: 'Wir erinnern dich an die Stundenaufgabe und die geheimnisvolle Box.',
+      body: 'Wir erinnern dich an die Stundenaufgabe und die Überraschungsbox.',
       icon: `${import.meta.env.BASE_URL}pwa-icon.svg`,
     })
   }
@@ -56,7 +56,7 @@ export function ReminderPanel() {
   return (
     <div className="panel reminder-panel">
       <h3>🔔 Rückkehr-Erinnerung</h3>
-      <p>Lokale Benachrichtigung – keine Server. Wenn Sie es zulassen, werden wir Sie vor der Tagesuhr und der geheimnisvollen Kiste warnen.</p>
+      <p>Lokale Benachrichtigung – kein Server. Wenn Sie es zulassen, warnen wir Sie vor der Tagesaufgabe und der Überraschungsbox.</p>
       <label>
         Uhrzeit
         <input
@@ -73,7 +73,7 @@ export function ReminderPanel() {
           checked={prefs.mystery}
           onChange={(e) => save({ ...prefs, mystery: e.target.checked })}
         />
-        Mystery Box erinnert daran
+        Überraschungsbox erinnert daran
       </label>
       <div className="btn-row">
         {!prefs.enabled || perm !== 'granted' ? (
@@ -126,7 +126,7 @@ export function scheduleTick() {
           const mKey = `kitapcenneti-mystery-ping-${Math.floor(Date.now() / 10800000)}`
           if (!sessionStorage.getItem(mKey)) {
             new Notification('Kitap Cenneti', {
-              body: 'Die geheimnisvolle Box ist bereit! 🎁 Besuche die Live-Arena.',
+              body: 'Die Überraschungsbox ist bereit! 🎁 Besuche die Live-Arena.',
               tag: 'mystery',
             })
             sessionStorage.setItem(mKey, '1')

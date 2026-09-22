@@ -29,7 +29,7 @@ export function ShopPage({ onNavigate }: Props) {
       <article className="panel premium-pack">
         <span>✨</span>
         <div>
-          <h2>Tale Master – Premium-Soundpaket</h2>
+          <h2>Märchenmeister – Premium-Stimmpaket</h2>
           <p>
             Sanftes Tempo, mitlesender, harmonischer Erzähler. Keine Zahlungen – Familiengeschenkcode oder ein Klick
             erscheint (lokal).
@@ -53,7 +53,7 @@ export function ShopPage({ onNavigate }: Props) {
               <input
                 value={code}
                 onChange={(e) => setCode(e.target.value.toUpperCase())}
-                placeholder="Hediye kodu"
+                placeholder="Geschenkcode"
                 maxLength={16}
                 style={{ maxWidth: 160 }}
               />
