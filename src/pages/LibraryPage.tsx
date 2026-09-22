@@ -10,7 +10,7 @@ const KINDS: { id: CatalogKind | 'all'; label: string }[] = [
   { id: 'all', label: 'Alle' },
   { id: 'audio', label: 'Geschichten' },
   { id: 'coloring', label: 'Malen' },
-  { id: 'stem', label: 'STEM' },
+  { id: 'stem', label: 'MINT' },
   { id: 'hero', label: 'Held' },
   { id: 'path', label: 'Lernwege' },
   { id: 'blog', label: 'Blog' },

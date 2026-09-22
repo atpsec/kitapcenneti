@@ -60,7 +60,7 @@ export function editorPicks(d = new Date()): SmartPick[] {
       title: 'Mini-Wissenschaftskarte',
       blurb: 'Ein neugieriger Moment mit Dingen aus dem Haushalt.',
       page: 'stem',
-      reason: 'STEM-Auswahl',
+      reason: 'MINT-Auswahl',
     },
     {
       id: 'ed-color',

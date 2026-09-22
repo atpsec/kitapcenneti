@@ -31,7 +31,7 @@ export function ContinueCard({ onNavigate }: Props) {
           {hours < 1 ? ' · gerade eben' : hours < 24 ? ` · ${Math.floor(hours)} Stunden zuvor` : ' · gestern'}
         </p>
       </div>
-      <small>Git →</small>
+      <small>Öffnen →</small>
     </button>
   )
 }

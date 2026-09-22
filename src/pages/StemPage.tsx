@@ -31,7 +31,7 @@ export function StemPage() {
 
       <ContentPortalBar
         count={list.length}
-        label="STEM"
+        label="MINT"
         query={query}
         onQuery={setQuery}
         placeholder="Experiment, Material oder Alter suchen …"
@@ -85,7 +85,7 @@ export function StemPage() {
             text: `${card.why} (${card.age}, ~${card.minutes} Min.)`,
             page: 'stem',
             itemId: card.id,
-            hashtags: ['KitapCenneti', 'STEM', 'Wissenschaft'],
+            hashtags: ['KitapCenneti', 'MINT', 'Wissenschaft'],
           }}
         />
       </div>

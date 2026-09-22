@@ -1132,7 +1132,7 @@ const TEACHER_RESOURCES_RAW: TeacherResource[] = [
     id: 'mega-teach-15',
     title: 'Megaklasse 15: Kunst',
     emoji: '🧠',
-    summary: 'Kunstorientiertes Ready-made-Event Nr. 15.',
+    summary: 'Kreativangebot für Kunst Nr. 15.',
     age: '8-9',
     duration: '17 Min',
     tags: ['Kunst', 'Klasse'],
@@ -1852,7 +1852,7 @@ const TEACHER_RESOURCES_RAW: TeacherResource[] = [
     id: 'mega-teach-75',
     title: 'Megaklasse 75: Art',
     emoji: '🧠',
-    summary: 'Kunstorientiertes Ready-made-Event Nr. 75.',
+    summary: 'Kreativangebot für Kunst Nr. 75.',
     age: '8-9',
     duration: '17 Min',
     tags: ['Kunst', 'Klasse'],
@@ -2090,7 +2090,13 @@ const TEACHER_LABELS: Record<string, string> = {
   '2–3 öğrenci paylaşım yapsın.': '2–3 Kinder teilen ihre Ergebnisse.',
   'Kapanışta bir yıldız ödevi ver.': 'Zum Abschluss eine kleine Sternaufgabe geben.',
   'Sanat': 'Kunst', 'Hareket': 'Bewegung', 'Dil': 'Sprache', 'Müzik': 'Musik',
-  'Stamm': 'MINT', 'Sinf': 'Klasse', 'Sınıf': 'Klasse',
+  'Stamm': 'MINT', 'STEM': 'MINT', 'Sinf': 'Klasse', 'Sınıf': 'Klasse',
+  'Dinleme bitince 8 dk serbest boyama.': 'Nach dem Hören acht Minuten frei malen.',
+  'Matematik': 'Mathematik', 'Hayat bilgisi': 'Sachunterricht',
+  'Çizim ekle.': 'Zeichnung hinzufügen.', 'Çiz.': 'Zeichnen.', 'Alkış.': 'Applaus.',
+  'Takım kur.': 'Teams bilden.', 'Parça paylaş.': 'Einen Abschnitt teilen.',
+  'Yansıma.': 'Reflexion.', 'Yavaşla.': 'Langsamer werden.', 'Tek başına dene.': 'Allein ausprobieren.',
+  'Limon': 'Zitrone', 'Malzeme': 'Material', 'Güvenlik konuş.': 'Über Sicherheit sprechen.', 'Temizle.': 'Aufräumen.',
 }
 
 function localiseTeacherText(value: string): string {

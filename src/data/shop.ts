@@ -1039,6 +1039,9 @@ const SHOP_LABELS: Record<string, string> = {
   'Duygu soruları': 'Gefühlsfragen', 'Ekran menüsü şablonu': 'Bildschirmmenü-Vorlage', 'Kaliteli içerik listesi': 'Liste hochwertiger Inhalte',
   'Mola zili fikri': 'Pausenglocken-Idee', 'Blog rehberi': 'Blog-Ratgeber', 'Görev fikri': 'Aufgabenidee',
   'Masal listesi': 'Geschichtenliste',
+  '3 içerik önerisi': '3 Inhaltsideen', 'İçerik': 'Inhalt', 'içerik': 'Inhalt', 'STEM': 'MINT', 'Stamm': 'MINT',
+  'Home Lab STEM-Paket': 'MINT-Heimlabor-Paket', 'Gentle Hero Club': 'Club der sanften Heldinnen und Helden',
+  'Screen Balance Family Kit': 'Familienpaket für ausgewogene Bildschirmzeit', 'Megapack': 'Megapaket',
   'uyku': 'Schlaf', 'masalı': 'Geschichte', 'masal': 'Geschichte', 'sakin': 'ruhige',
   'boyama': 'Mal', 'Boyama': 'Malen', 'Nefes': 'Atem', 'Akşam': 'Abend',
   'Tekerleme': 'Reim', 'Duygu': 'Gefühl', 'duygu': 'Gefühl', 'Aile': 'Familie',
@@ -1074,5 +1077,6 @@ export const SHOP_PACKS: ShopPack[] = SHOP_PACKS_RAW.map((pack) => ({
   ...pack,
   title: localiseShopText(pack.title),
   description: localiseShopText(pack.description),
+  tags: pack.tags.map(localiseShopText),
   includes: pack.includes.map(localiseShopText),
 }))

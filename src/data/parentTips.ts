@@ -19,14 +19,14 @@ export const PARENT_TIPS: ParentTip[] = [
     title: 'Die Kraft des Vorlesens',
     emoji: '📖',
     category: 'Lesen',
-    body: 'Täglich 10–15 Minuten lautes Vorlesen stärkt den Wortschatz und das Einfühlungsvermögen. Hören Sie sich gemeinsam die Audio Tales-Folge an und stellen Sie Fragen: „Was hat der Held Ihrer Meinung nach gefühlt?“',
+    body: 'Täglich 10–15 Minuten lautes Vorlesen stärkt den Wortschatz und das Einfühlungsvermögen. Hören Sie sich gemeinsam eine Hörgeschichte an und stellen Sie Fragen: „Was hat der Held Ihrer Meinung nach gefühlt?“',
   },
   {
     id: 'age-3-5',
     title: 'Leitfaden für 3- bis 5-Jährige',
     emoji: '🐣',
     category: 'Alter',
-    body: 'Geeignet sind Kurzgeschichten, Kinderreime und dicke Malvorlagen. Wählen Sie in der AI-Story 4 Seiten und einen Aquarellstil.',
+    body: 'Geeignet sind Kurzgeschichten, Kinderreime und dicke Malvorlagen. Wählen Sie im Geschichtenstudio vier Seiten und einen Aquarellstil.',
   },
   {
     id: 'age-6-8',
@@ -152,7 +152,7 @@ export const PARENT_TIPS: ParentTip[] = [
     title: 'Welterkundung',
     emoji: '🌍',
     category: 'Wissenschaft',
-    body: 'Untersuchen Sie gemeinsam die Regionen auf der Weltseite. Verbinden Sie sich über die Karte mit der Türkei und Naturthemen.',
+    body: 'Untersuchen Sie gemeinsam die Regionen auf der Weltseite. Verbinden Sie die Karte mit Deutschland und Naturthemen.',
   },
   {
     id: 'discover-weekly',
@@ -215,7 +215,7 @@ export const PARENT_TIPS: ParentTip[] = [
     title: 'Offene Fragen',
     emoji: '❓',
     category: 'Kontakt',
-    body: '„Wie war es?“ statt „Was hat dir am besten gefallen?“ Problem. Buch Paradise-Inhalte können diese Routine unterstützen.',
+    body: 'Fragen Sie lieber „Wie war es?“ statt nur „Was hat dir am besten gefallen?“. Kitap Cenneti-Inhalte können diese Routine unterstützen.',
   },
   {
     id: 'model-okuma',

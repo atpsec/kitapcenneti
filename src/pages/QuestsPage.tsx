@@ -71,9 +71,9 @@ export function QuestsPage({ onNavigate }: QuestsPageProps) {
               <small>{q.area} · ~{q.minutes} Min. · {q.stars}⭐</small>
             </div>
             <div className="quest-card__actions">
-              <button className="btn btn--ghost" onClick={() => onNavigate(q.link)}>Git</button>
+              <button className="btn btn--ghost" onClick={() => onNavigate(q.link)}>Öffnen</button>
               <button className="btn btn--primary" onClick={() => toggle(q)}>
-                {isDone(q.id) ? '↩️ Geri al' : '✓ Bitirdim'}
+                {isDone(q.id) ? '↩️ Rückgängig' : '✓ Erledigt'}
               </button>
             </div>
           </article>

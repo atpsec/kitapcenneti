@@ -382,9 +382,9 @@ export const SOCIAL_PLATFORMS: SocialPlatform[] = [
 ]
 
 export const SOCIAL_CATEGORIES: { id: SocialPlatform['category']; label: string }[] = [
-  { id: 'utility', label: 'Hızlı' },
-  { id: 'messaging', label: 'Mesajlaşma' },
-  { id: 'networks', label: 'Ağlar' },
+  { id: 'utility', label: 'Schnell' },
+  { id: 'messaging', label: 'Nachrichten' },
+  { id: 'networks', label: 'Netzwerke' },
   { id: 'microblog', label: 'Mikroblog' },
-  { id: 'bookmark', label: 'Kaydet' },
+  { id: 'bookmark', label: 'Speichern' },
 ]

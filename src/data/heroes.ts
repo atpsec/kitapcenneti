@@ -1683,7 +1683,7 @@ const HERO_LABELS: Record<string, string> = {
   'im lizenzfreien Heldin': 'eine lizenzfreie Heldin',
   'im Buchhimmel': 'bei Kitap Cenneti',
   'im Kitap Cenneti': 'bei Kitap Cenneti',
-  'bei Kitap Cennet': 'bei Kitap Cenneti',
+  'bei Kitap Cennet ': 'bei Kitap Cenneti ',
   'ist der gebräuchlichste Held': 'ist ein besonderer Held',
   'Heroic ': 'Held ',
   'Kahraman': 'Held',

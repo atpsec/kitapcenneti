@@ -17,7 +17,7 @@ const LABELS: Partial<Record<PageId, string>> = {
   live: 'Live-Arena',
   create: 'KI-Geschichte',
   quests: 'Aufgaben',
-  stem: 'STEM',
+  stem: 'MINT',
   heroes: 'Helden',
   fun: 'Unterhaltung',
   world: 'Entdeckerkarte',

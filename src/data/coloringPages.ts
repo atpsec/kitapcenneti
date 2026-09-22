@@ -363,6 +363,7 @@ const COLORING_LABELS: Record<string, string> = {
   'Deniz Yıldızı': 'Seestern', 'Ay Yüzeyi': 'Mondoberfläche', 'Çalışkan Arı': 'Fleißige Biene',
   'Uçan Uçurtma': 'Fliegender Drachen', 'Orman Mantarı': 'Waldpilz', 'Piknik Sepeti': 'Picknickkorb',
   'Renkli Bisiklet': 'Buntes Fahrrad', 'Volkan': 'Vulkan', 'Minik': 'Klein', 'Büyük': 'Groß',
+  'Mega Coloring': 'Mega-Malbild',
 }
 
 function localiseColoringText(value: string): string {

@@ -265,6 +265,22 @@ const QUEST_POOL: Quest[] = [
   { id: 'mega-quest-120', title: 'Mega-Mission 120', emoji: '⭐', stars: 1, minutes: 3, area: 'Canlı', link: 'audio', hint: 'Gehen Sie zum entsprechenden Abschnitt und probieren Sie einige Inhalte aus.' }
 ]
 
+const QUEST_AREA_LABELS: Record<string, string> = {
+  Okuma: 'Lesen', Sanat: 'Kunst', Bilgi: 'Wissen', Oyun: 'Spielen', Dil: 'Sprache',
+  Yaratıcılık: 'Kreativität', STEM: 'MINT', Duygu: 'Gefühle', Ödev: 'Aufgabe', Aile: 'Familie',
+  Ödül: 'Belohnung', Eğlence: 'Spaß', Keşif: 'Entdecken', Eğitim: 'Lernen', Değerler: 'Werte',
+  Sınıf: 'Klasse', Canlı: 'Live',
+}
+
+function localiseQuest(quest: Quest): Quest {
+  return {
+    ...quest,
+    title: quest.title.replace(/STEM/g, 'MINT').replace(/Rainbow Village/g, 'Regenbogendorf').replace(/Fun Garden/g, 'Kreativgarten'),
+    hint: quest.hint.replace(/STEM/g, 'MINT').replace(/Rainbow Village/g, 'Regenbogendorf').replace(/Fun Garden/g, 'Kreativgarten'),
+    area: QUEST_AREA_LABELS[quest.area] || quest.area,
+  }
+}
+
 export function getDailyQuests(date = new Date()): Quest[] {
   const day = Math.floor(date.getTime() / 86400000)
   const picks: Quest[] = []
@@ -276,7 +292,7 @@ export function getDailyQuests(date = new Date()): Quest[] {
     if (seen.has(q.id)) return false
     seen.add(q.id)
     return true
-  }).slice(0, 5)
+  }).slice(0, 5).map(localiseQuest)
 }
 
 export function todayKey(date = new Date()): string {

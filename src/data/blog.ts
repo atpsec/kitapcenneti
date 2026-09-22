@@ -3047,12 +3047,14 @@ const BLOG_POSTS_RAW: BlogPost[] = [
 ]
 
 const BLOG_LABELS: Record<string, string> = {
-  'Book Paradise': 'Kitap Cenneti', 'Book Heaven': 'Kitap Cenneti', 'Audio Tales': 'Hörgeschichten',
+  'Book Paradise': 'Kitap Cenneti', 'Book Heaven': 'Kitap Cenneti', 'Book Haven': 'Kitap Cenneti', 'Audio Tales': 'Hörgeschichten',
   'Okul': 'Schule', 'Spor': 'Sport', 'Sanat': 'Kunst', 'Rutin': 'Routine', 'Dijital': 'Digital',
   'Hareket': 'Bewegung', 'Okul öncesi': 'Vorschule', 'Dil': 'Sprache', 'Müzik': 'Musik',
   'Oyun': 'Spiel', 'Oyunlar': 'Spiele', 'Çocuk': 'Kind', 'Çocuklar': 'Kinder',
   'Macera': 'Abenteuer', 'Hayvan': 'Tiere', 'Deniz': 'Meer', 'Mevsim': 'Jahreszeit',
   'Dostluk': 'Freundschaft', 'Uzay': 'Weltraum', 'Duygu': 'Gefühl', 'Ebeveyn': 'Eltern',
+  'Güvenlik': 'Sicherheit', 'Birlikte': 'Gemeinsam', 'Sorumluluk': 'Verantwortung',
+  'STEM': 'MINT', 'Merak': 'Neugier', 'Rehber': 'Ratgeber',
 }
 
 function localiseBlogText(value: string): string {

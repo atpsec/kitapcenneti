@@ -1116,6 +1116,16 @@ const COLLECTION_LABELS: Record<string, string> = {
   'okul': 'Schule', 'Okul': 'Schule', 'Müzik': 'Musik', 'müzik': 'Musik', 'Sanat': 'Kunst', 'sanat': 'Kunst', 'Spor': 'Sport', 'spor': 'Sport',
   'macera': 'Abenteuer', 'deniz': 'Meer', 'rutin': 'Routine', 'Duygu': 'Gefühl',
   'Masal': 'Geschichte', 'masal': 'Geschichte', 'Oyun': 'Spiel', 'oyun': 'Spiel',
+  'sepet': 'Korb', 'kutu': 'Box', 'uzay': 'Weltraum', 'yazma': 'Schreiben', 'empati': 'Empathie', 'STEM': 'MINT', 'STEM deneyi': 'MINT-Experiment',
+  'festival': 'Festival', 'Back to School Basket': 'Schulstart-Korb', 'Back to School-Blog': 'Schulstart-Blog',
+  'Creative Writers Club': 'Kreativschreibclub',
+  'Space Explorers Basket': 'Weltraum-Entdecker-Korb', 'Sea Wave Box': 'Meereswellenbox',
+  'Seasonal Tropic Package': 'Jahreszeitenpaket', 'Heroes of Courage': 'Helden des Mutes',
+  'Curiosity Science Box': 'Neugier-Wissenschaftsbox', 'Garden of Emotions': 'Garten der Gefühle',
+  'Garden of Emotion Bundle': 'Gefühlsgarten-Paket', 'School Morning Basket': 'Schulmorgen-Korb',
+  'Rainbow After the Rain': 'Regenbogen nach dem Regen', 'Forest Adventure': 'Waldabenteuer',
+  'Art Workshop': 'Kunstwerkstatt', 'Holiday Discovery Box': 'Ferien-Entdeckerbox',
+  'STEM Cumartesi': 'MINT-Samstag', 'Ready-Auswahl': 'Fertigauswahl', 'Fee Geschichte': 'Feengeschichte',
 }
 
 function localiseCollectionText(value: string): string {
