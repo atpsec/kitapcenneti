@@ -40,9 +40,7 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm run build
-        env:
-          BASE_PATH: /
+      - run: npm run build:cf
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
