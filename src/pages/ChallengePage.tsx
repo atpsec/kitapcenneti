@@ -86,10 +86,10 @@ export function ChallengePage({ onNavigate }: Props) {
             <SocialShare
               payload={{
                 title: `Challenge: ${created.title}`,
-                text: `${created.fromName} seni Kitap Cenneti’nde meydan okuyor! Kod: ${created.code}`,
+                text: `${created.fromName} fordert dich bei Kitap Cenneti heraus! Code: ${created.code}`,
                 page: 'challenge',
                 itemId: created.code,
-                hashtags: ['KitapCenneti', 'MeydanOkuma'],
+                hashtags: ['KitapCenneti', 'Herausforderung'],
               }}
             />
           </article>
@@ -100,7 +100,7 @@ export function ChallengePage({ onNavigate }: Props) {
         <h2 className="section__title">Treten Sie dem Code bei</h2>
         <div className="panel journal-form">
           <label>
-            6 haneli kod
+            6-stelliger Code
             <input
               value={joinCode}
               onChange={(e) => setJoinCode(e.target.value.toUpperCase())}

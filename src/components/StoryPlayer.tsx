@@ -93,10 +93,10 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
           Uyku
           <select value={sleepMin} onChange={(e) => setSleepMin(Number(e.target.value))}>
             <option value={0}>Geschlossen</option>
-            <option value={5}>5 dk</option>
-            <option value={10}>10 dk</option>
-            <option value={15}>15 dk</option>
-            <option value={20}>20 dk</option>
+            <option value={5}>5 Min.</option>
+            <option value={10}>10 Min.</option>
+            <option value={15}>15 Min.</option>
+            <option value={20}>20 Min.</option>
           </select>
         </label>
       </div>

@@ -68,7 +68,7 @@ export function QuestsPage({ onNavigate }: QuestsPageProps) {
             <div className="quest-card__body">
               <h3>{q.title}</h3>
               <p>{q.hint}</p>
-              <small>{q.area} · ~{q.minutes} dk · {q.stars}⭐</small>
+              <small>{q.area} · ~{q.minutes} Min. · {q.stars}⭐</small>
             </div>
             <div className="quest-card__actions">
               <button className="btn btn--ghost" onClick={() => onNavigate(q.link)}>Git</button>

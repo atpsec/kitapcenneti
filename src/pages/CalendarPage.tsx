@@ -84,7 +84,7 @@ export function CalendarPage({ onNavigate }: Props) {
               <div>
                 <strong>{q.title}</strong>
                 <p>{q.hint}</p>
-                <small>{q.stars}⭐ · ~{q.minutes} dk</small>
+                <small>{q.stars}⭐ · ~{q.minutes} Min.</small>
               </div>
             </button>
           ))}

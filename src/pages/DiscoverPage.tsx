@@ -13,7 +13,7 @@ export function DiscoverPage({ onNavigate }: Props) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🧭 Koleksiyonlar</h1>
+        <h1>🧭 Sammlungen</h1>
         <p>{COLLECTIONS.length} kuratierte Auswahlen – Schlaf, Schule, Gefühle und Abenteuer als fertige Sammlungen.</p>
       </header>
       <div className="discover-grid">
@@ -48,7 +48,7 @@ export function DiscoverPage({ onNavigate }: Props) {
                   text: c.description,
                   page: 'discover',
                   itemId: c.id,
-                  hashtags: ['KitapCenneti', 'Koleksiyon', ...c.tags.slice(0, 2)],
+                  hashtags: ['KitapCenneti', 'Sammlung', ...c.tags.slice(0, 2)],
                 }}
               />
             )}

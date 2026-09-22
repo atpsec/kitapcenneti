@@ -1,4 +1,4 @@
-/** AdSense yayıncı kimliği — onaydan sonra .env veya index.html'e eklenir */
+/** AdSense-Publisher-ID – nach der Freigabe über .env oder index.html setzen. */
 import { hasCookieConsent } from '../utils/cookieConsent'
 
 export const ADSENSE_CLIENT = import.meta.env.VITE_ADSENSE_CLIENT as string | undefined
@@ -6,7 +6,7 @@ export const ADS_ENABLED = Boolean(ADSENSE_CLIENT && ADSENSE_CLIENT.startsWith('
 
 export type AdSlotId = 'top' | 'in-article' | 'sidebar' | 'bottom'
 
-/** Reklam yalnızca aile / editöryel sayfalarda — çocuk oyun alanlarında yok */
+/** Werbung nur auf Eltern- und redaktionellen Seiten, nie im Kinderbereich. */
 export const PARENT_AD_PAGES = [
   'blog',
   'parents',

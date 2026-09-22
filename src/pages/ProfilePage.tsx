@@ -14,6 +14,10 @@ import { useAccount } from '../hooks/useAccount'
 
 const AVATARS = ['🦊', '🐻', '🦄', '🐱', '🐼', '🦁', '🐸', '🦉', '🐯', '🐨']
 const INTERESTS = ['masal', 'oyun', 'boyama', 'uzay', 'hayvan', 'stem', 'müzik', 'duygu']
+const INTEREST_LABELS: Record<string, string> = {
+  masal: 'Geschichten', oyun: 'Spiele', boyama: 'Malen', uzay: 'Weltraum',
+  hayvan: 'Tiere', stem: 'MINT', müzik: 'Musik', duygu: 'Gefühle',
+}
 
 interface Props {
   onNavigate: (page: PageId) => void
@@ -305,7 +309,7 @@ export function ProfilePage({ onNavigate }: Props) {
               className={`stem-chip ${draft.interests.includes(tag) ? 'is-active' : ''}`}
               onClick={() => toggleInterest(tag)}
             >
-              {tag}
+              {INTEREST_LABELS[tag] || tag}
             </button>
           ))}
         </div>
@@ -335,7 +339,7 @@ export function ProfilePage({ onNavigate }: Props) {
             Für mein Alter durchaus geeignet
           </button>
           <button type="button" className="btn btn--ghost" onClick={() => onNavigate('certificates')}>
-            Sertifikalar
+            Zertifikate
           </button>
         </div>
       </div>

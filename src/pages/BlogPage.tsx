@@ -64,7 +64,7 @@ export function BlogPage() {
               <div>
                 <strong>{p.title}</strong>
                 <small>
-                  {p.minutes} dk · {p.tags.join(' · ')}
+                  {p.minutes} Min. · {p.tags.join(' · ')}
                 </small>
               </div>
             </button>

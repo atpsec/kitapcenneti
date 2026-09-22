@@ -5675,6 +5675,7 @@ function localiseAudioText(value: string): string {
 export const AUDIO_STORIES: AudioStory[] = AUDIO_STORIES_RAW.map((story) => ({
   ...story,
   title: localiseAudioText(story.title),
+  duration: story.duration.split(' dk').join(' Min.'),
   theme: localiseAudioText(story.theme),
   summary: localiseAudioText(story.summary),
   text: localiseAudioText(story.text),

@@ -77,7 +77,7 @@ export function CertificatesPage() {
             text: achievement,
             page: 'certificates',
             itemId: achievement.slice(0, 40).replace(/\s+/g, '-').toLowerCase(),
-            hashtags: ['KitapCenneti', 'Basari', 'Sertifika'],
+            hashtags: ['KitapCenneti', 'Erfolg', 'Zertifikat'],
           }}
         />
       </div>

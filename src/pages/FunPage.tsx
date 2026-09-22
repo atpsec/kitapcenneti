@@ -178,7 +178,7 @@ export function FunPage({ onNavigate }: FunPageProps) {
           <h3 style={{ marginTop: 22 }}>😂 Witz des Tages</h3>
           <p className="fun-joke">{joke}</p>
 
-          <h3 style={{ marginTop: 18 }}>🧩 Bilmece</h3>
+          <h3 style={{ marginTop: 18 }}>🧩 Rätsel</h3>
           <p className="fun-joke">{riddle.q}</p>
           <button type="button" className="btn btn--ghost" onClick={() => setRiddleOpen((v) => !v)}>
             {riddleOpen ? `Antwort: ${riddle.a}` : 'Antwort anzeigen'}
@@ -192,7 +192,7 @@ export function FunPage({ onNavigate }: FunPageProps) {
                 text: joke,
                 page: 'fun',
                 itemId: `joke-${day}`,
-                hashtags: ['KitapCenneti', 'Eglence', 'Saka'],
+                hashtags: ['KitapCenneti', 'Unterhaltung', 'Witz'],
               }}
             />
             <SocialShare
@@ -203,7 +203,7 @@ export function FunPage({ onNavigate }: FunPageProps) {
                 text: riddleOpen ? `${riddle.q} — Antwort: ${riddle.a}` : riddle.q,
                 page: 'fun',
                 itemId: `riddle-${day}`,
-                hashtags: ['KitapCenneti', 'Bilmece', 'Eglence'],
+                hashtags: ['KitapCenneti', 'Rätsel', 'Unterhaltung'],
               }}
             />
           </div>

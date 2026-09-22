@@ -57,7 +57,7 @@ export function PathsPage({ onNavigate }: Props) {
                   {i + 1}. {step.title}
                 </strong>
                 <p>{step.tip}</p>
-                <small>~{step.minutes} dk</small>
+                <small>~{step.minutes} Min.</small>
               </div>
               <button
                 type="button"

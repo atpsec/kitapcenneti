@@ -11,7 +11,7 @@ export interface TeacherResource {
   subject: string
 }
 
-export const TEACHER_RESOURCES: TeacherResource[] = [
+const TEACHER_RESOURCES_RAW: TeacherResource[] = [
   {
     id: 'sabah-cemberi',
     title: 'Morgenkreis: Emotion + Reim',
@@ -1921,3 +1921,57 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     subject: 'Gefühl',
   }
 ]
+
+// Normalise the older generated teacher pack while keeping every stable ID.
+const TEACHER_LABELS: Record<string, string> = {
+  'Duygu check-in': 'Gefühls-Check-in',
+  'Duygu-Theaters': 'Gefühlstheaters',
+  'Duygu soru kartı': 'Gefühls-Fragekarten',
+  'Duygu kelimesi söyle': 'Gefühlswort nennen',
+  'Duygu seç': 'Gefühl auswählen',
+  'Kartlardan duygu çekilir (kızgın, utanmış, gururlu…).': 'Eine Gefühlskarte ziehen (wütend, schüchtern, stolz …).',
+  '“Bu duygu bedende nerede hissedilir?” sorusu sorulur.': 'Frage: „Wo spürst du dieses Gefühl im Körper?“',
+  'Masalı dinletin; ara ara “şimdi hangi renk?” diye sorun.': 'Lasst die Geschichte laufen und fragt zwischendurch: „Welche Farbe passt jetzt?“',
+  'İki soru sorun: duygu + “sen olsaydın”.': 'Stellt zwei Fragen: Gefühl und „Was würdest du tun?“',
+  'İstasyon A: deney, B: çizim/kayıt, C: “neden?” soruları.': 'Station A: Experiment, B: Zeichnen und Notieren, C: „Warum?“-Fragen.',
+  '2 öğrenci sahnesini anlatır.': 'Zwei Kinder erzählen die Szene.',
+  'Kapanışta 3 anahtar kavramı birlikte söyleyin.': 'Nennt zum Abschluss gemeinsam drei Schlüsselbegriffe.',
+  'Kartlar duvar sözlüğüne asılır.': 'Hängt die Karten an die Wörterwand.',
+  'Ödev (isteğe bağlı): kelimeyle mini resim.': 'Optionale Aufgabe: ein Mini-Bild zum Wort.',
+  'Gün 1: merak sorusu seçimi ve gruplar.': 'Tag 1: eine Forscherfrage wählen und Gruppen bilden.',
+  'Kart sorusu: “Bugün seni ne mutlu etti?”': 'Kartenfrage: „Was hat dich heute glücklich gemacht?“',
+  'Deftere yaz.': 'Ins Notizbuch schreiben.',
+  'Defter veya büyük kağıt': 'Notizbuch oder großes Papier',
+  'Kahraman özeti': 'Helden-Steckbrief',
+  'Tartışma soruları': 'Gesprächsfragen',
+  'Gözlem formu': 'Beobachtungsbogen',
+  'İsteğe bağlı büyüteç': 'Optionale Lupe',
+  'Gözlem sorusu seçin: böcek, bulut, yaprak, ses.': 'Wählt eine Beobachtungsfrage: Insekt, Wolke, Blatt oder Geräusch.',
+  'Açık alan': 'Freie Fläche',
+  'Hızlan.': 'Werde schneller.',
+  'Tahta': 'Tafel', 'Kartlar': 'Karten', 'Kalem': 'Stift', 'Zamanlayıcı': 'Timer',
+  'Amacı söyle': 'Ziel nennen', 'Örnek göster': 'Beispiel zeigen', 'Uygulat': 'Ausprobieren lassen',
+  'Paylaş': 'Teilen', 'Kapat': 'Abschließen',
+  'Amacı tek cümleyle söyle.': 'Das Ziel in einem Satz nennen.',
+  'Örnek göster, sonra çiftlere bırak.': 'Ein Beispiel zeigen und dann in Paaren arbeiten lassen.',
+  '2–3 öğrenci paylaşım yapsın.': '2–3 Kinder teilen ihre Ergebnisse.',
+  'Kapanışta bir yıldız ödevi ver.': 'Zum Abschluss eine kleine Sternaufgabe geben.',
+  'Sanat': 'Kunst', 'Hareket': 'Bewegung', 'Dil': 'Sprache', 'Müzik': 'Musik',
+  'Stamm': 'MINT', 'Sinf': 'Klasse', 'Sınıf': 'Klasse',
+}
+
+function localiseTeacherText(value: string): string {
+  let result = value
+  for (const [from, to] of Object.entries(TEACHER_LABELS)) result = result.split(from).join(to)
+  return result
+}
+
+export const TEACHER_RESOURCES: TeacherResource[] = TEACHER_RESOURCES_RAW.map((resource) => ({
+  ...resource,
+  title: localiseTeacherText(resource.title),
+  summary: localiseTeacherText(resource.summary),
+  tags: resource.tags.map(localiseTeacherText),
+  materials: resource.materials.map(localiseTeacherText),
+  steps: resource.steps.map(localiseTeacherText),
+  subject: localiseTeacherText(resource.subject),
+}))

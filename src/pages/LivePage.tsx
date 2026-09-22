@@ -277,7 +277,7 @@ export function LivePage({ onNavigate }: Props) {
               <div>
                 <strong>{d.title}</strong>
                 <p>{d.blurb}</p>
-                <small>{d.kind}</small>
+                <small>{({ audio: 'Hörgeschichte', coloring: 'Malvorlage', stem: 'MINT', heroes: 'Helden', fun: 'Unterhaltung', activities: 'Spiel', world: 'Weltkarte', discover: 'Sammlung', rhymes: 'Reim', feelings: 'Gefühl' } as Record<string, string>)[d.kind] || d.kind}</small>
               </div>
             </button>
           ))}

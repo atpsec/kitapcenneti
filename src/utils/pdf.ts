@@ -11,14 +11,14 @@ export async function downloadSvgAsPdf(svgMarkup: string, filename: string, titl
 
   await new Promise<void>((resolve, reject) => {
     img.onload = () => resolve()
-    img.onerror = () => reject(new Error('SVG yüklenemedi'))
+    img.onerror = () => reject(new Error('SVG konnte nicht geladen werden'))
   })
 
   const canvas = document.createElement('canvas')
   canvas.width = 1000
   canvas.height = 1100
   const ctx = canvas.getContext('2d')
-  if (!ctx) throw new Error('Canvas desteklenmiyor')
+  if (!ctx) throw new Error('Canvas wird nicht unterstützt')
   ctx.fillStyle = '#ffffff'
   ctx.fillRect(0, 0, canvas.width, canvas.height)
   ctx.fillStyle = '#2d3436'
@@ -46,7 +46,7 @@ export async function downloadSvgAsPdf(svgMarkup: string, filename: string, titl
   pdf.save(`${filename}.pdf`)
 }
 
-/** Türkçe karakterler için canvas üzerinden çizim (jsPDF yerleşik fontları TR desteklemez) */
+/** Zeichnen über Canvas, damit Sonderzeichen mit dem eingebetteten PDF-Font korrekt erscheinen. */
 export function downloadCertificatePdf(childName: string, achievement: string) {
   const width = 1600
   const height = 1131
@@ -299,7 +299,7 @@ export async function downloadStoryPdf(story: Story) {
     pdf.addImage(canvas.toDataURL('image/jpeg', 0.9), 'JPEG', 0, 0, pageW, pageH)
   }
 
-  const safe = story.title.replace(/[^\wğüşıöçĞÜŞİÖÇ\- ]+/gi, '').trim().replace(/\s+/g, '_') || 'masal'
+  const safe = story.title.replace(/[^\wäöüßÄÖÜ\- ]+/gi, '').trim().replace(/\s+/g, '_') || 'geschichte'
   pdf.save(`${safe}.pdf`)
 }
 
@@ -405,7 +405,7 @@ export function downloadFeelingsPackPdf(
     pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, pageW, pageH)
   }
 
-  pdf.save('duygu-kartlari.pdf')
+  pdf.save('gefuehlskarten.pdf')
 }
 
 function roundRect(

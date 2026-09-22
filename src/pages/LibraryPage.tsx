@@ -12,12 +12,18 @@ const KINDS: { id: CatalogKind | 'all'; label: string }[] = [
   { id: 'coloring', label: 'Malen' },
   { id: 'stem', label: 'STEM' },
   { id: 'hero', label: 'Held' },
-  { id: 'path', label: 'Yollar' },
+  { id: 'path', label: 'Lernwege' },
   { id: 'blog', label: 'Blog' },
   { id: 'shop', label: 'Paketler' },
   { id: 'teacher', label: 'Lehrkräfte' },
-  { id: 'collection', label: 'Koleksiyon' },
+  { id: 'collection', label: 'Sammlungen' },
 ]
+
+const KIND_LABELS: Record<CatalogKind, string> = {
+  audio: 'Hörgeschichten', blog: 'Blog', coloring: 'Malvorlagen', hero: 'Helden',
+  rhyme: 'Reime', stem: 'MINT', feeling: 'Gefühle', path: 'Lernwege',
+  collection: 'Sammlungen', world: 'Weltkarte', shop: 'Pakete', teacher: 'Lehrkräfte', page: 'Bereich',
+}
 
 export function LibraryPage({ onNavigate }: Props) {
   const [q, setQ] = useState('')
@@ -93,9 +99,9 @@ export function LibraryPage({ onNavigate }: Props) {
               <strong>{item.title}</strong>
               <p>{item.description}</p>
               <small>
-                {item.kind}
+                {KIND_LABELS[item.kind] || item.kind}
                 {item.age ? ` · ${item.age}` : ''}
-                {item.minutes ? ` · ~${item.minutes} dk` : ''}
+                {item.minutes ? ` · ~${item.minutes} Min.` : ''}
               </small>
             </div>
           </button>

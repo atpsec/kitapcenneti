@@ -82,7 +82,7 @@ export function StemPage() {
         <SocialShare
           payload={{
             title: `${card.emoji} ${card.title}`,
-            text: `${card.why} (${card.age}, ~${card.minutes} dk)`,
+            text: `${card.why} (${card.age}, ~${card.minutes} Min.)`,
             page: 'stem',
             itemId: card.id,
             hashtags: ['KitapCenneti', 'STEM', 'Wissenschaft'],

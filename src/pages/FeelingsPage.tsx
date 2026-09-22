@@ -80,7 +80,7 @@ export function FeelingsPage() {
           <SocialShare
             payload={{
               title: `${feeling.emoji} ${feeling.label}`,
-              text: `${feeling.tip} Aktivite: ${feeling.activity}`,
+              text: `${feeling.tip} Aktivität: ${feeling.activity}`,
               page: 'feelings',
               itemId: feeling.id,
               hashtags: ['KitapCenneti', 'Gefühl', 'Familie'],

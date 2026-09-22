@@ -29,7 +29,7 @@ export function ColoringPagesPage() {
   const handleDownload = async () => {
     setBusy(true)
     try {
-      await downloadSvgAsPdf(svg, `boyama-${page.id}`, page.title)
+      await downloadSvgAsPdf(svg, `malvorlage-${page.id}`, page.title)
       announceActivityResult(completeActivity('color'))
     } catch {
       alert('PDF konnte nicht erstellt werden. Bitte erneut versuchen.')

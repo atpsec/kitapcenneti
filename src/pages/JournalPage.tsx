@@ -3,6 +3,10 @@ import { addJournalEntry, usePortalProfile } from '../hooks/usePortalProfile'
 import { showToast } from '../components/Toast'
 
 const KINDS = ['masal', 'oyun', 'boyama', 'stem', 'duygu', 'ödev', 'diğer']
+const KIND_LABELS: Record<string, string> = {
+  masal: 'Geschichte', oyun: 'Spiel', boyama: 'Malen', stem: 'MINT',
+  duygu: 'Gefühl', ödev: 'Aufgabe', diğer: 'Sonstiges',
+}
 
 export function JournalPage() {
   const { journal, profile } = usePortalProfile()
@@ -41,7 +45,7 @@ export function JournalPage() {
               className={`stem-chip ${kind === k ? 'is-active' : ''}`}
               onClick={() => setKind(k)}
             >
-              {k}
+              {KIND_LABELS[k] || k}
             </button>
           ))}
         </div>
@@ -68,7 +72,7 @@ export function JournalPage() {
                 <strong>{j.title}</strong>
                 <p>{j.note || '—'}</p>
                 <small>
-                  {j.kind} · {new Date(j.date).toLocaleString('tr-TR')} · +{j.stars}⭐
+                  {KIND_LABELS[j.kind] || j.kind} · {new Date(j.date).toLocaleString('de-DE')} · +{j.stars}⭐
                 </small>
               </div>
             </article>
