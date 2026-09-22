@@ -49,3 +49,5 @@ Hesap API uçları:
 - `POST /api/membership/portal`
 
 Cloudflare Pages üzerinde hesabın ve senkronizasyonun çalışması için Functions ortamına `DB` adlı D1 binding'i ekleyin. Şifreler PBKDF2-SHA-256 ile hashlenir; oturumlar HttpOnly, Secure ve SameSite=None cookie ile tutulur.
+
+Üretim kurulumu için [`docs/production-setup.md`](docs/production-setup.md) adımlarını uygulayın.
