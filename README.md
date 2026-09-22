@@ -51,3 +51,5 @@ Wichtige Endpunkte:
 - `POST /api/membership/portal`
 
 Die vollständige Produktions-Checkliste steht in [`docs/production-setup.md`](docs/production-setup.md).
+
+Die geprüfte Domain-Shortlist und die Schritte für Marken-, Registrar- und DNS-Prüfung stehen in [`docs/domain-recherche.md`](docs/domain-recherche.md). Die RDAP-Prüfung ist keine Kauf- oder Reservierungsgarantie.
