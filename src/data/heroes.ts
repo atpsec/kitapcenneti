@@ -1698,6 +1698,7 @@ const HERO_LABELS: Record<string, string> = {
   'Dostluk en güzel hediyedir!': 'Freundschaft ist das schönste Geschenk!',
   'Gökyüzü tuvaldir!': 'Der Himmel ist eine Leinwand!',
   'Nazik söz yara sarar!': 'Ein freundliches Wort heilt.',
+  'Naz Dostluk': 'Naz Freundschaft',
 }
 
 function localiseHeroText(value: string): string {

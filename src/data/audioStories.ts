@@ -5660,10 +5660,39 @@ Lies heute auch eine Seite – die Bibliothek wartet auf dich.`,
 ]
 
 const AUDIO_LABELS: Record<string, string> = {
+  // Legacy titles and mixed-language story copy. These are display labels only;
+  // story IDs remain unchanged so saved links and favourites continue to work.
+  'Bulut Otobüsü': 'Wolkenbus',
+  'Muzi ve Onaran Robot': 'Muzi und der Reparaturroboter',
+  'Büyülü Kalemlik': 'Der magische Stiftehalter',
+  'Köy Feneri': 'Die Dorflaterne',
+  'Parktaki Mavi Bank': 'Die blaue Parkbank',
+  'Uykucu Ejderha Pofuduk': 'Der schläfrige Drache Pofuduk',
+  'Koch Eichhörnchen Erdnuss': 'Das kochende Eichhörnchen Erdnuss',
+  'Mavi': 'blaue',
+  'Yağmur sagte': 'Regen sagte',
+  'Birlikte': 'Gemeinsam',
+  'Müzik': 'Musik',
+  'Topluluk': 'Gemeinschaft',
+  'Sorumluluk': 'Verantwortung',
+  'Umut': 'Hoffnung',
+  'Paylaşım': 'Teilen',
+  'Kardeşlik': 'Geschwisterliebe',
   'Macera': 'Abenteuer', 'Hayvan': 'Tiere', 'Deniz': 'Meer', 'Mevsim': 'Jahreszeit',
   'Cesaret': 'Mut', 'Uzay': 'Weltraum', 'Okul': 'Schule', 'Duygu': 'Gefühl',
   'Özgünlük': 'Originalität', 'Aile': 'Familie', 'Dostluk': 'Freundschaft',
-  'Müzik': 'Musik', 'Doğa': 'Natur', 'Sanat': 'Kunst', 'Spor': 'Sport',
+  'Doğa': 'Natur', 'Sanat': 'Kunst', 'Spor': 'Sport',
+  'White Cloud': 'Weiße Wolke',
+  'Colorful Candy Park': 'Bunter Süßigkeitenpark',
+  'Whispering Forest': 'Flüsterwald',
+  'Soft Pillow Station': 'Weiche-Kissen-Station',
+  'Left Sock': 'Linke Socke',
+  'Right Sock': 'Rechte Socke',
+  'Cloud': 'Wolke',
+  'Space Tale': 'Weltraumgeschichte',
+  'Sharing': 'Teilen',
+  'Pens wusste': 'Die Stifte wussten',
+  'Töpfen: Dum einer nach dem anderen!': 'Töpfen: Bum, bum, immer weiter!',
 }
 
 function localiseAudioText(value: string): string {

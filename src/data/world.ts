@@ -676,6 +676,7 @@ const WORLD_LABELS: Record<string, string> = {
   'Masallar': 'Geschichten',
   'Oyunlar': 'Spiele',
   'Keşfet': 'Entdecken',
+  'Daha fazla': 'Mehr anzeigen',
   'dokun ve keşfet': 'öffne die Region und entdecke',
   'temalı keşif bölgesi': 'Themenregion',
   'diyar': 'Welt',
@@ -688,6 +689,7 @@ const WORLD_LABELS: Record<string, string> = {
   'Renkli balıklar ve mercanlar; deniz koruma koyu.': 'Bunte Fische und Korallen in einer geschützten Meeresbucht.',
   'Uzay gemileri ve yıldız haritaları limanı.': 'Ein Hafen für Raumschiffe und Sternkarten.',
   'Temiz su kaynakları ve bahçeler; doğa dostu köy.': 'Saubere Quellen und Gärten in einem naturfreundlichen Dorf.',
+  'Papatyalar, laleler ve kelebekler vadide dans eder.': 'Gänseblümchen, Tulpen und Schmetterlinge tanzen im Tal.',
 }
 
 function localiseWorldText(value: string): string {
