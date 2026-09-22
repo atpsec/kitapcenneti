@@ -356,7 +356,117 @@ export const COLORING_PAGES: ColoringPage[] = [
 const S = `fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"`
 const S2 = `fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"`
 const vb = (inner: string, footer = 'Kitap Cenneti') =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" width="400" height="420">${inner}<text x="200" y="408" text-anchor="middle" font-family="Nunito,Arial,sans-serif" font-size="14" fill="#777">${footer}</text></svg>`
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" width="400" height="420" role="img" aria-label="${footer}"><title>${footer}</title><rect x="15" y="15" width="370" height="365" rx="24" ${S2}/><path d="M34 365 Q200 347 366 365" ${S2}/><path d="M39 50 l5 10 11 1-8 7 3 11-11-6-10 6 3-11-8-7 11-1z M350 50 l5 10 11 1-8 7 3 11-11-6-10 6 3-11-8-7 11-1z" ${S2}/>${inner}<text x="200" y="408" text-anchor="middle" font-family="Nunito,Arial,sans-serif" font-size="14" fill="#777">${footer}</text></svg>`
+
+const hashId = (id: string) => Array.from(id).reduce((sum, char) => (sum * 31 + char.charCodeAt(0)) >>> 0, 7)
+
+const genericScene = (id: string, page?: ColoringPage) => {
+  const category = page?.category || 'Doğa'
+  const variant = hashId(id) % 3
+  const footer = page?.title || 'Kitap Cenneti'
+
+  if (category === 'Hayvanlar') {
+    const animal = variant === 0
+      ? `<circle cx="200" cy="158" r="52" ${S}/><path d="M163 120 L145 72 L180 101 M237 120 L255 72 L220 101" ${S}/><ellipse cx="200" cy="260" rx="78" ry="72" ${S}/><ellipse cx="170" cy="150" rx="7" ry="10" ${S2}/><ellipse cx="230" cy="150" rx="7" ry="10" ${S2}/><path d="M190 178 Q200 188 210 178 M200 188 L200 202" ${S2}/><path d="M145 250 Q130 300 150 332 M255 250 Q270 300 250 332" ${S2}/>`
+      : variant === 1
+        ? `<ellipse cx="200" cy="220" rx="100" ry="72" ${S}/><circle cx="120" cy="195" r="38" ${S}/><circle cx="280" cy="195" r="38" ${S}/><circle cx="108" cy="190" r="6" fill="#1a1a1a"/><circle cx="292" cy="190" r="6" fill="#1a1a1a"/><path d="M100 222 Q120 240 140 222 M260 222 Q280 240 300 222" ${S2}/><path d="M138 250 Q120 300 145 325 M262 250 Q280 300 255 325" ${S2}/><path d="M150 180 Q200 135 250 180" ${S2}/>`
+        : `<ellipse cx="200" cy="230" rx="72" ry="94" ${S}/><path d="M145 190 L120 130 L160 150 M255 190 L280 130 L240 150" ${S}/><circle cx="180" cy="205" r="7" fill="#1a1a1a"/><circle cx="220" cy="205" r="7" fill="#1a1a1a"/><path d="M190 228 Q200 240 210 228" ${S2}/><path d="M168 280 Q200 300 232 280" ${S2}/><path d="M135 120 Q105 92 80 115 M265 120 Q295 92 320 115" ${S2}/>`
+    return vb(`${animal}
+      <path d="M35 325 Q80 290 125 325 M275 325 Q320 290 365 325" ${S2}/>
+      <path d="M62 325 l18-25 18 25 M310 325 l18-25 18 25" ${S2}/>
+      <circle cx="55" cy="95" r="10" ${S2}/><circle cx="345" cy="125" r="8" ${S2}/>
+      <path d="M48 280 q18-22 36 0 M316 280 q18-22 36 0" ${S2}/>
+    `, footer)
+  }
+
+  if (category === 'Kahramanlar') {
+    return vb(`
+      <path d="M200 72 L250 92 L246 190 Q240 260 200 300 Q160 260 154 190 L150 92 Z" ${S}/>
+      <path d="M200 115 l12 27 30 3-23 19 7 30-26-16-26 16 7-30-23-19 30-3z" ${S2}/>
+      <path d="M154 118 L105 160 L130 185 L160 165 M246 118 L295 160 L270 185 L240 165" ${S}/>
+      <path d="M175 300 L160 350 M225 300 L240 350" ${S}/>
+      <circle cx="55" cy="90" r="8" ${S2}/><circle cx="345" cy="80" r="10" ${S2}/>
+      <path d="M42 300 Q80 270 115 300 M285 300 Q320 270 358 300" ${S2}/>
+      <path d="M70 330 L100 270 L130 330 M270 330 L300 270 L330 330" ${S2}/>
+    `, footer)
+  }
+
+  if (category === 'Masal') {
+    return vb(`
+      <path d="M85 300 L85 180 L140 180 L140 135 L200 78 L260 135 L260 180 L315 180 L315 300 Z" ${S}/>
+      <path d="M60 180 Q90 130 120 180 M280 180 Q310 130 340 180" ${S2}/>
+      <path d="M165 300 L165 230 Q200 195 235 230 L235 300" ${S}/>
+      <rect x="105" y="215" width="34" height="42" ${S2}/><rect x="261" y="215" width="34" height="42" ${S2}/>
+      <path d="M200 78 L200 45 M187 50 L200 30 L213 50" ${S2}/>
+      <path d="M34 340 Q76 306 116 340 M284 340 Q324 306 366 340" ${S2}/>
+      <circle cx="55" cy="90" r="12" ${S2}/><circle cx="345" cy="105" r="9" ${S2}/>
+      <path d="M45 275 q16-30 32 0 M323 275 q16-30 32 0" ${S2}/>
+    `, footer)
+  }
+
+  if (category === 'Uzay') {
+    return vb(`
+      <path d="M200 55 Q248 120 230 255 L200 320 L170 255 Q152 120 200 55 Z" ${S}/>
+      <circle cx="200" cy="150" r="25" ${S}/><circle cx="200" cy="150" r="10" ${S2}/>
+      <path d="M170 245 L138 310 L170 290 M230 245 L262 310 L230 290 M182 255 L200 350 L218 255" ${S}/>
+      <circle cx="70" cy="95" r="26" ${S}/><path d="M45 95 Q70 80 95 95" ${S2}/>
+      <ellipse cx="70" cy="95" rx="42" ry="12" ${S2}/>
+      <path d="M320 55 l6 14 16 1-12 10 4 15-14-8-14 8 4-15-12-10 16-1z M305 280 l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" ${S2}/>
+      <circle cx="95" cy="280" r="5" fill="#1a1a1a"/><circle cx="335" cy="180" r="5" fill="#1a1a1a"/>
+    `, footer)
+  }
+
+  if (category === 'Deniz') {
+    return vb(`
+      <path d="M75 225 Q155 140 255 195 Q300 220 330 260 Q245 300 140 285 Q95 275 75 225 Z" ${S}/>
+      <path d="M255 195 L325 150 L315 215 L355 245 L300 255" ${S}/>
+      <circle cx="145" cy="220" r="13" ${S}/><circle cx="145" cy="220" r="4" fill="#1a1a1a"/><path d="M170 250 Q205 270 240 248" ${S2}/>
+      <path d="M62 320 Q82 260 98 320 M98 320 Q120 255 138 320 M290 335 Q310 275 328 335" ${S2}/>
+      <circle cx="65" cy="90" r="13" ${S2}/><circle cx="88" cy="58" r="8" ${S2}/><circle cx="320" cy="110" r="10" ${S2}/>
+      <path d="M35 350 Q105 330 175 350 Q245 370 365 345" ${S2}/>
+    `, footer)
+  }
+
+  if (category === 'Taşıtlar') {
+    return vb(`
+      <path d="M55 255 L95 175 L150 155 L255 155 L315 190 L345 255 Z" ${S}/>
+      <path d="M55 255 L345 255 L330 295 L70 295 Z" ${S}/>
+      <circle cx="120" cy="295" r="28" ${S}/><circle cx="280" cy="295" r="28" ${S}/><circle cx="120" cy="295" r="10" ${S2}/><circle cx="280" cy="295" r="10" ${S2}/>
+      <path d="M150 175 L200 175 L200 225 L135 225 Z M210 175 L260 175 L285 225 L210 225 Z" ${S2}/>
+      <path d="M78 125 Q118 90 158 125 M260 120 Q300 85 340 120" ${S2}/>
+      <path d="M35 340 L365 340 M75 325 l18 15 M310 325 l18 15" ${S2}/>
+      <circle cx="200" cy="245" r="9" ${S2}/>
+    `, footer)
+  }
+
+  if (category === 'Bilim') {
+    return vb(`
+      <path d="M160 95 L160 165 L105 275 Q95 300 125 310 L275 310 Q305 300 295 275 L240 165 L240 95 Z" ${S}/>
+      <path d="M145 215 Q200 190 255 215 M130 255 Q200 230 270 255" ${S2}/>
+      <circle cx="172" cy="235" r="8" ${S2}/><circle cx="215" cy="260" r="12" ${S2}/><circle cx="245" cy="220" r="6" ${S2}/>
+      <path d="M200 95 L200 55 M180 55 L220 55" ${S}/><circle cx="200" cy="40" r="12" ${S2}/>
+      <path d="M55 135 l30 0 M70 120 l0 30 M315 155 l30 0 M330 140 l0 30" ${S2}/>
+      <circle cx="75" cy="280" r="20" ${S2}/><circle cx="330" cy="285" r="16" ${S2}/>
+    `, footer)
+  }
+
+  if (category === 'Mevsim') {
+    return vb(`
+      <circle cx="310" cy="85" r="38" ${S}/><path d="M282 85 Q310 65 338 85" ${S2}/>
+      <path d="M200 335 L200 170 M200 220 Q150 170 105 185 M200 245 Q250 190 300 210" ${S}/>
+      <path d="M200 180 Q165 120 130 150 Q160 180 200 180 M200 180 Q235 120 270 150 Q240 180 200 180" ${S2}/>
+      <path d="M45 330 Q90 300 135 330 M265 330 Q315 300 360 330" ${S2}/>
+      <path d="M75 90 q18-20 36 0 M110 65 q18-20 36 0" ${S2}/><circle cx="60" cy="230" r="10" ${S2}/>
+    `, footer)
+  }
+
+  return vb(`
+    <circle cx="200" cy="175" r="62" ${S}/><path d="M150 130 L132 80 L170 110 M250 130 L268 80 L230 110" ${S}/>
+    <ellipse cx="200" cy="275" rx="85" ry="62" ${S}/><circle cx="180" cy="170" r="6" fill="#1a1a1a"/><circle cx="220" cy="170" r="6" fill="#1a1a1a"/>
+    <path d="M182 195 Q200 210 218 195" ${S2}/><path d="M145 275 Q120 315 145 345 M255 275 Q280 315 255 345" ${S2}/>
+    <path d="M35 330 Q80 295 125 330 M275 330 Q320 295 365 330" ${S2}/><circle cx="65" cy="90" r="10" ${S2}/><circle cx="340" cy="120" r="8" ${S2}/>
+  `, footer)
+}
 
 export function getColoringSvg(id: string): string {
   const map: Record<string, string> = {
@@ -804,16 +914,6 @@ export function getColoringSvg(id: string): string {
     `, 'Piknik Sepeti'),
   }
 
-  const generic = vb(`
-    <rect x="60" y="60" width="280" height="280" rx="24" ${S}/>
-    <circle cx="200" cy="170" r="50" ${S}/>
-    <path d="M150 250 Q200 290 250 250" ${S2}/>
-    <path d="M120 120 L140 90 L160 120" ${S2}/>
-    <path d="M240 120 L260 90 L280 120" ${S2}/>
-    <circle cx="185" cy="165" r="5" fill="#1a1a1a"/>
-    <circle cx="215" cy="165" r="5" fill="#1a1a1a"/>
-    <text x="200" y="340" text-anchor="middle" font-family="Nunito,Arial,sans-serif" font-size="18" fill="#555">Boyama Zamanı!</text>
-  `, 'Kitap Cenneti')
-
-  return map[id] || generic
+  const page = COLORING_PAGES.find((item) => item.id === id)
+  return map[id] || genericScene(id, page)
 }

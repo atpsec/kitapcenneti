@@ -28,7 +28,14 @@ export async function downloadSvgAsPdf(svgMarkup: string, filename: string, titl
   ctx.fillStyle = '#888'
   ctx.font = '600 20px Nunito, Arial, sans-serif'
   ctx.fillText('Kitap Cenneti — Telifsiz boyama sayfası', 500, 85)
-  ctx.drawImage(img, 100, 110, 800, 800)
+  // Keep the SVG's original aspect ratio so circles, faces and frames stay
+  // round when the printable is rasterized for the PDF.
+  const maxWidth = 800
+  const maxHeight = 820
+  const scale = Math.min(maxWidth / img.width, maxHeight / img.height)
+  const drawWidth = img.width * scale
+  const drawHeight = img.height * scale
+  ctx.drawImage(img, (canvas.width - drawWidth) / 2, 110, drawWidth, drawHeight)
   ctx.fillStyle = '#666'
   ctx.font = '500 18px Nunito, Arial, sans-serif'
   ctx.fillText('Evde eğitim ve eğlence için serbestçe kullanılabilir.', 500, 960)
