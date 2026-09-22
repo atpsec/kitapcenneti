@@ -27,7 +27,7 @@ export function ProgressHub({ onNavigate, compact = false }: ProgressHubProps) {
         </div>
         <div className="progress-hub__stat">
           <strong>{badges.length}</strong>
-          <span>Rozet</span>
+          <span>Abzeichen</span>
         </div>
       </div>
 
@@ -38,7 +38,7 @@ export function ProgressHub({ onNavigate, compact = false }: ProgressHubProps) {
       {!compact && (
         <>
           <div className="progress-hub__row">
-            <h3>🏅 Rozetlerin</h3>
+            <h3>🏅 Deine Abzeichen</h3>
             <button
               type="button"
               className={`bedtime-toggle ${bedtime ? 'is-on' : ''}`}
@@ -72,13 +72,13 @@ export function ProgressHub({ onNavigate, compact = false }: ProgressHubProps) {
           {onNavigate && (
             <div className="progress-hub__actions">
               <button type="button" className="btn btn--primary" onClick={() => onNavigate('quests')}>
-                ⭐ Gehe zu Quests
+                ⭐ Zu den Aufgaben
               </button>
               <button type="button" className="btn btn--ghost" onClick={() => onNavigate('certificates')}>
                 🏆 Zertifikat
               </button>
               <button type="button" className="btn btn--ghost" onClick={() => onNavigate('create')}>
-                ✨ Erstelle eine Geschichte
+                ✨ Erfinde eine Geschichte
               </button>
             </div>
           )}

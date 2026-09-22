@@ -63,12 +63,12 @@ export function factoryStory(seed: number): FactoryStory {
   const n = (s % 900) + 1
   return {
     id: `live-story-${s}`,
-    title: `${hero}s Abenteuer im ${place} #${n}`,
+    title: `${hero}s Abenteuer rund um ${place} #${n}`,
     emoji,
     age: pick(['3-5', '4-7', '5-8', '6-9', '7-10'], s),
     duration: `${3 + (s % 5)} Min.`,
     theme,
-    summary: `Eine ${theme.toLowerCase()}-Geschichte: ${hero} findet im ${place} einen neuen Freund.`,
+    summary: `Eine ${theme.toLowerCase()}-Geschichte: ${hero} entdeckt ${place} und findet einen neuen Freund.`,
     text: `Es war einmal ein ${mood}er Held namens ${hero}, der im ${place} lebte.
 Eines Tages gab es ein kleines Problem: Niemand fand den richtigen Weg.
 ${hero} atmete tief durch, sah sich um und fasste einen Plan.

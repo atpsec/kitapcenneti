@@ -51,7 +51,7 @@ export function InstallPrompt() {
           }
         }}
       >
-        Hochladen
+        Installieren
       </button>
     </div>
   )

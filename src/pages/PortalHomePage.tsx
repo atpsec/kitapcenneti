@@ -106,7 +106,7 @@ export function PortalHomePage({ onNavigate }: Props) {
             </div>
             <div className="portal-hero__metrics">
               <span><strong>{stars}</strong> Sterne</span>
-              <span><strong>{streak}</strong> Tage Serie</span>
+              <span><strong>{streak}</strong> Tage in Folge</span>
               <span><strong>{todayProgress}%</strong> heute</span>
             </div>
           </div>
@@ -143,7 +143,7 @@ export function PortalHomePage({ onNavigate }: Props) {
               <button type="button" className="text-link" onClick={() => onNavigate('paths')}>Weg ansehen <span>↗</span></button>
             </div>
             <ProgressHub compact onNavigate={onNavigate} />
-            <div className="rail-card rail-card--quiet"><span className="rail-card__icon">🗺️</span><h2>Die Welt öffnet</h2><p>In {WORLD_REGIONS.length} Themenregionen wartet eine neue Entdeckung.</p><button type="button" className="text-link" onClick={() => onNavigate('world')}>Zur Karte <span>↗</span></button></div>
+            <div className="rail-card rail-card--quiet"><span className="rail-card__icon">🗺️</span><h2>Die Welt öffnet sich</h2><p>In {WORLD_REGIONS.length} Themenregionen wartet eine neue Entdeckung.</p><button type="button" className="text-link" onClick={() => onNavigate('world')}>Zur Karte <span>↗</span></button></div>
           </aside>
         </div>
       </div>
@@ -164,7 +164,7 @@ export function PortalHomePage({ onNavigate }: Props) {
       <section className="portal-hero">
         <div className="portal-hero__copy">
           <div className="portal-hero__eyebrow"><span className="eyebrow-dot" /> Deine Entdeckung für heute ist bereit</div>
-          <h1>{greeting} <em>Warte, eine neue Seite.</em></h1>
+          <h1>{greeting} <em>Hier wartet eine neue Seite.</em></h1>
           <p>Eine Geschichte, ein kurzes Spiel oder dein eigenes Märchen. Du entscheidest, wo du beginnst.</p>
           <div className="portal-hero__actions">
             <button type="button" className="btn btn--primary" onClick={() => onNavigate('audio')}>Geschichte des Tages <span>→</span></button>
