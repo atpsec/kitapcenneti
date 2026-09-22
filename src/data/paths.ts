@@ -18,7 +18,7 @@ export interface LearningPath {
   steps: PathStep[]
 }
 
-export const LEARNING_PATHS: LearningPath[] = [
+const LEARNING_PATHS_RAW: LearningPath[] = [
   {
     id: 'minik-okur',
     title: 'Die Reise des kleinen Lesers',
@@ -826,3 +826,75 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
   }
 ]
+
+const PATH_TEXT_REPLACEMENTS: Array<[string, string]> = [
+  ['Es weckt sanft die Liebe zum Lesen', 'Diese Route weckt sanft die Liebe zum Lesen'],
+  ['Hören Sie nebeneinander auf dem Kissen zu; Wenn Sie fertig sind, benennen Sie ein Gefühl.', 'Hören Sie gemeinsam auf dem Kissen zu. Wenn Sie fertig sind, benennen Sie ein Gefühl.'],
+  ['perfektes Lackieren', 'perfektes Ausmalen'],
+  ['Kurzer Kinderreim-Chor', 'Kurze Kinderreim-Runde'],
+  ['Wöchentliche Sternenquest', 'Wöchentliche Sternenaufgabe'],
+  ['Mini-Familien-Blog-Tipp', 'Kleiner Familienblog-Tipp'],
+  ['Lassen Sie die Eltern den Vorlesetext vorlesen; Lassen Sie das Kind', 'Lesen Sie den Vorlesetext gemeinsam; lassen Sie das Kind'],
+  ['Glücksschminken', 'Fröhliches Gesicht'],
+  ['Reim teilen', 'Reim gemeinsam sprechen'],
+  ['?“ Problem.', '?“'],
+  ['Lesen Sie sanfter Held', 'Lesen Sie eine Geschichte über einen sanften Helden'],
+  ['Ruhige Eckmission', 'Ruhige-Ecken-Mission'],
+  ['Farbwerkstatt', 'Farbenwerkstatt'],
+  ['Freie Leitung = Aufwärmen der Kreativität.', 'Freies Zeichnen wärmt die Kreativität auf.'],
+  ['4 quadratische Geschichten mit KI', 'Vier kurze Geschichten mit KI'],
+  ['eine super Begleitung', 'eine gute Ergänzung'],
+  ['Drucken Sie es aus und hängen Sie es an den Kühlschrank', 'Ausdruck am Kühlschrank'],
+  ['Sammle Kunststars', 'Sammeln Sie Kunststerne'],
+  ['Lese-Explorer', 'Leseentdecker'],
+  ['MINT-Enthusiast', 'MINT-Forscher'],
+  ['Erfinde einen „Wissenschaftlerhelden“-Charakter.', 'Erfinden Sie eine Figur, die gern forscht.'],
+  ['Die falsche Antwort ist auch Entdeckung – feiern.', 'Auch eine falsche Antwort kann zu einer Entdeckung führen – feiern Sie den Versuch.'],
+  ['Schließe die MINT-Mission ab', 'Schließen Sie die MINT-Mission ab'],
+  ['nicht auf die Billardtafel', 'nicht auf die Familientafel'],
+  ['„Wem hat er heute geholfen?“ fragen.', 'Fragen Sie: „Wem hat die Figur heute geholfen?“'],
+  ['Erschaffe deinen eigenen freundlichen Helden', 'Erfinden Sie Ihren eigenen freundlichen Helden'],
+  ['Superkraft: ob Zuhören oder Teilen.', 'Superkraft: Zuhören oder Teilen.'],
+  ['Spielen Sie das Lernband ab', 'Lernen mit Spiel und Spaß'],
+  ['Es bringt dich auch zum Lachen', 'Es bringt Sie auch zum Lachen'],
+  ['Male das „heutige Abzeichen“ aus.', 'Malen Sie das „heutige Abzeichen“ aus.'],
+  ['Autor Reisender', 'Schreibende Entdecker'],
+  ['Route der Wissenschaft und Ingenieure', 'Wissenschafts- und Ingenieurpfad'],
+  ['Erschaffe einen Helden, der erfindet.', 'Erfinden Sie eine Figur, die gern tüftelt.'],
+  ['Wöchentliche Wissenschaftsquest', 'Wöchentliche Wissenschaftsaufgabe'],
+  ['Zum Fotojournal hinzufügen', 'Fügen Sie es dem Fototagebuch hinzu'],
+  ['Höflichkeitspflicht', 'Freundlichkeitsaufgabe'],
+  ['Gemeinsame Malzeit', 'Gemeinsame Malstunde'],
+  ['seien Sie ein Model.', 'seien Sie ein gutes Vorbild.'],
+  ['Emotion Montag', 'Gefühl des Montags'],
+  ['Gewinntag: Rad + Aufkleber.', 'Erfolgstag: Drehrad plus Sticker.'],
+  ['Ausgabearchiv', 'Erlebnisarchiv'],
+  ['Feiertag', 'Ferien'],
+  ['Es gibt auch eine imaginäre Reise, bevor Sie losfahren.', 'Beginnen Sie vor der Abfahrt mit einer kleinen Fantasiereise.'],
+  ['Missionsjagd', 'Aufgabenjagd'],
+  ['Wissenschaftsfreak-Pfad', 'Wissenschaftspfad'],
+  ['Erweiterte Lernroute für altersgerechte Schritt-für-Schritt-Gruppen', 'Erweiterte Lernroute mit altersgerechten Schritten für'],
+  ['Öffne die stündliche Quest.', 'Öffnen Sie die stündliche Aufgabe.'],
+  ['Hören Sie.', 'Hören Sie gemeinsam zu.'],
+  ['Kurze Tour.', 'Kurze Spielrunde.'],
+  ['Checken Sie ein.', 'Sprechen Sie über Ihr Gefühl.'],
+  ['Experiment.', 'Kleines Experiment.'],
+]
+
+function normalisePathText(value: string): string {
+  let result = value
+  for (const [from, to] of PATH_TEXT_REPLACEMENTS) result = result.split(from).join(to)
+  return result
+}
+
+export const LEARNING_PATHS: LearningPath[] = LEARNING_PATHS_RAW.map((path) => ({
+  ...path,
+  title: normalisePathText(path.title),
+  summary: normalisePathText(path.summary),
+  tags: path.tags.map(normalisePathText),
+  steps: path.steps.map((step) => ({
+    ...step,
+    title: normalisePathText(step.title),
+    tip: normalisePathText(step.tip),
+  })),
+}))

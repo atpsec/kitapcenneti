@@ -1707,12 +1707,132 @@ function localiseHeroText(value: string): string {
   return result
 }
 
-export const HEROES: Hero[] = HEROES_RAW.map((hero) => ({
-  ...hero,
-  name: localiseHeroText(hero.name),
-  power: localiseHeroText(hero.power),
-  motto: localiseHeroText(hero.motto),
-  bio: localiseHeroText(hero.bio),
-  adventure: localiseHeroText(hero.adventure),
-  tip: localiseHeroText(hero.tip),
-}))
+const HERO_TEXT_FIXES: Record<string, Partial<Pick<Hero, 'name' | 'bio' | 'adventure' | 'tip'>>> = {
+  'yildiz-kiz': {
+    bio: 'Nova ist eine originelle Heldin aus Sternenstaub. Die Figur ist frei nutzbar und lädt zum Zeichnen, Schreiben und Spielen ein.',
+    adventure: 'Eines Nachts, als die Lichter der Stadt ausgingen, baute Nova Lichtbrücken vom Himmel und alle kehrten sicher nach Hause zurück.',
+    tip: 'Zeichnen Sie Ihr eigenes Sternenmädchen und verwandeln Sie es in eine Malvorlage.',
+  },
+  'luna-deniz': {
+    bio: 'Luna ist eine einzigartige Heldin, die die Meere schützt und aus alten Dingen neue Lösungen entwickelt.',
+    adventure: 'Sie sammelte angespülte Netze ein und brachte sie zur Recyclingwerkstatt; die Delfine schienen zu singen.',
+    tip: 'Benutzen Sie eine Trinkflasche statt Einwegplastik – Luna freut sich.',
+  },
+  'mira-renk': {
+    bio: 'Mira ist eine lizenzfreie Heldin, die die Welt mit Kunst schöner macht. Ihr Pinsel ist nicht magisch, doch ihr Mut ist es.',
+    adventure: 'Sie füllte den grauen Park mit Farben; die Kinder begannen wieder zu lachen.',
+    tip: 'Malen Sie heute ein Bild und schenken Sie es jemandem.',
+  },
+  'kuzey-pati': {
+    bio: 'Pati ist eine originelle Entdeckerin aus den Polarregionen. Sie zeigt ihren Freunden den Weg und zeichnet dafür eigene Karten.',
+    adventure: 'Sie fand ein verlorenes Robbenjunges und brachte es zu seiner Familie zurück.',
+  },
+  'defne-orman': {
+    bio: 'Defne ist eine einzigartige Beschützerin, die aus dem Herzen des Waldes stammt. Sie pflanzt Samen mit Liebe und gibt den Bäumen Namen.',
+    adventure: 'Sie pflanzte hundert Setzlinge in einem trockenen Park; die Kinder veranstalteten dort ihr erstes Picknick.',
+    tip: 'Pflanzen Sie einen Samen und warten Sie geduldig wie ein junger Baum.',
+  },
+  'ece-matematik': {
+    bio: 'Ece ist eine originelle Heldin, die Zahlen wie ein Spiel liebt. Bei schwierigen Fragen gerät sie nicht in Panik, sondern denkt Schritt für Schritt.',
+    adventure: 'Sie löste das Zahlenlabyrinth auf dem Schulhof und führte alle zum Ausgang.',
+  },
+  'derya-dalga': {
+    bio: 'Derya ist eine friedliche Heldin, die dem Rhythmus des Meeres lauscht. Wenn sie wütend wird, atmet sie wie eine Welle ein und findet dann eine Lösung.',
+    adventure: 'Sie sammelte Müll am Ufer ein und öffnete einen sauberen Wasserweg für die Fischbrut.',
+  },
+  'baris-gunes': {
+    bio: 'Barış ist ein fröhlicher Held, der jeden Morgen wie die Sonne aufgeht. Er erinnert alle daran, dass Sorgen leichter werden, wenn man darüber spricht.',
+    adventure: 'Er hob die Stimmung aller, indem er an einem Regentag ein Sonnenbild im Klassenzimmer malte.',
+  },
+  'selin-yildiz': {
+    adventure: 'Sie beruhigte ein Kind, das seine Nachtlampe vergessen hatte, indem sie eine Sternenkarte zeichnete.',
+  },
+  'naz-dostluk': {
+    name: 'Naz Freundschaft',
+    bio: 'Naz ist eine herzliche Heldin, die neuen Kindern hilft, sich in der Schule einzuleben. Sie lädt alle zum Spielen ein.',
+    adventure: 'Sie machte den ersten Tag eines neuen Kindes schön, indem sie ihm ihr Lieblingsspiel beibrachte.',
+    tip: 'Fragen Sie jemanden, der allein aussieht: „Möchtest du mitspielen?“',
+  },
+  'zeynep-zaman': {
+    bio: 'Zeynep ist eine kluge Heldin, die Hausaufgaben und Spielzeit unter einen Hut bringt. Sie sieht die Uhr als Helferin, nicht als Feindin.',
+    adventure: 'Während der Prüfungswoche erstellte sie für ihre Freunde einen kleinen Lernplan und verringerte dadurch den Stress.',
+  },
+  'yasemin-yardim': {
+    bio: 'Yasemin ist eine freundliche Heldin, die einer gestürzten Freundin hilft. Sie gerät nicht in Panik, sondern bleibt ruhig.',
+    adventure: 'Sie gab einem Kind auf dem Spielplatz Wasser, rief einen Erwachsenen und setzte danach ihr Spiel fort.',
+    tip: 'Helfen Sie jemandem und bleiben Sie ruhig wie Yasemin.',
+  },
+  'pelin-yagmur': {
+    bio: 'Pelin ist eine einzigartige Heldin, die Regen in trockene Gärten bringt und Pflanzen neue Kraft gibt.',
+    adventure: 'Sie sammelte Regenwolken über dem trockenen Garten, bis die Blumen wieder aufblühten.',
+    tip: 'Lauschen Sie dem Regen und atmen Sie dabei langsam und ruhig.',
+  },
+  'onur-kale': {
+    bio: 'Onur ist ein sanfter Beschützer, der anderen aufmerksam zuhört und für faire Lösungen sorgt.',
+    adventure: 'Er gab eine Tasche, die auf dem Schulhof lag, ihrer Besitzerin zurück.',
+    tip: 'Behandeln Sie heute jemanden besonders fair.',
+  },
+  'sude-dal': {
+    bio: 'Sude ist eine Heldin, die die sanfte Stimme des Meeres in sich trägt.',
+    adventure: 'Sie führte die Fische, die im Sturm in Panik geraten waren, ruhig in eine geschützte Bucht.',
+  },
+  'asli-cicek': {
+    bio: 'Aslı ist eine originelle Gärtnerin, die verblasste Blumen wiederbelebt.',
+    adventure: 'Sie schenkte ihrem mürrischen Nachbarn Blumen und brachte ihn zum Lächeln.',
+  },
+  'irem-isik': {
+    bio: 'İrem ist eine kluge Heldin, die Kindern mit Angst Hoffnung gibt.',
+    adventure: 'Sie wurde zur Taschenlampe für einen Freund, der in einem dunklen Tunnel Angst hatte.',
+  },
+  'aylin-nazik': {
+    adventure: 'Sie fand ein gemeinsames Spiel, das zwei streitende Freunde wieder versöhnte.',
+  },
+  'cagri-ates': {
+    name: 'Çağrı Feuer',
+    bio: 'Çağrı ist ein warmherziger Held, der Menschen Mut macht, wenn sie Angst haben.',
+    adventure: 'Er unterstützte seinen Freund mit Applaus, als dieser vor einem Auftritt Lampenfieber hatte.',
+  },
+  'eda-muzik': {
+    adventure: 'Mit ihrem Schlaflied half sie einem müden Geschwisterkind beim Einschlafen.',
+    tip: 'Singen Sie ein Kinderlied oder erfinden Sie gemeinsam einen kleinen Refrain.',
+  },
+}
+
+const PORTAL_HERO_NAMES = [
+  'Lorbeerlicht', 'Alpenwind', 'Ece Stern', 'Kaan Welle', 'Elif Samen', 'Mert Kompass',
+  'Ada Wolke', 'Meeresfunke', 'Lara Wald', 'Emir Fluss', 'Wasserlaterne', 'Can Himmel',
+  'Nina Stein', 'Baran Hoffnung', 'Zeynep Melodie', 'Ozan Küste', 'Melis Blüte',
+  'Yusuf Kompass', 'Seidenregenbogen', 'Berk Mond', 'Selin Sand', 'Arda Blatt',
+]
+const GENERATED_HERO_LABELS = ['Sternenfuchs', 'Wolkenkind', 'Mutfeder', 'Sonnenfunke', 'Waldhüter', 'Sternenläufer', 'Wasserwächter', 'Farbenfinder']
+
+function normaliseGeneratedHero(hero: Hero): Hero {
+  const portalNumber = Number(hero.id.match(/^hero-portal-(\d+)$/)?.[1] || 0)
+  const megaNumber = Number(hero.id.match(/^mega-hero-(\d+)$/)?.[1] || 0)
+  if (!portalNumber && !megaNumber) return hero
+
+  const name = portalNumber
+    ? PORTAL_HERO_NAMES[portalNumber - 1] || `Entdeckerfigur ${portalNumber}`
+    : `${GENERATED_HERO_LABELS[(megaNumber - 1) % GENERATED_HERO_LABELS.length]} ${megaNumber}`
+  return {
+    ...hero,
+    name,
+    bio: `${name} ist eine freie Originalfigur von Kitap Cenneti. Die Figur verbindet Hilfsbereitschaft, Neugier und sichere Abenteuer.`,
+    adventure: `${name} löste gemeinsam mit Freunden eine kleine Aufgabe und achtete darauf, dass alle sicher blieben.`,
+    tip: 'Fügen Sie diese Figur einer Geschichte hinzu oder malen Sie sie selbst.',
+  }
+}
+
+export const HEROES: Hero[] = HEROES_RAW.map((rawHero) => {
+  const localised = {
+    ...rawHero,
+    name: localiseHeroText(rawHero.name),
+    power: localiseHeroText(rawHero.power),
+    motto: localiseHeroText(rawHero.motto),
+    bio: localiseHeroText(rawHero.bio),
+    adventure: localiseHeroText(rawHero.adventure),
+    tip: localiseHeroText(rawHero.tip),
+  }
+  const generated = normaliseGeneratedHero(localised)
+  return { ...generated, ...HERO_TEXT_FIXES[generated.id] }
+})
