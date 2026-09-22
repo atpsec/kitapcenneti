@@ -692,6 +692,7 @@ const WORLD_LABELS: Record<string, string> = {
   'diyar': 'Welt',
   'diyarı': 'Welt',
   'çiçek': 'Blume', 'bahar': 'Frühling', 'kış': 'Winter', 'kutup': 'Polar',
+  'volkan': 'Vulkan', 'jeoloji': 'Geologie',
   'Güvenli mesafeden volkan ve jeoloji merakı adası.': 'Eine Insel für sichere Vulkan- und Geologiebeobachtung.',
   'Kutup ayıları ve ışıklar; sakin ve berrak bir dünya.': 'Eisbären und Polarlichter in einer ruhigen, klaren Welt.',
   'Kumul arasında su ve hayat; sabır ve dayanıklılık.': 'Wasser und Leben zwischen Dünen – eine Geschichte über Geduld und Ausdauer.',

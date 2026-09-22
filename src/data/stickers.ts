@@ -49,7 +49,7 @@ export const STICKERS: Sticker[] = [
   { id: 'tree', emoji: '🌳', title: 'Kraft der Wurzel', hint: 'Naturmission' },
   { id: 'camera', emoji: '📷', title: 'Erinnerungsfoto', hint: 'Journaling' },
   { id: 'pizza', emoji: '🍕', title: 'Pizzastück', hint: 'Küchenspiel' },
-  { id: 'cookie', emoji: '🍪', title: 'Kekse', hint: 'Sharing-Aufgabe' },
+  { id: 'cookie', emoji: '🍪', title: 'Kekse', hint: 'Teilen macht Freude' },
   { id: 'rainbow2', emoji: '🌈', title: 'Doppelter Regenbogen', hint: 'Emotionen einchecken' },
   { id: 'key', emoji: '🔑', title: 'Schlüssel', hint: 'Aufklärungsmission' },
   { id: 'anchor', emoji: '⚓', title: 'Eisen', hint: 'Meeresabenteuer' },

@@ -5,7 +5,7 @@ import ts from 'typescript'
 
 const root = process.cwd()
 const scratch = path.join(root, 'tmp', 'german-content-check')
-const dataFiles = ['audioStories', 'world', 'collections', 'activities']
+const dataFiles = ['audioStories', 'world', 'collections', 'activities', 'stickers']
 
 const visibleMarkers = /\b(?:Mizah|Bruderschaft|Sharing|Hope sagte|White Cloud|Colorful Candy Park|Whispering Forest|Soft Pillow Station|Left Sock|Right Sock|Back to School|Creative Writers Club|Space Explorers Basket|Sea Wave Box|Curiosity Science Box|School Morning Basket|Masal seç|Kısa oyun|Duygu check-in|Boyama|dostluk|doğa|uzay|okul|sanat|spor|deniz|mevsim|hayvan|cesaret|uyku|koleksiyon|keşfet|oyna|daha fazla|Canlı Arena|Masallar|Oyunlar)\b/i
 
@@ -31,12 +31,13 @@ await fs.rm(scratch, { recursive: true, force: true })
 await fs.mkdir(scratch, { recursive: true })
 
 try {
-  const [audio, world, collections, activities] = await Promise.all(dataFiles.map(loadData))
+  const [audio, world, collections, activities, stickers] = await Promise.all(dataFiles.map(loadData))
   const checks = [
     ['audio stories', audio.AUDIO_STORIES, ['title', 'theme', 'summary', 'text']],
     ['world regions', world.WORLD_REGIONS, ['title', 'blurb', 'tags', 'links']],
     ['collections', collections.COLLECTIONS, ['title', 'description', 'tags', 'items']],
     ['quiz questions', activities.QUIZ_QUESTIONS, ['question', 'options']],
+    ['stickers', stickers.STICKERS, ['title', 'hint']],
   ]
   const failures = []
 
