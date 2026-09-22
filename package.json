@@ -10,7 +10,8 @@
     "build:cf": "node scripts/build.mjs /",
     "preview": "vite preview",
     "pages:deploy": "npm run build:gh",
-    "verify:membership": "node scripts/verify-membership.mjs"
+    "verify:membership": "node scripts/verify-membership.mjs",
+    "verify:content": "node scripts/verify-german-content.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.4.7",

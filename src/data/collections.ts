@@ -15,6 +15,20 @@ export interface Collection {
 
 const COLLECTIONS_RAW: Collection[] = [
   {
+    id: 'deutschland-entdecken',
+    title: 'Deutschland entdecken',
+    emoji: '🗺️',
+    description: 'Eine kindgerechte Reise durch Landschaften, Geschichten und Bräuche in Deutschland – neugierig, offen und ohne Klischees.',
+    tags: ['Deutschland', 'Kultur', 'Entdecken'],
+    items: [
+      { label: 'Berliner Geschichtenhof', page: 'world', emoji: '🏛️' },
+      { label: 'Schwarzwald-Werkstatt', page: 'world', emoji: '🌲' },
+      { label: 'Nordsee-Leuchtturm', page: 'world', emoji: '🌊' },
+      { label: 'Quiz: Deutschland und seine Regionen', page: 'activities', emoji: '❓' },
+      { label: 'Geschichten aus dem Familiengarten', page: 'audio', emoji: '📚' },
+    ],
+  },
+  {
     id: 'uyku-zamani',
     title: 'Abendruhe-Korb',
     emoji: '🌙',

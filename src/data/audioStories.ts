@@ -165,17 +165,17 @@ Lies heute auch eine Seite – die Bibliothek wartet auf dich.`,
     duration: '4 dk',
     theme: 'Kommunikation',
     summary: 'Ein kleines Blatt trägt eine sanfte Botschaft, die vom Wind getragen wird.',
-    text: `Am Fuße des Berges befand sich ein Blatt namens Tulpe.\nDer Wind flüsterte ihm zu: „Bring dem Jungen unten eine Nachricht.“\nDie Tulpe flog, flog und lachte.\nEs wurde in die Handfläche von Deniz gelegt, während sie am Fenster wartete.\nIn dem Brief stand: „Lächle heute jemandem zu.“\nDas Meer lächelte seinen Nachbarn an; Die ganze Straße war beleuchtet.\nManchmal bringt die kleinste Nachricht die größte Freude.`,
+    text: `Am Fuß des Berges lag ein kleines Blatt namens Tulpe.\nDer Wind flüsterte: „Bring dem Kind unten eine Nachricht.“\nTulpe wirbelte durch die Luft und landete in Deniz’ Hand.\nAuf dem Blatt stand: „Schenk heute jemandem ein Lächeln.“\nDeniz lächelte der Nachbarin am Fenster zu, und bald war die ganze Straße fröhlicher.\nManchmal bringt eine kleine Nachricht die größte Freude.`,
   },
   {
     id: 'bulut-otobus',
-    title: 'Bulut Otobüsü',
+    title: 'Der Wolkenbus',
     emoji: '☁️',
     age: '3-6',
     duration: '3 dk',
     theme: 'Traum',
     summary: 'Der sanfte Wolkenbus bringt Kinder zu Traumzielen.',
-    text: `Am Himmel stand ein Bus mit einem Sitzsack.\nSein Fahrer war White Cloud, sein Ticket war ein Lächeln.\nErster Halt: Colorful Candy Park.\nZweiter Halt: Whispering Forest.\nDritter Halt: Soft Pillow Station.\nKaufen Sie auch Ihr Ticket – schließen Sie die Augen, der Bus kommt.\nDing-dong! Willkommen am Traumstopp.`,
+    text: `Am Himmel stand ein Bus mit weichen Sitzsäcken.\nSeine Fahrerin hieß Weiße Wolke, und das Ticket war ein Lächeln.\nErster Halt: der bunte Süßigkeitenpark.\nZweiter Halt: der Flüsterwald.\nDritter Halt: die Kissenstation.\nSchließ die Augen – der Bus kommt.\nDing-dong! Willkommen am Traumstopp.`,
   },
   {
     id: 'kayip-corap',
@@ -183,9 +183,9 @@ Lies heute auch eine Seite – die Bibliothek wartet auf dich.`,
     emoji: '🧦',
     age: '4-7',
     duration: '4 dk',
-    theme: 'Mizah',
+    theme: 'Humor',
     summary: 'Eine in der Waschmaschine verlorene Socke begibt sich auf eine waghalsige Reise.',
-    text: `Eines Morgens konnte Left Sock seinen richtigen nicht finden.\n„Ich mache ein Abenteuer!“ sagte er.\nEr wurde hinter dem Korb, unter dem Bett und sogar in der Spielzeugkiste durchsucht.\nSchließlich wurde er beim Sonnenbaden neben dem Blumentopf auf dem Balkon gefunden.\nRight Sock lachte: „Verloren gehen bedeutet manchmal, etwas zu entdecken.“\nVon diesem Tag an kehrten die beiden gemeinsam in den Schrank zurück – aber ab und zu waren Abenteuer erlaubt.`,
+    text: `Eines Morgens konnte die linke Socke ihre rechte Partnerin nicht finden.\n„Dann erlebe ich eben ein Abenteuer!“, sagte sie.\nSie suchte hinter dem Wäschekorb, unter dem Bett und sogar in der Spielzeugkiste.\nSchließlich fand sie die rechte Socke beim Sonnenbaden neben dem Blumentopf.\nBeide lachten: „Manchmal entdeckt man beim Suchen etwas Neues.“\nVon da an kehrten sie gemeinsam in den Schrank zurück – mit kleinen Abenteuern zwischendurch.`,
   },
   {
     id: 'seftali-agaci',
@@ -195,7 +195,7 @@ Lies heute auch eine Seite – die Bibliothek wartet auf dich.`,
     duration: '5 dk',
     theme: 'Geduld',
     summary: 'Ein kleiner Samen lernt Geduld, während er darauf wartet, zu wachsen.',
-    text: `Der kleine Samen fiel zu Boden und beeilte sich: „Ich möchte sofort ein Baum werden!“\nYağmur sagte: „Warte noch ein bisschen.“\nDie Sonne sagte: „Ein bisschen mehr.“\nDie Wurzeln wurden langsam länger und der Spross begrüßte die Sonne.\nJahre später wurde daraus ein Pfirsichbaum; Kinder spielten in seinem Schatten.\nDer Samen verstand: Schöne Dinge wachsen ohne Eile.`,
+    text: `Der kleine Samen fiel zu Boden und beeilte sich: „Ich möchte sofort ein Baum werden!“\nDer Regen sagte: „Warte noch ein bisschen.“\nDie Sonne sagte: „Noch ein wenig Geduld.“\nDie Wurzeln wurden länger, und der Spross begrüßte das Licht.\nJahre später war daraus ein Pfirsichbaum geworden, in dessen Schatten Kinder spielten.\nDer Samen verstand: Schöne Dinge wachsen ohne Eile.`,
   },
   {
     id: 'gece-otobus-duragi',
@@ -205,17 +205,17 @@ Lies heute auch eine Seite – die Bibliothek wartet auf dich.`,
     duration: '4 dk',
     theme: 'Cesaret',
     summary: 'Ein Kind, das zum ersten Mal alleine fährt, entdeckt die Zusammenarbeit.',
-    text: `Efe wird zum ersten Mal mit dem Bus zu seiner Großmutter fahren.\nIn seinem Bauch flogen Schmetterlinge.\nEine alte Dame ließ ihre Tasche an der Bushaltestelle fallen; Efe bückte sich und gab es ihm.\nDie Tante lächelte: „Mut ist manchmal eine kleine Hilfe.“\nDer Bus kam an, Efe stieg ein und setzte sich ans Fenster.\nDie Schmetterlinge waren immer noch da, aber jetzt tanzten sie – nicht aus Angst, sondern vor Aufregung.`,
+    text: `Efe fährt zum ersten Mal allein mit dem Bus zu seiner Großmutter.\nIn seinem Bauch flattern Schmetterlinge.\nAn der Haltestelle fällt einer älteren Frau eine Tasche herunter. Efe hebt sie auf und reicht sie ihr.\nDie Frau lächelt: „Mut beginnt manchmal mit einer kleinen Hilfe.“\nAls der Bus kommt, steigt Efe ein und setzt sich ans Fenster.\nDie Schmetterlinge sind noch da – jetzt tanzen sie vor Vorfreude.`,
   },
   {
     id: 'muzi-robot',
-    title: 'Muzi ve Onaran Robot',
+    title: 'Muzi und der Reparaturroboter',
     emoji: '🤖',
     age: '6-10',
     duration: '5 dk',
     theme: 'Wissenschaft',
     summary: 'Ein kaputter Spielzeugroboter funktioniert mit Neugier und Experimentierfreude wieder.',
-    text: `Muzis Roboter hörte eines Morgens auf zu piepen.\nAnstatt zu weinen, öffnete Muzi (zusammen mit den Erwachsenen) den Deckel.\nEine Schraube ist locker, ein Kabel ist fehl am Platz.\nEr versuchte es Schritt für Schritt, machte sich Notizen und versuchte es erneut.\nAls der Roboter erneut piepte, rief Muzi: „Das ist Wissenschaft!“\nManchmal ist Zerbrochenheit der Anfang des Lernens.`,
+    text: `Muzis Roboter hörte eines Morgens auf zu piepen.\nGemeinsam mit einem Erwachsenen öffnete Muzi vorsichtig das Gehäuse.\nEine Schraube war locker, und ein Kabel saß nicht richtig.\nMuzi machte sich Notizen, probierte Schritt für Schritt und versuchte es noch einmal.\nAls der Roboter wieder piepte, rief Muzi: „Das ist Wissenschaft!“\nManchmal ist ein Fehler der Anfang einer guten Idee.`,
   },
   {
     id: 'kardeas-yildizlar',
@@ -223,19 +223,19 @@ Lies heute auch eine Seite – die Bibliothek wartet auf dich.`,
     emoji: '✨',
     age: '3-7',
     duration: '3 dk',
-    theme: 'Bruderschaft',
+    theme: 'Geschwisterliebe',
     summary: 'Wenn zwei Sterne streiten, lehrt der Mond sie zu teilen.',
-    text: `Zwei kleine Sterne wollten die gleiche Wolke.\n"Meins!" „Nein, ich bin es!“ er würde glänzen.\nTante Ay intervenierte: „Warum teilst du nicht die Cloud?“\nEiner beleuchtete die rechte Seite und der andere beleuchtete die linke Seite.\nDie Wolke sah noch heller aus.\nDie Brüder lernten: Wenn man teilt, nimmt das Licht zu.`,
+    text: `Zwei kleine Sterne wollten dieselbe Wolke.\n„Meine!“ – „Nein, meine!“, funkelten sie.\nDer Mond fragte: „Warum teilt ihr die Wolke nicht?“\nEin Stern beleuchtete die rechte Seite, der andere die linke.\nDie Wolke sah heller aus als je zuvor.\nDie Geschwister lernten: Wenn man teilt, wird das Licht größer.`,
   },
   {
     id: 'pistachio-pisirir',
-    title: 'Koch Eichhörnchen Erdnuss',
+    title: 'Erdnuss, das kochende Eichhörnchen',
     emoji: '🐿️',
     age: '4-8',
     duration: '4 dk',
     theme: 'Teilen',
     summary: 'Eichhörnchen Erdnuss kocht Wintersuppe im Wald und lädt alle ein.',
-    text: `Erdnuss gekochte Suppe für den Winter: Karotten, Äpfel, etwas Zimt.\nSein Duft durchdrang den Wald.\nHase, Eule, sogar der scheue Igel kamen.\nPeanut sagte: „Es ist genug für alle da, solange man eine Schüssel mitbringt.“\nSie tranken löffelweise zusammen.\nDas Heißeste war nicht Suppe, sondern Tischgespräche.`,
+    text: `Erdnuss kochte eine Wintersuppe aus Karotten, Äpfeln und einem Hauch Zimt.\nDer Duft zog durch den Wald.\nHase, Eule und sogar der scheue Igel kamen vorbei.\n„Für alle ist genug da – bringt einfach eine Schüssel mit“, sagte Erdnuss.\nSie löffelten gemeinsam und erzählten Geschichten.\nDas Wärmste war nicht die Suppe, sondern die Gemeinschaft am Tisch.`,
   },
   {
     id: 'gizli-bahce-kapi',
@@ -275,7 +275,7 @@ Lies heute auch eine Seite – die Bibliothek wartet auf dich.`,
     duration: '3 dk',
     theme: 'Gefühl',
     summary: 'Ein Kind, das sein Lächeln verliert, findet es, indem es es teilt.',
-    text: `Eines Morgens konnte Ela ihr Lächeln nicht finden.\nEr schaute in den Spiegel und da war nichts.\nEr schaute in seine Tasche – nichts.\nDann gab er seinem Freund den heruntergefallenen Stift.\nSein Freund lächelte; Ein Funke erschien auf Elas Gesicht.\nDas Lächeln kommt nicht in Ihrer Tasche zurück, sondern wenn Sie es teilen.`,
+    text: `Eines Morgens konnte Ela ihr Lächeln nicht finden.\nSie schaute in den Spiegel und in ihre Tasche – doch dort war es nicht.\nDann hob sie den heruntergefallenen Stift ihres Freundes auf.\nIhr Freund lächelte, und ein kleiner Funke kehrte auf Elas Gesicht zurück.\nEin Lächeln findet den Weg zurück, wenn man es teilt.`,
   },
   {
     id: 'uzay-postacisi',
@@ -5691,6 +5691,8 @@ const AUDIO_LABELS: Record<string, string> = {
   'Cloud': 'Wolke',
   'Space Tale': 'Weltraumgeschichte',
   'Sharing': 'Teilen',
+  'Mizah': 'Humor',
+  'Bruderschaft': 'Geschwisterliebe',
   'Pens wusste': 'Die Stifte wussten',
   'Töpfen: Dum einer nach dem anderen!': 'Töpfen: Bum, bum, immer weiter!',
 }
@@ -5701,11 +5703,24 @@ function localiseAudioText(value: string): string {
   return result
 }
 
+function polishAudioText(value: string): string {
+  return value
+    .replace(/Zuerst hatte er Angst, dann holte er Luft und bat um Hilfe\./g, 'Zuerst bekam das Kind Angst. Dann holte es tief Luft und bat um Hilfe.')
+    .replace(/Als seine Freunde und Familie zusammen waren, wurde es einfacher\./g, 'Als Freunde und Familie zusammen waren, wurde alles leichter.')
+    .replace(/Auch Sie können/g, 'Du kannst')
+    .replace(/für ihn zu einer guten Erinnerung/g, 'zu einer guten Erinnerung für das Kind')
+    .replace(/für ihn/g, 'für das Kind')
+    .replace(/über die Saison/g, 'über die Jahreszeit')
+    .replace(/die Saison/g, 'die Jahreszeit')
+    .replace(/Hope sagte/g, 'Hoffnung sagte')
+    .replace(/einen kleinen Gefallen tun/g, 'etwas Gutes tun')
+}
+
 export const AUDIO_STORIES: AudioStory[] = AUDIO_STORIES_RAW.map((story) => ({
   ...story,
-  title: localiseAudioText(story.title),
+  title: polishAudioText(localiseAudioText(story.title)),
   duration: story.duration.split(' dk').join(' Min.'),
-  theme: localiseAudioText(story.theme),
-  summary: localiseAudioText(story.summary),
-  text: localiseAudioText(story.text),
+  theme: polishAudioText(localiseAudioText(story.theme)),
+  summary: polishAudioText(localiseAudioText(story.summary)),
+  text: polishAudioText(localiseAudioText(story.text)),
 }))

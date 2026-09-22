@@ -43,7 +43,7 @@ export function ActivitiesPage() {
             <button className="panel activity-tile" onClick={() => setMode('quiz')}>
               <span>❓</span>
               <h2>Mini Quiz</h2>
-              <p>Allgemeine Kultur – Rasse als Familie.</p>
+              <p>Allgemeinwissen – gemeinsam als Familie spielen.</p>
             </button>
             <button className="panel activity-tile" onClick={() => setMode('scramble')}>
               <span>🔤</span>

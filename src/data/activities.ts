@@ -30,6 +30,13 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   { question: 'Was finden wir in einer Bibliothek?', options: ['Nur Spiele', 'Bücher und Leseplätze', 'Nur Autos', 'Nichts'], answer: 1 },
   { question: 'Wie viel ist 3 × 4?', options: ['7', '10', '12', '14'], answer: 2 },
   { question: 'Welche Farbe haben viele Blätter im Herbst?', options: ['Blau', 'Gelb oder Rot', 'Lila', 'Sie bleiben immer grün'], answer: 1 },
+  { question: 'Welche Brüder sammelten viele bekannte deutsche Märchen?', options: ['Die Brüder Grimm', 'Die Brüder Bach', 'Die Brüder Humboldt', 'Die Brüder Gutenberg'], answer: 0 },
+  { question: 'Was passiert bei einem Laternenumzug?', options: ['Alle bleiben im Bett', 'Kinder ziehen mit Laternen gemeinsam durch die Straßen', 'Man fährt Ski', 'Man baut einen Schneemann'], answer: 1 },
+  { question: 'Wie heißt das Wattenmeer an der deutschen Nordseeküste?', options: ['Alpenmeer', 'Wattenmeer', 'Waldmeer', 'Stadtmeer'], answer: 1 },
+  { question: 'Welche Stadt ist für eine große internationale Buchmesse bekannt?', options: ['Frankfurt am Main', 'Dresden', 'Bremen', 'Freiburg'], answer: 0 },
+  { question: 'Was findet man oft auf einem Weihnachtsmarkt?', options: ['Bücher und handgemachte Geschenke', 'Surfboards', 'Palmenhaine', 'Raumschiffe'], answer: 0 },
+  { question: 'Was ist ein Maibaum?', options: ['Ein Fluss', 'Ein Musikinstrument', 'Ein geschmückter Baum', 'Ein Berg'], answer: 2 },
+  { question: 'Welche Spezialität ist ein bekanntes deutsches Gebäck?', options: ['Brezel', 'Sushi', 'Taco', 'Couscous'], answer: 0 },
 ]
 
 export const MEMORY_EMOJIS = ['🦄', '🚀', '🐢', '🌟', '🐠', '🦋', '🌈', '🏰', '🐧', '🎨', '🦊', '🍎', '🌸', '🎈', '🦉', '🐬', '🌻', '🎪', '🍦', '⚽']

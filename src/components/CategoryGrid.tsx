@@ -22,7 +22,7 @@ export function CategoryGrid({ selected, onSelect, compact = false, onChangeRequ
             <strong>{selectedInfo.title}</strong>
           </div>
           <button type="button" className="category-compact__change" onClick={onChangeRequest}>
-            Veränderung
+            Kategorie ändern
           </button>
         </div>
       </section>
