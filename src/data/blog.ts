@@ -3053,6 +3053,7 @@ const BLOG_LABELS: Record<string, string> = {
   'Oyun': 'Spiel', 'Oyunlar': 'Spiele', 'Çocuk': 'Kind', 'Çocuklar': 'Kinder',
   'Macera': 'Abenteuer', 'Hayvan': 'Tiere', 'Deniz': 'Meer', 'Mevsim': 'Jahreszeit',
   'Dostluk': 'Freundschaft', 'Uzay': 'Weltraum', 'Duygu': 'Gefühl', 'Ebeveyn': 'Eltern',
+  'Hedef': 'Ziel', 'Emotions-Check-in': 'Gefühlsmoment', 'Gefühls-Check-in': 'Gefühlsmoment',
   'Güvenlik': 'Sicherheit', 'Birlikte': 'Gemeinsam', 'Sorumluluk': 'Verantwortung',
   'STEM': 'MINT', 'Merak': 'Neugier', 'Rehber': 'Ratgeber',
 }

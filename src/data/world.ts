@@ -671,6 +671,7 @@ const WORLD_LABELS: Record<string, string> = {
   'Müzik': 'Musik',
   'Spor': 'Sport',
   'Sanat': 'Kunst',
+  'sanat': 'Kunst',
   'Uyku': 'Schlaf',
   'harita': 'Karte',
   'Canlı Arena': 'Live-Arena',

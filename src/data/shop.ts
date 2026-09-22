@@ -1029,7 +1029,7 @@ const SHOP_LABELS: Record<string, string> = {
   'STEM seçkisi': 'MINT-Auswahl', 'Boyama listesi': 'Malvorlagenliste', 'Aile proje günü': 'Familien-Projekttag',
   '15 dk çalışma şablonu': '15-Minuten-Arbeitsvorlage', 'Mola kartları': 'Pausenkarten',
   'Görev panosu fikri': 'Idee für eine Aufgaben-Tafel', 'Ebeveyn blog özeti': 'Zusammenfassung des Elternblogs',
-  'Oyun salonu rotası': 'Spielplatzroute', 'STEM yağmur deneyi': 'MINT-Regenexperiment', 'Boyama + doodle': 'Malen + Doodle',
+  'Oyun salonu rotası': 'Spielplatzroute', 'STEM yağmur deneyi': 'MINT-Regenexperiment', 'Boyama + doodle': 'Malen + Kritzelbild',
   'Eğlence çarkı': 'Glücksrad', '7 gün uyku planı': '7-Tage-Schlafplan', 'Sabah rutini kartı': 'Morgenroutine-Karte',
   'Duygu check-in': 'Gefühlsmoment', 'Motivasyon görevleri': 'Motivationsaufgaben', 'Mini quiz rotası': 'Mini-Quiz-Route',
   'Hafıza ile eşleştirme': 'Memory-Matching', 'Yazdırılabilir sayı sayfası': 'Druckbare Zahlenseite', 'Görev yıldızları': 'Aufgabensterne',

@@ -169,7 +169,7 @@ export const ART_STYLES: ArtStyleInfo[] = [
 
 export const TEXT_MODELS = [
   { id: 'gpt-4o-mini' as const, name: 'Schnell und intelligent', emoji: '⚡', description: 'GPT-4o Mini – schnelle Produktion' },
-  { id: 'gpt-4o' as const, name: 'Top-Qualität', emoji: '💎', description: 'GPT-4o – beste Story-Qualität' },
+  { id: 'gpt-4o' as const, name: 'Top-Qualität', emoji: '💎', description: 'GPT-4o – beste Geschichtenqualität' },
   { id: 'claude-3-5-haiku-20241022' as const, name: 'kreativ', emoji: '🎭', description: 'Claude Haiku – kreativer Ausdruck' },
 ]
 

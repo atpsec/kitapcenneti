@@ -2074,6 +2074,7 @@ const TEACHER_LABELS: Record<string, string> = {
   'Masalı dinletin; ara ara “şimdi hangi renk?” diye sorun.': 'Lasst die Geschichte laufen und fragt zwischendurch: „Welche Farbe passt jetzt?“',
   '2 öğrenci sahnesini anlatır.': 'Zwei Kinder erzählen die Szene.',
   'Kapanışta 3 anahtar kavramı birlikte söyleyin.': 'Nennt zum Abschluss gemeinsam drei Schlüsselbegriffe.',
+  'Emotions-Check-in': 'Gefühlsmoment', 'Gefühls-Check-in': 'Gefühlsmoment',
   'Kartlar duvar sözlüğüne asılır.': 'Hängt die Karten an die Wörterwand.',
   'Ödev (isteğe bağlı): kelimeyle mini resim.': 'Optionale Aufgabe: ein Mini-Bild zum Wort.',
   'Kart sorusu: “Bugün seni ne mutlu etti?”': 'Kartenfrage: „Was hat dich heute glücklich gemacht?“',
