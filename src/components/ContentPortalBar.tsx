@@ -14,7 +14,7 @@ export function ContentPortalBar({
   label,
   query,
   onQuery,
-  placeholder = 'Bu portalda ara…',
+  placeholder = 'Hier im Portal suchen …',
   filters,
   activeFilter,
   onFilter,
@@ -30,7 +30,7 @@ export function ContentPortalBar({
           value={query}
           onChange={(e) => onQuery(e.target.value)}
           placeholder={placeholder}
-          aria-label={`${label} ara`}
+          aria-label={`${label} durchsuchen`}
         />
       </div>
       {filters && filters.length > 0 && onFilter && (

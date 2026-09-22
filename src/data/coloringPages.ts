@@ -8,7 +8,7 @@ export interface ColoringPage {
 }
 
 export const COLORING_CATEGORIES = [
-  'Tümü',
+  'Alle',
   'Tiere',
   'Helden',
   'Märchen',

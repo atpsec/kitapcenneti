@@ -25,7 +25,7 @@ export function WorldPage({ onNavigate }: Props) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🗺️ Kitap-Cenneti-Welt</h1>
+        <h1>🗺️ Die Welt von Kitap Cenneti</h1>
         <p>
           Interaktive Karte – Regionen öffnen, Schätze sammeln und Abenteuer erleben. Entdeckungen: {visited.length}/{total} (
           {progress}%)

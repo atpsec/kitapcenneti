@@ -43,7 +43,7 @@ export function BlogPage() {
         label="Blog"
         query={query}
         onQuery={setQuery}
-        placeholder="Konu, etiket veya anahtar kelime…"
+        placeholder="Thema, Tag oder Stichwort …"
         filters={tags.map((t) => ({ id: t, label: t }))}
         activeFilter={tag}
         onFilter={setTag}

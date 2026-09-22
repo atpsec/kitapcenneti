@@ -29,7 +29,7 @@ export function ActivitiesPage() {
     <div className="page">
       <header className="page-header">
         <h1>🎮 Arcade</h1>
-        <p>6 Spiele: Gedächtnis, Quiz, Wort, Fangen, Muster und Blase – keine Langeweile!</p>
+        <p>6 Spiele: Memory, Quiz, Wörter, Reaktion, Muster und Zahlen – für gemeinsame Spielzeit.</p>
       </header>
 
       {mode === 'menu' && (
@@ -37,7 +37,7 @@ export function ActivitiesPage() {
           <div className="activity-menu activity-menu--rich">
             <button className="panel activity-tile" onClick={() => setMode('memory')}>
               <span>🧠</span>
-              <h2>Speicherkarten</h2>
+              <h2>Memory-Spiel</h2>
               <p>Finden Sie Übereinstimmungen, trainieren Sie Ihr Gehirn!</p>
             </button>
             <button className="panel activity-tile" onClick={() => setMode('quiz')}>
@@ -52,8 +52,8 @@ export function ActivitiesPage() {
             </button>
             <button className="panel activity-tile" onClick={() => setMode('speed')}>
               <span>⚡</span>
-              <h2>Schnelle Aufnahme</h2>
-              <p>Klicken Sie auf die richtigen Emojis und knacken Sie die Punktzahl!</p>
+              <h2>Reaktionsspiel</h2>
+              <p>Tippe auf die passenden Emojis und knacke deinen Punktestand!</p>
             </button>
             <button className="panel activity-tile" onClick={() => setMode('pattern')}>
               <span>🔆</span>

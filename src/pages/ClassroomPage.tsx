@@ -64,7 +64,7 @@ export function ClassroomPage({ onNavigate }: Props) {
           )
           .join('')}
       </ol>
-      <h3>Massenaufgaben</h3>
+      <h3>Aufgaben für die Klasse</h3>
       <ul>
         ${quests.map((q) => `<li>${escapeHtml(q.title)} (+${q.stars}⭐)</li>`).join('')}
       </ul>
@@ -107,7 +107,7 @@ export function ClassroomPage({ onNavigate }: Props) {
       </div>
 
       <section className="section">
-        <h2 className="section__title">Massenaufgaben (heute)</h2>
+        <h2 className="section__title">Aufgaben für die Klasse (heute)</h2>
         <div className="live-slot-grid">
           {quests.map((q) => {
             const on = room.assigned.includes(q.id)
@@ -168,10 +168,10 @@ export function ClassroomPage({ onNavigate }: Props) {
         </div>
         <div className="btn-row" style={{ marginTop: 16 }}>
           <button type="button" className="btn btn--primary" onClick={printWeek}>
-            Planen Sie PDF/Drucken
+            Wochenplan drucken
           </button>
           <button type="button" className="btn btn--ghost" onClick={() => onNavigate('teachers')}>
-            Veranstaltungsbibliothek
+            Aktivitätsbibliothek
           </button>
         </div>
       </section>

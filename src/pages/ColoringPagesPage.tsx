@@ -9,7 +9,7 @@ import { ContentPortalBar } from '../components/ContentPortalBar'
 import { useContentItemId } from '../hooks/useContentItemId'
 
 export function ColoringPagesPage() {
-  const [category, setCategory] = useState<(typeof COLORING_CATEGORIES)[number]>('Tümü')
+  const [category, setCategory] = useState<(typeof COLORING_CATEGORIES)[number]>('Alle')
   const [selected, setSelected] = useContentItemId('coloring', COLORING_PAGES[0].id)
   const [query, setQuery] = useState('')
   const [busy, setBusy] = useState(false)
@@ -17,7 +17,7 @@ export function ColoringPagesPage() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     return COLORING_PAGES.filter((p) => {
-      if (category !== 'Tümü' && p.category !== category) return false
+      if (category !== 'Alle' && p.category !== category) return false
       if (!q) return true
       return `${p.title} ${p.description} ${p.category} ${p.age}`.toLowerCase().includes(q)
     })
@@ -71,11 +71,11 @@ export function ColoringPagesPage() {
         query={query}
         onQuery={setQuery}
         placeholder="Seite, Kategorie oder Alter suchen …"
-        filters={COLORING_CATEGORIES.map((cat) => ({ id: cat, label: cat === 'Tümü' ? 'Alle' : cat }))}
+        filters={COLORING_CATEGORIES.map((cat) => ({ id: cat, label: cat }))}
         activeFilter={category}
         onFilter={(cat) => {
           setCategory(cat as (typeof COLORING_CATEGORIES)[number])
-          const first = cat === 'Tümü' ? COLORING_PAGES[0] : COLORING_PAGES.find((p) => p.category === cat)
+          const first = cat === 'Alle' ? COLORING_PAGES[0] : COLORING_PAGES.find((p) => p.category === cat)
           if (first) setSelected(first.id)
         }}
       />

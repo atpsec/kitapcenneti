@@ -36,7 +36,7 @@ export function JournalPage() {
       </header>
 
       <div className="panel journal-form">
-        <h2>neuer Rekord</h2>
+        <h2>Neuer Eintrag</h2>
         <div className="library-filters">
           {KINDS.map((k) => (
             <button
