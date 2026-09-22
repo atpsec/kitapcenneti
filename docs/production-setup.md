@@ -104,13 +104,14 @@ GET    /api/auth/export
 DELETE /api/auth/delete
 POST   /api/auth/request-verification
 POST   /api/auth/verify-email
+POST   /api/auth/consent
 POST   /api/auth/request-password-reset
 POST   /api/auth/reset-password
 ```
 
 `/api/membership/cancel` plant die Kündigung zum Ende des Abrechnungszeitraums. Die Schaltfläche „Verträge hier kündigen“ ruft den Endpunkt nach der Bestätigung der Nutzerin oder des Nutzers auf. Der Stripe-Webhook prüft den endgültigen Status weiterhin.
 
-Checkout wird nur für ein angemeldetes, E-Mail-bestätigtes Elternkonto geöffnet. Zuerst muss auf der Profilseite ein Konto erstellt, die Volljährigkeit bestätigt und die E-Mail-Adresse bestätigt werden; die Mitgliedschaft wird über die Konto-ID und nicht über die Stripe-E-Mail-Adresse verknüpft. Zusätzlich prüft die Function serverseitig die vollständige Rechtskonfiguration und eine HTTPS-`SITE_URL`, damit ein direkter API-Aufruf die Frontend-Sperre nicht umgehen kann.
+Checkout wird nur für ein angemeldetes, E-Mail-bestätigtes Elternkonto mit gespeicherten Volljährigkeits-, Nutzungsbedingungs- und Datenschutzzustimmungen geöffnet. Neue Konten erfassen diese Nachweise bei der Registrierung; ältere Konten müssen die aktuelle Fassung einmalig auf der Profilseite bestätigen. Die Mitgliedschaft wird über die Konto-ID und nicht über die Stripe-E-Mail-Adresse verknüpft. Zusätzlich prüft die Function serverseitig die vollständige Rechtskonfiguration und eine HTTPS-`SITE_URL`, damit ein direkter API-Aufruf keine Frontend-Sperre umgehen kann.
 
 Damit das Frontend auf GitHub Pages die Cloudflare-API erreicht, setzen Sie im Build-Umfeld diese Variablen:
 
