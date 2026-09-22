@@ -25,7 +25,7 @@ export function WorldPage({ onNavigate }: Props) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🗺️ Buchen Sie Heaven World</h1>
+        <h1>🗺️ Kitap-Cenneti-Welt</h1>
         <p>
           Interaktive Karte – Regionen öffnen, Schätze sammeln und Abenteuer erleben. Entdeckungen: {visited.length}/{total} (
           {progress}%)
@@ -43,7 +43,7 @@ export function WorldPage({ onNavigate }: Props) {
         {(
           [
             ['all', 'Alle'],
-            ['new', 'Yeni'],
+            ['new', 'Neu'],
             ['open', 'Geöffnet'],
           ] as const
         ).map(([id, label]) => (
@@ -90,7 +90,7 @@ export function WorldPage({ onNavigate }: Props) {
                     className="btn btn--small btn--sun"
                     disabled={!open || gem}
                     onClick={() => {
-                      if (collectTreasure(region.id)) showToast('Schatz bulundu! +1⭐')
+                      if (collectTreasure(region.id)) showToast('Schatz gefunden! +1⭐')
                     }}
                   >
                     {gem ? 'Schatz eingesammelt' : '💎 Schatz'}
@@ -126,7 +126,7 @@ export function WorldPage({ onNavigate }: Props) {
                       text: region.blurb,
                       page: 'world',
                       itemId: region.id,
-                      hashtags: ['KitapCenneti', 'Macera', region.title.replace(/\s+/g, '')],
+                      hashtags: ['KitapCenneti', 'Abenteuer', region.title.replace(/\s+/g, '')],
                     }}
                   />
                 )}

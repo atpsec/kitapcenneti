@@ -9,7 +9,7 @@ export interface ShopPack {
   page: string
 }
 
-export const SHOP_PACKS: ShopPack[] = [
+const SHOP_PACKS_RAW: ShopPack[] = [
   {
     id: 'uyku-paketi',
     title: 'Süßes Traumpaket',
@@ -617,7 +617,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 1',
     age: '4-7',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'audio',
   },
   {
@@ -627,7 +627,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 2',
     age: '5-8',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'coloring',
   },
   {
@@ -637,7 +637,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 3',
     age: '6-9',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'stem',
   },
   {
@@ -647,7 +647,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 4',
     age: '7-10',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'fun',
   },
   {
@@ -657,7 +657,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 5',
     age: '8-12',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'live',
   },
   {
@@ -667,7 +667,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 6',
     age: '3-5',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'audio',
   },
   {
@@ -677,7 +677,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 7',
     age: '4-7',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'coloring',
   },
   {
@@ -687,7 +687,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 8',
     age: '5-8',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'stem',
   },
   {
@@ -697,7 +697,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 9',
     age: '6-9',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'fun',
   },
   {
@@ -707,7 +707,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 10',
     age: '7-10',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'live',
   },
   {
@@ -717,7 +717,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 11',
     age: '8-12',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'audio',
   },
   {
@@ -727,7 +727,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 12',
     age: '3-5',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'coloring',
   },
   {
@@ -737,7 +737,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 13',
     age: '4-7',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'stem',
   },
   {
@@ -747,7 +747,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 14',
     age: '5-8',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'fun',
   },
   {
@@ -757,7 +757,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 15',
     age: '6-9',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'live',
   },
   {
@@ -767,7 +767,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 16',
     age: '7-10',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'audio',
   },
   {
@@ -777,7 +777,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 17',
     age: '8-12',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'coloring',
   },
   {
@@ -787,7 +787,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 18',
     age: '3-5',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'stem',
   },
   {
@@ -797,7 +797,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 19',
     age: '4-7',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'fun',
   },
   {
@@ -807,7 +807,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 20',
     age: '5-8',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'live',
   },
   {
@@ -817,7 +817,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 21',
     age: '6-9',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'audio',
   },
   {
@@ -827,7 +827,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 22',
     age: '7-10',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'coloring',
   },
   {
@@ -837,7 +837,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 23',
     age: '8-12',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'stem',
   },
   {
@@ -847,7 +847,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 24',
     age: '3-5',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'fun',
   },
   {
@@ -857,7 +857,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 25',
     age: '4-7',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'live',
   },
   {
@@ -867,7 +867,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 26',
     age: '5-8',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'audio',
   },
   {
@@ -877,7 +877,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 27',
     age: '6-9',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'coloring',
   },
   {
@@ -887,7 +887,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 28',
     age: '7-10',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'stem',
   },
   {
@@ -897,7 +897,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 29',
     age: '8-12',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'fun',
   },
   {
@@ -907,7 +907,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 30',
     age: '3-5',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'live',
   },
   {
@@ -917,7 +917,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 31',
     age: '4-7',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'audio',
   },
   {
@@ -927,7 +927,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 32',
     age: '5-8',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'coloring',
   },
   {
@@ -937,7 +937,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 33',
     age: '6-9',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'stem',
   },
   {
@@ -947,7 +947,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 34',
     age: '7-10',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'fun',
   },
   {
@@ -957,7 +957,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 35',
     age: '8-12',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'live',
   },
   {
@@ -967,7 +967,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 36',
     age: '3-5',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'audio',
   },
   {
@@ -977,7 +977,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 37',
     age: '4-7',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'coloring',
   },
   {
@@ -987,7 +987,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 38',
     age: '5-8',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'stem',
   },
   {
@@ -997,7 +997,7 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 39',
     age: '6-9',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'fun',
   },
   {
@@ -1007,7 +1007,39 @@ export const SHOP_PACKS: ShopPack[] = [
     description: 'Kostenloses Inhaltspaket Nr. 40',
     age: '7-10',
     tags: ['kostenlos', 'Mega'],
-    includes: ['Masal listesi', 'Görev', 'Boyama', 'Aile ipucu'],
+    includes: ['Masal listesi', 'Görev', 'Malerei', 'Aile ipucu'],
     page: 'live',
   }
 ]
+
+const SHOP_LABELS: Record<string, string> = {
+  'uyku': 'Schlaf', 'masalı': 'Geschichte', 'masal': 'Geschichte', 'sakin': 'ruhige',
+  'boyama': 'Mal', 'Boyama': 'Malen', 'Nefes': 'Atem', 'Akşam': 'Abend',
+  'Tekerleme': 'Reim', 'Duygu': 'Gefühl', 'duygu': 'Gefühl', 'Aile': 'Familie',
+  'aile': 'Familie', 'Konuşma soruları': 'Gesprächsfragen', 'görev': 'Aufgabe',
+  'Görev': 'Aufgabe', 'Kahraman': 'Held', 'kahraman': 'Held', 'Okuma': 'Lesen',
+  'Güç': 'Kraft', 'değer': 'Wert', 'Kendi': 'Eigene', 'çiz': 'zeichnen',
+  'Doğa': 'Natur', 'Yaprak': 'Blatt', 'Ebeveyn': 'Eltern', 'Mola': 'Pause',
+  'Hikâye': 'Geschichte', 'Hikaye': 'Geschichte', 'Karakter': 'Figur',
+  'Sergi': 'Ausstellung', 'Sanat': 'Kunst', 'Renk': 'Farb', 'Renkler': 'Farben',
+  'Fikir': 'Idee', 'Fikirler': 'Ideen', 'Sabah': 'Morgen', 'Birlikte': 'Gemeinsam',
+  'Mini oyun': 'Mini-Spiel', 'Öneri listesi': 'Vorschlagsliste', 'Aile ipucu': 'Familientipp',
+  'İçerik önerisi': 'Inhaltsidee', 'yazdırma fikri': 'Druckidee', 'etiketi': 'etikett',
+  'listesi': 'Liste', 'kartı': 'Karte', 'kartları': 'Karten', 'seti': 'Set',
+  'soruları': 'Fragen', 'planı': 'Plan', 'rotası': 'Route', 'seçkisi': 'Auswahl',
+  'deneyi': 'Experiment', 'çalışma': 'Arbeits', 'şablonu': 'Vorlage', 'günlük': 'täglich',
+  'haftalık': 'wöchentlich', 'Motivasyon': 'Motivation', 'Eğlence': 'Spaß',
+}
+
+function localiseShopText(value: string): string {
+  let result = value
+  for (const [from, to] of Object.entries(SHOP_LABELS)) result = result.split(from).join(to)
+  return result
+}
+
+export const SHOP_PACKS: ShopPack[] = SHOP_PACKS_RAW.map((pack) => ({
+  ...pack,
+  title: localiseShopText(pack.title),
+  description: localiseShopText(pack.description),
+  includes: pack.includes.map(localiseShopText),
+}))

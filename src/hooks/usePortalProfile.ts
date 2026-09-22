@@ -35,7 +35,7 @@ const DEFAULT_PROFILE: PortalProfile = {
   avatar: '🦊',
   ageGroup: '6-8',
   interests: ['masal', 'oyun'],
-  goal: 'Her gün bir masal veya oyun',
+  goal: 'Jeden Tag eine Geschichte oder ein Spiel',
 }
 
 function readJson<T>(key: string, fallback: T): T {
@@ -172,7 +172,7 @@ export function usePortalProfile() {
     const next: PortalProfile = {
       ...DEFAULT_PROFILE,
       id: uid(),
-      childName: `Kardeş ${profiles.length}`,
+      childName: `Geschwister ${profiles.length}`,
       avatar: ['🐻', '🦄', '🐱', '🐼', '🦁'][profiles.length % 5],
     }
     persistProfiles([...profiles, next], next.id)

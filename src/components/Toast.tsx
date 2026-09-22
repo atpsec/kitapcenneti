@@ -52,6 +52,6 @@ export function announceActivityResult(result: {
     )
   }
   for (const b of result.newBadges) {
-    showToast(`${b.emoji} Yeni rozet: ${b.title}`)
+    showToast(`${b.emoji} Neues Abzeichen: ${b.title}`)
   }
 }

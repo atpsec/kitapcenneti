@@ -17,7 +17,7 @@ export function SearchPage({ onNavigate }: Props) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🔎 Portal Arama</h1>
+        <h1>🔎 Portalsuche</h1>
         <p>Märchen, Spiele, MINT, Blogs, Pakete, Ressourcen für Lehrer – alles ist hier.</p>
       </header>
       <div className="panel" style={{ marginBottom: 20 }}>

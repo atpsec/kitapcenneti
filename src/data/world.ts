@@ -13,7 +13,7 @@ export interface WorldRegion {
   links: WorldLink[]
 }
 
-export const WORLD_REGIONS: WorldRegion[] = [
+const WORLD_REGIONS_RAW: WorldRegion[] = [
   {
     id: 'masal-ormani',
     title: 'Berliner Geschichtenhof',
@@ -289,7 +289,7 @@ export const WORLD_REGIONS: WorldRegion[] = [
     emoji: '🌙',
     blurb: 'Doğa temalı keşif bölgesi — dokun ve maceraya atıl.',
     color: 'linear-gradient(135deg, hsl(98 55% 40%), hsl(158 60% 55%))',
-    tags: ["doğa","harita"],
+    tags: ["Natur","harita"],
     links: [{"label":"Masallar","page":"audio"},{"label":"Oyunlar","page":"activities"},{"label":"STEM","page":"stem"}],
   },
   {
@@ -316,7 +316,7 @@ export const WORLD_REGIONS: WorldRegion[] = [
     emoji: '🌿',
     blurb: 'Duygu temalı keşif bölgesi — dokun ve maceraya atıl.',
     color: 'linear-gradient(135deg, hsl(245 55% 40%), hsl(305 60% 55%))',
-    tags: ["duygu","harita"],
+    tags: ["Gefühl","harita"],
     links: [{"label":"Masallar","page":"audio"},{"label":"Oyunlar","page":"activities"},{"label":"STEM","page":"stem"}],
   },
   {
@@ -370,7 +370,7 @@ export const WORLD_REGIONS: WorldRegion[] = [
     emoji: '🦄',
     blurb: 'Paylaşım temalı keşif bölgesi — dokun ve maceraya atıl.',
     color: 'linear-gradient(135deg, hsl(179 55% 40%), hsl(239 60% 55%))',
-    tags: ["paylaşım","harita"],
+    tags: ["Teilen","harita"],
     links: [{"label":"Masallar","page":"audio"},{"label":"Oyunlar","page":"activities"},{"label":"STEM","page":"stem"}],
   },
   {
@@ -379,7 +379,7 @@ export const WORLD_REGIONS: WorldRegion[] = [
     emoji: '🐠',
     blurb: 'Uyku temalı keşif bölgesi — dokun ve maceraya atıl.',
     color: 'linear-gradient(135deg, hsl(228 55% 40%), hsl(288 60% 55%))',
-    tags: ["uyku","harita"],
+    tags: ["Schlafen","harita"],
     links: [{"label":"Masallar","page":"audio"},{"label":"Oyunlar","page":"activities"},{"label":"STEM","page":"stem"}],
   },
   {
@@ -401,7 +401,7 @@ export const WORLD_REGIONS: WorldRegion[] = [
     emoji: '🌙',
     blurb: 'Doğa diyarı — dokun ve keşfet.',
     color: 'linear-gradient(135deg, hsl(106 55% 40%), hsl(176 60% 55%))',
-    tags: ['doğa', 'harita'],
+    tags: ['Natur', 'harita'],
     links: [
       { label: 'Canlı Arena', page: 'live' },
       { label: 'Masallar', page: 'audio' },
@@ -440,7 +440,7 @@ export const WORLD_REGIONS: WorldRegion[] = [
     emoji: '🌿',
     blurb: 'Duygu diyarı — dokun ve keşfet.',
     color: 'linear-gradient(135deg, hsl(265 55% 40%), hsl(335 60% 55%))',
-    tags: ['duygu', 'harita'],
+    tags: ['Gefühl', 'harita'],
     links: [
       { label: 'Canlı Arena', page: 'live' },
       { label: 'Masallar', page: 'audio' },
@@ -518,7 +518,7 @@ export const WORLD_REGIONS: WorldRegion[] = [
     emoji: '🦄',
     blurb: 'Paylaşım diyarı — dokun ve keşfet.',
     color: 'linear-gradient(135deg, hsl(223 55% 40%), hsl(293 60% 55%))',
-    tags: ['paylaşım', 'harita'],
+    tags: ['Teilen', 'harita'],
     links: [
       { label: 'Canlı Arena', page: 'live' },
       { label: 'Masallar', page: 'audio' },
@@ -570,7 +570,7 @@ export const WORLD_REGIONS: WorldRegion[] = [
     emoji: '🧠',
     blurb: 'Uyku diyarı — dokun ve keşfet.',
     color: 'linear-gradient(135deg, hsl(75 55% 40%), hsl(145 60% 55%))',
-    tags: ['uyku', 'harita'],
+    tags: ['Schlafen', 'harita'],
     links: [
       { label: 'Canlı Arena', page: 'live' },
       { label: 'Masallar', page: 'audio' },
@@ -596,7 +596,7 @@ export const WORLD_REGIONS: WorldRegion[] = [
     emoji: '🎵',
     blurb: 'Doğa diyarı — dokun ve keşfet.',
     color: 'linear-gradient(135deg, hsl(181 55% 40%), hsl(251 60% 55%))',
-    tags: ['doğa', 'harita'],
+    tags: ['Natur', 'harita'],
     links: [
       { label: 'Canlı Arena', page: 'live' },
       { label: 'Masallar', page: 'audio' },
@@ -635,7 +635,7 @@ export const WORLD_REGIONS: WorldRegion[] = [
     emoji: '⭐',
     blurb: 'Duygu diyarı — dokun ve keşfet.',
     color: 'linear-gradient(135deg, hsl(340 55% 40%), hsl(50 60% 55%))',
-    tags: ['duygu', 'harita'],
+    tags: ['Gefühl', 'harita'],
     links: [
       { label: 'Canlı Arena', page: 'live' },
       { label: 'Masallar', page: 'audio' },
@@ -643,3 +643,48 @@ export const WORLD_REGIONS: WorldRegion[] = [
     ],
   }
 ]
+
+// The long-tail region catalogue contains legacy Turkish labels. Keep stable IDs and
+// routes while presenting one consistent German interface to families.
+const WORLD_LABELS: Record<string, string> = {
+  'Bölge': 'Region',
+  'Mega bölge': 'Mega-Region',
+  'Dostluk': 'Freundschaft',
+  'Doğa': 'Natur',
+  'Uzay': 'Weltraum',
+  'Okul': 'Schule',
+  'Duygu': 'Gefühle',
+  'Macera': 'Abenteuer',
+  'Hayvan': 'Tiere',
+  'Deniz': 'Meer',
+  'Mevsim': 'Jahreszeiten',
+  'Cesaret': 'Mut',
+  'Paylaşım': 'Teilen',
+  'Müzik': 'Musik',
+  'Spor': 'Sport',
+  'Sanat': 'Kunst',
+  'Uyku': 'Schlaf',
+  'harita': 'Karte',
+  'Canlı Arena': 'Live-Arena',
+  'Masallar': 'Geschichten',
+  'Oyunlar': 'Spiele',
+  'Keşfet': 'Entdecken',
+  'dokun ve keşfet': 'öffne die Region und entdecke',
+  'temalı keşif bölgesi': 'Themenregion',
+  'diyar': 'Welt',
+  'diyarı': 'Welt',
+}
+
+function localiseWorldText(value: string): string {
+  let result = value
+  for (const [from, to] of Object.entries(WORLD_LABELS)) result = result.split(from).join(to)
+  return result
+}
+
+export const WORLD_REGIONS: WorldRegion[] = WORLD_REGIONS_RAW.map((region) => ({
+  ...region,
+  title: localiseWorldText(region.title),
+  blurb: localiseWorldText(region.blurb),
+  tags: region.tags.map(localiseWorldText),
+  links: region.links.map((link) => ({ ...link, label: localiseWorldText(link.label) })),
+}))

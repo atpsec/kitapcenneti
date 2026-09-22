@@ -38,7 +38,7 @@ export function HeroesPage({ onNavigate }: HeroesPageProps) {
 
       <ContentPortalBar
         count={list.length}
-        label="Kahraman"
+        label="Held"
         query={query}
         onQuery={setQuery}
         placeholder="Held, Fähigkeit oder Motto suchen …"
@@ -75,7 +75,7 @@ export function HeroesPage({ onNavigate }: HeroesPageProps) {
           <span>✅ Telifsiz</span>
         </div>
         <p>{hero.bio}</p>
-        <h3>📖 Mini Macera</h3>
+        <h3>📖 Mini-Abenteuer</h3>
         <p>{hero.adventure}</p>
         <h3>💡 Familientipp</h3>
         <p>{hero.tip}</p>
@@ -98,7 +98,7 @@ export function HeroesPage({ onNavigate }: HeroesPageProps) {
               setCreatePrefill({
                 heroName: hero.name.split(' ')[0],
                 category: 'personalized',
-                prompt: `${hero.name} adlı kahraman: ${hero.motto}. Gücü: ${hero.power}. ${hero.adventure}`,
+                prompt: `Held ${hero.name}: ${hero.motto}. Kraft: ${hero.power}. ${hero.adventure}`,
               })
               onNavigate('create')
             }}
@@ -115,7 +115,7 @@ export function HeroesPage({ onNavigate }: HeroesPageProps) {
             text: `${hero.motto} — ${hero.power}`,
             page: 'heroes',
             itemId: hero.id,
-            hashtags: ['KitapCenneti', 'Kahraman', 'Cocuk'],
+            hashtags: ['KitapCenneti', 'Helden', 'Kinder'],
           }}
         />
       </div>

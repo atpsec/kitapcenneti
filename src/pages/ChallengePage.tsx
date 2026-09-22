@@ -19,7 +19,7 @@ interface Props {
 
 const PRESETS: { title: string; page: PageId; stars: number; emoji: string }[] = [
   { title: 'Eine Geschichte hören', page: 'audio', stars: 2, emoji: '🎧' },
-  { title: '1 sayfa boya', page: 'coloring', stars: 2, emoji: '🖍️' },
+  { title: '1 Seite ausmalen', page: 'coloring', stars: 2, emoji: '🖍️' },
   { title: 'Live-Arena-Aufgabe', page: 'live', stars: 3, emoji: '⚡' },
   { title: 'Mini-Quiz lösen', page: 'activities', stars: 2, emoji: '❓' },
   { title: 'MINT-Karte öffnen', page: 'stem', stars: 2, emoji: '🔬' },
@@ -105,7 +105,7 @@ export function ChallengePage({ onNavigate }: Props) {
               value={joinCode}
               onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
               maxLength={6}
-              placeholder="Örn. AB12CD"
+              placeholder="z. B. AB12CD"
             />
           </label>
           <button

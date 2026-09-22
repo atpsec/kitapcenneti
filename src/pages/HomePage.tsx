@@ -77,7 +77,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             </button>
             <button type="button" className="stage-bubble stage-bubble--d" onClick={() => onNavigate('heroes')}>
               <span aria-hidden="true">🦸</span>
-              <small>Kahraman</small>
+          <small>Held</small>
             </button>
             <div className="stage-mascot" aria-hidden="true">🦊</div>
             <p className="stage-caption">Irgendwo antippen – erkunden</p>
@@ -153,7 +153,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <span>🖍️</span>
           <div>
             <h3>Gemäldearchiv</h3>
-            <p>{COLORING_PAGES.length} telifsiz PDF sayfa</p>
+            <p>{COLORING_PAGES.length} lizenzfreie PDF-Seiten</p>
           </div>
         </div>
         <div className="highlight-card" onClick={() => onNavigate('fun')}>
@@ -168,7 +168,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="section trust-strip trust-strip--bright">
         <div>🎡 Rad der Überraschung</div>
         <div>🎮 4 Minispiele</div>
-        <div>🏷️ Sticker koleksiyonu</div>
+        <div>🏷️ Sticker-Sammlung</div>
         <div>📕 Visuelles Story-PDF</div>
       </section>
     </div>

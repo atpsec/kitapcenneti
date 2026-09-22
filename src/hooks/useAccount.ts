@@ -5,6 +5,7 @@ export interface Account {
   id: string
   email: string
   createdAt: string
+  emailVerified?: boolean
 }
 
 export interface RemoteChild {
@@ -35,6 +36,8 @@ interface ApiPayload {
   error?: string
   code?: string
   progress?: Partial<ProgressSnapshot> | null
+  emailVerification?: 'sent' | 'not_configured' | 'delivery_failed' | 'already_verified'
+  status?: string
 }
 
 const ACCOUNT_EVENT = 'kitapcenneti-account'
@@ -62,6 +65,19 @@ async function request(path: string, init: RequestInit = {}): Promise<{ response
 
 function broadcast() {
   window.dispatchEvent(new CustomEvent(ACCOUNT_EVENT))
+}
+
+function clearLocalAccountData() {
+  try {
+    for (const key of Object.keys(localStorage)) {
+      if (key.startsWith('kitapcenneti-')) localStorage.removeItem(key)
+    }
+    for (const key of Object.keys(sessionStorage)) {
+      if (key.startsWith('kitapcenneti-')) sessionStorage.removeItem(key)
+    }
+  } catch {
+    // Storage may be disabled; server-side deletion still succeeds.
+  }
 }
 
 export function useAccount() {
@@ -131,6 +147,13 @@ export function useAccount() {
       await loadChildren()
       broadcast()
       showToast(mode === 'register' ? 'Elternkonto erstellt' : 'Anmeldung erfolgreich')
+      if (mode === 'register' && result.payload.emailVerification === 'not_configured') {
+        showToast('E-Mail-Bestätigung ist noch nicht eingerichtet')
+      } else if (mode === 'register' && result.payload.emailVerification === 'sent') {
+        showToast('Bitte bestätigen Sie Ihre E-Mail-Adresse')
+      } else if (mode === 'register' && result.payload.emailVerification === 'delivery_failed') {
+        showToast('Bestätigungs-E-Mail konnte nicht versendet werden')
+      }
       return true
     } catch {
       showToast('Kontoservice nicht erreichbar')
@@ -169,6 +192,125 @@ export function useAccount() {
     }
   }, [account, loadChildren])
 
+  const requestVerification = useCallback(async () => {
+    try {
+      const result = await request('/auth/request-verification', { method: 'POST' })
+      if (result.response.ok) {
+        showToast(result.payload.status === 'already_verified' ? 'E-Mail-Adresse bereits bestätigt' : 'Bestätigungs-E-Mail versendet')
+        return true
+      }
+      showToast(result.payload.error || 'Bestätigungs-E-Mail konnte nicht versendet werden')
+      return false
+    } catch {
+      showToast('Kontoservice nicht erreichbar')
+      return false
+    }
+  }, [])
+
+  const verifyEmailToken = useCallback(async (token: string) => {
+    try {
+      const result = await request('/auth/verify-email', { method: 'POST', body: JSON.stringify({ token }) })
+      if (!result.response.ok) {
+        showToast(result.payload.error || 'E-Mail-Adresse konnte nicht bestätigt werden')
+        return false
+      }
+      setAccount((current) => current ? { ...current, emailVerified: true } : current)
+      showToast('E-Mail-Adresse bestätigt')
+      return true
+    } catch {
+      showToast('Kontoservice nicht erreichbar')
+      return false
+    }
+  }, [])
+
+  const requestPasswordReset = useCallback(async (email: string) => {
+    try {
+      const result = await request('/auth/request-password-reset', {
+        method: 'POST',
+        body: JSON.stringify({ email: email.trim().toLowerCase() }),
+      })
+      if (result.response.ok) {
+        showToast('Wenn ein Konto vorhanden ist, wurde eine E-Mail versendet')
+        return true
+      }
+      showToast(result.payload.error || 'Passwortzurücksetzung konnte nicht gestartet werden')
+      return false
+    } catch {
+      showToast('Kontoservice nicht erreichbar')
+      return false
+    }
+  }, [])
+
+  const resetPassword = useCallback(async (token: string, password: string) => {
+    try {
+      const result = await request('/auth/reset-password', {
+        method: 'POST',
+        body: JSON.stringify({ token, password }),
+      })
+      if (!result.response.ok) {
+        showToast(result.payload.error || 'Passwort konnte nicht zurückgesetzt werden')
+        return false
+      }
+      showToast('Passwort geändert. Bitte melden Sie sich erneut an.')
+      return true
+    } catch {
+      showToast('Kontoservice nicht erreichbar')
+      return false
+    }
+  }, [])
+
+  const exportData = useCallback(async () => {
+    try {
+      const response = await fetch(accountApiBase() + '/auth/export', { credentials: 'include' })
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => ({}))) as ApiPayload
+        showToast(payload.error || 'Datenexport konnte nicht erstellt werden')
+        return false
+      }
+      const blob = await response.blob()
+      const url = URL.createObjectURL(blob)
+      const anchor = document.createElement('a')
+      anchor.href = url
+      anchor.download = 'kitapcenneti-datenexport.json'
+      document.body.appendChild(anchor)
+      anchor.click()
+      anchor.remove()
+      URL.revokeObjectURL(url)
+      showToast('Datenexport heruntergeladen')
+      return true
+    } catch {
+      showToast('Datenexport konnte nicht erstellt werden')
+      return false
+    }
+  }, [])
+
+  const deleteAccount = useCallback(async (password: string) => {
+    setBusy(true)
+    try {
+      const result = await request('/auth/delete', {
+        method: 'DELETE',
+        body: JSON.stringify({ password, confirmation: 'DELETE' }),
+      })
+      if (!result.response.ok) {
+        showToast(result.payload.error || 'Konto konnte nicht gelöscht werden')
+        return false
+      }
+      clearLocalAccountData()
+      setAccount(null)
+      setChildren([])
+      setPlan('free')
+      setMaxChildren(1)
+      broadcast()
+      showToast('Konto und persönliche Daten wurden gelöscht')
+      return true
+    } catch {
+      showToast('Kontoservice nicht erreichbar')
+      return false
+    } finally {
+      setBusy(false)
+    }
+  }, [])
+
   const syncProgress = useCallback(async (childId: string, progress: ProgressSnapshot) => {
     if (!account) return false
     try {
@@ -201,8 +343,14 @@ export function useAccount() {
     login: (email: string, password: string) => authenticate('login', email, password),
     register: (email: string, password: string) => authenticate('register', email, password),
     logout,
+    requestVerification,
+    verifyEmailToken,
+    requestPasswordReset,
+    resetPassword,
+    exportData,
+    deleteAccount,
     syncChildren,
     syncProgress,
     loadProgress,
-  }), [account, busy, children, configured, loadProgress, loading, logout, maxChildren, plan, refresh, syncChildren, syncProgress])
+  }), [account, busy, children, configured, deleteAccount, exportData, loadProgress, loading, logout, maxChildren, plan, refresh, requestPasswordReset, requestVerification, resetPassword, syncChildren, syncProgress, verifyEmailToken])
 }

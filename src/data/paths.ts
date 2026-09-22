@@ -373,7 +373,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: '5-wöchiger ausgewogener Lernpfad für 6-8-Jährige.',
     tags: ["Programm","6-8","Familie"],
     weeks: 4,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Hört gemeinsam zu."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Sprecht über das neue Wort."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreibe eine Schätzung auf."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"Drei Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiert den Abschluss."}],
   },
   {
     id: 'path-portal-2',
@@ -383,7 +383,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: 'Ein 6-wöchiger, ausgewogener Lernpfad für 9-12-Jährige.',
     tags: ["Programm","9-12","Familie"],
     weeks: 5,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Hört gemeinsam zu."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Sprecht über das neue Wort."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreibe eine Schätzung auf."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"Drei Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiert den Abschluss."}],
   },
   {
     id: 'path-portal-3',
@@ -393,7 +393,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: 'Ein 4-wöchiger ausgewogener Lernpfad für Kinder im Alter von 3 bis 5 Jahren.',
     tags: ["Programm","3-5","Familie"],
     weeks: 6,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreiben Sie eine Schätzung."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"3 Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiern."}],
   },
   {
     id: 'path-portal-4',
@@ -403,7 +403,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: '5-wöchiger ausgewogener Lernpfad für 6-8-Jährige.',
     tags: ["Programm","6-8","Familie"],
     weeks: 3,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreiben Sie eine Schätzung."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"3 Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiern."}],
   },
   {
     id: 'path-portal-5',
@@ -413,7 +413,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: 'Ein 6-wöchiger, ausgewogener Lernpfad für 9-12-Jährige.',
     tags: ["Programm","9-12","Familie"],
     weeks: 4,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreiben Sie eine Schätzung."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"3 Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiern."}],
   },
   {
     id: 'path-portal-6',
@@ -423,7 +423,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: 'Ein 4-wöchiger ausgewogener Lernpfad für Kinder im Alter von 3 bis 5 Jahren.',
     tags: ["Programm","3-5","Familie"],
     weeks: 5,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreiben Sie eine Schätzung."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"3 Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiern."}],
   },
   {
     id: 'path-portal-7',
@@ -433,7 +433,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: '5-wöchiger ausgewogener Lernpfad für 6-8-Jährige.',
     tags: ["Programm","6-8","Familie"],
     weeks: 6,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreiben Sie eine Schätzung."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"3 Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiern."}],
   },
   {
     id: 'path-portal-8',
@@ -443,7 +443,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: 'Ein 6-wöchiger, ausgewogener Lernpfad für 9-12-Jährige.',
     tags: ["Programm","9-12","Familie"],
     weeks: 3,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreiben Sie eine Schätzung."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"3 Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiern."}],
   },
   {
     id: 'path-portal-9',
@@ -453,7 +453,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: 'Ein 4-wöchiger ausgewogener Lernpfad für Kinder im Alter von 3 bis 5 Jahren.',
     tags: ["Programm","3-5","Familie"],
     weeks: 4,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreiben Sie eine Schätzung."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"3 Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiern."}],
   },
   {
     id: 'path-portal-10',
@@ -463,7 +463,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: '5-wöchiger ausgewogener Lernpfad für 6-8-Jährige.',
     tags: ["Programm","6-8","Familie"],
     weeks: 5,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreiben Sie eine Schätzung."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"3 Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiern."}],
   },
   {
     id: 'path-portal-11',
@@ -473,7 +473,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: 'Ein 6-wöchiger, ausgewogener Lernpfad für 9-12-Jährige.',
     tags: ["Programm","9-12","Familie"],
     weeks: 6,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreiben Sie eine Schätzung."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"3 Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiern."}],
   },
   {
     id: 'path-portal-12',
@@ -483,7 +483,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     summary: 'Ein 4-wöchiger ausgewogener Lernpfad für Kinder im Alter von 3 bis 5 Jahren.',
     tags: ["Programm","3-5","Familie"],
     weeks: 3,
-    steps: [{"title":"Masal dinle","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kısa oyun","page":"activities","minutes":8,"tip":"Kazanmak değil denemek."},{"title":"Duygu seç","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM kartı","page":"stem","minutes":10,"tip":"Tahmin yazın."},{"title":"Boyama","page":"coloring","minutes":12,"tip":"3 renk yeterli."},{"title":"Görev yıldızı","page":"quests","minutes":5,"tip":"Kutlayın."}],
+    steps: [{"title":"Höre dir das Märchen an","page":"audio","minutes":5,"tip":"Birlikte dinleyin."},{"title":"Kurzes Spiel","page":"activities","minutes":8,"tip":"Nicht um zu gewinnen, sondern um es zu versuchen."},{"title":"Wähle ein Gefühl.","page":"feelings","minutes":3,"tip":"Kelimeyi büyütün."},{"title":"STEM-Karte","page":"stem","minutes":10,"tip":"Schreiben Sie eine Schätzung."},{"title":"Malerei","page":"coloring","minutes":12,"tip":"3 Farben reichen aus."},{"title":"Quest Star","page":"quests","minutes":5,"tip":"Feiern."}],
   },
   {
     id: 'mega-path-1',

@@ -65,7 +65,7 @@ export function ParentsPage() {
             text: activeTip.body.slice(0, 160) + (activeTip.body.length > 160 ? '…' : ''),
             page: 'parents',
             itemId: activeTip.id,
-            hashtags: ['KitapCenneti', 'Aile', activeTip.category.replace(/\s+/g, '')],
+            hashtags: ['KitapCenneti', 'Familie', activeTip.category.replace(/\s+/g, '')],
           }}
         />
       </div>

@@ -10,6 +10,7 @@ import {
   validEmail,
   validPassword,
   verifyPassword,
+  emailVerificationRequired,
   type AuthContext,
 } from '../../lib/auth'
 
@@ -26,6 +27,9 @@ export const onRequestPost = async (context: AuthContext) => {
     const account = await findAccountByEmail(context.env, email)
     if (!account || !(await verifyPassword(password, account.passwordHash, account.salt))) {
       return authResponse({ error: 'E-Mail oder Passwort ist falsch' }, 401, context)
+    }
+    if (emailVerificationRequired(context.env) && !account.emailVerifiedAt) {
+      return authResponse({ error: 'Bitte bestätigen Sie zuerst Ihre E-Mail-Adresse', code: 'email_unverified' }, 403, context)
     }
     const token = await createSession(context.env, account.id)
     return authResponse({ account: accountPayload(account) }, 200, context, { 'Set-Cookie': sessionCookie(token, context.env) })

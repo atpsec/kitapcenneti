@@ -9,7 +9,7 @@ export interface AudioStory {
   text: string
 }
 
-export const AUDIO_STORIES: AudioStory[] = [
+const AUDIO_STORIES_RAW: AudioStory[] = [
   {
     id: 'yildiz-uyku',
     title: 'Der Schlafstern',
@@ -159,19 +159,13 @@ Lies heute auch eine Seite – die Bibliothek wartet auf dich.`,
   },
   {
     id: 'ruzgarin-mektubu',
-    title: 'Rüzgarın Mektubu',
+    title: 'Brief des Windes',
     emoji: '🍃',
     age: '4-8',
     duration: '4 dk',
-    theme: 'İletişim',
-    summary: 'Küçük bir yaprak, rüzgarla taşınan nazik bir mesaj taşır.',
-    text: `Dağın eteğinde Lale adında bir yaprak varmış.
-Rüzgar ona fısıldamış: "Aşağıdaki çocuğa bir mesaj götür."
-Lale uçmuş, savrulmuş, gülmüş.
-Pencerede bekleyen Deniz'in avucuna konmuş.
-Mektupta yazıyormuş: "Bugün birine gülümse."
-Deniz komşusuna gülümsemiş; bütün sokak aydınlanmış.
-Bazen en küçük mesaj, en büyük neşeyi getirirmiş.`,
+    theme: 'Kommunikation',
+    summary: 'Ein kleines Blatt trägt eine sanfte Botschaft, die vom Wind getragen wird.',
+    text: `Am Fuße des Berges befand sich ein Blatt namens Tulpe.\nDer Wind flüsterte ihm zu: „Bring dem Jungen unten eine Nachricht.“\nDie Tulpe flog, flog und lachte.\nEs wurde in die Handfläche von Deniz gelegt, während sie am Fenster wartete.\nIn dem Brief stand: „Lächle heute jemandem zu.“\nDas Meer lächelte seinen Nachbarn an; Die ganze Straße war beleuchtet.\nManchmal bringt die kleinste Nachricht die größte Freude.`,
   },
   {
     id: 'bulut-otobus',
@@ -179,60 +173,39 @@ Bazen en küçük mesaj, en büyük neşeyi getirirmiş.`,
     emoji: '☁️',
     age: '3-6',
     duration: '3 dk',
-    theme: 'Hayal',
-    summary: 'Yumuşak bulut otobüsü çocukları hayal duraklarına götürür.',
-    text: `Gökyüzünde puflu bir otobüs varmış.
-Şoförü Beyaz Bulut, bileti gülümsemeymiş.
-İlk durak: Renkli Şeker Parkı.
-İkinci durak: Fısıltı Ormanı.
-Üçüncü durak: Yumuşak Yastık İstasyonu.
-Sen de biletini al — gözlerini kapat, otobüs geliyor.
-Ding-dong! Hayal durağına hoş geldin.`,
+    theme: 'Traum',
+    summary: 'Der sanfte Wolkenbus bringt Kinder zu Traumzielen.',
+    text: `Am Himmel stand ein Bus mit einem Sitzsack.\nSein Fahrer war White Cloud, sein Ticket war ein Lächeln.\nErster Halt: Colorful Candy Park.\nZweiter Halt: Whispering Forest.\nDritter Halt: Soft Pillow Station.\nKaufen Sie auch Ihr Ticket – schließen Sie die Augen, der Bus kommt.\nDing-dong! Willkommen am Traumstopp.`,
   },
   {
     id: 'kayip-corap',
-    title: 'Kayıp Çorap Macerası',
+    title: 'Das Abenteuer der verlorenen Socken',
     emoji: '🧦',
     age: '4-7',
     duration: '4 dk',
     theme: 'Mizah',
-    summary: 'Çamaşır makinesinde kaybolan çorap cesur bir yolculuğa çıkar.',
-    text: `Sol Çorap bir sabah sağını bulamamış.
-"Ben maceraya çıkıyorum!" demiş.
-Sepetin ardında, yatağın altında, hatta oyuncak kutusunda aranmış.
-Sonunda balkondaki çiçek saksısının yanında güneşlenirken bulunmuş.
-Sağ Çorap gülmüş: "Kaybolmak da bazen keşfetmektir."
-O günden sonra ikisi birlikte dolaba dönmüş — ama ara sıra maceraya izin varmış.`,
+    summary: 'Eine in der Waschmaschine verlorene Socke begibt sich auf eine waghalsige Reise.',
+    text: `Eines Morgens konnte Left Sock seinen richtigen nicht finden.\n„Ich mache ein Abenteuer!“ sagte er.\nEr wurde hinter dem Korb, unter dem Bett und sogar in der Spielzeugkiste durchsucht.\nSchließlich wurde er beim Sonnenbaden neben dem Blumentopf auf dem Balkon gefunden.\nRight Sock lachte: „Verloren gehen bedeutet manchmal, etwas zu entdecken.“\nVon diesem Tag an kehrten die beiden gemeinsam in den Schrank zurück – aber ab und zu waren Abenteuer erlaubt.`,
   },
   {
     id: 'seftali-agaci',
-    title: 'Şeftali Ağacının Sırrı',
+    title: 'Das Geheimnis des Pfirsichbaums',
     emoji: '🍑',
     age: '5-9',
     duration: '5 dk',
-    theme: 'Sabır',
-    summary: 'Küçük bir tohum büyümeyi beklerken sabrı öğrenir.',
-    text: `Minik tohum toprağa düşmüş ve acele etmiş: "Hemen ağaç olmak istiyorum!"
-Yağmur demiş: "Biraz bekle."
-Güneş demiş: "Biraz daha."
-Kökler yavaş yavaş uzamış, filiz güneşe selam vermiş.
-Yıllar sonra şeftali ağacı olmuş; gölgesinde çocuklar oynamış.
-Tohum anlamış: Güzel şeyler acele etmeden büyürmüş.`,
+    theme: 'Geduld',
+    summary: 'Ein kleiner Samen lernt Geduld, während er darauf wartet, zu wachsen.',
+    text: `Der kleine Samen fiel zu Boden und beeilte sich: „Ich möchte sofort ein Baum werden!“\nYağmur sagte: „Warte noch ein bisschen.“\nDie Sonne sagte: „Ein bisschen mehr.“\nDie Wurzeln wurden langsam länger und der Spross begrüßte die Sonne.\nJahre später wurde daraus ein Pfirsichbaum; Kinder spielten in seinem Schatten.\nDer Samen verstand: Schöne Dinge wachsen ohne Eile.`,
   },
   {
     id: 'gece-otobus-duragi',
-    title: 'Gece Otobüs Durağı',
+    title: 'Nachtbushaltestelle',
     emoji: '🚌',
     age: '5-9',
     duration: '4 dk',
     theme: 'Cesaret',
-    summary: 'İlk kez yalnız binen bir çocuk yardımlaşmayı keşfeder.',
-    text: `Efe ilk kez nineye giden otobüse binecekmiş.
-Karnında kelebekler uçuşuyormuş.
-Durakta yaşlı bir teyze çantasını düşürmüş; Efe eğilip vermiş.
-Teyze gülümsemiş: "Cesaret bazen küçük bir yardımdır."
-Otobüs gelmiş, Efe binmiş, pencereye oturmuş.
-Kelebekler hâlâ varmış ama artık dans ediyormuş — korkuyla değil, heyecanla.`,
+    summary: 'Ein Kind, das zum ersten Mal alleine fährt, entdeckt die Zusammenarbeit.',
+    text: `Efe wird zum ersten Mal mit dem Bus zu seiner Großmutter fahren.\nIn seinem Bauch flogen Schmetterlinge.\nEine alte Dame ließ ihre Tasche an der Bushaltestelle fallen; Efe bückte sich und gab es ihm.\nDie Tante lächelte: „Mut ist manchmal eine kleine Hilfe.“\nDer Bus kam an, Efe stieg ein und setzte sich ans Fenster.\nDie Schmetterlinge waren immer noch da, aber jetzt tanzten sie – nicht aus Angst, sondern vor Aufregung.`,
   },
   {
     id: 'muzi-robot',
@@ -240,119 +213,79 @@ Kelebekler hâlâ varmış ama artık dans ediyormuş — korkuyla değil, heyec
     emoji: '🤖',
     age: '6-10',
     duration: '5 dk',
-    theme: 'Bilim',
-    summary: 'Bozulan bir oyuncak robot, merak ve denemeyle yeniden çalışır.',
-    text: `Muzi'nin robotu bir sabah "bip" demeyi bırakmış.
-Muzi ağlamak yerine kapağı açmış (büyüklerle birlikte).
-Bir vida gevşek, bir kablo yerinden çıkmış.
-Adım adım denemiş, not almış, tekrar denemiş.
-Robot yeniden bipleyince Muzi bağırmış: "Bilim buymuş!"
-Bazen bozulmak, öğrenmenin başlangıcıymış.`,
+    theme: 'Wissenschaft',
+    summary: 'Ein kaputter Spielzeugroboter funktioniert mit Neugier und Experimentierfreude wieder.',
+    text: `Muzis Roboter hörte eines Morgens auf zu piepen.\nAnstatt zu weinen, öffnete Muzi (zusammen mit den Erwachsenen) den Deckel.\nEine Schraube ist locker, ein Kabel ist fehl am Platz.\nEr versuchte es Schritt für Schritt, machte sich Notizen und versuchte es erneut.\nAls der Roboter erneut piepte, rief Muzi: „Das ist Wissenschaft!“\nManchmal ist Zerbrochenheit der Anfang des Lernens.`,
   },
   {
     id: 'kardeas-yildizlar',
-    title: 'Kardeş Yıldızlar',
+    title: 'Schwestersterne',
     emoji: '✨',
     age: '3-7',
     duration: '3 dk',
-    theme: 'Kardeşlik',
-    summary: 'İki yıldız kavga edince Ay onlara paylaşmayı öğretir.',
-    text: `İki küçük yıldız aynı bulutu istemiş.
-"Benim!" "Hayır benim!" diye parlarmış.
-Ay teyze araya girmiş: "Bulutu bölüşsenize."
-Biri sağını, biri solunu aydınlatmış.
-Bulut daha da parlak görünmüş.
-Kardeşler öğrenmiş: Paylaşınca ışık çoğalırmış.`,
+    theme: 'Bruderschaft',
+    summary: 'Wenn zwei Sterne streiten, lehrt der Mond sie zu teilen.',
+    text: `Zwei kleine Sterne wollten die gleiche Wolke.\n"Meins!" „Nein, ich bin es!“ er würde glänzen.\nTante Ay intervenierte: „Warum teilst du nicht die Cloud?“\nEiner beleuchtete die rechte Seite und der andere beleuchtete die linke Seite.\nDie Wolke sah noch heller aus.\nDie Brüder lernten: Wenn man teilt, nimmt das Licht zu.`,
   },
   {
     id: 'pistachio-pisirir',
-    title: 'Aşçı Sincap Fıstık',
+    title: 'Koch Eichhörnchen Erdnuss',
     emoji: '🐿️',
     age: '4-8',
     duration: '4 dk',
-    theme: 'Paylaşmak',
-    summary: 'Sincap Fıstık ormana kış çorbası pişirir ve herkesi davet eder.',
-    text: `Fıstık kış için çorba pişirmiş: havuç, elma, biraz tarçın.
-Kokusu ormanı sarmış.
-Tavşan, baykuş, hatta utangaç kirpi gelmiş.
-Fıstık demiş: "Herkese yeter, yeter ki kase getiresiniz."
-Birlikte kaşık kaşık içmişler.
-En sıcak şey çorba değil, sofra sohbetiymiş.`,
+    theme: 'Teilen',
+    summary: 'Eichhörnchen Erdnuss kocht Wintersuppe im Wald und lädt alle ein.',
+    text: `Erdnuss gekochte Suppe für den Winter: Karotten, Äpfel, etwas Zimt.\nSein Duft durchdrang den Wald.\nHase, Eule, sogar der scheue Igel kamen.\nPeanut sagte: „Es ist genug für alle da, solange man eine Schüssel mitbringt.“\nSie tranken löffelweise zusammen.\nDas Heißeste war nicht Suppe, sondern Tischgespräche.`,
   },
   {
     id: 'gizli-bahce-kapi',
-    title: 'Gizli Bahçe Kapısı',
+    title: 'Das geheime Gartentor',
     emoji: '🚪',
     age: '5-9',
     duration: '5 dk',
-    theme: 'Keşif',
-    summary: 'Eski bir kapı, merak eden çocuğu renkli bir bahçeye götürür.',
-    text: `Evin arkasında yosunlu bir kapı varmış.
-Kimse açmazmış — ta ki Nisan merak edene kadar.
-Kapı gıcırdamış, içeride uçan kelebekler ve fısıldayan çiçekler varmış.
-Bir çiçek demiş: "Merak, en güzel anahtardır."
-Nisan her hafta bir çiçeğe su vermiş.
-Bahçe büyümüş, Nisan'ın cesareti de.`,
+    theme: 'Entdeckung',
+    summary: 'Ein altes Tor führt ein neugieriges Kind in einen farbenfrohen Garten.',
+    text: `Hinter dem Haus befand sich ein moosbewachsenes Tor.\nNiemand wollte es aufheben – bis Nisan neugierig wurde.\nDie Tür knarrte, drinnen flogen Schmetterlinge und Blumen flüsterten.\nEine Blume sagte: „Neugier ist der schönste Schlüssel.“\nNisan goss jede Woche eine Blume.\nDer Garten ist gewachsen und Aprils Mut auch.`,
   },
   {
     id: 'yagmur-davulu',
-    title: 'Yağmur Davulu',
+    title: 'Regentrommel',
     emoji: '🥁',
     age: '3-6',
     duration: '3 dk',
     theme: 'Müzik',
-    summary: 'Damla damla yağmur, çocuklarla ritim tutar.',
-    text: `Damla çatıya düşmüş: tak.
-İkinci damla: tak tak.
-Çocuklar tencerelerle cevap vermiş: dum tek tek!
-Yağmur gülmüş, gökkuşağı perdesini indirmiş.
-Ev bir konsere dönmüş.
-Yağmurlu günler sıkıcı değilmiş — ritmeliymiş.`,
+    summary: 'Tropfen für Tropfen hält der Regen den Rhythmus mit den Kindern.',
+    text: `Ein Tropfen fiel auf das Dach: Klopfen.\nZweiter Tropfen: Klopf, Klopf.\nDie Kinder antworteten mit Töpfen: Dum einer nach dem anderen!\nDer Regen lachte und ließ seinen Regenbogenvorhang herunter.\nDas Haus verwandelte sich in ein Konzert.\nRegentage waren nicht langweilig – sie hatten einen Rhythmus.`,
   },
   {
     id: 'kutuphane-kedisi',
-    title: 'Kütüphane Kedisi Mırıl',
+    title: 'Bibliothekskatze schnurrt',
     emoji: '🐱',
     age: '4-8',
     duration: '4 dk',
-    theme: 'Okuma',
-    summary: 'Mırıl, okuyan çocukların yanına kıvrılıp hikâyeleri dinler.',
-    text: `Kütüphanede Mırıl adında bir kedi yaşarmış.
-En çok masal rafını severmiş.
-Bir çocuk üzgün gelince Mırıl kucağına çıkmış.
-Çocuk okudukça üzüntü sayfa sayfa incelmiş.
-Mırıl mırlamış: "Kitaplar ilaçtır, ben de ısıtırım."
-Sen de okurken bir yumuşak dost hayal edebilirsin.`,
+    theme: 'Lektüre',
+    summary: 'Mırıl macht es sich neben den lesenden Kindern gemütlich und lauscht den Geschichten.',
+    text: `In der Bibliothek lebte eine Katze namens Mırıl.\nAm besten gefiel ihm das Märchenregal.\nAls sich ein Kind aufregte, kletterte Mırıl auf seinen Schoß.\nWährend das Kind las, ließ die Traurigkeit Seite für Seite nach.\nEr schnurrte: „Bücher sind Medizin, also wärme ich sie auf.“\nSie können sich beim Lesen auch einen weichen Freund vorstellen.`,
   },
   {
     id: 'kayip-gulumseme',
-    title: 'Kayıp Gülümseme',
+    title: 'Verlorenes Lächeln',
     emoji: '😊',
     age: '3-6',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Gülümsemesini kaybeden bir çocuk onu paylaşarak bulur.',
-    text: `Ela bir sabah gülümsemesini bulamamış.
-Aynaya bakmış — yok.
-Çantasına bakmış — yok.
-Sonra arkadaşının düşen kalemini vermiş.
-Arkadaşı gülümsemiş; Ela'nın yüzünde de bir kıvılcım belirmiş.
-Gülümseme ceplerde değil, paylaşınca geri gelirmiş.`,
+    theme: 'Gefühl',
+    summary: 'Ein Kind, das sein Lächeln verliert, findet es, indem es es teilt.',
+    text: `Eines Morgens konnte Ela ihr Lächeln nicht finden.\nEr schaute in den Spiegel und da war nichts.\nEr schaute in seine Tasche – nichts.\nDann gab er seinem Freund den heruntergefallenen Stift.\nSein Freund lächelte; Ein Funke erschien auf Elas Gesicht.\nDas Lächeln kommt nicht in Ihrer Tasche zurück, sondern wenn Sie es teilen.`,
   },
   {
     id: 'uzay-postacisi',
-    title: 'Uzay Postacısı Pati',
+    title: 'Weltraumpostbote Pati',
     emoji: '📮',
     age: '6-10',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Pati, gezegenler arası mektupları zamanında yetiştirmeye çalışır.',
-    text: `Pati'nin roket postası "Zamanında Yetişir" yazarmış.
-Bir gün fırtınalı bir göktaşı yağmuru çıkmış.
-Pati korkmuş ama mektubu saklamış.
-Dost gezegene vardığında küçük bir uzaylı ağlıyormuş.
-Mektupta anneanneden gelen bir ninni varmış.
-Pati öğrenmiş: Teslim edilen şey bazen kargo değil, teselliymiş.`,
+    summary: 'Pati versucht, interplanetare Briefe pünktlich zuzustellen.',
+    text: `Auf Patis Raketenpost stand „Kommt pünktlich an“.\nEines Tages brach ein stürmischer Meteoritenschauer aus.\nPati hatte Angst, behielt aber den Brief.\nAls er auf dem freundlichen Planeten ankam, weinte ein kleiner Außerirdischer.\nIm Brief der Großmutter war ein Schlaflied.\nPati lernte: Manchmal ist das, was geliefert wird, keine Fracht, sondern Trost.`,
   },
   {
     id: 'buyulu-kalemlik',
@@ -360,14 +293,9 @@ Pati öğrenmiş: Teslim edilen şey bazen kargo değil, teselliymiş.`,
     emoji: '✏️',
     age: '5-9',
     duration: '4 dk',
-    theme: 'Yaratıcılık',
-    summary: 'Kalemler gece vakti çizimleri canlandırır — nazikçe.',
-    text: `Kalemlikte kırmızı, mavi ve sarı kalem varmış.
-Gece yarısı fısıldaşmışlar: "Bugün ne çizsek?"
-Çocuğun defterindeki güneş bir an parlamış, sonra yine resim olmuş.
-Kalemler bilirmiş: Büyü, bitmiş işte değil; denenen çizgidedir.
-Sabah çocuk yeni bir sayfa açmış.
-Kalemler sevinmiş: "Yine başlıyoruz!"`,
+    theme: 'Kreativität',
+    summary: 'Bleistifte erwecken nächtliche Zeichnungen zum Leben – sanft.',
+    text: `Im Stifthalter befanden sich rote, blaue und gelbe Stifte.\nUm Mitternacht flüsterten sie: „Was sollen wir heute zeichnen?“\nDie Sonne schien für einen Moment auf das Notizbuch des Kindes, dann wurde es wieder zu einem Bild.\nPens wusste: Magie steckt nicht im fertigen Werk; Es liegt in der bewährten Linie.\nAm Morgen blätterte das Kind eine neue Seite um.\nStifte freuten sich: „Es geht wieder los!“`,
   },
   {
     id: 'koy-fieneri',
@@ -376,13 +304,8 @@ Kalemler sevinmiş: "Yine başlıyoruz!"`,
     age: '5-9',
     duration: '4 dk',
     theme: 'Topluluk',
-    summary: 'Fırtınada sönen feneri köylüler birlikte yeniden yakar.',
-    text: `Köyün feneri fırtınada sönmüş.
-Herkes kendi evine çekilmiş.
-Küçük Mira kapı kapı dolaşmış: "Birer mum getirin."
-Mumlar birleşince fener yeniden aydınlanmış.
-Fırtına dinmiş, köy gülümsemiş.
-Tek başına küçük ışık, birlikte büyük umutmuş.`,
+    summary: 'Die Dorfbewohner zünden gemeinsam die Lampe an, die im Sturm erloschen ist.',
+    text: `Der Leuchtturm des Dorfes ging im Sturm aus.\nJeder zog sich in seine eigenen Häuser zurück.\nDie kleine Mira ging von Tür zu Tür: „Bringt jeder eine Kerze mit.“\nAls die Kerzen zusammenkamen, wurde die Laterne wieder beleuchtet.\nDer Sturm zog vorüber und das Dorf lächelte.\nAlleine ein kleines Licht, gemeinsam eine große Hoffnung.`,
   },
   {
     id: 'uykucu-ejderha',
@@ -390,44 +313,29 @@ Tek başına küçük ışık, birlikte büyük umutmuş.`,
     emoji: '🐉',
     age: '3-6',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Küçük ejderha ateş yerine yumuşak horultular üfler.',
-    text: `Pofuduk ateş püskürtemezmiş — sadece ılık buhar.
-Diğer ejderhalar gülermiş.
-Ama köy çocukları Pofuduk'u severmiş; çünkü buharı battaniyeleri ısıtırmış.
-Gece olunca Pofuduk usulca horlamış.
-Horultusu ninni gibiymiş.
-Sen de Pofuduk gibi kıvrıl: ılık, güvenli, uykuya hazır.`,
+    theme: 'Schlafen',
+    summary: 'Der kleine Drache spuckt statt Feuer leises Schnarchen.',
+    text: `Der Flauschige konnte kein Feuer spucken – nur warmen Dampf.\nAndere Drachen lachten.\nAber die Dorfkinder liebten Fluffy; weil der Dampf die Decken erwärmt.\nNachts schnarchte Fluffy leise.\nSein Schnarchen war wie ein Schlaflied.\nMachen Sie es sich gemütlich wie Fluffy: warm, sicher, bereit zum Schlafen.`,
   },
   {
     id: 'zaman-kum-saati',
-    title: 'Zaman Kum Saati',
+    title: 'Zeit-Sanduhr',
     emoji: '⏳',
     age: '7-11',
     duration: '5 dk',
     theme: 'Sorumluluk',
-    summary: 'Kum saatini boşa harcayan çocuk, zamanı paylaşmayı öğrenir.',
-    text: `Can'ın sihirli bir kum saati varmış.
-Her taneciği bir dakikaymış.
-Can hepsini oyuna harcamış; ödev ve yardım için kum kalmamış.
-Saatin içinden küçük bir ses demiş: "Zamanı bölüştür."
-Ertesi gün Can kumları üçe ayırmış: iş, oyun, sevgi.
-Gün daha dolu, kalp daha hafifmiş.`,
+    summary: 'Das Kind, das die Sanduhr verschwendet, lernt, Zeit zu teilen.',
+    text: `Can hat eine magische Sanduhr.\nJedes Teilchen ist eine Minute.\nKann alles für das Spiel ausgeben; Es bleibt kein Sand mehr für Hausaufgaben und Hilfe übrig.\nEine kleine Stimme in der Uhr sagte: „Teile die Zeit.“\nAm nächsten Tag teilte Can den Sand in drei Teile: Arbeit, Spiel, Liebe.\nDer Tag ist voller, das Herz leichter.`,
   },
   {
     id: 'deniz-feneri-cocugu',
-    title: 'Deniz Feneri Çocuğu',
+    title: 'Leuchtturmjunge',
     emoji: '🕯️',
     age: '6-10',
     duration: '5 dk',
     theme: 'Umut',
-    summary: 'Fırtınalı gecede feneri yakan çocuk gemilere yol gösterir.',
-    text: `Ada fenerinin bekçisi hastalanmış.
-Kızı Ayla basamakları tırmanmış.
-Fitili yakmış, camı silmiş, ışığı çevirmiş.
-Uzakta bir gemi selam vermiş.
-Ayla demiş: "Korksam da ışığı bırakmadım."
-Umut bazen büyük bir kahramanlık değil, sönmeyen küçük bir ışıkmış.`,
+    summary: 'Der Junge, der in einer stürmischen Nacht die Laterne anzündet, leitet die Schiffe.',
+    text: `Der Leuchtturmwärter der Insel wurde krank.\nSeine Tochter Ayla stieg die Stufen hinauf.\nEr zündete den Docht an, wischte das Fenster ab und schaltete das Licht ein.\nEin Schiff in der Ferne sagte Hallo.\nAyla sagte: „Obwohl ich Angst hatte, habe ich das Licht nicht verlassen.“\nManchmal ist Hoffnung kein großer Heldentum, sondern ein kleines Licht, das niemals erlischt.`,
   },
   {
     id: 'park-banki',
@@ -436,6695 +344,5338 @@ Umut bazen büyük bir kahramanlık değil, sönmeyen küçük bir ışıkmış.
     age: '4-8',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Yalnız oturan iki çocuk aynı bankta arkadaş olur.',
-    text: `Parkta mavi bir bank varmış.
-Bir ucunda Ege, öbür ucunda Su otururmuş.
-İkisi de yalnızmış ama birbirine bakmazmış.
-Bir güvercin ekmek kırıntısını aralarına düşürmüş.
-İkisi aynı anda uzanmış, gülmüş, konuşmaya başlamış.
-Bazen arkadaşlık bir kırıntı kadar küçük bir anda başlarmış.`,
+    summary: 'Zwei allein sitzende Kinder werden Freunde auf derselben Bank.',
+    text: `Im Park stand eine blaue Bank.\nAn einem Ende liegt das Ägäische Meer und am anderen Ende das Wasser.\nSie waren beide allein, sahen sich aber nicht an.\nEine Taube ließ Brotkrümel zwischen ihnen fallen.\nDie beiden legten sich gleichzeitig hin, lachten und begannen zu reden.\nManchmal beginnt eine Freundschaft so klein wie ein Krümel.`,
   },
   {
     id: 'kar-tanesi-secimi',
-    title: 'Kar Tanesi Seçimi',
+    title: 'Schneeflockenauswahl',
     emoji: '❄️',
     age: '3-7',
     duration: '3 dk',
     theme: 'Özgünlük',
-    summary: 'Her kar tanesi farklıdır — tıpkı senin gibi.',
-    text: `Gökyüzünde binlerce kar tanesi varmış.
-Biri üzülmüş: "Ben diğerleri gibi değilim."
-Rüzgar demiş: "İyi ki değilsin."
-Yere düşünce çocuk onu avucunda incelemiş: "Bu çok güzel!"
-Kar tanesi parlamış.
-Sen de biriciksin — ve bu, dünyanın en güzel tarafı.`,
+    summary: 'Jede Schneeflocke ist anders – genau wie du.',
+    text: `Am Himmel waren Tausende von Schneeflocken.\nEiner war verärgert: „Ich bin nicht wie die anderen.“\nWind sagte: „Ich bin froh, dass du das nicht tust.“\nAls es zu Boden fiel, untersuchte das Kind es in seiner Handfläche: „Das ist wunderschön!“\nDie Schneeflocke glänzte.\nAuch Sie sind einzigartig – und das ist das Beste an der Welt.`,
   },
   {
     id: 'mutfak-orkestrasi',
-    title: 'Mutfak Orkestrası',
+    title: 'Küchenorchester',
     emoji: '🍝',
     age: '4-8',
     duration: '4 dk',
-    theme: 'Aile',
-    summary: 'Akşam yemeği hazırlığı bir aile konserine dönüşür.',
-    text: `Anne kaşığı çırpmış: çın çın.
-Baba tencere kapağını tempo tutmuş.
-Çocuk tahta spatulayla ritim çalmış.
-Makarna suyu kaynarken şarkı büyümüş.
-Sofra kurulunca alkışlanmış.
-Yemek lezzetliymiş — çünkü birlikte pişmiş.`,
+    theme: 'Familie',
+    summary: 'Die Zubereitung des Abendessens wird zum Familienkonzert.',
+    text: `Die Mutter klatschte mit dem Löffel: klirrend, klirrend.\nDer Vater klopfte auf den Topfdeckel.\nDas Kind spielte Rhythmus mit einem Holzspatel.\nWährend das Nudelwasser kochte, ertönte das Lied.\nAls der Tisch gedeckt wurde, gab es Applaus.\nDas Essen war köstlich – weil es zusammen gekocht wurde.`,
   },
   {
     id: 'yildiz-haritasi',
-    title: 'Yıldız Haritası',
+    title: 'Sternenkarte',
     emoji: '🗺️',
     age: '7-11',
     duration: '5 dk',
-    theme: 'Keşif',
-    summary: 'İki arkadaş balkonlarından aynı yıldızı bularak bağ kurar.',
-    text: `Lara ve Kerem komşu binalarda otururmuş.
-Bir gece aynı yıldızı işaret etmeye karar vermişler.
-Harita çizmiş, açı ölçmüş, fenerle selamlaşmışlar.
-Yıldız ikisinin de olmuş — paylaşılınca eksilmeden.
-Lara defterine yazmış: "Gökyüzü ortak bahçemiz."
-Keşif bazen uzaya gitmek değil, birlikte bakmakmış.`,
+    theme: 'Entdeckung',
+    summary: 'Zwei Freunde verbinden sich, indem sie von ihrem Balkon aus denselben Stern finden.',
+    text: `Lara und Kerem lebten in benachbarten Gebäuden.\nEines Nachts beschlossen sie, auf denselben Stern zu zeigen.\nSie zeichneten eine Karte, maßen Winkel und begrüßten einander mit einer Taschenlampe.\nDer Stern wurde zu beiden – ohne durch das Teilen zu schmälern.\nLara schrieb in ihr Notizbuch: „Der Himmel ist unser gemeinsamer Garten.“\nManchmal geht es beim Entdecken nicht darum, in den Weltraum zu fliegen, sondern darum, gemeinsam zu schauen.`,
   },
   {
     id: 'masal-gen-uyku-1',
-    title: 'Uyku Masalı: Elif\'in Yolculuğu',
+    title: 'Schlafmärchen: Elifs Reise',
     emoji: '🌙',
     age: '3-6',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Elif, uyku temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Elif adında meraklı bir çocuk varmış.
-Elif, uyku hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Elif demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uyku ona güzel bir hatırlatma olmuş.
-Sen de bugün uyku için minik bir iyilik yapabilirsin.`,
+    theme: 'Schlafen',
+    summary: 'Elif lernt in einem Abenteuer zum Thema heißer Schlaf etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Elif.\nWährend Elif über den Schlaf nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nElif sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde der Schlaf für ihn zu einer guten Erinnerung.\nAuch Sie können dem Schlaf heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-dostluk-2',
-    title: 'Dostluk Masalı: Deniz\'in Keşfi',
+    title: 'Eine Geschichte der Freundschaft: Entdeckung des Meeres',
     emoji: '🤝',
     age: '4-8',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Deniz, dostluk temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Deniz adında meraklı bir çocuk varmış.
-Deniz, dostluk hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Deniz demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra dostluk ona güzel bir hatırlatma olmuş.
-Sen de bugün dostluk için minik bir iyilik yapabilirsin.`,
+    summary: 'Deniz lernt in einem heißen Freundschaftsabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Deniz.\nWährend Deniz über Freundschaft nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nDeniz sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde die Freundschaft zu einer guten Erinnerung für ihn.\nAuch Sie können heute der Freundschaft einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-doga-3',
-    title: 'Doğa Masalı: Aras\'in Günü',
+    title: 'Naturgeschichte: Aras\' Tag',
     emoji: '🌿',
     age: '4-9',
     duration: '4 dk',
-    theme: 'Doğa',
-    summary: 'Aras, doğa temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Aras adında meraklı bir çocuk varmış.
-Aras, doğa hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Aras demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra doğa ona güzel bir hatırlatma olmuş.
-Sen de bugün doğa için minik bir iyilik yapabilirsin.`,
+    theme: 'Natur',
+    summary: 'Aras lernt in einem heißen Naturabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Aras.\nWährend Aras über die Natur nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nAras sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde die Natur für ihn zu einer wunderschönen Erinnerung.\nAuch Sie können heute der Natur einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uzay-4',
-    title: 'Uzay Masalı: Mira\'in Hikâyesi',
+    title: 'Space Tale: Miras Geschichte',
     emoji: '🚀',
     age: '5-10',
     duration: '5 dk',
     theme: 'Uzay',
-    summary: 'Mira, uzay temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Mira adında meraklı bir çocuk varmış.
-Mira, uzay hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Mira demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uzay ona güzel bir hatırlatma olmuş.
-Sen de bugün uzay için minik bir iyilik yapabilirsin.`,
+    summary: 'Mira lernt in einem heißen Weltraumabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Mira.\nAls Mira über den Weltraum nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nMira sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd seit diesem Tag ist der Weltraum eine gute Erinnerung für ihn.\nAuch Sie können heute einen kleinen Gefallen für den Weltraum tun.`,
   },
   {
     id: 'masal-gen-okul-5',
-    title: 'Okul Masalı: Kuzey\'in Macerası',
+    title: 'Schulmärchen: Das Abenteuer des Nordens',
     emoji: '🎒',
     age: '5-9',
     duration: '4 dk',
     theme: 'Okul',
-    summary: 'Kuzey, okul temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Kuzey adında meraklı bir çocuk varmış.
-Kuzey, okul hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Kuzey demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra okul ona güzel bir hatırlatma olmuş.
-Sen de bugün okul için minik bir iyilik yapabilirsin.`,
+    summary: 'Kuzey lernt in einem heißen Schulabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Kuzey.\nWährend Kuzey über die Schule nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nKuzey sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd seit diesem Tag ist die Schule eine gute Erinnerung für ihn.\nAuch Sie können heute der Schule einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-duygu-6',
-    title: 'Duygu Masalı: Defne\'in Yolculuğu',
+    title: 'Geschichte der Emotionen: Defnes Reise',
     emoji: '💛',
     age: '4-8',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Defne, duygu temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Defne adında meraklı bir çocuk varmış.
-Defne, duygu hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Defne demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra duygu ona güzel bir hatırlatma olmuş.
-Sen de bugün duygu için minik bir iyilik yapabilirsin.`,
+    theme: 'Gefühl',
+    summary: 'Defne lernt in einem heißen Abenteuer voller Emotionen etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Defne.\nWährend Defne über das Gefühl nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nDefne sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd seit diesem Tag ist das Gefühl eine gute Erinnerung für ihn.\nAuch Sie können der Emotion heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-macera-7',
-    title: 'Macera Masalı: Alp\'in Keşfi',
+    title: 'Abenteuergeschichte: Entdeckung der Alpen',
     emoji: '🗺️',
     age: '6-11',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Alp, macera temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Alp adında meraklı bir çocuk varmış.
-Alp, macera hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Alp demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra macera ona güzel bir hatırlatma olmuş.
-Sen de bugün macera için minik bir iyilik yapabilirsin.`,
+    summary: 'Alp lernt in einem heißen Abenteuer-Abenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Alp.\nWährend Alp über das Abenteuer nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nAlp sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Abenteuer zu einer guten Erinnerung für ihn.\nAuch Sie können dem Abenteuer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-hayvan-8',
-    title: 'Hayvan Masalı: Ece\'in Günü',
+    title: 'Tiermärchen: Eces Tag',
     emoji: '🐾',
     age: '3-7',
     duration: '3 dk',
     theme: 'Hayvan',
-    summary: 'Ece, hayvan temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Ece adında meraklı bir çocuk varmış.
-Ece, hayvan hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Ece demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra hayvan ona güzel bir hatırlatma olmuş.
-Sen de bugün hayvan için minik bir iyilik yapabilirsin.`,
+    summary: 'Ece lernt in einem heißen Tierabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Ece.\nWährend Ece über das Tier nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nEce sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Tier zu einer guten Erinnerung für ihn.\nAuch Sie können dem Tier heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-deniz-9',
-    title: 'Deniz Masalı: Barış\'in Hikâyesi',
+    title: 'Sea Tale: Die Geschichte des Friedens',
     emoji: '🌊',
     age: '4-9',
     duration: '4 dk',
     theme: 'Deniz',
-    summary: 'Barış, deniz temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Barış adında meraklı bir çocuk varmış.
-Barış, deniz hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Barış demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra deniz ona güzel bir hatırlatma olmuş.
-Sen de bugün deniz için minik bir iyilik yapabilirsin.`,
+    summary: 'Barış lernt in einem Abenteuer zum Thema heißes Meer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Barış.\nWährend Barış über das Meer nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nBarış sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde das Meer zu einer wunderschönen Erinnerung für ihn.\nAuch Sie können dem Meer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-mevsim-10',
-    title: 'Mevsim Masalı: Selin\'in Macerası',
+    title: 'Jahreszeitenmärchen: Selins Abenteuer',
     emoji: '🍂',
     age: '4-8',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Selin, mevsim temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Selin adında meraklı bir çocuk varmış.
-Selin, mevsim hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Selin demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra mevsim ona güzel bir hatırlatma olmuş.
-Sen de bugün mevsim için minik bir iyilik yapabilirsin.`,
+    summary: 'Selin lernt in einem Abenteuer zum Thema heiße Jahreszeit etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Selin.\nWährend Selin über die Saison nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nSelin sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde die Saison für ihn zu einer guten Erinnerung.\nAuch Sie können der heutigen Saison einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uyku-11',
-    title: 'Uyku Masalı: Can\'in Yolculuğu',
+    title: 'Schlafmärchen: Cans Reise',
     emoji: '🌙',
     age: '3-6',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Can, uyku temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Can adında meraklı bir çocuk varmış.
-Can, uyku hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Can demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uyku ona güzel bir hatırlatma olmuş.
-Sen de bugün uyku için minik bir iyilik yapabilirsin.`,
+    theme: 'Schlafen',
+    summary: 'Can lernt in einem Abenteuer zum Thema heißer Schlaf etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Can.\nWährend Can über den Schlaf nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nCan sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde der Schlaf für ihn zu einer guten Erinnerung.\nAuch Sie können dem Schlaf heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-dostluk-12',
-    title: 'Dostluk Masalı: Naz\'in Keşfi',
+    title: 'Eine Geschichte der Freundschaft: Die Entdeckung von Naz',
     emoji: '🤝',
     age: '4-8',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Naz, dostluk temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Naz adında meraklı bir çocuk varmış.
-Naz, dostluk hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Naz demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra dostluk ona güzel bir hatırlatma olmuş.
-Sen de bugün dostluk için minik bir iyilik yapabilirsin.`,
+    summary: 'Naz lernt in einem heißen Freundschaftsabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Naz.\nWährend Naz über Freundschaft nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nNaz sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde die Freundschaft zu einer guten Erinnerung für ihn.\nAuch Sie können heute der Freundschaft einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-doga-13',
-    title: 'Doğa Masalı: Emre\'in Günü',
+    title: 'Naturgeschichte: Emres Tag',
     emoji: '🌿',
     age: '4-9',
     duration: '4 dk',
-    theme: 'Doğa',
-    summary: 'Emre, doğa temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Emre adında meraklı bir çocuk varmış.
-Emre, doğa hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Emre demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra doğa ona güzel bir hatırlatma olmuş.
-Sen de bugün doğa için minik bir iyilik yapabilirsin.`,
+    theme: 'Natur',
+    summary: 'Emre lernt in einem heißen Naturabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Emre.\nAls Emre über die Natur nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nEmre sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde die Natur für ihn zu einer wunderschönen Erinnerung.\nAuch Sie können heute der Natur einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uzay-14',
-    title: 'Uzay Masalı: Zeynep\'in Hikâyesi',
+    title: 'Space Tale: Zeyneps Geschichte',
     emoji: '🚀',
     age: '5-10',
     duration: '5 dk',
     theme: 'Uzay',
-    summary: 'Zeynep, uzay temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Zeynep adında meraklı bir çocuk varmış.
-Zeynep, uzay hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Zeynep demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uzay ona güzel bir hatırlatma olmuş.
-Sen de bugün uzay için minik bir iyilik yapabilirsin.`,
+    summary: 'Zeynep lernt in einem heißen Weltraumabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Zeynep.\nAls Zeynep über den Weltraum nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nZeynep sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd seit diesem Tag ist der Weltraum eine gute Erinnerung für ihn.\nAuch Sie können heute einen kleinen Gefallen für den Weltraum tun.`,
   },
   {
     id: 'masal-gen-okul-15',
-    title: 'Okul Masalı: Kaan\'in Macerası',
+    title: 'Schulmärchen: Kaans Abenteuer',
     emoji: '🎒',
     age: '5-9',
     duration: '4 dk',
     theme: 'Okul',
-    summary: 'Kaan, okul temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Kaan adında meraklı bir çocuk varmış.
-Kaan, okul hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Kaan demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra okul ona güzel bir hatırlatma olmuş.
-Sen de bugün okul için minik bir iyilik yapabilirsin.`,
+    summary: 'Kaan lernt in einem heißen Schulabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Kaan.\nWährend Kaan über die Schule nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nKaan sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd seit diesem Tag ist die Schule eine gute Erinnerung für ihn.\nAuch Sie können heute der Schule einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-duygu-16',
-    title: 'Duygu Masalı: Yasemin\'in Yolculuğu',
+    title: 'Die Geschichte der Emotionen: Jasmines Reise',
     emoji: '💛',
     age: '4-8',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Yasemin, duygu temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Yasemin adında meraklı bir çocuk varmış.
-Yasemin, duygu hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Yasemin demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra duygu ona güzel bir hatırlatma olmuş.
-Sen de bugün duygu için minik bir iyilik yapabilirsin.`,
+    theme: 'Gefühl',
+    summary: 'Yasemin lernt in einem heißen Abenteuer voller Emotionen etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Yasemin.\nWährend Yasemin über das Gefühl nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nYasemin sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd seit diesem Tag ist das Gefühl eine gute Erinnerung für ihn.\nAuch Sie können der Emotion heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-macera-17',
-    title: 'Macera Masalı: Derin\'in Keşfi',
+    title: 'Abenteuergeschichte: Entdeckung der Tiefe',
     emoji: '🗺️',
     age: '6-11',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Derin, macera temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Derin adında meraklı bir çocuk varmış.
-Derin, macera hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Derin demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra macera ona güzel bir hatırlatma olmuş.
-Sen de bugün macera için minik bir iyilik yapabilirsin.`,
+    summary: 'Deep lernt etwas Neues in einem heißen Abenteuer-Abenteuer.',
+    text: `Es war einmal ein neugieriger Junge namens Derin.\nWährend Derin über das Abenteuer nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nDerin sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Abenteuer zu einer guten Erinnerung für ihn.\nAuch Sie können dem Abenteuer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-hayvan-18',
-    title: 'Hayvan Masalı: Umut\'in Günü',
+    title: 'Tiermärchen: Der Tag der Hoffnung',
     emoji: '🐾',
     age: '3-7',
     duration: '3 dk',
     theme: 'Hayvan',
-    summary: 'Umut, hayvan temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Umut adında meraklı bir çocuk varmış.
-Umut, hayvan hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Umut demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra hayvan ona güzel bir hatırlatma olmuş.
-Sen de bugün hayvan için minik bir iyilik yapabilirsin.`,
+    summary: 'Umut lernt in einem heißen Tierabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Umut.\nWährend Umut über das Tier nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nHope sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Tier zu einer guten Erinnerung für ihn.\nAuch Sie können dem Tier heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-deniz-19',
-    title: 'Deniz Masalı: Lale\'in Hikâyesi',
+    title: 'Sea Tale: Die Geschichte von Lale',
     emoji: '🌊',
     age: '4-9',
     duration: '4 dk',
     theme: 'Deniz',
-    summary: 'Lale, deniz temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Lale adında meraklı bir çocuk varmış.
-Lale, deniz hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Lale demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra deniz ona güzel bir hatırlatma olmuş.
-Sen de bugün deniz için minik bir iyilik yapabilirsin.`,
+    summary: 'Lale lernt in einem Abenteuer zum Thema heißes Meer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Lale.\nWährend Lale über das Meer nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nLale sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde das Meer zu einer wunderschönen Erinnerung für ihn.\nAuch Sie können dem Meer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-mevsim-20',
-    title: 'Mevsim Masalı: Poyraz\'in Macerası',
+    title: 'Jahreszeitenmärchen: Poyraz‘ Abenteuer',
     emoji: '🍂',
     age: '4-8',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Poyraz, mevsim temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Poyraz adında meraklı bir çocuk varmış.
-Poyraz, mevsim hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Poyraz demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra mevsim ona güzel bir hatırlatma olmuş.
-Sen de bugün mevsim için minik bir iyilik yapabilirsin.`,
+    summary: 'Poyraz lernt in einem Abenteuer zum Thema heiße Jahreszeit etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Poyraz.\nWährend Poyraz über die Saison nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nPoyraz sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde die Saison für ihn zu einer guten Erinnerung.\nAuch Sie können der heutigen Saison einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uyku-21',
-    title: 'Uyku Masalı: Elif\'in Yolculuğu',
+    title: 'Schlafmärchen: Elifs Reise',
     emoji: '🌙',
     age: '3-6',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Elif, uyku temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Elif adında meraklı bir çocuk varmış.
-Elif, uyku hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Elif demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uyku ona güzel bir hatırlatma olmuş.
-Sen de bugün uyku için minik bir iyilik yapabilirsin.`,
+    theme: 'Schlafen',
+    summary: 'Elif lernt in einem Abenteuer zum Thema heißer Schlaf etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Elif.\nWährend Elif über den Schlaf nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nElif sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde der Schlaf für ihn zu einer guten Erinnerung.\nAuch Sie können dem Schlaf heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-dostluk-22',
-    title: 'Dostluk Masalı: Deniz\'in Keşfi',
+    title: 'Eine Geschichte der Freundschaft: Entdeckung des Meeres',
     emoji: '🤝',
     age: '4-8',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Deniz, dostluk temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Deniz adında meraklı bir çocuk varmış.
-Deniz, dostluk hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Deniz demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra dostluk ona güzel bir hatırlatma olmuş.
-Sen de bugün dostluk için minik bir iyilik yapabilirsin.`,
+    summary: 'Deniz lernt in einem heißen Freundschaftsabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Deniz.\nWährend Deniz über Freundschaft nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nDeniz sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde die Freundschaft zu einer guten Erinnerung für ihn.\nAuch Sie können heute der Freundschaft einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-doga-23',
-    title: 'Doğa Masalı: Aras\'in Günü',
+    title: 'Naturgeschichte: Aras\' Tag',
     emoji: '🌿',
     age: '4-9',
     duration: '4 dk',
-    theme: 'Doğa',
-    summary: 'Aras, doğa temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Aras adında meraklı bir çocuk varmış.
-Aras, doğa hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Aras demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra doğa ona güzel bir hatırlatma olmuş.
-Sen de bugün doğa için minik bir iyilik yapabilirsin.`,
+    theme: 'Natur',
+    summary: 'Aras lernt in einem heißen Naturabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Aras.\nWährend Aras über die Natur nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nAras sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde die Natur für ihn zu einer wunderschönen Erinnerung.\nAuch Sie können heute der Natur einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uzay-24',
-    title: 'Uzay Masalı: Mira\'in Hikâyesi',
+    title: 'Space Tale: Miras Geschichte',
     emoji: '🚀',
     age: '5-10',
     duration: '5 dk',
     theme: 'Uzay',
-    summary: 'Mira, uzay temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Mira adında meraklı bir çocuk varmış.
-Mira, uzay hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Mira demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uzay ona güzel bir hatırlatma olmuş.
-Sen de bugün uzay için minik bir iyilik yapabilirsin.`,
+    summary: 'Mira lernt in einem heißen Weltraumabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Mira.\nAls Mira über den Weltraum nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nMira sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd seit diesem Tag ist der Weltraum eine gute Erinnerung für ihn.\nAuch Sie können heute einen kleinen Gefallen für den Weltraum tun.`,
   },
   {
     id: 'masal-gen-okul-25',
-    title: 'Okul Masalı: Kuzey\'in Macerası',
+    title: 'Schulmärchen: Das Abenteuer des Nordens',
     emoji: '🎒',
     age: '5-9',
     duration: '4 dk',
     theme: 'Okul',
-    summary: 'Kuzey, okul temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Kuzey adında meraklı bir çocuk varmış.
-Kuzey, okul hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Kuzey demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra okul ona güzel bir hatırlatma olmuş.
-Sen de bugün okul için minik bir iyilik yapabilirsin.`,
+    summary: 'Kuzey lernt in einem heißen Schulabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Kuzey.\nWährend Kuzey über die Schule nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nKuzey sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd seit diesem Tag ist die Schule eine gute Erinnerung für ihn.\nAuch Sie können heute der Schule einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-duygu-26',
-    title: 'Duygu Masalı: Defne\'in Yolculuğu',
+    title: 'Geschichte der Emotionen: Defnes Reise',
     emoji: '💛',
     age: '4-8',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Defne, duygu temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Defne adında meraklı bir çocuk varmış.
-Defne, duygu hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Defne demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra duygu ona güzel bir hatırlatma olmuş.
-Sen de bugün duygu için minik bir iyilik yapabilirsin.`,
+    theme: 'Gefühl',
+    summary: 'Defne lernt in einem heißen Abenteuer voller Emotionen etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Defne.\nWährend Defne über das Gefühl nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nDefne sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd seit diesem Tag ist das Gefühl eine gute Erinnerung für ihn.\nAuch Sie können der Emotion heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-macera-27',
-    title: 'Macera Masalı: Alp\'in Keşfi',
+    title: 'Abenteuergeschichte: Entdeckung der Alpen',
     emoji: '🗺️',
     age: '6-11',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Alp, macera temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Alp adında meraklı bir çocuk varmış.
-Alp, macera hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Alp demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra macera ona güzel bir hatırlatma olmuş.
-Sen de bugün macera için minik bir iyilik yapabilirsin.`,
+    summary: 'Alp lernt in einem heißen Abenteuer-Abenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Alp.\nWährend Alp über das Abenteuer nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nAlp sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Abenteuer zu einer guten Erinnerung für ihn.\nAuch Sie können dem Abenteuer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-hayvan-28',
-    title: 'Hayvan Masalı: Ece\'in Günü',
+    title: 'Tiermärchen: Eces Tag',
     emoji: '🐾',
     age: '3-7',
     duration: '3 dk',
     theme: 'Hayvan',
-    summary: 'Ece, hayvan temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Ece adında meraklı bir çocuk varmış.
-Ece, hayvan hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Ece demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra hayvan ona güzel bir hatırlatma olmuş.
-Sen de bugün hayvan için minik bir iyilik yapabilirsin.`,
+    summary: 'Ece lernt in einem heißen Tierabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Ece.\nWährend Ece über das Tier nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nEce sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Tier zu einer guten Erinnerung für ihn.\nAuch Sie können dem Tier heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-deniz-29',
-    title: 'Deniz Masalı: Barış\'in Hikâyesi',
+    title: 'Sea Tale: Die Geschichte des Friedens',
     emoji: '🌊',
     age: '4-9',
     duration: '4 dk',
     theme: 'Deniz',
-    summary: 'Barış, deniz temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Barış adında meraklı bir çocuk varmış.
-Barış, deniz hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Barış demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra deniz ona güzel bir hatırlatma olmuş.
-Sen de bugün deniz için minik bir iyilik yapabilirsin.`,
+    summary: 'Barış lernt in einem Abenteuer zum Thema heißes Meer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Barış.\nWährend Barış über das Meer nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nBarış sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde das Meer zu einer wunderschönen Erinnerung für ihn.\nAuch Sie können dem Meer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-mevsim-30',
-    title: 'Mevsim Masalı: Selin\'in Macerası',
+    title: 'Jahreszeitenmärchen: Selins Abenteuer',
     emoji: '🍂',
     age: '4-8',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Selin, mevsim temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Selin adında meraklı bir çocuk varmış.
-Selin, mevsim hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Selin demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra mevsim ona güzel bir hatırlatma olmuş.
-Sen de bugün mevsim için minik bir iyilik yapabilirsin.`,
+    summary: 'Selin lernt in einem Abenteuer zum Thema heiße Jahreszeit etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Selin.\nWährend Selin über die Saison nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nSelin sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde die Saison für ihn zu einer guten Erinnerung.\nAuch Sie können der heutigen Saison einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uyku-31',
-    title: 'Uyku Masalı: Can\'in Yolculuğu',
+    title: 'Schlafmärchen: Cans Reise',
     emoji: '🌙',
     age: '3-6',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Can, uyku temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Can adında meraklı bir çocuk varmış.
-Can, uyku hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Can demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uyku ona güzel bir hatırlatma olmuş.
-Sen de bugün uyku için minik bir iyilik yapabilirsin.`,
+    theme: 'Schlafen',
+    summary: 'Can lernt in einem Abenteuer zum Thema heißer Schlaf etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Can.\nWährend Can über den Schlaf nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nCan sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde der Schlaf für ihn zu einer guten Erinnerung.\nAuch Sie können dem Schlaf heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-dostluk-32',
-    title: 'Dostluk Masalı: Naz\'in Keşfi',
+    title: 'Eine Geschichte der Freundschaft: Die Entdeckung von Naz',
     emoji: '🤝',
     age: '4-8',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Naz, dostluk temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Naz adında meraklı bir çocuk varmış.
-Naz, dostluk hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Naz demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra dostluk ona güzel bir hatırlatma olmuş.
-Sen de bugün dostluk için minik bir iyilik yapabilirsin.`,
+    summary: 'Naz lernt in einem heißen Freundschaftsabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Naz.\nWährend Naz über Freundschaft nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nNaz sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde die Freundschaft zu einer guten Erinnerung für ihn.\nAuch Sie können heute der Freundschaft einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-doga-33',
-    title: 'Doğa Masalı: Emre\'in Günü',
+    title: 'Naturgeschichte: Emres Tag',
     emoji: '🌿',
     age: '4-9',
     duration: '4 dk',
-    theme: 'Doğa',
-    summary: 'Emre, doğa temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Emre adında meraklı bir çocuk varmış.
-Emre, doğa hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Emre demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra doğa ona güzel bir hatırlatma olmuş.
-Sen de bugün doğa için minik bir iyilik yapabilirsin.`,
+    theme: 'Natur',
+    summary: 'Emre lernt in einem heißen Naturabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Emre.\nAls Emre über die Natur nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nEmre sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde die Natur für ihn zu einer wunderschönen Erinnerung.\nAuch Sie können heute der Natur einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uzay-34',
-    title: 'Uzay Masalı: Zeynep\'in Hikâyesi',
+    title: 'Space Tale: Zeyneps Geschichte',
     emoji: '🚀',
     age: '5-10',
     duration: '5 dk',
     theme: 'Uzay',
-    summary: 'Zeynep, uzay temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Zeynep adında meraklı bir çocuk varmış.
-Zeynep, uzay hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Zeynep demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uzay ona güzel bir hatırlatma olmuş.
-Sen de bugün uzay için minik bir iyilik yapabilirsin.`,
+    summary: 'Zeynep lernt in einem heißen Weltraumabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Zeynep.\nAls Zeynep über den Weltraum nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nZeynep sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd seit diesem Tag ist der Weltraum eine gute Erinnerung für ihn.\nAuch Sie können heute einen kleinen Gefallen für den Weltraum tun.`,
   },
   {
     id: 'masal-gen-okul-35',
-    title: 'Okul Masalı: Kaan\'in Macerası',
+    title: 'Schulmärchen: Kaans Abenteuer',
     emoji: '🎒',
     age: '5-9',
     duration: '4 dk',
     theme: 'Okul',
-    summary: 'Kaan, okul temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Kaan adında meraklı bir çocuk varmış.
-Kaan, okul hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Kaan demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra okul ona güzel bir hatırlatma olmuş.
-Sen de bugün okul için minik bir iyilik yapabilirsin.`,
+    summary: 'Kaan lernt in einem heißen Schulabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Kaan.\nWährend Kaan über die Schule nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nKaan sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd seit diesem Tag ist die Schule eine gute Erinnerung für ihn.\nAuch Sie können heute der Schule einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-duygu-36',
-    title: 'Duygu Masalı: Yasemin\'in Yolculuğu',
+    title: 'Die Geschichte der Emotionen: Jasmines Reise',
     emoji: '💛',
     age: '4-8',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Yasemin, duygu temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Yasemin adında meraklı bir çocuk varmış.
-Yasemin, duygu hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Yasemin demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra duygu ona güzel bir hatırlatma olmuş.
-Sen de bugün duygu için minik bir iyilik yapabilirsin.`,
+    theme: 'Gefühl',
+    summary: 'Yasemin lernt in einem heißen Abenteuer voller Emotionen etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Yasemin.\nWährend Yasemin über das Gefühl nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nYasemin sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd seit diesem Tag ist das Gefühl eine gute Erinnerung für ihn.\nAuch Sie können der Emotion heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-macera-37',
-    title: 'Macera Masalı: Derin\'in Keşfi',
+    title: 'Abenteuergeschichte: Entdeckung der Tiefe',
     emoji: '🗺️',
     age: '6-11',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Derin, macera temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Derin adında meraklı bir çocuk varmış.
-Derin, macera hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Derin demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra macera ona güzel bir hatırlatma olmuş.
-Sen de bugün macera için minik bir iyilik yapabilirsin.`,
+    summary: 'Deep lernt etwas Neues in einem heißen Abenteuer-Abenteuer.',
+    text: `Es war einmal ein neugieriger Junge namens Derin.\nWährend Derin über das Abenteuer nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nDerin sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Abenteuer zu einer guten Erinnerung für ihn.\nAuch Sie können dem Abenteuer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-hayvan-38',
-    title: 'Hayvan Masalı: Umut\'in Günü',
+    title: 'Tiermärchen: Der Tag der Hoffnung',
     emoji: '🐾',
     age: '3-7',
     duration: '3 dk',
     theme: 'Hayvan',
-    summary: 'Umut, hayvan temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Umut adında meraklı bir çocuk varmış.
-Umut, hayvan hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Umut demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra hayvan ona güzel bir hatırlatma olmuş.
-Sen de bugün hayvan için minik bir iyilik yapabilirsin.`,
+    summary: 'Umut lernt in einem heißen Tierabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Umut.\nWährend Umut über das Tier nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nHope sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Tier zu einer guten Erinnerung für ihn.\nAuch Sie können dem Tier heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-deniz-39',
-    title: 'Deniz Masalı: Lale\'in Hikâyesi',
+    title: 'Sea Tale: Die Geschichte von Lale',
     emoji: '🌊',
     age: '4-9',
     duration: '4 dk',
     theme: 'Deniz',
-    summary: 'Lale, deniz temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Lale adında meraklı bir çocuk varmış.
-Lale, deniz hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Lale demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra deniz ona güzel bir hatırlatma olmuş.
-Sen de bugün deniz için minik bir iyilik yapabilirsin.`,
+    summary: 'Lale lernt in einem Abenteuer zum Thema heißes Meer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Lale.\nWährend Lale über das Meer nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nLale sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde das Meer zu einer wunderschönen Erinnerung für ihn.\nAuch Sie können dem Meer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-mevsim-40',
-    title: 'Mevsim Masalı: Poyraz\'in Macerası',
+    title: 'Jahreszeitenmärchen: Poyraz‘ Abenteuer',
     emoji: '🍂',
     age: '4-8',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Poyraz, mevsim temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Poyraz adında meraklı bir çocuk varmış.
-Poyraz, mevsim hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Poyraz demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra mevsim ona güzel bir hatırlatma olmuş.
-Sen de bugün mevsim için minik bir iyilik yapabilirsin.`,
+    summary: 'Poyraz lernt in einem Abenteuer zum Thema heiße Jahreszeit etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Poyraz.\nWährend Poyraz über die Saison nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nPoyraz sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde die Saison für ihn zu einer guten Erinnerung.\nAuch Sie können der heutigen Saison einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uyku-41',
-    title: 'Uyku Masalı: Elif\'in Yolculuğu',
+    title: 'Schlafmärchen: Elifs Reise',
     emoji: '🌙',
     age: '3-6',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Elif, uyku temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Elif adında meraklı bir çocuk varmış.
-Elif, uyku hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Elif demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uyku ona güzel bir hatırlatma olmuş.
-Sen de bugün uyku için minik bir iyilik yapabilirsin.`,
+    theme: 'Schlafen',
+    summary: 'Elif lernt in einem Abenteuer zum Thema heißer Schlaf etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Elif.\nWährend Elif über den Schlaf nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nElif sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde der Schlaf für ihn zu einer guten Erinnerung.\nAuch Sie können dem Schlaf heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-dostluk-42',
-    title: 'Dostluk Masalı: Deniz\'in Keşfi',
+    title: 'Eine Geschichte der Freundschaft: Entdeckung des Meeres',
     emoji: '🤝',
     age: '4-8',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Deniz, dostluk temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Deniz adında meraklı bir çocuk varmış.
-Deniz, dostluk hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Deniz demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra dostluk ona güzel bir hatırlatma olmuş.
-Sen de bugün dostluk için minik bir iyilik yapabilirsin.`,
+    summary: 'Deniz lernt in einem heißen Freundschaftsabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Deniz.\nWährend Deniz über Freundschaft nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nDeniz sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde die Freundschaft zu einer guten Erinnerung für ihn.\nAuch Sie können heute der Freundschaft einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-doga-43',
-    title: 'Doğa Masalı: Aras\'in Günü',
+    title: 'Naturgeschichte: Aras\' Tag',
     emoji: '🌿',
     age: '4-9',
     duration: '4 dk',
-    theme: 'Doğa',
-    summary: 'Aras, doğa temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Aras adında meraklı bir çocuk varmış.
-Aras, doğa hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Aras demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra doğa ona güzel bir hatırlatma olmuş.
-Sen de bugün doğa için minik bir iyilik yapabilirsin.`,
+    theme: 'Natur',
+    summary: 'Aras lernt in einem heißen Naturabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Aras.\nWährend Aras über die Natur nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nAras sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde die Natur für ihn zu einer wunderschönen Erinnerung.\nAuch Sie können heute der Natur einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uzay-44',
-    title: 'Uzay Masalı: Mira\'in Hikâyesi',
+    title: 'Space Tale: Miras Geschichte',
     emoji: '🚀',
     age: '5-10',
     duration: '5 dk',
     theme: 'Uzay',
-    summary: 'Mira, uzay temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Mira adında meraklı bir çocuk varmış.
-Mira, uzay hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Mira demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uzay ona güzel bir hatırlatma olmuş.
-Sen de bugün uzay için minik bir iyilik yapabilirsin.`,
+    summary: 'Mira lernt in einem heißen Weltraumabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Mira.\nAls Mira über den Weltraum nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nMira sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd seit diesem Tag ist der Weltraum eine gute Erinnerung für ihn.\nAuch Sie können heute einen kleinen Gefallen für den Weltraum tun.`,
   },
   {
     id: 'masal-gen-okul-45',
-    title: 'Okul Masalı: Kuzey\'in Macerası',
+    title: 'Schulmärchen: Das Abenteuer des Nordens',
     emoji: '🎒',
     age: '5-9',
     duration: '4 dk',
     theme: 'Okul',
-    summary: 'Kuzey, okul temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Kuzey adında meraklı bir çocuk varmış.
-Kuzey, okul hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Kuzey demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra okul ona güzel bir hatırlatma olmuş.
-Sen de bugün okul için minik bir iyilik yapabilirsin.`,
+    summary: 'Kuzey lernt in einem heißen Schulabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Kuzey.\nWährend Kuzey über die Schule nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nKuzey sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd seit diesem Tag ist die Schule eine gute Erinnerung für ihn.\nAuch Sie können heute der Schule einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-duygu-46',
-    title: 'Duygu Masalı: Defne\'in Yolculuğu',
+    title: 'Geschichte der Emotionen: Defnes Reise',
     emoji: '💛',
     age: '4-8',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Defne, duygu temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Defne adında meraklı bir çocuk varmış.
-Defne, duygu hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Defne demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra duygu ona güzel bir hatırlatma olmuş.
-Sen de bugün duygu için minik bir iyilik yapabilirsin.`,
+    theme: 'Gefühl',
+    summary: 'Defne lernt in einem heißen Abenteuer voller Emotionen etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Defne.\nWährend Defne über das Gefühl nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nDefne sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd seit diesem Tag ist das Gefühl eine gute Erinnerung für ihn.\nAuch Sie können der Emotion heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-macera-47',
-    title: 'Macera Masalı: Alp\'in Keşfi',
+    title: 'Abenteuergeschichte: Entdeckung der Alpen',
     emoji: '🗺️',
     age: '6-11',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Alp, macera temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Alp adında meraklı bir çocuk varmış.
-Alp, macera hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Alp demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra macera ona güzel bir hatırlatma olmuş.
-Sen de bugün macera için minik bir iyilik yapabilirsin.`,
+    summary: 'Alp lernt in einem heißen Abenteuer-Abenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Alp.\nWährend Alp über das Abenteuer nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nAlp sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Abenteuer zu einer guten Erinnerung für ihn.\nAuch Sie können dem Abenteuer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-hayvan-48',
-    title: 'Hayvan Masalı: Ece\'in Günü',
+    title: 'Tiermärchen: Eces Tag',
     emoji: '🐾',
     age: '3-7',
     duration: '3 dk',
     theme: 'Hayvan',
-    summary: 'Ece, hayvan temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Ece adında meraklı bir çocuk varmış.
-Ece, hayvan hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Ece demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra hayvan ona güzel bir hatırlatma olmuş.
-Sen de bugün hayvan için minik bir iyilik yapabilirsin.`,
+    summary: 'Ece lernt in einem heißen Tierabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Ece.\nWährend Ece über das Tier nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nEce sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Tier zu einer guten Erinnerung für ihn.\nAuch Sie können dem Tier heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-deniz-49',
-    title: 'Deniz Masalı: Barış\'in Hikâyesi',
+    title: 'Sea Tale: Die Geschichte des Friedens',
     emoji: '🌊',
     age: '4-9',
     duration: '4 dk',
     theme: 'Deniz',
-    summary: 'Barış, deniz temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Barış adında meraklı bir çocuk varmış.
-Barış, deniz hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Barış demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra deniz ona güzel bir hatırlatma olmuş.
-Sen de bugün deniz için minik bir iyilik yapabilirsin.`,
+    summary: 'Barış lernt in einem Abenteuer zum Thema heißes Meer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Barış.\nWährend Barış über das Meer nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nBarış sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde das Meer zu einer wunderschönen Erinnerung für ihn.\nAuch Sie können dem Meer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-mevsim-50',
-    title: 'Mevsim Masalı: Selin\'in Macerası',
+    title: 'Jahreszeitenmärchen: Selins Abenteuer',
     emoji: '🍂',
     age: '4-8',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Selin, mevsim temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Selin adında meraklı bir çocuk varmış.
-Selin, mevsim hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Selin demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra mevsim ona güzel bir hatırlatma olmuş.
-Sen de bugün mevsim için minik bir iyilik yapabilirsin.`,
+    summary: 'Selin lernt in einem Abenteuer zum Thema heiße Jahreszeit etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Selin.\nWährend Selin über die Saison nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nSelin sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde die Saison für ihn zu einer guten Erinnerung.\nAuch Sie können der heutigen Saison einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uyku-51',
-    title: 'Uyku Masalı: Can\'in Yolculuğu',
+    title: 'Schlafmärchen: Cans Reise',
     emoji: '🌙',
     age: '3-6',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Can, uyku temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Can adında meraklı bir çocuk varmış.
-Can, uyku hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Can demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uyku ona güzel bir hatırlatma olmuş.
-Sen de bugün uyku için minik bir iyilik yapabilirsin.`,
+    theme: 'Schlafen',
+    summary: 'Can lernt in einem Abenteuer zum Thema heißer Schlaf etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Can.\nWährend Can über den Schlaf nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nCan sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde der Schlaf für ihn zu einer guten Erinnerung.\nAuch Sie können dem Schlaf heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-dostluk-52',
-    title: 'Dostluk Masalı: Naz\'in Keşfi',
+    title: 'Eine Geschichte der Freundschaft: Die Entdeckung von Naz',
     emoji: '🤝',
     age: '4-8',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Naz, dostluk temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Naz adında meraklı bir çocuk varmış.
-Naz, dostluk hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Naz demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra dostluk ona güzel bir hatırlatma olmuş.
-Sen de bugün dostluk için minik bir iyilik yapabilirsin.`,
+    summary: 'Naz lernt in einem heißen Freundschaftsabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Naz.\nWährend Naz über Freundschaft nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nNaz sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde die Freundschaft zu einer guten Erinnerung für ihn.\nAuch Sie können heute der Freundschaft einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-doga-53',
-    title: 'Doğa Masalı: Emre\'in Günü',
+    title: 'Naturgeschichte: Emres Tag',
     emoji: '🌿',
     age: '4-9',
     duration: '4 dk',
-    theme: 'Doğa',
-    summary: 'Emre, doğa temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Emre adında meraklı bir çocuk varmış.
-Emre, doğa hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Emre demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra doğa ona güzel bir hatırlatma olmuş.
-Sen de bugün doğa için minik bir iyilik yapabilirsin.`,
+    theme: 'Natur',
+    summary: 'Emre lernt in einem heißen Naturabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Emre.\nAls Emre über die Natur nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nEmre sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd von diesem Tag an wurde die Natur für ihn zu einer wunderschönen Erinnerung.\nAuch Sie können heute der Natur einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-uzay-54',
-    title: 'Uzay Masalı: Zeynep\'in Hikâyesi',
+    title: 'Space Tale: Zeyneps Geschichte',
     emoji: '🚀',
     age: '5-10',
     duration: '5 dk',
     theme: 'Uzay',
-    summary: 'Zeynep, uzay temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Zeynep adında meraklı bir çocuk varmış.
-Zeynep, uzay hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Zeynep demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra uzay ona güzel bir hatırlatma olmuş.
-Sen de bugün uzay için minik bir iyilik yapabilirsin.`,
+    summary: 'Zeynep lernt in einem heißen Weltraumabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Zeynep.\nAls Zeynep über den Weltraum nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nZeynep sagte: „Jeden Tag bringt ein kleiner Schritt eine große Veränderung.“\nUnd seit diesem Tag ist der Weltraum eine gute Erinnerung für ihn.\nAuch Sie können heute einen kleinen Gefallen für den Weltraum tun.`,
   },
   {
     id: 'masal-gen-okul-55',
-    title: 'Okul Masalı: Kaan\'in Macerası',
+    title: 'Schulmärchen: Kaans Abenteuer',
     emoji: '🎒',
     age: '5-9',
     duration: '4 dk',
     theme: 'Okul',
-    summary: 'Kaan, okul temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Kaan adında meraklı bir çocuk varmış.
-Kaan, okul hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Kaan demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra okul ona güzel bir hatırlatma olmuş.
-Sen de bugün okul için minik bir iyilik yapabilirsin.`,
+    summary: 'Kaan lernt in einem heißen Schulabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Kaan.\nWährend Kaan über die Schule nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nKaan sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd seit diesem Tag ist die Schule eine gute Erinnerung für ihn.\nAuch Sie können heute der Schule einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-duygu-56',
-    title: 'Duygu Masalı: Yasemin\'in Yolculuğu',
+    title: 'Die Geschichte der Emotionen: Jasmines Reise',
     emoji: '💛',
     age: '4-8',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Yasemin, duygu temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Yasemin adında meraklı bir çocuk varmış.
-Yasemin, duygu hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Yasemin demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra duygu ona güzel bir hatırlatma olmuş.
-Sen de bugün duygu için minik bir iyilik yapabilirsin.`,
+    theme: 'Gefühl',
+    summary: 'Yasemin lernt in einem heißen Abenteuer voller Emotionen etwas Neues.',
+    text: `Es war einmal ein neugieriges Kind namens Yasemin.\nWährend Yasemin über das Gefühl nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nYasemin sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd seit diesem Tag ist das Gefühl eine gute Erinnerung für ihn.\nAuch Sie können der Emotion heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-macera-57',
-    title: 'Macera Masalı: Derin\'in Keşfi',
+    title: 'Abenteuergeschichte: Entdeckung der Tiefe',
     emoji: '🗺️',
     age: '6-11',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Derin, macera temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Derin adında meraklı bir çocuk varmış.
-Derin, macera hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Derin demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra macera ona güzel bir hatırlatma olmuş.
-Sen de bugün macera için minik bir iyilik yapabilirsin.`,
+    summary: 'Deep lernt etwas Neues in einem heißen Abenteuer-Abenteuer.',
+    text: `Es war einmal ein neugieriger Junge namens Derin.\nWährend Derin über das Abenteuer nachdachte, erlebte sie eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nDerin sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Abenteuer zu einer guten Erinnerung für ihn.\nAuch Sie können dem Abenteuer heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-gen-hayvan-58',
-    title: 'Hayvan Masalı: Umut\'in Günü',
+    title: 'Tiermärchen: Der Tag der Hoffnung',
     emoji: '🐾',
     age: '3-7',
     duration: '3 dk',
     theme: 'Hayvan',
-    summary: 'Umut, hayvan temalı sıcak bir macerada yeni bir şey öğrenir.',
-    text: `Bir varmış bir yokmuş, Umut adında meraklı bir çocuk varmış.
-Umut, hayvan hakkında düşünürken küçük bir sürprizle karşılaşmış.
-Önce korkmuş, sonra nefes alıp yardım istemiş.
-Arkadaşları ve ailesi birlikte olunca işler kolaylaşmış.
-Umut demiş ki: "Her gün küçük bir adım, büyük bir değişim getirir."
-Ve o günden sonra hayvan ona güzel bir hatırlatma olmuş.
-Sen de bugün hayvan için minik bir iyilik yapabilirsin.`,
+    summary: 'Umut lernt in einem heißen Tierabenteuer etwas Neues.',
+    text: `Es war einmal ein neugieriger Junge namens Umut.\nWährend Umut über das Tier nachdachte, erlebte er eine kleine Überraschung.\nZuerst hatte er Angst, dann holte er Luft und bat um Hilfe.\nAls seine Freunde und Familie zusammen waren, wurde es einfacher.\nHope sagte: „Ein kleiner Schritt jeden Tag bringt eine große Veränderung.“\nUnd von diesem Tag an wurde das Tier zu einer guten Erinnerung für ihn.\nAuch Sie können dem Tier heute einen kleinen Gefallen tun.`,
   },
   {
     id: 'masal-portal-1',
-    title: 'Dostluk Masalı 1',
+    title: 'Freundschaftsgeschichte 1',
     emoji: '🦊',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Freundschaft – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-2',
-    title: 'Doğa Masalı 2',
+    title: 'Naturgeschichte 2',
     emoji: '🌙',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Natur',
+    summary: 'Eine kurze Naturgeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-3',
-    title: 'Uzay Masalı 3',
+    title: 'Weltraumgeschichte 3',
     emoji: '🌊',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Weltraum – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-4',
-    title: 'Okul Masalı 4',
+    title: 'Schulmärchen 4',
     emoji: '🚀',
     age: '7-10',
     duration: '3 dk',
     theme: 'Okul',
-    summary: 'Okul temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Schule – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-5',
-    title: 'Duygu Masalı 5',
+    title: 'Emotionsgeschichte 5',
     emoji: '🌿',
     age: '3-5',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Gefühl',
+    summary: 'Eine kurze Geschichte über Emotionen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-6',
-    title: 'Macera Masalı 6',
+    title: 'Abenteuergeschichte 6',
     emoji: '🎈',
     age: '4-7',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Macera temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Abenteuergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-7',
-    title: 'Hayvan Masalı 7',
+    title: 'Tiermärchen 7',
     emoji: '🐻',
     age: '5-8',
     duration: '6 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Tiergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-8',
-    title: 'Deniz Masalı 8',
+    title: 'Meeresgeschichte 8',
     emoji: '🦋',
     age: '6-9',
     duration: '3 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Meer – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Meere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-9',
-    title: 'Mevsim Masalı 9',
+    title: 'Staffelgeschichte 9',
     emoji: '🌈',
     age: '7-10',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze saisonale Geschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Feiertag, als sich ein kleiner Held auf eine Reise begab.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-10',
-    title: 'Cesaret Masalı 10',
+    title: 'Tale of Courage 10',
     emoji: '🐢',
     age: '3-5',
     duration: '5 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Mut – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief durch... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-11',
-    title: 'Paylaşım Masalı 11',
+    title: 'Sharing Tale 11',
     emoji: '🦄',
     age: '4-7',
     duration: '6 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Sharing',
+    summary: 'Eine kurze Geschichte zum Thema Teilen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Teilen, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein ... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-12',
-    title: 'Uyku Masalı 12',
+    title: 'Schlafmärchen 12',
     emoji: '🐠',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Schlafen',
+    summary: 'Eine kurze Geschichte zum Thema Schlaf – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-13',
-    title: 'Dostluk Masalı 13',
+    title: 'Freundschaftsgeschichte 13',
     emoji: '🌻',
     age: '6-9',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Freundschaft – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-14',
-    title: 'Doğa Masalı 14',
+    title: 'Naturgeschichte 14',
     emoji: '🏰',
     age: '7-10',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Natur',
+    summary: 'Eine kurze Naturgeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-15',
-    title: 'Uzay Masalı 15',
+    title: 'Weltraumgeschichte 15',
     emoji: '🧠',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Weltraum – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-16',
-    title: 'Okul Masalı 16',
+    title: 'Schulmärchen 16',
     emoji: '💛',
     age: '4-7',
     duration: '3 dk',
     theme: 'Okul',
-    summary: 'Okul temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Schule – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-17',
-    title: 'Duygu Masalı 17',
+    title: 'Emotionsgeschichte 17',
     emoji: '🎵',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Gefühl',
+    summary: 'Eine kurze Geschichte über Emotionen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-18',
-    title: 'Macera Masalı 18',
+    title: 'Abenteuergeschichte 18',
     emoji: '⭐',
     age: '6-9',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Macera temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Abenteuergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-19',
-    title: 'Hayvan Masalı 19',
+    title: 'Tiermärchen 19',
     emoji: '🦊',
     age: '7-10',
     duration: '6 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Tiergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-20',
-    title: 'Deniz Masalı 20',
+    title: 'Das Meeresmärchen 20',
     emoji: '🌙',
     age: '3-5',
     duration: '3 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Meer – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Meere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-21',
-    title: 'Mevsim Masalı 21',
+    title: 'Das Jahreszeitenmärchen 21',
     emoji: '🌊',
     age: '4-7',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze saisonale Geschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Feiertag, als sich ein kleiner Held auf eine Reise begab.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-22',
-    title: 'Cesaret Masalı 22',
+    title: 'Das Märchen vom Mut 22',
     emoji: '🚀',
     age: '5-8',
     duration: '5 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Mut – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief durch... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-23',
-    title: 'Paylaşım Masalı 23',
+    title: 'Das Märchen vom Teilen 23',
     emoji: '🌿',
     age: '6-9',
     duration: '6 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Sharing',
+    summary: 'Eine kurze Geschichte zum Thema Teilen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Teilen, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein ... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-24',
-    title: 'Uyku Masalı 24',
+    title: 'Das Märchen vom Schlaf 24',
     emoji: '🎈',
     age: '7-10',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Schlafen',
+    summary: 'Eine kurze Geschichte zum Thema Schlaf – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-25',
-    title: 'Dostluk Masalı 25',
+    title: 'Das Märchen von der Freundschaft 25',
     emoji: '🐻',
     age: '3-5',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Freundschaft – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-26',
-    title: 'Doğa Masalı 26',
+    title: 'Das Märchen von der Natur 26',
     emoji: '🦋',
     age: '4-7',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Natur',
+    summary: 'Eine kurze Naturgeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-27',
-    title: 'Uzay Masalı 27',
+    title: 'Weltraumgeschichte 27',
     emoji: '🌈',
     age: '5-8',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Weltraum – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-28',
-    title: 'Okul Masalı 28',
+    title: 'Schulmärchen 28',
     emoji: '🐢',
     age: '6-9',
     duration: '3 dk',
     theme: 'Okul',
-    summary: 'Okul temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Schule – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-29',
-    title: 'Duygu Masalı 29',
+    title: 'Emotionsgeschichte 29',
     emoji: '🦄',
     age: '7-10',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Gefühl',
+    summary: 'Eine kurze Geschichte über Emotionen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-30',
-    title: 'Macera Masalı 30',
+    title: 'Abenteuergeschichte 30',
     emoji: '🐠',
     age: '3-5',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Macera temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Abenteuergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-31',
-    title: 'Hayvan Masalı 31',
+    title: 'Tiermärchen 31',
     emoji: '🌻',
     age: '4-7',
     duration: '6 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Tiergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-32',
-    title: 'Deniz Masalı 32',
+    title: 'Meeresgeschichte 32',
     emoji: '🏰',
     age: '5-8',
     duration: '3 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Meer – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Meere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-33',
-    title: 'Mevsim Masalı 33',
+    title: 'Jahreszeitenmärchen 33',
     emoji: '🧠',
     age: '6-9',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze saisonale Geschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Feiertag, als sich ein kleiner Held auf eine Reise begab.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-34',
-    title: 'Cesaret Masalı 34',
+    title: 'Geschichte des Mutes 34',
     emoji: '💛',
     age: '7-10',
     duration: '5 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Mut – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief durch... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-35',
-    title: 'Paylaşım Masalı 35',
+    title: 'Geschichte teilen 35',
     emoji: '🎵',
     age: '3-5',
     duration: '6 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Sharing',
+    summary: 'Eine kurze Geschichte zum Thema Teilen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Teilen, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein ... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-36',
-    title: 'Uyku Masalı 36',
+    title: 'Schlafgeschichte 36',
     emoji: '⭐',
     age: '4-7',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Schlafen',
+    summary: 'Eine kurze Geschichte zum Thema Schlaf – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-37',
-    title: 'Dostluk Masalı 37',
+    title: 'Freundschaftsgeschichte 37',
     emoji: '🦊',
     age: '5-8',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Freundschaft – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-38',
-    title: 'Doğa Masalı 38',
+    title: 'Naturgeschichte 38',
     emoji: '🌙',
     age: '6-9',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Natur',
+    summary: 'Eine kurze Naturgeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-39',
-    title: 'Uzay Masalı 39',
+    title: 'Weltraumgeschichte 39',
     emoji: '🌊',
     age: '7-10',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Weltraum – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-40',
-    title: 'Okul Masalı 40',
+    title: 'Schulgeschichte 40',
     emoji: '🚀',
     age: '3-5',
     duration: '3 dk',
     theme: 'Okul',
-    summary: 'Okul temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Schule – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-41',
-    title: 'Duygu Masalı 41',
+    title: 'Emotionsgeschichte 41',
     emoji: '🌿',
     age: '4-7',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Gefühl',
+    summary: 'Eine kurze Geschichte über Emotionen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-42',
-    title: 'Macera Masalı 42',
+    title: 'Abenteuergeschichte 42',
     emoji: '🎈',
     age: '5-8',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Macera temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Abenteuergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-43',
-    title: 'Hayvan Masalı 43',
+    title: 'Tiermärchen 43',
     emoji: '🐻',
     age: '6-9',
     duration: '6 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Tiergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-44',
-    title: 'Deniz Masalı 44',
+    title: 'Das Meeresmärchen 44',
     emoji: '🦋',
     age: '7-10',
     duration: '3 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Meer – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Meere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-45',
-    title: 'Mevsim Masalı 45',
+    title: 'Das Jahreszeitenmärchen 45',
     emoji: '🌈',
     age: '3-5',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze saisonale Geschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Feiertag, als sich ein kleiner Held auf eine Reise begab.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-46',
-    title: 'Cesaret Masalı 46',
+    title: 'Das Märchen vom Mut 46',
     emoji: '🐢',
     age: '4-7',
     duration: '5 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Mut – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief durch... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-47',
-    title: 'Paylaşım Masalı 47',
+    title: 'Das Märchen vom Teilen 47',
     emoji: '🦄',
     age: '5-8',
     duration: '6 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Sharing',
+    summary: 'Eine kurze Geschichte zum Thema Teilen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Teilen, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein ... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-48',
-    title: 'Uyku Masalı 48',
+    title: 'Das Märchen vom Schlaf 48',
     emoji: '🐠',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Schlafen',
+    summary: 'Eine kurze Geschichte zum Thema Schlaf – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-49',
-    title: 'Dostluk Masalı 49',
+    title: 'Das Märchen von der Freundschaft 49',
     emoji: '🌻',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Freundschaft – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-50',
-    title: 'Doğa Masalı 50',
+    title: 'Das Märchen von der Natur 50',
     emoji: '🏰',
     age: '3-5',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Natur',
+    summary: 'Eine kurze Naturgeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-51',
-    title: 'Uzay Masalı 51',
+    title: 'Weltraumgeschichte 51',
     emoji: '🧠',
     age: '4-7',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Weltraum – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-52',
-    title: 'Okul Masalı 52',
+    title: 'Schulmärchen 52',
     emoji: '💛',
     age: '5-8',
     duration: '3 dk',
     theme: 'Okul',
-    summary: 'Okul temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Schule – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-53',
-    title: 'Duygu Masalı 53',
+    title: 'Emotionsgeschichte 53',
     emoji: '🎵',
     age: '6-9',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Gefühl',
+    summary: 'Eine kurze Geschichte über Emotionen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-54',
-    title: 'Macera Masalı 54',
+    title: 'Abenteuergeschichte 54',
     emoji: '⭐',
     age: '7-10',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Macera temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Abenteuergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-55',
-    title: 'Hayvan Masalı 55',
+    title: 'Tiergeschichte 55',
     emoji: '🦊',
     age: '3-5',
     duration: '6 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Tiergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-56',
-    title: 'Deniz Masalı 56',
+    title: 'Meeresgeschichte 56',
     emoji: '🌙',
     age: '4-7',
     duration: '3 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Meer – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Meere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-57',
-    title: 'Mevsim Masalı 57',
+    title: 'Jahreszeitenmärchen 57',
     emoji: '🌊',
     age: '5-8',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze saisonale Geschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Feiertag, als sich ein kleiner Held auf eine Reise begab.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-58',
-    title: 'Cesaret Masalı 58',
+    title: 'Geschichte des Mutes 58',
     emoji: '🚀',
     age: '6-9',
     duration: '5 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Mut – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief durch... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-59',
-    title: 'Paylaşım Masalı 59',
+    title: 'Geschichte teilen 59',
     emoji: '🌿',
     age: '7-10',
     duration: '6 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Sharing',
+    summary: 'Eine kurze Geschichte zum Thema Teilen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Teilen, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein ... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-60',
-    title: 'Uyku Masalı 60',
+    title: 'Schlafgeschichte 60',
     emoji: '🎈',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Schlafen',
+    summary: 'Eine kurze Geschichte zum Thema Schlaf – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-61',
-    title: 'Dostluk Masalı 61',
+    title: 'Freundschaftsgeschichte 61',
     emoji: '🐻',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Freundschaft – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-62',
-    title: 'Doğa Masalı 62',
+    title: 'Naturgeschichte 62',
     emoji: '🦋',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Natur',
+    summary: 'Eine kurze Naturgeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-63',
-    title: 'Uzay Masalı 63',
+    title: 'Weltraumgeschichte 63',
     emoji: '🌈',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Weltraum – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-64',
-    title: 'Okul Masalı 64',
+    title: 'Schulgeschichte 64',
     emoji: '🐢',
     age: '7-10',
     duration: '3 dk',
     theme: 'Okul',
-    summary: 'Okul temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Schule – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-65',
-    title: 'Duygu Masalı 65',
+    title: 'Emotionsgeschichte 65',
     emoji: '🦄',
     age: '3-5',
     duration: '4 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    theme: 'Gefühl',
+    summary: 'Eine kurze Geschichte über Emotionen – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-66',
-    title: 'Macera Masalı 66',
+    title: 'Abenteuergeschichte 66',
     emoji: '🐠',
     age: '4-7',
     duration: '5 dk',
     theme: 'Macera',
-    summary: 'Macera temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Abenteuergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-67',
-    title: 'Hayvan Masalı 67',
+    title: 'Animal Tale 67',
     emoji: '🌻',
     age: '5-8',
     duration: '6 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Tiergeschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-68',
-    title: 'Deniz Masalı 68',
+    title: 'Sea Tale 68',
     emoji: '🏰',
     age: '6-9',
     duration: '3 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte zum Thema Meer – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Meere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-69',
-    title: 'Mevsim Masalı 69',
+    title: 'Season Tale 69',
     emoji: '🧠',
     age: '7-10',
     duration: '4 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze saisonale Geschichte – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Feiertag, als sich ein kleiner Held auf eine Reise begab.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief ein... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'masal-portal-70',
-    title: 'Cesaret Masalı 70',
+    title: 'Tale of Courage 70',
     emoji: '💛',
     age: '3-5',
     duration: '5 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı kısa bir masal — dinle, hisset, paylaş.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş ve gökyüzü biraz daha parlak görünmüş.
-Sen de derin bir nefes al… bu masalın sıcaklığını yanında tut.`,
+    summary: 'Eine kurze Geschichte über Mut – zuhören, fühlen, teilen.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle und der Himmel sah etwas heller aus.\nAtmen Sie auch tief durch... behalten Sie die Wärme dieser Geschichte bei sich.`,
   },
   {
     id: 'mega-masal-1',
-    title: 'Dostluk Yolculuğu 1',
+    title: 'Journey of Friendship 1',
     emoji: '🦊',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #1.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 1 zum Thema Freundschaft.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-2',
-    title: 'Doğa Yolculuğu 2',
+    title: 'Nature Journey 2',
     emoji: '🌙',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #2.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portalgeschichte Nr. 2 zum Thema Natur.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-3',
-    title: 'Uzay Yolculuğu 3',
+    title: 'Raumfahrt 3',
     emoji: '🌊',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #3.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Weltraum-Mega-Portal-Geschichte Nr. 3.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-4',
-    title: 'Okul Yolculuğu 4',
+    title: 'Schulreise 4',
     emoji: '🚀',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #4.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 4 zum Thema Schule.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-5',
-    title: 'Duygu Yolculuğu 5',
+    title: 'Reise der Gefühle 5',
     emoji: '🌿',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #5.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portalgeschichte Nr. 5 mit emotionalem Thema.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-6',
-    title: 'Macera Yolculuğu 6',
+    title: 'Abenteuerreise 6',
     emoji: '🎈',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #6.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 6 zum Thema Abenteuer.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-7',
-    title: 'Hayvan Yolculuğu 7',
+    title: 'Tierreise 7',
     emoji: '🐻',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #7.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 7 mit Tiermotiven.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-8',
-    title: 'Deniz Yolculuğu 8',
+    title: 'Seereise 8',
     emoji: '🦋',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #8.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Meer-Mega-Portalgeschichte Nr. 8.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-9',
-    title: 'Mevsim Yolculuğu 9',
+    title: 'Seasonal Journey 9',
     emoji: '🌈',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #9.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Saisonal thematisierte Mega-Portal-Geschichte Nr. 9.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-10',
-    title: 'Cesaret Yolculuğu 10',
+    title: 'Journey of Courage 10',
     emoji: '🐢',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #10.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte über Tapferkeit Nr. 10.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-11',
-    title: 'Paylaşım Yolculuğu 11',
+    title: 'Reise teilen 11',
     emoji: '🦄',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #11.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Teilen Sie die thematische Mega-Portal-Geschichte Nr. 11.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-12',
-    title: 'Müzik Yolculuğu 12',
+    title: 'Musikreise 12',
     emoji: '🐠',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #12.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 12 zum Thema Musik.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-13',
-    title: 'Spor Yolculuğu 13',
+    title: 'Sports Journey 13',
     emoji: '🌻',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #13.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Sport #13.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-14',
-    title: 'Sanat Yolculuğu 14',
+    title: 'Art Journey 14',
     emoji: '🏰',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #14.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Kunst #14.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-15',
-    title: 'Uyku Yolculuğu 15',
+    title: 'Sleep Journey 15',
     emoji: '🧠',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #15.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portalgeschichte Nr. 15 zum Thema Schlaf.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-16',
-    title: 'Dostluk Yolculuğu 16',
+    title: 'Friendship Journey 16',
     emoji: '💛',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #16.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #16.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-17',
-    title: 'Doğa Yolculuğu 17',
+    title: 'Nature Journey 17',
     emoji: '🎵',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #17.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #17.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-18',
-    title: 'Uzay Yolculuğu 18',
+    title: 'Space Journey 18',
     emoji: '🎨',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #18.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #18.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-19',
-    title: 'Okul Yolculuğu 19',
+    title: 'Schule-Reise 19',
     emoji: '🔬',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #19.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Schule #19.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-20',
-    title: 'Duygu Yolculuğu 20',
+    title: 'Emotionale Reise 20',
     emoji: '⭐',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #20.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Megaportal-Geschichte zum Thema Emotionen #20.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-21',
-    title: 'Macera Yolculuğu 21',
+    title: 'Abenteuerreise 21',
     emoji: '🦊',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #21.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Abenteuer #21.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-22',
-    title: 'Hayvan Yolculuğu 22',
+    title: 'Tierreise 22',
     emoji: '🌙',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #22.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Tiere #22.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-23',
-    title: 'Deniz Yolculuğu 23',
+    title: 'Seereise 23',
     emoji: '🌊',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #23.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Meer #23.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-24',
-    title: 'Mevsim Yolculuğu 24',
+    title: 'Jahreszeitenreise 24',
     emoji: '🚀',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #24.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Jahreszeiten #24.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-25',
-    title: 'Cesaret Yolculuğu 25',
+    title: 'Reise des Mutes 25',
     emoji: '🌿',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #25.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Mut #25.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-26',
-    title: 'Paylaşım Yolculuğu 26',
+    title: 'Reise des Teilens 26',
     emoji: '🎈',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #26.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Megaportalgeschichte mit Teilen-Thema #26.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-27',
-    title: 'Müzik Yolculuğu 27',
+    title: 'Musikreise 27',
     emoji: '🐻',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #27.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Musik #27.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-28',
-    title: 'Spor Yolculuğu 28',
+    title: 'Sportreise 28',
     emoji: '🦋',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #28.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Sport #28.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-29',
-    title: 'Sanat Yolculuğu 29',
+    title: 'Kunstreise 29',
     emoji: '🌈',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #29.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #29.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-30',
-    title: 'Uyku Yolculuğu 30',
+    title: 'Schlafreise 30',
     emoji: '🐢',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #30.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #30.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-31',
-    title: 'Dostluk Yolculuğu 31',
+    title: 'Freundschaftsreise 31',
     emoji: '🦄',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #31.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Freundschaft #31.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-32',
-    title: 'Doğa Yolculuğu 32',
+    title: 'Naturreise 32',
     emoji: '🐠',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #32.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Megaportalgeschichte zum Thema Natur #32.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-33',
-    title: 'Uzay Yolculuğu 33',
+    title: 'Weltraumreise 33',
     emoji: '🌻',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #33.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Weltraum #33.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-34',
-    title: 'Okul Yolculuğu 34',
+    title: 'Schulreise 34',
     emoji: '🏰',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #34.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Schule #34.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-35',
-    title: 'Duygu Yolculuğu 35',
+    title: 'Emotionale Reise 35',
     emoji: '🧠',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #35.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portalgeschichte zum Thema Emotionen #35.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-36',
-    title: 'Macera Yolculuğu 36',
+    title: 'Abenteuerreise 36',
     emoji: '💛',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #36.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Abenteuer #36.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-37',
-    title: 'Hayvan Yolculuğu 37',
+    title: 'Tierreise 37',
     emoji: '🎵',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #37.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Tiere #37.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-38',
-    title: 'Deniz Yolculuğu 38',
+    title: 'Seereise 38',
     emoji: '🎨',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #38.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Meer #38.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-39',
-    title: 'Mevsim Yolculuğu 39',
+    title: 'Saisonale Reise 39',
     emoji: '🔬',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #39.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Saisonale Mega-Portal-Geschichte #39.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-40',
-    title: 'Cesaret Yolculuğu 40',
+    title: 'Reise des Mutes 40',
     emoji: '⭐',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #40.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte #40.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-41',
-    title: 'Paylaşım Yolculuğu 41',
+    title: 'Reise des Teilens 41',
     emoji: '🦊',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #41.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte mit Teilen-Thema #41.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-42',
-    title: 'Müzik Yolculuğu 42',
+    title: 'Musik-Reise 42',
     emoji: '🌙',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #42.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte #42.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-43',
-    title: 'Spor Yolculuğu 43',
+    title: 'Sport-Reise 43',
     emoji: '🌊',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #43.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Sport #43.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-44',
-    title: 'Sanat Yolculuğu 44',
+    title: 'Kunstreise 44',
     emoji: '🚀',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #44.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #44.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-45',
-    title: 'Uyku Yolculuğu 45',
+    title: 'Schlafreise 45',
     emoji: '🌿',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #45.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #45.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-46',
-    title: 'Dostluk Yolculuğu 46',
+    title: 'Freundschaftsreise 46',
     emoji: '🎈',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #46.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Freundschaft #46.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-47',
-    title: 'Doğa Yolculuğu 47',
+    title: 'Naturreise 47',
     emoji: '🐻',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #47.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #47.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-48',
-    title: 'Uzay Yolculuğu 48',
+    title: 'Weltraumreise 48',
     emoji: '🦋',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #48.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #48.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-49',
-    title: 'Okul Yolculuğu 49',
+    title: 'Schulreise 49',
     emoji: '🌈',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #49.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #49.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-50',
-    title: 'Duygu Yolculuğu 50',
+    title: 'Emotionale Reise 50',
     emoji: '🐢',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #50.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #50.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-51',
-    title: 'Macera Yolculuğu 51',
+    title: 'Abenteuerreise 51',
     emoji: '🦄',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #51.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #51.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-52',
-    title: 'Hayvan Yolculuğu 52',
+    title: 'Tierreise 52',
     emoji: '🐠',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #52.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tier #52.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-53',
-    title: 'Deniz Yolculuğu 53',
+    title: 'Seereise 53',
     emoji: '🌻',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #53.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #53.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-54',
-    title: 'Mevsim Yolculuğu 54',
+    title: 'Saisonale Reise 54',
     emoji: '🏰',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #54.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #54.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-55',
-    title: 'Cesaret Yolculuğu 55',
+    title: 'Reise des Mutes 55',
     emoji: '🧠',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #55.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema „Mut“ #55.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-56',
-    title: 'Paylaşım Yolculuğu 56',
+    title: 'Sharing-Reise 56',
     emoji: '💛',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #56.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte zum Thema „Teilen“ #56.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-57',
-    title: 'Müzik Yolculuğu 57',
+    title: 'Musik-Reise 57',
     emoji: '🎵',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #57.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Musik #57.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-58',
-    title: 'Spor Yolculuğu 58',
+    title: 'Sport-Reise 58',
     emoji: '🎨',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #58.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Sport #58.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-59',
-    title: 'Sanat Yolculuğu 59',
+    title: 'Kunst-Reise 59',
     emoji: '🔬',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #59.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Kunst #59.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-60',
-    title: 'Uyku Yolculuğu 60',
+    title: 'Sleep Journey 60',
     emoji: '⭐',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #60.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #60.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-61',
-    title: 'Dostluk Yolculuğu 61',
+    title: 'Friendship Journey 61',
     emoji: '🦊',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #61.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #61.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-62',
-    title: 'Doğa Yolculuğu 62',
+    title: 'Nature Journey 62',
     emoji: '🌙',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #62.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #62.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-63',
-    title: 'Uzay Yolculuğu 63',
+    title: 'Space Journey 63',
     emoji: '🌊',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #63.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #63.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-64',
-    title: 'Okul Yolculuğu 64',
+    title: 'Schulreise 64',
     emoji: '🚀',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #64.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #64.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-65',
-    title: 'Duygu Yolculuğu 65',
+    title: 'Emotionale Reise 65',
     emoji: '🌿',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #65.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #65.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-66',
-    title: 'Macera Yolculuğu 66',
+    title: 'Abenteuerreise 66',
     emoji: '🎈',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #66.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #66.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-67',
-    title: 'Hayvan Yolculuğu 67',
+    title: 'Tierreise 67',
     emoji: '🐻',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #67.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #67.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-68',
-    title: 'Deniz Yolculuğu 68',
+    title: 'Reise zum Meer 68',
     emoji: '🦋',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #68.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #68.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-69',
-    title: 'Mevsim Yolculuğu 69',
+    title: 'Saisonale Reise 69',
     emoji: '🌈',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #69.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #69.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-70',
-    title: 'Cesaret Yolculuğu 70',
+    title: 'Reise des Mutes 70',
     emoji: '🐢',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #70.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Mut #70.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-71',
-    title: 'Paylaşım Yolculuğu 71',
+    title: 'Reise des Teilens 71',
     emoji: '🦄',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #71.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte zum Thema Teilen #71.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-72',
-    title: 'Müzik Yolculuğu 72',
+    title: 'Music Journey 72',
     emoji: '🐠',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #72.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Musik #72.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-73',
-    title: 'Spor Yolculuğu 73',
+    title: 'Sport-Reise 73',
     emoji: '🌻',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #73.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Sport #73.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-74',
-    title: 'Sanat Yolculuğu 74',
+    title: 'Art-Reise 74',
     emoji: '🏰',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #74.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Kunst #74.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-75',
-    title: 'Uyku Yolculuğu 75',
+    title: 'Sleep Journey 75',
     emoji: '🧠',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #75.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #75.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-76',
-    title: 'Dostluk Yolculuğu 76',
+    title: 'Friendship Journey 76',
     emoji: '💛',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #76.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #76.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-77',
-    title: 'Doğa Yolculuğu 77',
+    title: 'Nature Journey 77',
     emoji: '🎵',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #77.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #77.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-78',
-    title: 'Uzay Yolculuğu 78',
+    title: 'Space Journey 78',
     emoji: '🎨',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #78.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #78.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-79',
-    title: 'Okul Yolculuğu 79',
+    title: 'Schule Journey 79',
     emoji: '🔬',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #79.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #79.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-80',
-    title: 'Duygu Yolculuğu 80',
+    title: 'Mega-Portal-Geschichte zum Thema Emotionen #80.',
     emoji: '⭐',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #80.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #80.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-81',
-    title: 'Macera Yolculuğu 81',
+    title: 'Abenteuerreise 81',
     emoji: '🦊',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #81.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #81.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-82',
-    title: 'Hayvan Yolculuğu 82',
+    title: 'Tierreise 82',
     emoji: '🌙',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #82.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #82.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-83',
-    title: 'Deniz Yolculuğu 83',
+    title: 'Seereise 83',
     emoji: '🌊',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #83.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #83.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-84',
-    title: 'Mevsim Yolculuğu 84',
+    title: 'Reise der Jahreszeiten 84',
     emoji: '🚀',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #84.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Jahreszeiten #84.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-85',
-    title: 'Cesaret Yolculuğu 85',
+    title: 'Reise des Mutes 85',
     emoji: '🌿',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #85.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Mut #85.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-86',
-    title: 'Paylaşım Yolculuğu 86',
+    title: 'Reise des Teilens 86',
     emoji: '🎈',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #86.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte zum Thema Teilen #86.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-87',
-    title: 'Müzik Yolculuğu 87',
+    title: 'Musik-Reise 87',
     emoji: '🐻',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #87.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Musik #87.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-88',
-    title: 'Spor Yolculuğu 88',
+    title: 'Sportreise 88',
     emoji: '🦋',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #88.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Sport #88.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-89',
-    title: 'Sanat Yolculuğu 89',
+    title: 'Kunstreise 89',
     emoji: '🌈',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #89.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #89.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-90',
-    title: 'Uyku Yolculuğu 90',
+    title: 'Schlafreise 90',
     emoji: '🐢',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #90.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #90.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-91',
-    title: 'Dostluk Yolculuğu 91',
+    title: 'Freundschaftsreise 91',
     emoji: '🦄',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #91.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Freundschaft #91.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-92',
-    title: 'Doğa Yolculuğu 92',
+    title: 'Naturreise 92',
     emoji: '🐠',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #92.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Megaportalgeschichte zum Thema Natur #92.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-93',
-    title: 'Uzay Yolculuğu 93',
+    title: 'Weltraumreise 93',
     emoji: '🌻',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #93.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Weltraum #93.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-94',
-    title: 'Okul Yolculuğu 94',
+    title: 'Schulreise 94',
     emoji: '🏰',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #94.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Schule #94.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-95',
-    title: 'Duygu Yolculuğu 95',
+    title: 'Emotionale Reise 95',
     emoji: '🧠',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #95.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portalgeschichte zum Thema Emotionen #95.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-96',
-    title: 'Macera Yolculuğu 96',
+    title: 'Abenteuerreise 96',
     emoji: '💛',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #96.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Abenteuer #96.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-97',
-    title: 'Hayvan Yolculuğu 97',
+    title: 'Tierreise 97',
     emoji: '🎵',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #97.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Tiere #97.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-98',
-    title: 'Deniz Yolculuğu 98',
+    title: 'Seereise 98',
     emoji: '🎨',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #98.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Meer #98.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-99',
-    title: 'Mevsim Yolculuğu 99',
+    title: 'Saisonale Reise 99',
     emoji: '🔬',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #99.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Saisonale Mega-Portalgeschichte Nr. 99.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-100',
-    title: 'Cesaret Yolculuğu 100',
+    title: 'Reise des Mutes 100',
     emoji: '⭐',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #100.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte Nr. 100.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-101',
-    title: 'Paylaşım Yolculuğu 101',
+    title: 'Reise des Teilens 101',
     emoji: '🦊',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #101.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Megaportalgeschichte mit Teilen-Thema #101.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-102',
-    title: 'Müzik Yolculuğu 102',
+    title: 'Musikreise 102',
     emoji: '🌙',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #102.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte Nr. 102.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-103',
-    title: 'Spor Yolculuğu 103',
+    title: 'Sportreise 103',
     emoji: '🌊',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #103.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Sport #103.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-104',
-    title: 'Sanat Yolculuğu 104',
+    title: 'Kunstreise 104',
     emoji: '🚀',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #104.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #104.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-105',
-    title: 'Uyku Yolculuğu 105',
+    title: 'Schlafreise 105',
     emoji: '🌿',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #105.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #105.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-106',
-    title: 'Dostluk Yolculuğu 106',
+    title: 'Freundschaftsreise 106',
     emoji: '🎈',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #106.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Freundschaft #106.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-107',
-    title: 'Doğa Yolculuğu 107',
+    title: 'Naturreise 107',
     emoji: '🐻',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #107.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #107.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-108',
-    title: 'Uzay Yolculuğu 108',
+    title: 'Weltraumreise 108',
     emoji: '🦋',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #108.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #108.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-109',
-    title: 'Okul Yolculuğu 109',
+    title: 'Schulreise 109',
     emoji: '🌈',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #109.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #109.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-110',
-    title: 'Duygu Yolculuğu 110',
+    title: 'Emotionale Reise 110',
     emoji: '🐢',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #110.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #110.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-111',
-    title: 'Macera Yolculuğu 111',
+    title: 'Abenteuerreise 111',
     emoji: '🦄',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #111.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #111.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-112',
-    title: 'Hayvan Yolculuğu 112',
+    title: 'Tierreise 112',
     emoji: '🐠',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #112.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #112.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-113',
-    title: 'Deniz Yolculuğu 113',
+    title: 'Seereise 113',
     emoji: '🌻',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #113.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #113.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-114',
-    title: 'Mevsim Yolculuğu 114',
+    title: 'Saisonale Reise 114',
     emoji: '🏰',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #114.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #114.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-115',
-    title: 'Cesaret Yolculuğu 115',
+    title: 'Reise des Mutes 115',
     emoji: '🧠',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #115.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema „Mut“ #115.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-116',
-    title: 'Paylaşım Yolculuğu 116',
+    title: 'Sharing-Reise 116',
     emoji: '💛',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #116.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte zum Thema „Teilen“ #116.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-117',
-    title: 'Müzik Yolculuğu 117',
+    title: 'Musik-Reise 117',
     emoji: '🎵',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #117.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Musik #117.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-118',
-    title: 'Spor Yolculuğu 118',
+    title: 'Sport-Reise 118',
     emoji: '🎨',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #118.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Sport #118.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-119',
-    title: 'Sanat Yolculuğu 119',
+    title: 'Kunst-Reise 119',
     emoji: '🔬',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #119.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Kunst #119.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-120',
-    title: 'Uyku Yolculuğu 120',
+    title: 'Schlafreise 120',
     emoji: '⭐',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #120.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #120.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-121',
-    title: 'Dostluk Yolculuğu 121',
+    title: 'Freundschaftsreise 121',
     emoji: '🦊',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #121.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Freundschaft #121.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-122',
-    title: 'Doğa Yolculuğu 122',
+    title: 'Naturreise 122',
     emoji: '🌙',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #122.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Megaportalgeschichte zum Thema Natur #122.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-123',
-    title: 'Uzay Yolculuğu 123',
+    title: 'Weltraumreise 123',
     emoji: '🌊',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #123.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #123.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-124',
-    title: 'Okul Yolculuğu 124',
+    title: 'Schulreise 124',
     emoji: '🚀',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #124.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #124.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-125',
-    title: 'Duygu Yolculuğu 125',
+    title: 'Emotionale Reise 125',
     emoji: '🌿',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #125.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #125.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-126',
-    title: 'Macera Yolculuğu 126',
+    title: 'Abenteuerreise 126',
     emoji: '🎈',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #126.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #126.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-127',
-    title: 'Hayvan Yolculuğu 127',
+    title: 'Tierreise 127',
     emoji: '🐻',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #127.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #127.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-128',
-    title: 'Deniz Yolculuğu 128',
+    title: 'Reise zum Meer 128',
     emoji: '🦋',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #128.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #128.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-129',
-    title: 'Mevsim Yolculuğu 129',
+    title: 'Saisonale Reise 129',
     emoji: '🌈',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #129.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #129.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-130',
-    title: 'Cesaret Yolculuğu 130',
+    title: 'Reise des Mutes 130',
     emoji: '🐢',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #130.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Mut #130.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-131',
-    title: 'Paylaşım Yolculuğu 131',
+    title: 'Reise des Teilens 131',
     emoji: '🦄',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #131.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Teilen thematische Mega-Portal-Geschichte #131.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-132',
-    title: 'Müzik Yolculuğu 132',
+    title: 'Music Journey 132',
     emoji: '🐠',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #132.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Musik-Themen-Mega-Portal-Geschichte #132.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-133',
-    title: 'Spor Yolculuğu 133',
+    title: 'Sports Journey 133',
     emoji: '🌻',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #133.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Sport-Themen-Mega-Portal-Geschichte #133.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-134',
-    title: 'Sanat Yolculuğu 134',
+    title: 'Art Journey 134',
     emoji: '🏰',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #134.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Kunst-Themen-Mega-Portal-Geschichte #134.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-135',
-    title: 'Uyku Yolculuğu 135',
+    title: 'Sleep Journey 135',
     emoji: '🧠',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #135.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #135.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-136',
-    title: 'Dostluk Yolculuğu 136',
+    title: 'Freundschaftsreise 136',
     emoji: '💛',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #136.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #136.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-137',
-    title: 'Doğa Yolculuğu 137',
+    title: 'Nature Journey 137',
     emoji: '🎵',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #137.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #137.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-138',
-    title: 'Uzay Yolculuğu 138',
+    title: 'Weltraum-Reise 138',
     emoji: '🎨',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #138.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #138.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-139',
-    title: 'Okul Yolculuğu 139',
+    title: 'Schule-Reise 139',
     emoji: '🔬',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #139.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #139.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-140',
-    title: 'Duygu Yolculuğu 140',
+    title: 'Emotionale Reise 140',
     emoji: '⭐',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #140.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #140.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-141',
-    title: 'Macera Yolculuğu 141',
+    title: 'Abenteuerreise 141',
     emoji: '🦊',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #141.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #141.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-142',
-    title: 'Hayvan Yolculuğu 142',
+    title: 'Tierreise 142',
     emoji: '🌙',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #142.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #142.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-143',
-    title: 'Deniz Yolculuğu 143',
+    title: 'Seereise 143',
     emoji: '🌊',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #143.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #143.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-144',
-    title: 'Mevsim Yolculuğu 144',
+    title: 'Reise der Jahreszeiten 144',
     emoji: '🚀',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #144.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Jahreszeiten #144.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-145',
-    title: 'Cesaret Yolculuğu 145',
+    title: 'Reise des Mutes 145',
     emoji: '🌿',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #145.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Mut #145.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-146',
-    title: 'Paylaşım Yolculuğu 146',
+    title: 'Reise des Teilens 146',
     emoji: '🎈',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #146.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte zum Thema Teilen #146.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-147',
-    title: 'Müzik Yolculuğu 147',
+    title: 'Musik-Reise 147',
     emoji: '🐻',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #147.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 147 zum Thema Musik.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-148',
-    title: 'Spor Yolculuğu 148',
+    title: 'Sportreise 148',
     emoji: '🦋',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #148.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 148 zum Thema Sport.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-149',
-    title: 'Sanat Yolculuğu 149',
+    title: 'Kunstreise 149',
     emoji: '🌈',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #149.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 149 zum Thema Kunst.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-150',
-    title: 'Uyku Yolculuğu 150',
+    title: 'Schlafreise 150',
     emoji: '🐢',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #150.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portalgeschichte Nr. 150 zum Thema Schlaf.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-151',
-    title: 'Dostluk Yolculuğu 151',
+    title: 'Reise der Freundschaft 151',
     emoji: '🦄',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #151.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Freundschaft #151.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-152',
-    title: 'Doğa Yolculuğu 152',
+    title: 'Naturreise 152',
     emoji: '🐠',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #152.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Megaportalgeschichte zum Thema Natur #152.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-153',
-    title: 'Uzay Yolculuğu 153',
+    title: 'Weltraumreise 153',
     emoji: '🌻',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #153.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Weltraum #153.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-154',
-    title: 'Okul Yolculuğu 154',
+    title: 'Schulreise 154',
     emoji: '🏰',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #154.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Schule #154.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-155',
-    title: 'Duygu Yolculuğu 155',
+    title: 'Emotionale Reise 155',
     emoji: '🧠',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #155.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portalgeschichte zum Thema Emotionen #155.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-156',
-    title: 'Macera Yolculuğu 156',
+    title: 'Abenteuerreise 156',
     emoji: '💛',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #156.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Abenteuer #156.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-157',
-    title: 'Hayvan Yolculuğu 157',
+    title: 'Tierreise 157',
     emoji: '🎵',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #157.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Tiere #157.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-158',
-    title: 'Deniz Yolculuğu 158',
+    title: 'Seereise 158',
     emoji: '🎨',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #158.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Meer #158.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-159',
-    title: 'Mevsim Yolculuğu 159',
+    title: 'Saisonale Reise 159',
     emoji: '🔬',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #159.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Saisonale Mega-Portal-Geschichte #159.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-160',
-    title: 'Cesaret Yolculuğu 160',
+    title: 'Reise des Mutes 160',
     emoji: '⭐',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #160.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte #160.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-161',
-    title: 'Paylaşım Yolculuğu 161',
+    title: 'Reise des Teilens 161',
     emoji: '🦊',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #161.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte mit Teilen-Thema #161.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-162',
-    title: 'Müzik Yolculuğu 162',
+    title: 'Musik-Reise 162',
     emoji: '🌙',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #162.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte #162.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-163',
-    title: 'Spor Yolculuğu 163',
+    title: 'Sport-Reise 163',
     emoji: '🌊',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #163.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Sport #163.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-164',
-    title: 'Sanat Yolculuğu 164',
+    title: 'Kunstreise 164',
     emoji: '🚀',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #164.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #164.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-165',
-    title: 'Uyku Yolculuğu 165',
+    title: 'Schlafreise 165',
     emoji: '🌿',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #165.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #165.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-166',
-    title: 'Dostluk Yolculuğu 166',
+    title: 'Freundschaftsreise 166',
     emoji: '🎈',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #166.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Freundschaft #166.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-167',
-    title: 'Doğa Yolculuğu 167',
+    title: 'Naturreise 167',
     emoji: '🐻',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #167.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #167.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-168',
-    title: 'Uzay Yolculuğu 168',
+    title: 'Weltraumreise 168',
     emoji: '🦋',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #168.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #168.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-169',
-    title: 'Okul Yolculuğu 169',
+    title: 'Schulreise 169',
     emoji: '🌈',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #169.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #169.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-170',
-    title: 'Duygu Yolculuğu 170',
+    title: 'Emotionale Reise 170',
     emoji: '🐢',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #170.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #170.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-171',
-    title: 'Macera Yolculuğu 171',
+    title: 'Abenteuerreise 171',
     emoji: '🦄',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #171.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #171.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-172',
-    title: 'Hayvan Yolculuğu 172',
+    title: 'Tierreise 172',
     emoji: '🐠',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #172.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #172.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-173',
-    title: 'Deniz Yolculuğu 173',
+    title: 'Seereise 173',
     emoji: '🌻',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #173.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #173.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-174',
-    title: 'Mevsim Yolculuğu 174',
+    title: 'Saisonale Reise 174',
     emoji: '🏰',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #174.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #174.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-175',
-    title: 'Cesaret Yolculuğu 175',
+    title: 'Reise des Mutes 175',
     emoji: '🧠',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #175.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Mut #175.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-176',
-    title: 'Paylaşım Yolculuğu 176',
+    title: 'Reise des Teilens 176',
     emoji: '💛',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #176.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte des Teilens #176.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-177',
-    title: 'Müzik Yolculuğu 177',
+    title: 'Musik-Reise 177',
     emoji: '🎵',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #177.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Musik #177.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-178',
-    title: 'Spor Yolculuğu 178',
+    title: 'Sport-Reise 178',
     emoji: '🎨',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #178.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Sport #178.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-179',
-    title: 'Sanat Yolculuğu 179',
+    title: 'Kunst-Reise 179',
     emoji: '🔬',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #179.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Kunst #179.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-180',
-    title: 'Uyku Yolculuğu 180',
+    title: 'Sleep Journey 180',
     emoji: '⭐',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #180.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #180.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-181',
-    title: 'Dostluk Yolculuğu 181',
+    title: 'Friendship Journey 181',
     emoji: '🦊',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #181.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #181.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-182',
-    title: 'Doğa Yolculuğu 182',
+    title: 'Nature Journey 182',
     emoji: '🌙',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #182.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #182.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-183',
-    title: 'Uzay Yolculuğu 183',
+    title: 'Space Journey 183',
     emoji: '🌊',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #183.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #183.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-184',
-    title: 'Okul Yolculuğu 184',
+    title: 'Schulreise 184',
     emoji: '🚀',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #184.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #184.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-185',
-    title: 'Duygu Yolculuğu 185',
+    title: 'Emotionale Reise 185',
     emoji: '🌿',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #185.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #185.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-186',
-    title: 'Macera Yolculuğu 186',
+    title: 'Abenteuerreise 186',
     emoji: '🎈',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #186.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #186.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-187',
-    title: 'Hayvan Yolculuğu 187',
+    title: 'Tierreise 187',
     emoji: '🐻',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #187.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #187.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-188',
-    title: 'Deniz Yolculuğu 188',
+    title: 'Reise zum Meer 188',
     emoji: '🦋',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #188.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #188.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-189',
-    title: 'Mevsim Yolculuğu 189',
+    title: 'Saisonale Reise 189',
     emoji: '🌈',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #189.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #189.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-190',
-    title: 'Cesaret Yolculuğu 190',
+    title: 'Reise des Mutes 190',
     emoji: '🐢',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #190.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Mut #190.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-191',
-    title: 'Paylaşım Yolculuğu 191',
+    title: 'Reise des Teilens 191',
     emoji: '🦄',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #191.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte zum Thema Teilen #191.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-192',
-    title: 'Müzik Yolculuğu 192',
+    title: 'Music Journey 192',
     emoji: '🐠',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #192.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Musik #192.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-193',
-    title: 'Spor Yolculuğu 193',
+    title: 'Sport-Reise 193',
     emoji: '🌻',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #193.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Sport #193.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-194',
-    title: 'Sanat Yolculuğu 194',
+    title: 'Art Journey 194',
     emoji: '🏰',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #194.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Kunst #194.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-195',
-    title: 'Uyku Yolculuğu 195',
+    title: 'Sleep Journey 195',
     emoji: '🧠',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #195.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #195.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-196',
-    title: 'Dostluk Yolculuğu 196',
+    title: 'Friendship Journey 196',
     emoji: '💛',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #196.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #196.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-197',
-    title: 'Doğa Yolculuğu 197',
+    title: 'Nature Journey 197',
     emoji: '🎵',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #197.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #197.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-198',
-    title: 'Uzay Yolculuğu 198',
+    title: 'Space Journey 198',
     emoji: '🎨',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #198.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #198.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-199',
-    title: 'Okul Yolculuğu 199',
+    title: 'Schule Journey 199',
     emoji: '🔬',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #199.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Schule #199.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-200',
-    title: 'Duygu Yolculuğu 200',
+    title: 'Emotionale Reise 200',
     emoji: '⭐',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #200.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Megaportal-Geschichte zum Thema Emotionen #200.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-201',
-    title: 'Macera Yolculuğu 201',
+    title: 'Abenteuerreise 201',
     emoji: '🦊',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #201.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Abenteuer #201.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-202',
-    title: 'Hayvan Yolculuğu 202',
+    title: 'Tierreise 202',
     emoji: '🌙',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #202.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Tiere #202.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-203',
-    title: 'Deniz Yolculuğu 203',
+    title: 'Seereise 203',
     emoji: '🌊',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #203.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Meer #203.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-204',
-    title: 'Mevsim Yolculuğu 204',
+    title: 'Reise der Jahreszeiten 204',
     emoji: '🚀',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #204.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Jahreszeiten #204.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-205',
-    title: 'Cesaret Yolculuğu 205',
+    title: 'Reise des Mutes 205',
     emoji: '🌿',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #205.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Mut #205.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-206',
-    title: 'Paylaşım Yolculuğu 206',
+    title: 'Reise des Teilens 206',
     emoji: '🎈',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #206.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Megaportalgeschichte zum Thema Teilen #206.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-207',
-    title: 'Müzik Yolculuğu 207',
+    title: 'Musikreise 207',
     emoji: '🐻',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #207.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Musik #207.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-208',
-    title: 'Spor Yolculuğu 208',
+    title: 'Sportreise 208',
     emoji: '🦋',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #208.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Sport #208.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-209',
-    title: 'Sanat Yolculuğu 209',
+    title: 'Kunstreise 209',
     emoji: '🌈',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #209.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #209.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-210',
-    title: 'Uyku Yolculuğu 210',
+    title: 'Schlafreise 210',
     emoji: '🐢',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #210.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #210.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-211',
-    title: 'Dostluk Yolculuğu 211',
+    title: 'Freundschaftsreise 211',
     emoji: '🦄',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #211.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Freundschaft #211.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-212',
-    title: 'Doğa Yolculuğu 212',
+    title: 'Naturreise 212',
     emoji: '🐠',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #212.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Megaportalgeschichte zum Thema Natur #212.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-213',
-    title: 'Uzay Yolculuğu 213',
+    title: 'Weltraumreise 213',
     emoji: '🌻',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #213.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Weltraum #213.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-214',
-    title: 'Okul Yolculuğu 214',
+    title: 'Schulreise 214',
     emoji: '🏰',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #214.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Schule #214.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-215',
-    title: 'Duygu Yolculuğu 215',
+    title: 'Emotionale Reise 215',
     emoji: '🧠',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #215.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portalgeschichte zum Thema Emotionen #215.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-216',
-    title: 'Macera Yolculuğu 216',
+    title: 'Abenteuerreise 216',
     emoji: '💛',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #216.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Abenteuer #216.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-217',
-    title: 'Hayvan Yolculuğu 217',
+    title: 'Tierreise 217',
     emoji: '🎵',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #217.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Tiere #217.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-218',
-    title: 'Deniz Yolculuğu 218',
+    title: 'Seereise 218',
     emoji: '🎨',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #218.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Meer #218.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-219',
-    title: 'Mevsim Yolculuğu 219',
+    title: 'Saisonale Reise 219',
     emoji: '🔬',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #219.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Saisonale Mega-Portalgeschichte #219.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-220',
-    title: 'Cesaret Yolculuğu 220',
+    title: 'Reise des Mutes 220',
     emoji: '⭐',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #220.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte #220.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-221',
-    title: 'Paylaşım Yolculuğu 221',
+    title: 'Reise des Teilens 221',
     emoji: '🦊',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #221.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Megaportalgeschichte mit Teilen-Thema #221.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-222',
-    title: 'Müzik Yolculuğu 222',
+    title: 'Musikreise 222',
     emoji: '🌙',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #222.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte #222.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-223',
-    title: 'Spor Yolculuğu 223',
+    title: 'Sportreise 223',
     emoji: '🌊',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #223.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Sport #223.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-224',
-    title: 'Sanat Yolculuğu 224',
+    title: 'Kunstreise 224',
     emoji: '🚀',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #224.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #224.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-225',
-    title: 'Uyku Yolculuğu 225',
+    title: 'Schlafreise 225',
     emoji: '🌿',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #225.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #225.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-226',
-    title: 'Dostluk Yolculuğu 226',
+    title: 'Freundschaftsreise 226',
     emoji: '🎈',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #226.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Freundschaft #226.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-227',
-    title: 'Doğa Yolculuğu 227',
+    title: 'Naturreise 227',
     emoji: '🐻',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #227.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #227.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-228',
-    title: 'Uzay Yolculuğu 228',
+    title: 'Weltraumreise 228',
     emoji: '🦋',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #228.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #228.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-229',
-    title: 'Okul Yolculuğu 229',
+    title: 'Schulreise 229',
     emoji: '🌈',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #229.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #229.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-230',
-    title: 'Duygu Yolculuğu 230',
+    title: 'Emotionale Reise 230',
     emoji: '🐢',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #230.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #230.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-231',
-    title: 'Macera Yolculuğu 231',
+    title: 'Abenteuerreise 231',
     emoji: '🦄',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #231.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #231.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-232',
-    title: 'Hayvan Yolculuğu 232',
+    title: 'Tierreise 232',
     emoji: '🐠',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #232.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #232.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-233',
-    title: 'Deniz Yolculuğu 233',
+    title: 'Seereise 233',
     emoji: '🌻',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #233.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #233.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-234',
-    title: 'Mevsim Yolculuğu 234',
+    title: 'Saisonale Reise 234',
     emoji: '🏰',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #234.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #234.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-235',
-    title: 'Cesaret Yolculuğu 235',
+    title: 'Reise des Mutes 235',
     emoji: '🧠',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #235.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Mut #235.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-236',
-    title: 'Paylaşım Yolculuğu 236',
+    title: 'Reise des Teilens 236',
     emoji: '💛',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #236.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portalgeschichte zum Thema Teilen #236.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-237',
-    title: 'Müzik Yolculuğu 237',
+    title: 'Reise der Musik 237',
     emoji: '🎵',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #237.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Musik #237.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-238',
-    title: 'Spor Yolculuğu 238',
+    title: 'Sportreise 238',
     emoji: '🎨',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #238.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Sport #238.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-239',
-    title: 'Sanat Yolculuğu 239',
+    title: 'Reise der Kunst 239',
     emoji: '🔬',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #239.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Kunst #239.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-240',
-    title: 'Uyku Yolculuğu 240',
+    title: 'Sleep Journey 240',
     emoji: '⭐',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #240.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #240.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-241',
-    title: 'Dostluk Yolculuğu 241',
+    title: 'Friendship Journey 241',
     emoji: '🦊',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #241.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #241.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-242',
-    title: 'Doğa Yolculuğu 242',
+    title: 'Nature Journey 242',
     emoji: '🌙',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #242.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #242.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-243',
-    title: 'Uzay Yolculuğu 243',
+    title: 'Space Journey 243',
     emoji: '🌊',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #243.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #243.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-244',
-    title: 'Okul Yolculuğu 244',
+    title: 'Schulreise 244',
     emoji: '🚀',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #244.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #244.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-245',
-    title: 'Duygu Yolculuğu 245',
+    title: 'Emotionale Reise 245',
     emoji: '🌿',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #245.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #245.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-246',
-    title: 'Macera Yolculuğu 246',
+    title: 'Abenteuerreise 246',
     emoji: '🎈',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #246.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #246.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-247',
-    title: 'Hayvan Yolculuğu 247',
+    title: 'Tierreise 247',
     emoji: '🐻',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #247.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #247.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-248',
-    title: 'Deniz Yolculuğu 248',
+    title: 'Seereise 248',
     emoji: '🦋',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #248.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #248.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-249',
-    title: 'Mevsim Yolculuğu 249',
+    title: 'Saisonale Reise 249',
     emoji: '🌈',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #249.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #249.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-250',
-    title: 'Cesaret Yolculuğu 250',
+    title: 'Reise des Mutes 250',
     emoji: '🐢',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #250.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Mut #250.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-251',
-    title: 'Paylaşım Yolculuğu 251',
+    title: 'Reise des Teilens 251',
     emoji: '🦄',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #251.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte zum Thema Teilen #251.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-252',
-    title: 'Müzik Yolculuğu 252',
+    title: 'Music Journey 252',
     emoji: '🐠',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #252.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Musik #252.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-253',
-    title: 'Spor Yolculuğu 253',
+    title: 'Sport-Reise 253',
     emoji: '🌻',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #253.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Sport #253.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-254',
-    title: 'Sanat Yolculuğu 254',
+    title: 'Art Journey 254',
     emoji: '🏰',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #254.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Kunst #254.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-255',
-    title: 'Uyku Yolculuğu 255',
+    title: 'Sleep Journey 255',
     emoji: '🧠',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #255.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #255.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-256',
-    title: 'Dostluk Yolculuğu 256',
+    title: 'Freundschaftsreise 256',
     emoji: '💛',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #256.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #256.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-257',
-    title: 'Doğa Yolculuğu 257',
+    title: 'Nature Journey 257',
     emoji: '🎵',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #257.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #257.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-258',
-    title: 'Uzay Yolculuğu 258',
+    title: 'Weltraum-Reise 258',
     emoji: '🎨',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #258.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #258.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-259',
-    title: 'Okul Yolculuğu 259',
+    title: 'Schule-Reise 259',
     emoji: '🔬',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #259.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #259.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-260',
-    title: 'Duygu Yolculuğu 260',
+    title: 'Emotionale Reise 260',
     emoji: '⭐',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #260.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #260.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-261',
-    title: 'Macera Yolculuğu 261',
+    title: 'Abenteuerreise 261',
     emoji: '🦊',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #261.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #261.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-262',
-    title: 'Hayvan Yolculuğu 262',
+    title: 'Tierreise 262',
     emoji: '🌙',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #262.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #262.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-263',
-    title: 'Deniz Yolculuğu 263',
+    title: 'Seereise 263',
     emoji: '🌊',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #263.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Meer #263.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-264',
-    title: 'Mevsim Yolculuğu 264',
+    title: 'Reise der Jahreszeiten 264',
     emoji: '🚀',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #264.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Jahreszeiten #264.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-265',
-    title: 'Cesaret Yolculuğu 265',
+    title: 'Reise des Mutes 265',
     emoji: '🌿',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #265.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Mut #265.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-266',
-    title: 'Paylaşım Yolculuğu 266',
+    title: 'Reise des Teilens 266',
     emoji: '🎈',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #266.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Megaportalgeschichte zum Thema Teilen #266.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-267',
-    title: 'Müzik Yolculuğu 267',
+    title: 'Musikreise 267',
     emoji: '🐻',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #267.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Musik #267.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-268',
-    title: 'Spor Yolculuğu 268',
+    title: 'Sportreise 268',
     emoji: '🦋',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #268.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Sport #268.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-269',
-    title: 'Sanat Yolculuğu 269',
+    title: 'Kunstreise 269',
     emoji: '🌈',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #269.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #269.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-270',
-    title: 'Uyku Yolculuğu 270',
+    title: 'Schlafreise 270',
     emoji: '🐢',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #270.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #270.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-271',
-    title: 'Dostluk Yolculuğu 271',
+    title: 'Freundschaftsreise 271',
     emoji: '🦄',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #271.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Freundschaft #271.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-272',
-    title: 'Doğa Yolculuğu 272',
+    title: 'Naturreise 272',
     emoji: '🐠',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #272.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Megaportalgeschichte zum Thema Natur #272.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-273',
-    title: 'Uzay Yolculuğu 273',
+    title: 'Weltraumreise 273',
     emoji: '🌻',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #273.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Weltraum #273.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-274',
-    title: 'Okul Yolculuğu 274',
+    title: 'Schulreise 274',
     emoji: '🏰',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #274.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Schule #274.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-275',
-    title: 'Duygu Yolculuğu 275',
+    title: 'Emotionale Reise 275',
     emoji: '🧠',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #275.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portalgeschichte zum Thema Emotionen #275.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-276',
-    title: 'Macera Yolculuğu 276',
+    title: 'Abenteuerreise 276',
     emoji: '💛',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #276.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Abenteuer #276.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-277',
-    title: 'Hayvan Yolculuğu 277',
+    title: 'Tierreise 277',
     emoji: '🎵',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #277.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Tiere #277.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-278',
-    title: 'Deniz Yolculuğu 278',
+    title: 'Seereise 278',
     emoji: '🎨',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #278.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Meer #278.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-279',
-    title: 'Mevsim Yolculuğu 279',
+    title: 'Saisonale Reise 279',
     emoji: '🔬',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #279.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Saisonale Mega-Portal-Geschichte #279.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-280',
-    title: 'Cesaret Yolculuğu 280',
+    title: 'Reise des Mutes 280',
     emoji: '⭐',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #280.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte #280.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-281',
-    title: 'Paylaşım Yolculuğu 281',
+    title: 'Reise des Teilens 281',
     emoji: '🦊',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #281.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte mit Teilen-Thema #281.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-282',
-    title: 'Müzik Yolculuğu 282',
+    title: 'Musik-Reise 282',
     emoji: '🌙',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #282.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte #282.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-283',
-    title: 'Spor Yolculuğu 283',
+    title: 'Sport-Reise 283',
     emoji: '🌊',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #283.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Sport #283.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-284',
-    title: 'Sanat Yolculuğu 284',
+    title: 'Kunstreise 284',
     emoji: '🚀',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #284.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #284.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-285',
-    title: 'Uyku Yolculuğu 285',
+    title: 'Schlafreise 285',
     emoji: '🌿',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #285.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #285.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-286',
-    title: 'Dostluk Yolculuğu 286',
+    title: 'Freundschaftsreise 286',
     emoji: '🎈',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #286.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Freundschaft #286.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-287',
-    title: 'Doğa Yolculuğu 287',
+    title: 'Naturreise 287',
     emoji: '🐻',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #287.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #287.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-288',
-    title: 'Uzay Yolculuğu 288',
+    title: 'Weltraumreise 288',
     emoji: '🦋',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #288.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #288.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-289',
-    title: 'Okul Yolculuğu 289',
+    title: 'Schulreise 289',
     emoji: '🌈',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #289.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #289.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-290',
-    title: 'Duygu Yolculuğu 290',
+    title: 'Emotionale Reise 290',
     emoji: '🐢',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #290.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #290.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-291',
-    title: 'Macera Yolculuğu 291',
+    title: 'Abenteuerreise 291',
     emoji: '🦄',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #291.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #291.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-292',
-    title: 'Hayvan Yolculuğu 292',
+    title: 'Animal Journey 292',
     emoji: '🐠',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #292.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #292.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-293',
-    title: 'Deniz Yolculuğu 293',
+    title: 'Seereise 293',
     emoji: '🌻',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #293.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #293.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-294',
-    title: 'Mevsim Yolculuğu 294',
+    title: 'Saisonale Reise 294',
     emoji: '🏰',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #294.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #294.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-295',
-    title: 'Cesaret Yolculuğu 295',
+    title: 'Voyage of Courage 295',
     emoji: '🧠',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #295.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Mut #295.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-296',
-    title: 'Paylaşım Yolculuğu 296',
+    title: 'Reise des Teilens 296',
     emoji: '💛',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #296.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portalgeschichte zum Thema Teilen #296.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-297',
-    title: 'Müzik Yolculuğu 297',
+    title: 'Reise der Musik 297',
     emoji: '🎵',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #297.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Musik #297.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-298',
-    title: 'Spor Yolculuğu 298',
+    title: 'Sportreise 298',
     emoji: '🎨',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #298.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Sport #298.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-299',
-    title: 'Sanat Yolculuğu 299',
+    title: 'Reise der Kunst 299',
     emoji: '🔬',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #299.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Kunst #299.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-300',
-    title: 'Uyku Yolculuğu 300',
+    title: 'Sleep Voyage 300',
     emoji: '⭐',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #300.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #300.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-301',
-    title: 'Dostluk Yolculuğu 301',
+    title: 'Friendship Voyage 301',
     emoji: '🦊',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #301.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #301.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-302',
-    title: 'Doğa Yolculuğu 302',
+    title: 'Nature Voyage 302',
     emoji: '🌙',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #302.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #302.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-303',
-    title: 'Uzay Yolculuğu 303',
+    title: 'Space Voyage 303',
     emoji: '🌊',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #303.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #303.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-304',
-    title: 'Okul Yolculuğu 304',
+    title: 'Schulreise 304',
     emoji: '🚀',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #304.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #304.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-305',
-    title: 'Duygu Yolculuğu 305',
+    title: 'Emotionale Reise 305',
     emoji: '🌿',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #305.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #305.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-306',
-    title: 'Macera Yolculuğu 306',
+    title: 'Abenteuerreise 306',
     emoji: '🎈',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #306.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #306.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-307',
-    title: 'Hayvan Yolculuğu 307',
+    title: 'Tierreise 307',
     emoji: '🐻',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #307.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #307.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-308',
-    title: 'Deniz Yolculuğu 308',
+    title: 'Reise zum Meer 308',
     emoji: '🦋',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #308.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #308.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-309',
-    title: 'Mevsim Yolculuğu 309',
+    title: 'Saisonale Reise 309',
     emoji: '🌈',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #309.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #309.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-310',
-    title: 'Cesaret Yolculuğu 310',
+    title: 'Reise des Mutes 310',
     emoji: '🐢',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #310.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Mut #310.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-311',
-    title: 'Paylaşım Yolculuğu 311',
+    title: 'Reise des Teilens 311',
     emoji: '🦄',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #311.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Teilen thematische Mega-Portal-Geschichte #311.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-312',
-    title: 'Müzik Yolculuğu 312',
+    title: 'Music Journey 312',
     emoji: '🐠',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #312.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Musik-Themen-Mega-Portal-Geschichte #312.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-313',
-    title: 'Spor Yolculuğu 313',
+    title: 'Sport-Reise 313',
     emoji: '🌻',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #313.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Sport-Themen-Mega-Portal-Geschichte #313.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-314',
-    title: 'Sanat Yolculuğu 314',
+    title: 'Art Journey 314',
     emoji: '🏰',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #314.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Kunst-Themen-Mega-Portal-Geschichte #314.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-315',
-    title: 'Uyku Yolculuğu 315',
+    title: 'Sleep Journey 315',
     emoji: '🧠',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #315.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #315.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-316',
-    title: 'Dostluk Yolculuğu 316',
+    title: 'Freundschaftsreise 316',
     emoji: '💛',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #316.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #316.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-317',
-    title: 'Doğa Yolculuğu 317',
+    title: 'Nature Journey 317',
     emoji: '🎵',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #317.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #317.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-318',
-    title: 'Uzay Yolculuğu 318',
+    title: 'Weltraum-Reise 318',
     emoji: '🎨',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #318.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #318.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-319',
-    title: 'Okul Yolculuğu 319',
+    title: 'Schule-Reise 319',
     emoji: '🔬',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #319.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Schule #319.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-320',
-    title: 'Duygu Yolculuğu 320',
+    title: 'Emotionale Reise 320',
     emoji: '⭐',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #320.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Megaportal-Geschichte zum Thema Emotionen #320.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-321',
-    title: 'Macera Yolculuğu 321',
+    title: 'Abenteuerreise 321',
     emoji: '🦊',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #321.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Abenteuer #321.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-322',
-    title: 'Hayvan Yolculuğu 322',
+    title: 'Tierreise 322',
     emoji: '🌙',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #322.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Tiere #322.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-323',
-    title: 'Deniz Yolculuğu 323',
+    title: 'Seereise 323',
     emoji: '🌊',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #323.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Meer #323.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-324',
-    title: 'Mevsim Yolculuğu 324',
+    title: 'Reise der Jahreszeiten 324',
     emoji: '🚀',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #324.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Jahreszeiten #324.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-325',
-    title: 'Cesaret Yolculuğu 325',
+    title: 'Reise des Mutes 325',
     emoji: '🌿',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #325.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Mut #325.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-326',
-    title: 'Paylaşım Yolculuğu 326',
+    title: 'Reise des Teilens 326',
     emoji: '🎈',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #326.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Megaportalgeschichte zum Thema Teilen #326.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-327',
-    title: 'Müzik Yolculuğu 327',
+    title: 'Musikreise 327',
     emoji: '🐻',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #327.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportal-Geschichte zum Thema Musik #327.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-328',
-    title: 'Spor Yolculuğu 328',
+    title: 'Sportreise 328',
     emoji: '🦋',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #328.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Sport #328.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-329',
-    title: 'Sanat Yolculuğu 329',
+    title: 'Kunstreise 329',
     emoji: '🌈',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #329.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #329.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-330',
-    title: 'Uyku Yolculuğu 330',
+    title: 'Schlafreise 330',
     emoji: '🐢',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #330.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #330.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-331',
-    title: 'Dostluk Yolculuğu 331',
+    title: 'Freundschaftsreise 331',
     emoji: '🦄',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #331.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Freundschaft #331.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-332',
-    title: 'Doğa Yolculuğu 332',
+    title: 'Naturreise 332',
     emoji: '🐠',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #332.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Megaportalgeschichte zum Thema Natur #332.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-333',
-    title: 'Uzay Yolculuğu 333',
+    title: 'Weltraumreise 333',
     emoji: '🌻',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #333.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Weltraum #333.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-334',
-    title: 'Okul Yolculuğu 334',
+    title: 'Schulreise 334',
     emoji: '🏰',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #334.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Schule #334.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-335',
-    title: 'Duygu Yolculuğu 335',
+    title: 'Emotionale Reise 335',
     emoji: '🧠',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #335.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portalgeschichte zum Thema Emotionen #335.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-336',
-    title: 'Macera Yolculuğu 336',
+    title: 'Abenteuerreise 336',
     emoji: '💛',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #336.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Abenteuer #336.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-337',
-    title: 'Hayvan Yolculuğu 337',
+    title: 'Tierreise 337',
     emoji: '🎵',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #337.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Tiere #337.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-338',
-    title: 'Deniz Yolculuğu 338',
+    title: 'Seereise 338',
     emoji: '🎨',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #338.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Meer #338.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-339',
-    title: 'Mevsim Yolculuğu 339',
+    title: 'Saisonale Reise 339',
     emoji: '🔬',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #339.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Saisonale Mega-Portal-Geschichte #339.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-340',
-    title: 'Cesaret Yolculuğu 340',
+    title: 'Reise des Mutes 340',
     emoji: '⭐',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #340.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte #340.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-341',
-    title: 'Paylaşım Yolculuğu 341',
+    title: 'Reise des Teilens 341',
     emoji: '🦊',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #341.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portal-Geschichte mit Teilen-Thema #341.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-342',
-    title: 'Müzik Yolculuğu 342',
+    title: 'Musik-Reise 342',
     emoji: '🌙',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #342.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte #342.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-343',
-    title: 'Spor Yolculuğu 343',
+    title: 'Sport-Reise 343',
     emoji: '🌊',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #343.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Sport #343.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-344',
-    title: 'Sanat Yolculuğu 344',
+    title: 'Kunstreise 344',
     emoji: '🚀',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #344.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Kunst #344.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-345',
-    title: 'Uyku Yolculuğu 345',
+    title: 'Schlafreise 345',
     emoji: '🌿',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #345.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Megaportalgeschichte zum Thema Schlaf #345.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-346',
-    title: 'Dostluk Yolculuğu 346',
+    title: 'Freundschaftsreise 346',
     emoji: '🎈',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #346.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Freundschaft #346.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-347',
-    title: 'Doğa Yolculuğu 347',
+    title: 'Naturreise 347',
     emoji: '🐻',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #347.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #347.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-348',
-    title: 'Uzay Yolculuğu 348',
+    title: 'Weltraumreise 348',
     emoji: '🦋',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #348.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #348.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-349',
-    title: 'Okul Yolculuğu 349',
+    title: 'Schulreise 349',
     emoji: '🌈',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #349.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #349.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-350',
-    title: 'Duygu Yolculuğu 350',
+    title: 'Emotionale Reise 350',
     emoji: '🐢',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #350.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #350.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-351',
-    title: 'Macera Yolculuğu 351',
+    title: 'Abenteuerreise 351',
     emoji: '🦄',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #351.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #351.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-352',
-    title: 'Hayvan Yolculuğu 352',
+    title: 'Tierreise 352',
     emoji: '🐠',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #352.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #352.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-353',
-    title: 'Deniz Yolculuğu 353',
+    title: 'Seereise 353',
     emoji: '🌻',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #353.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #353.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-354',
-    title: 'Mevsim Yolculuğu 354',
+    title: 'Saisonale Reise 354',
     emoji: '🏰',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #354.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #354.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-355',
-    title: 'Cesaret Yolculuğu 355',
+    title: 'Reise des Mutes 355',
     emoji: '🧠',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #355.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Mut #355.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-356',
-    title: 'Paylaşım Yolculuğu 356',
+    title: 'Reise des Teilens 356',
     emoji: '💛',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #356.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Mega-Portalgeschichte zum Thema Teilen #356.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-357',
-    title: 'Müzik Yolculuğu 357',
+    title: 'Reise der Musik 357',
     emoji: '🎵',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #357.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Musik #357.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-358',
-    title: 'Spor Yolculuğu 358',
+    title: 'Reise des Sports 358',
     emoji: '🎨',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #358.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Sport #358.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-359',
-    title: 'Sanat Yolculuğu 359',
+    title: 'Reise der Kunst 359',
     emoji: '🔬',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #359.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Kunst #359.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-360',
-    title: 'Uyku Yolculuğu 360',
+    title: 'Sleep Voyage 360',
     emoji: '⭐',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #360.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #360.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-361',
-    title: 'Dostluk Yolculuğu 361',
+    title: 'Friendship Voyage 361',
     emoji: '🦊',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #361.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #361.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-362',
-    title: 'Doğa Yolculuğu 362',
+    title: 'Nature Voyage 362',
     emoji: '🌙',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #362.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #362.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-363',
-    title: 'Uzay Yolculuğu 363',
+    title: 'Space Voyage 363',
     emoji: '🌊',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #363.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #363.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-364',
-    title: 'Okul Yolculuğu 364',
+    title: 'Schulreise 364',
     emoji: '🚀',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #364.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #364.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-365',
-    title: 'Duygu Yolculuğu 365',
+    title: 'Emotionale Reise 365',
     emoji: '🌿',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #365.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #365.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-366',
-    title: 'Macera Yolculuğu 366',
+    title: 'Abenteuerreise 366',
     emoji: '🎈',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #366.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #366.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-367',
-    title: 'Hayvan Yolculuğu 367',
+    title: 'Tierreise 367',
     emoji: '🐻',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #367.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #367.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-368',
-    title: 'Deniz Yolculuğu 368',
+    title: 'Reise zum Meer 368',
     emoji: '🦋',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #368.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Meer #368.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-369',
-    title: 'Mevsim Yolculuğu 369',
+    title: 'Saisonale Reise 369',
     emoji: '🌈',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #369.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Saison #369.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-370',
-    title: 'Cesaret Yolculuğu 370',
+    title: 'Reise des Mutes 370',
     emoji: '🐢',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #370.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Mut #370.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-371',
-    title: 'Paylaşım Yolculuğu 371',
+    title: 'Reise des Teilens 371',
     emoji: '🦄',
     age: '8-12',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #371.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Teilen thematische Mega-Portal-Geschichte #371.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-372',
-    title: 'Müzik Yolculuğu 372',
+    title: 'Music Journey 372',
     emoji: '🐠',
     age: '3-5',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #372.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Musik-Themen-Mega-Portal-Geschichte #372.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-373',
-    title: 'Spor Yolculuğu 373',
+    title: 'Sports Journey 373',
     emoji: '🌻',
     age: '4-7',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #373.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Sport-Themen-Mega-Portal-Geschichte #373.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-374',
-    title: 'Sanat Yolculuğu 374',
+    title: 'Art Journey 374',
     emoji: '🏰',
     age: '5-8',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #374.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Kunst-Themen-Mega-Portal-Geschichte #374.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-375',
-    title: 'Uyku Yolculuğu 375',
+    title: 'Sleep Journey 375',
     emoji: '🧠',
     age: '6-9',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #375.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portal-Geschichte zum Thema Schlaf #375.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-376',
-    title: 'Dostluk Yolculuğu 376',
+    title: 'Friendship Journey 376',
     emoji: '💛',
     age: '7-10',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #376.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Freundschaft #376.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-377',
-    title: 'Doğa Yolculuğu 377',
+    title: 'Nature Journey 377',
     emoji: '🎵',
     age: '8-12',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #377.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Mega-Portal-Geschichte zum Thema Natur #377.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-378',
-    title: 'Uzay Yolculuğu 378',
+    title: 'Space Journey 378',
     emoji: '🎨',
     age: '3-5',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #378.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Weltraum #378.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-379',
-    title: 'Okul Yolculuğu 379',
+    title: 'Schule Journey 379',
     emoji: '🔬',
     age: '4-7',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #379.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Schule #379.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-380',
-    title: 'Duygu Yolculuğu 380',
+    title: 'Emotionale Reise 380',
     emoji: '⭐',
     age: '5-8',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #380.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portal-Geschichte zum Thema Emotionen #380.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-381',
-    title: 'Macera Yolculuğu 381',
+    title: 'Abenteuerreise 381',
     emoji: '🦊',
     age: '6-9',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #381.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Abenteuer #381.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-382',
-    title: 'Hayvan Yolculuğu 382',
+    title: 'Tierreise 382',
     emoji: '🌙',
     age: '7-10',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #382.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Geschichte zum Thema Tiere #382.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-383',
-    title: 'Deniz Yolculuğu 383',
+    title: 'Seereise 383',
     emoji: '🌊',
     age: '8-12',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #383.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Meer #383.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-384',
-    title: 'Mevsim Yolculuğu 384',
+    title: 'Reise der Jahreszeiten 384',
     emoji: '🚀',
     age: '3-5',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #384.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Jahreszeiten #384.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-385',
-    title: 'Cesaret Yolculuğu 385',
+    title: 'Reise des Mutes 385',
     emoji: '🌿',
     age: '4-7',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #385.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Mut #385.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-386',
-    title: 'Paylaşım Yolculuğu 386',
+    title: 'Reise des Teilens 386',
     emoji: '🎈',
     age: '5-8',
     duration: '4 dk',
-    theme: 'Paylaşım',
-    summary: 'Paylaşım temalı mega portal masalı #386.',
-    text: `Bir varmış bir yokmuş, paylaşım dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Sharing',
+    summary: 'Megaportalgeschichte zum Thema Teilen #386.',
+    text: `Es war einmal, an einem Tag voller Austausch, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-387',
-    title: 'Müzik Yolculuğu 387',
+    title: 'Musikreise 387',
     emoji: '🐻',
     age: '6-9',
     duration: '5 dk',
     theme: 'Müzik',
-    summary: 'Müzik temalı mega portal masalı #387.',
-    text: `Bir varmış bir yokmuş, müzik dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 387 zum Thema Musik.',
+    text: `Es war einmal, an einem Tag voller Musik, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-388',
-    title: 'Spor Yolculuğu 388',
+    title: 'Sportreise 388',
     emoji: '🦋',
     age: '7-10',
     duration: '6 dk',
     theme: 'Spor',
-    summary: 'Spor temalı mega portal masalı #388.',
-    text: `Bir varmış bir yokmuş, spor dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 388 zum Thema Sport.',
+    text: `Es war einmal ein kleiner Held, der sich auf den Weg zu einem Tag voller Sport machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-389',
-    title: 'Sanat Yolculuğu 389',
+    title: 'Kunstreise 389',
     emoji: '🌈',
     age: '8-12',
     duration: '7 dk',
     theme: 'Sanat',
-    summary: 'Sanat temalı mega portal masalı #389.',
-    text: `Bir varmış bir yokmuş, sanat dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte Nr. 389 zum Thema Kunst.',
+    text: `Es war einmal, an einem Tag voller Kunst, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch…`,
   },
   {
     id: 'mega-masal-390',
-    title: 'Uyku Yolculuğu 390',
+    title: 'Schlafreise 390',
     emoji: '🐢',
     age: '3-5',
     duration: '3 dk',
-    theme: 'Uyku',
-    summary: 'Uyku temalı mega portal masalı #390.',
-    text: `Bir varmış bir yokmuş, uyku dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Schlafen',
+    summary: 'Mega-Portalgeschichte Nr. 390 zum Thema Schlaf.',
+    text: `Es war einmal, an einem schläfrigen Tag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-391',
-    title: 'Dostluk Yolculuğu 391',
+    title: 'Reise der Freundschaft 391',
     emoji: '🦄',
     age: '4-7',
     duration: '4 dk',
     theme: 'Dostluk',
-    summary: 'Dostluk temalı mega portal masalı #391.',
-    text: `Bir varmış bir yokmuş, dostluk dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portalgeschichte zum Thema Freundschaft #391.',
+    text: `Es war einmal, an einem Tag voller Freundschaft, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-392',
-    title: 'Doğa Yolculuğu 392',
+    title: 'Naturreise 392',
     emoji: '🐠',
     age: '5-8',
     duration: '5 dk',
-    theme: 'Doğa',
-    summary: 'Doğa temalı mega portal masalı #392.',
-    text: `Bir varmış bir yokmuş, doğa dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Natur',
+    summary: 'Megaportalgeschichte zum Thema Natur #392.',
+    text: `Es war einmal, an einem Tag voller Natur, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-393',
-    title: 'Uzay Yolculuğu 393',
+    title: 'Weltraumreise 393',
     emoji: '🌻',
     age: '6-9',
     duration: '6 dk',
     theme: 'Uzay',
-    summary: 'Uzay temalı mega portal masalı #393.',
-    text: `Bir varmış bir yokmuş, uzay dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Weltraum #393.',
+    text: `Es war einmal, an einem Tag voller Weltraum, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-394',
-    title: 'Okul Yolculuğu 394',
+    title: 'Schulreise 394',
     emoji: '🏰',
     age: '7-10',
     duration: '7 dk',
     theme: 'Okul',
-    summary: 'Okul temalı mega portal masalı #394.',
-    text: `Bir varmış bir yokmuş, okul dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Schule #394.',
+    text: `Es war einmal, an einem anstrengenden Schultag, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-395',
-    title: 'Duygu Yolculuğu 395',
+    title: 'Emotionale Reise 395',
     emoji: '🧠',
     age: '8-12',
     duration: '3 dk',
-    theme: 'Duygu',
-    summary: 'Duygu temalı mega portal masalı #395.',
-    text: `Bir varmış bir yokmuş, duygu dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    theme: 'Gefühl',
+    summary: 'Mega-Portalgeschichte zum Thema Emotionen #395.',
+    text: `Es war einmal, an einem emotionalen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-396',
-    title: 'Macera Yolculuğu 396',
+    title: 'Abenteuerreise 396',
     emoji: '💛',
     age: '3-5',
     duration: '4 dk',
     theme: 'Macera',
-    summary: 'Macera temalı mega portal masalı #396.',
-    text: `Bir varmış bir yokmuş, macera dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Abenteuer #396.',
+    text: `Es war einmal, an einem abenteuerlichen Tag, als ein kleiner Held sich auf den Weg machte.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-397',
-    title: 'Hayvan Yolculuğu 397',
+    title: 'Tierreise 397',
     emoji: '🎵',
     age: '4-7',
     duration: '5 dk',
     theme: 'Hayvan',
-    summary: 'Hayvan temalı mega portal masalı #397.',
-    text: `Bir varmış bir yokmuş, hayvan dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Tiere #397.',
+    text: `Es war einmal, an einem Tag voller Tiere, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   },
   {
     id: 'mega-masal-398',
-    title: 'Deniz Yolculuğu 398',
+    title: 'Seereise 398',
     emoji: '🎨',
     age: '5-8',
     duration: '6 dk',
     theme: 'Deniz',
-    summary: 'Deniz temalı mega portal masalı #398.',
-    text: `Bir varmış bir yokmuş, deniz dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Megaportalgeschichte zum Thema Meer #398.',
+    text: `Es war einmal, an einem Tag voller Meer, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atme auch tief durch...`,
   },
   {
     id: 'mega-masal-399',
-    title: 'Mevsim Yolculuğu 399',
+    title: 'Saisonale Reise 399',
     emoji: '🔬',
     age: '6-9',
     duration: '7 dk',
     theme: 'Mevsim',
-    summary: 'Mevsim temalı mega portal masalı #399.',
-    text: `Bir varmış bir yokmuş, mevsim dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Saisonales Mega-Portal-Märchen Nr. 399.',
+    text: `Es war einmal, an einem Tag voller Jahreszeiten, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch…`,
   },
   {
     id: 'mega-masal-400',
-    title: 'Cesaret Yolculuğu 400',
+    title: 'Reise des Mutes 400',
     emoji: '⭐',
     age: '7-10',
     duration: '3 dk',
     theme: 'Cesaret',
-    summary: 'Cesaret temalı mega portal masalı #400.',
-    text: `Bir varmış bir yokmuş, cesaret dolu bir günde minik bir kahraman yola çıkmış.
-Yolda bir dost bulmuş, birlikte küçük bir sorunu çözmüşler.
-Sonunda herkes gülümsemiş. Sen de derin bir nefes al…`,
+    summary: 'Mega-Portal-Märchen zum Thema Mut Nr. 400.',
+    text: `Es war einmal, an einem Tag voller Mut, machte sich ein kleiner Held auf den Weg.\nUnterwegs fand er einen Freund und gemeinsam lösten sie ein kleines Problem.\nAm Ende lächelten alle. Atmen Sie auch tief durch...`,
   }
 ]
+
+const AUDIO_LABELS: Record<string, string> = {
+  'Macera': 'Abenteuer', 'Hayvan': 'Tiere', 'Deniz': 'Meer', 'Mevsim': 'Jahreszeit',
+  'Cesaret': 'Mut', 'Uzay': 'Weltraum', 'Okul': 'Schule', 'Duygu': 'Gefühl',
+  'Özgünlük': 'Originalität', 'Aile': 'Familie', 'Dostluk': 'Freundschaft',
+  'Müzik': 'Musik', 'Doğa': 'Natur', 'Sanat': 'Kunst', 'Spor': 'Sport',
+}
+
+function localiseAudioText(value: string): string {
+  let result = value
+  for (const [from, to] of Object.entries(AUDIO_LABELS)) result = result.split(from).join(to)
+  return result
+}
+
+export const AUDIO_STORIES: AudioStory[] = AUDIO_STORIES_RAW.map((story) => ({
+  ...story,
+  title: localiseAudioText(story.title),
+  theme: localiseAudioText(story.theme),
+  summary: localiseAudioText(story.summary),
+  text: localiseAudioText(story.text),
+}))

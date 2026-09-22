@@ -11,7 +11,7 @@ const KINDS: { id: CatalogKind | 'all'; label: string }[] = [
   { id: 'audio', label: 'Geschichten' },
   { id: 'coloring', label: 'Malen' },
   { id: 'stem', label: 'STEM' },
-  { id: 'hero', label: 'Kahraman' },
+  { id: 'hero', label: 'Held' },
   { id: 'path', label: 'Yollar' },
   { id: 'blog', label: 'Blog' },
   { id: 'shop', label: 'Paketler' },
@@ -71,7 +71,7 @@ export function LibraryPage({ onNavigate }: Props) {
               className={`stem-chip ${age === a ? 'is-active' : ''}`}
               onClick={() => setAge(a)}
             >
-              {a ? `${a}+ yaş` : 'Alle Altersstufen'}
+              {a ? `${a}+ Jahre` : 'Alle Altersstufen'}
             </button>
           ))}
         </div>

@@ -139,7 +139,7 @@ export function CreateStoryPage() {
           <p className="section-hint">
             {category === 'personalized'
               ? 'Namen eingeben (Foto optional) und fortfahren.'
-              : `${catInfo.title} için fikir seç veya eigene Idee schreiben.`}
+              : `${catInfo.title}: Wähle eine Idee oder schreibe deine eigene.`}
           </p>
 
           {category === 'personalized' ? (
@@ -251,7 +251,7 @@ export function CreateStoryPage() {
             </li>
             {heroName && (
               <li>
-                <span>Kahraman</span>
+                <span>Held</span>
                 <strong>{heroName}</strong>
               </li>
             )}

@@ -54,9 +54,9 @@ export function StemPage() {
           {card.emoji} {card.title}
         </h2>
         <p>
-          <strong>Alter:</strong> {card.age} · <strong>Dauer:</strong> ~{card.minutes} dk
+          <strong>Alter:</strong> {card.age} · <strong>Dauer:</strong> ca. {card.minutes} Min.
         </p>
-        <h3>Malzemeler</h3>
+        <h3>Materialien</h3>
         <ul className="tip-list">
           {card.materials.map((m) => (
             <li key={m}>{m}</li>
@@ -68,7 +68,7 @@ export function StemPage() {
             <li key={s}>{s}</li>
           ))}
         </ol>
-        <h3>Neden oluyor?</h3>
+        <h3>Warum passiert das?</h3>
         <p>{card.why}</p>
         <div className="btn-row" style={{ marginTop: 16 }}>
           <button
@@ -85,7 +85,7 @@ export function StemPage() {
             text: `${card.why} (${card.age}, ~${card.minutes} dk)`,
             page: 'stem',
             itemId: card.id,
-            hashtags: ['KitapCenneti', 'STEM', 'Bilim'],
+            hashtags: ['KitapCenneti', 'STEM', 'Wissenschaft'],
           }}
         />
       </div>

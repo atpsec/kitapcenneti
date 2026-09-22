@@ -9,8 +9,11 @@ import {
   sessionCookie,
   validEmail,
   validPassword,
+  emailVerificationRequired,
   type AuthContext,
 } from '../../lib/auth'
+import { authEmailConfigured } from '../../lib/email'
+import { issueEmailVerification } from '../../lib/recovery'
 
 export const onRequestOptions = (context: AuthContext) => authOptions(context)
 
@@ -22,10 +25,22 @@ export const onRequestPost = async (context: AuthContext) => {
     const password = validPassword(body.password)
     if (!email) return authResponse({ error: 'Eine gültige E-Mail-Adresse ist erforderlich', code: 'invalid_email' }, 400, context)
     if (!password) return authResponse({ error: 'Das Passwort muss mindestens 8 Zeichen lang sein', code: 'invalid_password' }, 400, context)
+    if (emailVerificationRequired(context.env) && !authEmailConfigured(context.env)) {
+      return authResponse({ error: 'E-Mail-Bestätigung ist aktiviert, aber der E-Mail-Dienst ist noch nicht eingerichtet', code: 'email_service_not_configured' }, 503, context)
+    }
     if (!await checkRateLimit(context, 'register', email, 5)) return authResponse({ error: 'Zu viele Kontoanfragen. Bitte in 15 Minuten erneut versuchen.', code: 'rate_limited' }, 429, context)
     const account = await createAccount(context.env, email, password)
     const token = await createSession(context.env, account.id)
-    return authResponse({ account: accountPayload(account) }, 201, context, { 'Set-Cookie': sessionCookie(token, context.env) })
+    let emailVerification: 'sent' | 'not_configured' | 'delivery_failed' = 'not_configured'
+    if (authEmailConfigured(context.env)) {
+      try {
+        emailVerification = await issueEmailVerification(context.env, account.id, account.email)
+      } catch (verificationError) {
+        console.error('Verification email could not be sent', verificationError)
+        emailVerification = 'delivery_failed'
+      }
+    }
+    return authResponse({ account: accountPayload(account), emailVerification }, 201, context, { 'Set-Cookie': sessionCookie(token, context.env) })
   } catch (error) {
     if (error instanceof Error && error.message === 'ACCOUNT_EXISTS') {
       return authResponse({ error: 'Für diese E-Mail-Adresse gibt es bereits ein Konto', code: 'account_exists' }, 409, context)

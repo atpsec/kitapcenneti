@@ -71,11 +71,11 @@ export function ColoringPagesPage() {
         query={query}
         onQuery={setQuery}
         placeholder="Seite, Kategorie oder Alter suchen …"
-        filters={COLORING_CATEGORIES.map((cat) => ({ id: cat, label: cat }))}
+        filters={COLORING_CATEGORIES.map((cat) => ({ id: cat, label: cat === 'Tümü' ? 'Alle' : cat }))}
         activeFilter={category}
         onFilter={(cat) => {
           setCategory(cat as (typeof COLORING_CATEGORIES)[number])
-          const first = cat === 'Alle' ? COLORING_PAGES[0] : COLORING_PAGES.find((p) => p.category === cat)
+          const first = cat === 'Tümü' ? COLORING_PAGES[0] : COLORING_PAGES.find((p) => p.category === cat)
           if (first) setSelected(first.id)
         }}
       />

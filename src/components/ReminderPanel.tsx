@@ -58,7 +58,7 @@ export function ReminderPanel() {
       <h3>🔔 Rückkehr-Erinnerung</h3>
       <p>Lokale Benachrichtigung – keine Server. Wenn Sie es zulassen, werden wir Sie vor der Tagesuhr und der geheimnisvollen Kiste warnen.</p>
       <label>
-        Saat
+        Uhrzeit
         <input
           type="number"
           min={8}

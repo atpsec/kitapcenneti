@@ -57,8 +57,8 @@ export function ActivitiesPage() {
             </button>
             <button className="panel activity-tile" onClick={() => setMode('pattern')}>
               <span>🔆</span>
-              <h2>Desen Tekrar</h2>
-              <p>Merken Sie sich die Lichtsequenz.</p>
+              <h2>Muster wiederholen</h2>
+              <p>Merke dir die Lichtsequenz.</p>
             </button>
             <button className="panel activity-tile" onClick={() => setMode('bubbles')}>
               <span>🫧</span>
@@ -190,14 +190,14 @@ function QuizGame({ onBack }: { onBack: () => void }) {
       </div>
       {done ? (
         <div className="win-banner">
-          🏆 Quiz bitti! {score}/{questions.length} doğru.
+          🏆 Quiz beendet! {score}/{questions.length} richtig.
           <div className="btn-row" style={{ marginTop: 12, justifyContent: 'center' }}>
-            <button className="btn btn--primary" onClick={onBack}>Tekrar oyna</button>
+            <button className="btn btn--primary" onClick={onBack}>Noch einmal spielen</button>
           </div>
         </div>
       ) : (
         <>
-          <p className="quiz-progress">Soru {index + 1}/{questions.length}</p>
+          <p className="quiz-progress">Frage {index + 1}/{questions.length}</p>
           <h2 className="quiz-q">{q.question}</h2>
           <div className="quiz-options">
             {q.options.map((opt, i) => {
@@ -285,7 +285,7 @@ function ScrambleGame({ onBack }: { onBack: () => void }) {
             setWon(false)
           }}
         >
-          Zufallswiedergabe / Zurücksetzen
+          Mischen / Zurücksetzen
         </button>
         {won && (
           <button
@@ -297,11 +297,11 @@ function ScrambleGame({ onBack }: { onBack: () => void }) {
               resetWord(next)
             }}
           >
-            Sonraki kelime →
+            Nächstes Wort →
           </button>
         )}
       </div>
-      {won && <p className="win-banner">🎉 Doğru! {item.word}</p>}
+      {won && <p className="win-banner">🎉 Richtig! {item.word}</p>}
     </div>
   )
 }
@@ -349,14 +349,14 @@ function SpeedGame({ onBack }: { onBack: () => void }) {
       </div>
       {done ? (
         <div className="win-banner">
-          ⚡ Süre bitti! Skorun: {score}
+          ⚡ Zeit abgelaufen! Dein Punktestand: {score}
           <div className="btn-row" style={{ justifyContent: 'center', marginTop: 12 }}>
             <button className="btn btn--primary" onClick={onBack}>Zurück zum Menü</button>
           </div>
         </div>
       ) : (
         <div className="speed-arena">
-          <p className="section-hint">Sadece {target} olanlara tıkla!</p>
+          <p className="section-hint">Klicke nur auf {target}!</p>
           <div className="speed-grid">
             {items.map((it) => (
               <button
@@ -415,7 +415,7 @@ function MiniPattern({ onBack }: { onBack: () => void }) {
       <button type="button" className="btn btn--ghost" onClick={onBack}>
         ← Menü
       </button>
-      <h2>🔆 Desen Tekrar</h2>
+      <h2>🔆 Muster wiederholen</h2>
       <p>{phase === 'watch' ? 'Beobachten …' : phase === 'win' ? 'Wunderbar!' : phase === 'play' ? 'Wiederholen' : 'Starten'}</p>
       <div className="pattern-grid">
         {colors.map((c, i) => (
@@ -495,7 +495,7 @@ function MiniBubbles({ onBack }: { onBack: () => void }) {
       </button>
       <h2>🫧 Zahlenblasen</h2>
       <p>
-        Sadece <strong>{target}</strong> ({got}/{need})
+        Nur <strong>{target}</strong> ({got}/{need})
       </p>
       <div className="bubble-stage bubble-stage--compact">
         {bubbles.map((b) =>

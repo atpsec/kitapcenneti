@@ -137,7 +137,7 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
             playChapter(next)
           }}
         >
-          Sonraki →
+          Weiter →
         </button>
       </div>
 

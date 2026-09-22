@@ -26,7 +26,7 @@ export class ErrorBoundary extends Component<Props, State> {
           </pre>
           <div className="btn-row" style={{ marginTop: 16 }}>
             <button type="button" className="btn btn--primary" onClick={() => window.location.reload()}>
-              Yenile
+              Neu laden
             </button>
             <button
               type="button"

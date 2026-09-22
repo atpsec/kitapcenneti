@@ -89,7 +89,7 @@ export function BlogPage() {
               text: post.summary,
               page: 'blog',
               itemId: post.id,
-              hashtags: ['KitapCenneti', 'Aile', ...post.tags.slice(0, 2)],
+              hashtags: ['KitapCenneti', 'Familie', ...post.tags.slice(0, 2)],
             }}
           />
         </article>

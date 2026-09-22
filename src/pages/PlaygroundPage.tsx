@@ -70,7 +70,7 @@ export function PlaygroundPage({ onNavigate }: Props) {
             </button>
             <button type="button" className="panel activity-tile" onClick={() => setMode('pet')}>
               <span>🐾</span>
-              <h2>Portal Dostu</h2>
+              <h2>Portal-Freund</h2>
               <p>Füttern, spielen, wachsen</p>
             </button>
             <button type="button" className="panel activity-tile" onClick={() => onNavigate('world')}>
@@ -80,16 +80,16 @@ export function PlaygroundPage({ onNavigate }: Props) {
             </button>
             <button type="button" className="panel activity-tile" onClick={() => onNavigate('activities')}>
               <span>🎮</span>
-              <h2>Klasik Oyunlar</h2>
+              <h2>Klassische Spiele</h2>
               <p>Erinnerung, Quiz, Aufnahme ...</p>
             </button>
           </div>
           <SocialShare
             payload={{
               title: '🕹️ Interaktionsarena',
-              text: 'Ritim, macera, hazine ve portal dostu — Kitap Cenneti’nde oyna!',
+              text: 'Rhythmus, Abenteuer, Schätze und dein Portal-Freund – spiele bei Kitap Cenneti!',
               page: 'playground',
-              hashtags: ['KitapCenneti', 'Oyun', 'Etkilesim'],
+              hashtags: ['KitapCenneti', 'Spiele', 'Entdecken'],
             }}
           />
         </>
@@ -277,7 +277,7 @@ function PatternGame() {
     const next = [...input, n]
     setInput(next)
     if (seq[next.length - 1] !== n) {
-      showToast('Tekrar dene — izle!')
+      showToast('Versuche es noch einmal – schau genau hin!')
       void playSeq(seq)
       return
     }
@@ -360,7 +360,7 @@ function AdventureGame() {
             announceActivityResult(completeActivity('adventure'))
             if (stars) addBonusStars(stars)
             setConfetti(true)
-            showToast('Macera tamam!')
+      showToast('Abenteuer geschafft!')
             setNodeId(adv.start)
             setStars(0)
           }}

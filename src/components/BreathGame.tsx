@@ -59,7 +59,7 @@ export function BreathGame() {
         {done ? 'Wunderbar – du fühlst dich ruhiger 💛' : running ? p.label : 'Starte, wenn du bereit bist'}
       </p>
       <p>
-        Tur {Math.min(cycle + (running ? 1 : 0), 3)}/3 · {running ? `${left} sn` : done ? 'bitti' : '—'}
+        Runde {Math.min(cycle + (running ? 1 : 0), 3)}/3 · {running ? `${left} Sek.` : done ? 'fertig' : '—'}
       </p>
       <div className="btn-row">
         {!running && !done && (
@@ -89,7 +89,7 @@ export function BreathGame() {
               setPhase(0)
             }}
           >
-            Tekrar
+            Noch einmal
           </button>
         )}
         {running && (

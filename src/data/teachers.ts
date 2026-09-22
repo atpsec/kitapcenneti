@@ -20,7 +20,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     age: '5-8',
     duration: '15 Min',
     tags: ['Routine', 'Emotion', 'Sprache'],
-    materials: ['Duygu kartları', 'Tekerleme metni', 'Gün hedefi tahtası'],
+    materials: ['Emotionskarten', 'Tekerleme metni', 'Gün hedefi tahtası'],
     steps: [
       'Öğrenciler daire olur; herkes bir duygu seçer veya gösterir.',
       'Öğretmen yargılamadan tekrarlar: “Heyecanlı geldiğini duyuyorum.”',
@@ -74,7 +74,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     age: '5-9',
     duration: '25 Min',
     tags: ['Emotion', 'Drama', 'Empathie'],
-    materials: ['Duygu kartları', 'Açık alan'],
+    materials: ['Emotionskarten', 'Açık alan'],
     steps: [
       'Kartlardan duygu çekilir (kızgın, utanmış, gururlu…).',
       'Çiftler 2 dk sessiz skeç hazırlar.',
@@ -254,7 +254,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     age: '5-9',
     duration: '20 Min',
     tags: ['Elternteil', 'Familie', 'Aktivität'],
-    materials: ['Masal', 'Boyama', 'Duygu soru kartı'],
+    materials: ['Märchen', 'Malerei', 'Duygu soru kartı'],
     steps: [
       'Hoş geldiniz + amaç: “birlikte 20 kaliteli dk”.',
       'Kısa masal (veli+çocuk dinler).',
@@ -682,7 +682,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ["Emotion","Klasse","fertig"],
     materials: ["Tahta","Kartlar","Kalem","Zamanlayıcı"],
     steps: ["Amacı tek cümleyle söyle.","Örnek göster, sonra çiftlere bırak.","2–3 öğrenci paylaşım yapsın.","Kapanışta bir yıldız ödevi ver."],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'teach-portal-3',
@@ -718,7 +718,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ["Lesen","Klasse","fertig"],
     materials: ["Tahta","Kartlar","Kalem","Zamanlayıcı"],
     steps: ["Amacı tek cümleyle söyle.","Örnek göster, sonra çiftlere bırak.","2–3 öğrenci paylaşım yapsın.","Kapanışta bir yıldız ödevi ver."],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'teach-portal-6',
@@ -754,7 +754,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ["Emotion","Klasse","fertig"],
     materials: ["Tahta","Kartlar","Kalem","Zamanlayıcı"],
     steps: ["Amacı tek cümleyle söyle.","Örnek göster, sonra çiftlere bırak.","2–3 öğrenci paylaşım yapsın.","Kapanışta bir yıldız ödevi ver."],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'teach-portal-9',
@@ -790,7 +790,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ["Lesen","Klasse","fertig"],
     materials: ["Tahta","Kartlar","Kalem","Zamanlayıcı"],
     steps: ["Amacı tek cümleyle söyle.","Örnek göster, sonra çiftlere bırak.","2–3 öğrenci paylaşım yapsın.","Kapanışta bir yıldız ödevi ver."],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'teach-portal-12',
@@ -826,7 +826,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ["Emotion","Klasse","fertig"],
     materials: ["Tahta","Kartlar","Kalem","Zamanlayıcı"],
     steps: ["Amacı tek cümleyle söyle.","Örnek göster, sonra çiftlere bırak.","2–3 öğrenci paylaşım yapsın.","Kapanışta bir yıldız ödevi ver."],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'teach-portal-15',
@@ -862,7 +862,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ["Lesen","Klasse","fertig"],
     materials: ["Tahta","Kartlar","Kalem","Zamanlayıcı"],
     steps: ["Amacı tek cümleyle söyle.","Örnek göster, sonra çiftlere bırak.","2–3 öğrenci paylaşım yapsın.","Kapanışta bir yıldız ödevi ver."],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'teach-portal-18',
@@ -898,7 +898,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ["Emotion","Klasse","fertig"],
     materials: ["Tahta","Kartlar","Kalem","Zamanlayıcı"],
     steps: ["Amacı tek cümleyle söyle.","Örnek göster, sonra çiftlere bırak.","2–3 öğrenci paylaşım yapsın.","Kapanışta bir yıldız ödevi ver."],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'teach-portal-21',
@@ -934,7 +934,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ["Lesen","Klasse","fertig"],
     materials: ["Tahta","Kartlar","Kalem","Zamanlayıcı"],
     steps: ["Amacı tek cümleyle söyle.","Örnek göster, sonra çiftlere bırak.","2–3 öğrenci paylaşım yapsın.","Kapanışta bir yıldız ödevi ver."],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'teach-portal-24',
@@ -982,7 +982,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-3',
@@ -1018,7 +1018,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-6',
@@ -1054,7 +1054,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-9',
@@ -1090,7 +1090,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-12',
@@ -1126,7 +1126,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-15',
@@ -1162,7 +1162,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-18',
@@ -1198,7 +1198,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-21',
@@ -1234,7 +1234,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-24',
@@ -1270,7 +1270,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-27',
@@ -1306,7 +1306,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-30',
@@ -1342,7 +1342,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-33',
@@ -1378,7 +1378,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-36',
@@ -1414,7 +1414,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-39',
@@ -1450,7 +1450,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-42',
@@ -1486,7 +1486,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-45',
@@ -1522,7 +1522,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-48',
@@ -1558,7 +1558,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-51',
@@ -1594,7 +1594,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-54',
@@ -1630,7 +1630,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-57',
@@ -1666,7 +1666,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-60',
@@ -1702,7 +1702,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-63',
@@ -1738,7 +1738,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-66',
@@ -1774,7 +1774,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-69',
@@ -1810,7 +1810,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-72',
@@ -1846,7 +1846,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   },
   {
     id: 'mega-teach-75',
@@ -1882,7 +1882,7 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Lesen', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Okuma',
+    subject: 'Lektüre',
   },
   {
     id: 'mega-teach-78',
@@ -1918,6 +1918,6 @@ export const TEACHER_RESOURCES: TeacherResource[] = [
     tags: ['Emotion', 'Klasse'],
     materials: ['Kartlar', 'Tahta', 'Kalem'],
     steps: ['Amacı söyle', 'Örnek göster', 'Uygulat', 'Paylaş', 'Kapat'],
-    subject: 'Duygu',
+    subject: 'Gefühl',
   }
 ]

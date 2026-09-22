@@ -9,15 +9,15 @@ export interface ColoringPage {
 
 export const COLORING_CATEGORIES = [
   'Tümü',
-  'Hayvanlar',
-  'Kahramanlar',
-  'Masal',
-  'Uzay',
-  'Deniz',
-  'Doğa',
-  'Taşıtlar',
-  'Bilim',
-  'Mevsim',
+  'Tiere',
+  'Helden',
+  'Märchen',
+  'Raum',
+  'Meer',
+  'Natur',
+  'Fahrzeuge',
+  'Wissenschaft',
+  'Saison',
 ] as const
 
 export const COLORING_PAGES: ColoringPage[] = [
@@ -356,48 +356,48 @@ export const COLORING_PAGES: ColoringPage[] = [
 const S = `fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"`
 const S2 = `fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"`
 const ambientFor = (label: string) => {
-  const text = label.toLocaleLowerCase('tr-TR')
-  if (/uzay|gezegen|astronot|roket|yıldız|ay yüzeyi|galaksi|satürn|ufo|kuyruk/.test(text)) {
-    return `<g aria-label="Uzay ayrıntıları">
+  const text = label.toLocaleLowerCase('de-DE')
+  if (/raum|weltraum|planet|astronaut|rakete|stern|mond|galaxie|saturn|ufo|schweif/.test(text)) {
+    return `<g aria-label="Weltraumdetails">
       <path d="M45 105 l6 14 15 1-11 9 4 15-14-8-14 8 4-15-11-9 15-1z M332 205 l5 12 13 1-10 8 3 13-11-7-11 7 3-13-10-8 13-1z" ${S2}/>
       <circle cx="83" cy="175" r="4" fill="#1a1a1a"/><circle cx="320" cy="90" r="4" fill="#1a1a1a"/><circle cx="65" cy="260" r="3" fill="#1a1a1a"/><circle cx="350" cy="285" r="3" fill="#1a1a1a"/>
       <circle cx="330" cy="65" r="21" ${S2}/><ellipse cx="330" cy="65" rx="34" ry="9" ${S2}/>
       <path d="M36 315 Q74 290 112 315 M288 330 Q325 304 364 330" ${S2}/>
     </g>`
   }
-  if (/deniz|balık|balina|ahtapot|yengeç|merc|denizaltı|okyanus|sualtı/.test(text)) {
-    return `<g aria-label="Deniz ayrıntıları">
+  if (/meer|fisch|wal|oktopus|krabbe|muschel|u-boot|ozean|unterwasser/.test(text)) {
+    return `<g aria-label="Meeresdetails">
       <circle cx="54" cy="105" r="12" ${S2}/><circle cx="77" cy="77" r="8" ${S2}/><circle cx="103" cy="55" r="5" ${S2}/><circle cx="340" cy="125" r="10" ${S2}/>
       <path d="M45 340 Q58 290 72 340 M72 340 Q88 280 104 340 M315 350 Q330 286 345 350" ${S2}/>
       <path d="M30 365 Q100 340 170 362 Q240 384 370 355" ${S2}/>
       <path d="M130 340 q12-25 24 0 M148 340 q12-34 24 0 M250 340 q12-28 24 0" ${S2}/>
     </g>`
   }
-  if (/bilim|mikroskop|volkan|deney|teleskop|laboratuvar/.test(text)) {
-    return `<g aria-label="Bilim ayrıntıları">
+  if (/wissenschaft|mikroskop|vulkan|experiment|teleskop|labor/.test(text)) {
+    return `<g aria-label="Wissenschaftsdetails">
       <path d="M46 100 h36 M64 82 v36 M315 115 h40 M335 95 v40" ${S2}/>
       <circle cx="62" cy="265" r="18" ${S2}/><circle cx="335" cy="270" r="14" ${S2}/>
       <path d="M98 75 q10-16 20 0 q10 16 20 0 M275 90 q10-16 20 0 q10 16 20 0" ${S2}/>
       <path d="M42 350 Q95 315 148 350 M254 350 Q310 315 365 350" ${S2}/>
     </g>`
   }
-  if (/taşıt|araba|tren|balon|bisiklet|helikopter|traktör|kano|yelken|scooter/.test(text)) {
-    return `<g aria-label="Yol ve gökyüzü ayrıntıları">
+  if (/fahrzeug|auto|zug|ballon|fahrrad|hubschrauber|traktor|kanu|segel|roller/.test(text)) {
+    return `<g aria-label="Fahrzeugdetails">
       <path d="M42 92 Q75 58 108 92 M292 88 Q326 53 360 88" ${S2}/>
       <path d="M42 330 Q105 292 168 330 M235 330 Q300 292 365 330" ${S2}/>
       <path d="M55 360 h42 M303 360 h42" ${S2}/><circle cx="68" cy="150" r="7" ${S2}/><circle cx="338" cy="170" r="6" ${S2}/>
       <path d="M75 285 l15-20 15 20 M300 285 l15-20 15 20" ${S2}/>
     </g>`
   }
-  if (/mevsim|kış|kar|yağmur|sonbahar|ilkbahar|çiçek|ayçiçeği|dondurma/.test(text)) {
-    return `<g aria-label="Mevsim ayrıntıları">
+  if (/saison|winter|schnee|regen|herbst|frühling|blume|sonnenblume|eis/.test(text)) {
+    return `<g aria-label="Saisondetails">
       <circle cx="330" cy="70" r="25" ${S2}/><path d="M330 34 v-12 M330 106 v12 M294 70 h-12 M366 70 h12" ${S2}/>
       <path d="M42 315 Q82 282 122 315 M278 315 Q322 282 365 315" ${S2}/>
       <path d="M55 150 q12-26 24 0 q12 26 24 0 M310 165 q12-26 24 0 q12 26 24 0" ${S2}/>
       <circle cx="76" cy="250" r="9" ${S2}/><circle cx="326" cy="245" r="7" ${S2}/>
     </g>`
   }
-  return `<g aria-label="Doğa ve masal ayrıntıları">
+  return `<g aria-label="Natur- und Märchendetails">
     <path d="M38 105 Q58 80 78 105 Q98 80 118 105" ${S2}/><path d="M278 120 Q298 94 318 120 Q338 94 358 120" ${S2}/>
     <circle cx="335" cy="62" r="24" ${S2}/><path d="M335 28 v-10 M335 96 v10 M301 62 h-10 M369 62 h10" ${S2}/>
     <path d="M38 342 Q86 305 134 342 M266 342 Q315 305 364 342" ${S2}/>
@@ -411,11 +411,11 @@ const vb = (inner: string, footer = 'Kitap Cenneti', ambientLabel = footer) =>
 const hashId = (id: string) => Array.from(id).reduce((sum, char) => (sum * 31 + char.charCodeAt(0)) >>> 0, 7)
 
 const genericScene = (id: string, page?: ColoringPage) => {
-  const category = page?.category || 'Doğa'
+  const category = page?.category || 'Natur'
   const variant = hashId(id) % 3
   const footer = page?.title || 'Kitap Cenneti'
 
-  if (category === 'Hayvanlar') {
+  if (category === 'Tiere') {
     const animal = variant === 0
       ? `<circle cx="200" cy="158" r="52" ${S}/><path d="M163 120 L145 72 L180 101 M237 120 L255 72 L220 101" ${S}/><ellipse cx="200" cy="260" rx="78" ry="72" ${S}/><ellipse cx="170" cy="150" rx="7" ry="10" ${S2}/><ellipse cx="230" cy="150" rx="7" ry="10" ${S2}/><path d="M190 178 Q200 188 210 178 M200 188 L200 202" ${S2}/><path d="M145 250 Q130 300 150 332 M255 250 Q270 300 250 332" ${S2}/>`
       : variant === 1
@@ -429,7 +429,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
     `, footer, `${category} ${footer}`)
   }
 
-  if (category === 'Kahramanlar') {
+  if (category === 'Helden') {
     return vb(`
       <path d="M200 72 L250 92 L246 190 Q240 260 200 300 Q160 260 154 190 L150 92 Z" ${S}/>
       <path d="M200 115 l12 27 30 3-23 19 7 30-26-16-26 16 7-30-23-19 30-3z" ${S2}/>
@@ -441,7 +441,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
     `, footer, `${category} ${footer}`)
   }
 
-  if (category === 'Masal') {
+  if (category === 'Märchen') {
     return vb(`
       <path d="M85 300 L85 180 L140 180 L140 135 L200 78 L260 135 L260 180 L315 180 L315 300 Z" ${S}/>
       <path d="M60 180 Q90 130 120 180 M280 180 Q310 130 340 180" ${S2}/>
@@ -454,7 +454,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
     `, footer, `${category} ${footer}`)
   }
 
-  if (category === 'Uzay') {
+  if (category === 'Raum') {
     return vb(`
       <path d="M200 55 Q248 120 230 255 L200 320 L170 255 Q152 120 200 55 Z" ${S}/>
       <circle cx="200" cy="150" r="25" ${S}/><circle cx="200" cy="150" r="10" ${S2}/>
@@ -466,7 +466,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
     `, footer, `${category} ${footer}`)
   }
 
-  if (category === 'Deniz') {
+  if (category === 'Meer') {
     return vb(`
       <path d="M75 225 Q155 140 255 195 Q300 220 330 260 Q245 300 140 285 Q95 275 75 225 Z" ${S}/>
       <path d="M255 195 L325 150 L315 215 L355 245 L300 255" ${S}/>
@@ -477,7 +477,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
     `, footer, `${category} ${footer}`)
   }
 
-  if (category === 'Taşıtlar') {
+  if (category === 'Fahrzeuge') {
     return vb(`
       <path d="M55 255 L95 175 L150 155 L255 155 L315 190 L345 255 Z" ${S}/>
       <path d="M55 255 L345 255 L330 295 L70 295 Z" ${S}/>
@@ -489,7 +489,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
     `, footer, `${category} ${footer}`)
   }
 
-  if (category === 'Bilim') {
+  if (category === 'Wissenschaft') {
     return vb(`
       <path d="M160 95 L160 165 L105 275 Q95 300 125 310 L275 310 Q305 300 295 275 L240 165 L240 95 Z" ${S}/>
       <path d="M145 215 Q200 190 255 215 M130 255 Q200 230 270 255" ${S2}/>
@@ -500,7 +500,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
     `, footer, `${category} ${footer}`)
   }
 
-  if (category === 'Mevsim') {
+  if (category === 'Saison') {
     return vb(`
       <circle cx="310" cy="85" r="38" ${S}/><path d="M282 85 Q310 65 338 85" ${S2}/>
       <path d="M200 335 L200 170 M200 220 Q150 170 105 185 M200 245 Q250 190 300 210" ${S}/>

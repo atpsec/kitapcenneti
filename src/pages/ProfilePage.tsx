@@ -31,17 +31,46 @@ export function ProfilePage({ onNavigate }: Props) {
   } = usePortalProfile()
   const { stars, streak, badges, stickers } = useProgress()
   const { membership, isPlus } = useMembership()
-  const { account, busy: accountBusy, configured: accountConfigured, login, register, logout } = useAccount()
+  const {
+    account,
+    busy: accountBusy,
+    configured: accountConfigured,
+    login,
+    register,
+    logout,
+    requestVerification,
+    verifyEmailToken,
+    requestPasswordReset,
+    resetPassword,
+    exportData,
+    deleteAccount,
+  } = useAccount()
   const [draft, setDraft] = useState<PortalProfile>(profile)
   const [pin, setPin] = useState('')
   const [pin2, setPin2] = useState('')
   const [authMode, setAuthMode] = useState<'login' | 'register'>('login')
   const [authEmail, setAuthEmail] = useState(membership.email)
   const [authPassword, setAuthPassword] = useState('')
+  const [showRecovery, setShowRecovery] = useState(false)
+  const [recoveryEmail, setRecoveryEmail] = useState(membership.email)
+  const [resetToken, setResetToken] = useState('')
+  const [resetPasswordValue, setResetPasswordValue] = useState('')
+  const [deletePassword, setDeletePassword] = useState('')
 
   useEffect(() => {
     setDraft(profile)
   }, [profile])
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search)
+    const verificationToken = query.get('verify_email')
+    const passwordToken = query.get('reset_password')
+    if (verificationToken) void verifyEmailToken(verificationToken)
+    if (passwordToken) setResetToken(passwordToken)
+    if (verificationToken || passwordToken) {
+      window.history.replaceState({}, '', window.location.pathname + window.location.hash)
+    }
+  }, [verifyEmailToken])
 
   const toggleInterest = (tag: string) => {
     setDraft((d) => ({
@@ -55,7 +84,7 @@ export function ProfilePage({ onNavigate }: Props) {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🧒 Portal Profili</h1>
+        <h1>🧒 Portalprofil</h1>
         <p>Geschwisterprofile, Altersgruppe, Familien-PIN-Sperre – jedes Kind ist in seiner eigenen Welt.</p>
       </header>
 
@@ -84,8 +113,27 @@ export function ProfilePage({ onNavigate }: Props) {
               <div>
                 <strong>{account.email}</strong>
                 <p>Kinderprofile und Entwicklungszusammenfassungen werden sicher mit Ihrem Konto synchronisiert.</p>
+                {!account.emailVerified && <p className="notice notice--warning">Ihre E-Mail-Adresse ist noch nicht bestätigt.</p>}
               </div>
-              <button type="button" className="btn btn--ghost" disabled={accountBusy} onClick={() => void logout()}>Abmelden</button>
+              <div className="btn-row">
+                {!account.emailVerified && <button type="button" className="btn btn--ghost" disabled={accountBusy} onClick={() => void requestVerification()}>Bestätigungs-E-Mail senden</button>}
+                <button type="button" className="btn btn--ghost" disabled={accountBusy} onClick={() => void exportData()}>Meine Daten herunterladen</button>
+                <button type="button" className="btn btn--ghost" disabled={accountBusy} onClick={() => void logout()}>Abmelden</button>
+              </div>
+              <label>
+                Passwort zur Kontolöschung
+                <input type="password" autoComplete="current-password" value={deletePassword} onChange={(event) => setDeletePassword(event.target.value)} placeholder="Passwort eingeben" />
+              </label>
+              <button
+                type="button"
+                className="btn btn--ghost"
+                disabled={accountBusy || !deletePassword}
+                onClick={() => {
+                  if (window.confirm('Konto und persönliche Daten endgültig löschen? Eine aktive Mitgliedschaft muss zuerst gekündigt werden.')) void deleteAccount(deletePassword)
+                }}
+              >
+                Konto endgültig löschen
+              </button>
             </div>
           ) : (
             <form onSubmit={(event) => {
@@ -101,7 +149,7 @@ export function ProfilePage({ onNavigate }: Props) {
                 </label>
                 <label>
                   Passwort
-                  <input type="password" autoComplete={authMode === 'login' ? 'current-password' : 'new-password'} minLength={8} value={authPassword} onChange={(event) => setAuthPassword(event.target.value)} placeholder="En az 8 karakter" required />
+                  <input type="password" autoComplete={authMode === 'login' ? 'current-password' : 'new-password'} minLength={8} value={authPassword} onChange={(event) => setAuthPassword(event.target.value)} placeholder="Mindestens 8 Zeichen" required />
                 </label>
               </div>
               <div className="btn-row">
@@ -110,6 +158,25 @@ export function ProfilePage({ onNavigate }: Props) {
                   {authMode === 'login' ? 'Neues Konto erstellen' : 'Ich habe bereits ein Konto'}
                 </button>
               </div>
+              {authMode === 'login' && <button type="button" className="btn btn--ghost" onClick={() => setShowRecovery((value) => !value)}>Passwort vergessen?</button>}
+              {showRecovery && authMode === 'login' && (
+                <div className="panel">
+                  <label>
+                    E-Mail für die Passwortzurücksetzung
+                    <input type="email" autoComplete="email" value={recoveryEmail} onChange={(event) => setRecoveryEmail(event.target.value)} />
+                  </label>
+                  <button type="button" className="btn btn--ghost" disabled={accountBusy} onClick={() => void requestPasswordReset(recoveryEmail)}>Link anfordern</button>
+                </div>
+              )}
+              {resetToken && (
+                <div className="panel">
+                  <label>
+                    Neues Passwort
+                    <input type="password" autoComplete="new-password" minLength={8} value={resetPasswordValue} onChange={(event) => setResetPasswordValue(event.target.value)} />
+                  </label>
+                  <button type="button" className="btn btn--primary" disabled={accountBusy || resetPasswordValue.length < 8} onClick={() => void resetPassword(resetToken, resetPasswordValue).then((ok) => { if (ok) { setResetToken(''); setResetPasswordValue('') } })}>Passwort speichern</button>
+                </div>
+              )}
               {!accountConfigured && <small>Die Kontosynchronisierung ist aktiviert, wenn die Cloudflare Pages-API-Adresse verbunden ist.</small>}
             </form>
           )}
@@ -117,7 +184,7 @@ export function ProfilePage({ onNavigate }: Props) {
       </section>
 
       <section className="section">
-        <h2 className="section__title">Profiller ({profiles.length}/{isPlus ? 5 : 1})</h2>
+        <h2 className="section__title">Profile ({profiles.length}/{isPlus ? 5 : 1})</h2>
         <div className="profile-switcher">
           {profiles.map((p) => (
             <button
@@ -141,7 +208,7 @@ export function ProfilePage({ onNavigate }: Props) {
               }
               const n = addProfile(5)
               if (n) showToast('Neues Geschwisterprofil hinzugefügt')
-              else showToast('En fazla 5 profil')
+              else showToast('Maximal 5 Profile')
             }}
           >
             + {isPlus ? 'Geschwister hinzufügen' : 'Mit Familien+ Geschwister hinzufügen'}
@@ -276,9 +343,9 @@ export function ProfilePage({ onNavigate }: Props) {
       <section className="section">
         <h2 className="section__title">🔐 Familien-PIN-Sperre</h2>
         <div className="panel journal-form">
-          <p>Beim Wechsel in den Familienmodus ist eine 4-stellige PIN erforderlich. Dadurch wird es für Kinder schwieriger, den Umgebungen zu entkommen.</p>
+          <p>Beim Wechsel in den Familienmodus ist eine 4-stellige PIN erforderlich. So bleibt der Elternbereich geschützt.</p>
           <label>
-            Yeni PIN
+            Neue PIN
             <input
               type="password"
               inputMode="numeric"
@@ -289,7 +356,7 @@ export function ProfilePage({ onNavigate }: Props) {
             />
           </label>
           <label>
-            Tekrar
+            Noch einmal
             <input
               type="password"
               inputMode="numeric"
@@ -340,7 +407,7 @@ export function ProfilePage({ onNavigate }: Props) {
             title: `${profile.avatar} ${profile.childName || 'Mein Kind'} — Kitap Cenneti`,
             text: `⭐ ${stars} Sterne · 🔥 ${streak} Tage · 🏷️ ${stickers.length} sticker. Wir lesen gemeinsam!`,
             page: 'profile',
-            hashtags: ['KitapCenneti', 'Aile', 'Okuma'],
+            hashtags: ['KitapCenneti', 'Familie', 'Lesen'],
           }}
         />
       </section>

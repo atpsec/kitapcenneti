@@ -8,11 +8,11 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Schreiben Sie Ihren Namen oder laden Sie Ihr Foto hoch – seien Sie der Held!',
     gradient: 'linear-gradient(135deg, #FF6B9D 0%, #C44DFF 50%, #6B5BFF 100%)',
     samplePrompts: [
-      'Ormanın derinliklerinde kaybolan bir macera',
-      'Bulutların üstünde uçan sihirli bir yolculuk',
-      'Deniz kızlarıyla dostluk kuran sualtı macerası',
-      'Ejderha ile arkadaş olan cesur bir kahraman',
-      'Yıldızların arasında kayıp gezegeni aramak',
+      'Ein Abenteuer in den Tiefen des Waldes',
+      'Eine magische Reise über den Wolken',
+      'Ein Unterwasserabenteuer mit Meerjungfrauen',
+      'Ein mutiger Held freundet sich mit einem Drachen an',
+      'Auf der Suche nach einem verlorenen Planeten zwischen den Sternen',
     ],
     featured: true,
   },
@@ -23,10 +23,10 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Verborgene Schätze und magische Wälder warten auf Sie!',
     gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
     samplePrompts: [
-      'Sihirli bir harita bulan cesur kaşifler',
-      'Kayıp krallığı kurtaran minik kahramanlar',
-      'Gökkuşağı köprüsünden geçen macera',
-      'Konuşan ağaçların ormanında kaybolmak',
+      'Mutige Entdecker finden eine magische Karte',
+      'Kleine Helden retten ein verlorenes Königreich',
+      'Ein Abenteuer über die Regenbogenbrücke',
+      'Verloren im Wald der sprechenden Bäume',
     ],
   },
   {
@@ -36,10 +36,10 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Warme Geschichten voller süßer Tiere!',
     gradient: 'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)',
     samplePrompts: [
-      'Ormanın en cesur tavşanı ve arkadaşları',
-      'Kedilerin gizli şehrinde bir gece macerası',
+      'Der mutigste Hase im Wald und seine Freunde',
+      'Ein Nachtabenteuer in der geheimen Stadt der Katzen',
       'Penguen ailesinin kutup yolculuğu',
-      'Fil yavrusunun ilk günü okulda',
+      'Der erste Schultag eines Elefantenbabys',
     ],
   },
   {
@@ -49,10 +49,10 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Eine erstaunliche Reise zwischen den Sternen!',
     gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     samplePrompts: [
-      'Mars\'ta yaşayan minik astronotlar',
-      'Uzaylı dostlarla tanışan çocuklar',
-      'Kayıp yıldızı arayan roket ekibi',
-      'Ay\'da kurulan sihirli çiftlik',
+      'Kleine Astronauten leben auf dem Mars',
+      'Kinder treffen außerirdische Freunde',
+      'Ein Raketenteam sucht einen verlorenen Stern',
+      'Ein magischer Bauernhof auf dem Mond',
     ],
   },
   {
@@ -62,10 +62,10 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Eine bunte Welt in Korallenriffen!',
     gradient: 'linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%)',
     samplePrompts: [
-      'Deniz kızı ile arkadaş olan balıkçı çocuk',
-      'Hazine sandığı arayan yunus sürüsü',
-      'Mercan sarayında düzenlenen balo',
-      'Ahtapotun renkli sanat atölyesi',
+      'Ein Fischerjunge freundet sich mit einer Meerjungfrau an',
+      'Eine Delfinfamilie sucht eine Schatzkiste',
+      'Ein Ball im Korallenpalast',
+      'Die bunte Kunstwerkstatt des Oktopus',
     ],
   },
   {
@@ -75,10 +75,10 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Feen, Prinzen und Zauberschlösser!',
     gradient: 'linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%)',
     samplePrompts: [
-      'Uyuyan prensesi uyandıran minik peri',
-      'Sihirli değneği kaybeden peri kız',
-      'Bulutlardaki peri okulunda ilk gün',
-      'Ejdersiz kalede yaşayan prenses',
+      'Eine kleine Fee weckt die schlafende Prinzessin',
+      'Ein Feenmädchen verliert seinen Zauberstab',
+      'Der erste Tag in der Feenschule über den Wolken',
+      'Eine Prinzessin lebt in einer burg ohne Drachen',
     ],
   },
   {
@@ -88,10 +88,10 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Abenteuer mit prähistorischen Riesenfreunden!',
     gradient: 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)',
     samplePrompts: [
-      'Sevimli dinozor yavrusu ile arkadaşlık',
-      'Volkan kraterinde gizli vadi keşfi',
-      'T-Rex ile futbol maçı',
-      'Dinozorların piknik günü',
+      'Freundschaft mit einem niedlichen Dinosaurierbaby',
+      'Entdeckung eines geheimen Tals im Vulkankrater',
+      'Ein Fußballspiel mit dem T-Rex',
+      'Picknicktag der Dinosaurier',
     ],
   },
   {
@@ -101,10 +101,10 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Spannende Geschichten voller Superkräfte!',
     gradient: 'linear-gradient(135deg, #f12711 0%, #f5af19 100%)',
     samplePrompts: [
-      'Gizli süper gücünü keşfeden çocuk',
-      'Şehri kurtaran minik kahraman takımı',
-      'Süper kahraman okulunda ilk ders',
-      'Kötü kalpli robotu durduran cesaret',
+      'Ein Kind entdeckt seine geheime Superkraft',
+      'Ein kleines Heldenteam rettet die Stadt',
+      'Die erste Stunde in der Superheldenschule',
+      'Mut hält einen bösen Roboter auf',
     ],
   },
   {
@@ -114,7 +114,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Lassen Sie Ihrer Fantasie freien Lauf und kreieren Sie Ihr eigenes Märchen!',
     gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
     samplePrompts: [
-      'Bir gün her şeyin tersine döndüğü komik bir macera',
+      'Ein lustiges Abenteuer, an dem sich eines Tages alles umkehrt',
       'Konuşan ayakkabılarla şehir turu',
       'Bulut fabrikasında çalışan minik işçiler',
       'Zaman makinesiyle geçmişe yolculuk',
@@ -179,8 +179,8 @@ export const IMAGE_PROVIDERS = [
 ]
 
 export const AGE_GROUPS = [
-  { id: '3-5' as const, label: '3-5 Jahre alt', emoji: '🐣' },
-  { id: '6-8' as const, label: '6-8 Jahre alt', emoji: '🌟' },
+  { id: '3-5' as const, label: '3-5 Jahre unter', emoji: '🐣' },
+  { id: '6-8' as const, label: '6-8 Jahre unter', emoji: '🌟' },
   { id: '9-12' as const, label: '9-12 Jahre alt', emoji: '🚀' },
 ]
 

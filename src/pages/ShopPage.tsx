@@ -35,7 +35,7 @@ export function ShopPage({ onNavigate }: Props) {
             erscheint (lokal).
           </p>
           {premium ? (
-            <strong>Ein ✓ – Wählen Sie „Märchenmeister“ in Audio Tales</strong>
+            <strong>Ein ✓ – Wählen Sie „Märchenmeister“ bei den Hörgeschichten</strong>
           ) : (
             <div className="btn-row">
               <button

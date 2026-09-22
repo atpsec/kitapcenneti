@@ -57,7 +57,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
   return (
     <div className={`page ${bedtime ? 'page--bedtime' : ''}`}>
       <header className="page-header">
-        <h1>🎧 Audio Tales Portal</h1>
+        <h1>🎧 Hörgeschichten-Portal</h1>
         <p>
           Kapitel-Player · Einschlaf-Timer · gemeinsam lesen · {library.length}+ Geschichten (statisch + live
           Drop).
@@ -89,7 +89,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
             className={`btn btn--ghost ${onlyFavs ? 'is-active-filter' : ''}`}
             onClick={() => setOnlyFavs((v) => !v)}
           >
-            ❤️ Favoriler {favorites.length ? `(${favorites.length})` : ''}
+            ❤️ Favoriten {favorites.length ? `(${favorites.length})` : ''}
           </button>
         </div>
       </div>
@@ -138,7 +138,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
                   className="btn btn--ghost"
                   onClick={() => setFavorites(toggleFavoriteAudio(active.id))}
                 >
-                  {favorites.includes(active.id) ? '❤️ Favoride' : '🤍 Favorile'}
+                  {favorites.includes(active.id) ? '❤️ In Favoriten' : '🤍 Zu Favoriten'}
                 </button>
                 <button
                   className="btn btn--ghost"
@@ -185,7 +185,7 @@ export function AudioStoriesPage({ onNavigate }: Props) {
               className="btn btn--ghost"
               onClick={() => setFavorites(toggleFavoriteAudio(active.id))}
             >
-              {favorites.includes(active.id) ? '❤️ Favoride' : '🤍 Favorile'}
+              {favorites.includes(active.id) ? '❤️ In Favoriten' : '🤍 Zu Favoriten'}
             </button>
             <button
               className="btn btn--ghost"

@@ -55,6 +55,24 @@ AUTH_SESSION_TTL_DAYS=30
 AUTH_COOKIE_SAMESITE=Lax
 ```
 
+### Konto-E-Mail und Wiederherstellung
+
+Die Endpunkte für E-Mail-Bestätigung und Passwortzurücksetzung bleiben absichtlich deaktiviert,
+solange kein E-Mail-Dienst konfiguriert ist. Mit Resend können sie nach Prüfung der Absenderdomain
+aktiviert werden:
+
+```text
+AUTH_EMAIL_PROVIDER=resend
+AUTH_EMAIL_API_KEY=re_...
+AUTH_EMAIL_FROM=Kitap Cenneti <konto@ihre-domain.de>
+AUTH_EMAIL_APP_URL=https://<cloudflare-pages-domain>
+AUTH_REQUIRE_EMAIL_VERIFICATION=true
+```
+
+`AUTH_EMAIL_API_KEY` ist ein Cloudflare-Pages-Secret und gehört nicht in das Repository. Ohne diese
+Werte melden die Endpunkte `email_service_not_configured`; Konten werden dadurch nicht mit einem
+falschen Bestätigungsstatus versehen.
+
 Almanya hedefi için Stripe Checkout varsayılan olarak Almanca açılır ve müşterinin USt-IdNr.
 girebilmesi etkinleştirilir. `STRIPE_REQUIRE_TERMS=true` yalnızca Stripe Dashboard'da güncel
 Terms of Service URL'si tanımlandıktan sonra kullanılmalıdır; aksi halde Checkout yapılandırma
@@ -75,6 +93,17 @@ GET  /api/family/children
 GET  /api/membership/account-status
 POST /api/membership/portal
 POST /api/membership/cancel
+```
+
+Zusätzliche Kontorechte:
+
+```text
+GET    /api/auth/export
+DELETE /api/auth/delete
+POST   /api/auth/request-verification
+POST   /api/auth/verify-email
+POST   /api/auth/request-password-reset
+POST   /api/auth/reset-password
 ```
 
 `/api/membership/cancel` iptali dönem sonuna planlar. Üretim arayüzündeki “Verträge hier kündigen”

@@ -34,7 +34,7 @@ export function SavedStories({ stories, onLoad, onDelete }: SavedStoriesProps) {
             </div>
             <div className="saved-story-card__info">
               <h4>{story.title}</h4>
-              <p>{story.pages.length} sayfa</p>
+              <p>{story.pages.length} Seiten</p>
             </div>
             <div className="saved-story-card__actions">
               <button className="saved-story-card__btn" onClick={() => onLoad(story)}>

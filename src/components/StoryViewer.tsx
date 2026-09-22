@@ -85,7 +85,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
             {story.heroImage && (
               <img src={story.heroImage} alt={story.heroName} className="story-viewer__hero-avatar" />
             )}
-            <p>🦸 Kahraman: <strong>{story.heroName}</strong></p>
+            <p>🦸 Held: <strong>{story.heroName}</strong></p>
           </div>
         )}
       </div>
@@ -130,7 +130,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
           text: sharePreview,
           page: 'create',
           itemId: story.title.slice(0, 48).replace(/\s+/g, '-').toLowerCase(),
-          hashtags: ['KitapCenneti', 'Hikaye', 'AI'],
+          hashtags: ['KitapCenneti', 'Geschichte', 'KI'],
         }}
       />
 
@@ -149,7 +149,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
                 <img
                   className="storybook__image"
                   src={page.imageUrl}
-                  alt={`Sayfa ${page.pageNumber} illüstrasyonu`}
+                  alt={`Illustration auf Seite ${page.pageNumber}`}
                   loading="eager"
                   onError={async (e) => {
                     const img = e.currentTarget
@@ -225,7 +225,7 @@ export function StoryViewer({ story, onReset, onSave }: StoryViewerProps) {
           className="nav-btn"
           onClick={goNext}
           disabled={currentPage === story.pages.length - 1}
-          aria-label="Sonraki sayfa"
+          aria-label="Nächste Seite"
         >
           <ChevronRight size={24} />
         </button>

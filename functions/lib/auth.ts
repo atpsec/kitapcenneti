@@ -3,12 +3,18 @@ import { CORS_HEADERS, envString, json, siteUrl, type MembershipEnv } from './st
 export interface AuthEnv extends MembershipEnv {
   AUTH_SESSION_TTL_DAYS?: string
   AUTH_COOKIE_SAMESITE?: string
+  AUTH_REQUIRE_EMAIL_VERIFICATION?: string
+  AUTH_EMAIL_PROVIDER?: string
+  AUTH_EMAIL_API_KEY?: string
+  AUTH_EMAIL_FROM?: string
+  AUTH_EMAIL_APP_URL?: string
 }
 
 export interface AccountRecord {
   id: string
   email: string
   createdAt: string
+  emailVerifiedAt?: string | null
 }
 
 export interface AuthContext {
@@ -32,13 +38,13 @@ function fromBase64url(value: string): Uint8Array {
   return Uint8Array.from(binary, (char) => char.charCodeAt(0))
 }
 
-async function randomBytes(length: number): Promise<Uint8Array> {
+export async function randomBytes(length: number): Promise<Uint8Array> {
   const bytes = new Uint8Array(length)
   crypto.getRandomValues(bytes)
   return bytes
 }
 
-async function digestHex(value: string): Promise<string> {
+export async function digestHex(value: string): Promise<string> {
   const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))
   return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, '0')).join('')
 }
@@ -51,6 +57,19 @@ async function hashPassword(password: string, salt: Uint8Array): Promise<string>
     256,
   )
   return base64url(new Uint8Array(bits))
+}
+
+export async function createPasswordCredentials(password: string): Promise<{ passwordHash: string; passwordSalt: string }> {
+  const salt = await randomBytes(16)
+  return {
+    passwordHash: await hashPassword(password, salt),
+    passwordSalt: base64url(salt),
+  }
+}
+
+export async function createOpaqueToken(): Promise<{ token: string; tokenHash: string }> {
+  const token = base64url(await randomBytes(32))
+  return { token, tokenHash: await digestHex(token) }
 }
 
 function constantTimeEqual(a: Uint8Array, b: Uint8Array): boolean {
@@ -119,20 +138,31 @@ export async function createAccount(env: AuthEnv, email: string, password: strin
   const existing = await env.DB.prepare('SELECT id FROM accounts WHERE email = ? LIMIT 1').bind(email).first?.()
   if (existing) throw new Error('ACCOUNT_EXISTS')
   const id = crypto.randomUUID()
-  const salt = await randomBytes(16)
-  const passwordHash = await hashPassword(password, salt)
+  const credentials = await createPasswordCredentials(password)
   const createdAt = new Date().toISOString()
   await env.DB.prepare(
     'INSERT INTO accounts (id, email, password_hash, password_salt, created_at) VALUES (?, ?, ?, ?, ?)',
-  ).bind(id, email, passwordHash, base64url(salt), createdAt).run()
+  ).bind(id, email, credentials.passwordHash, credentials.passwordSalt, createdAt).run()
   return { id, email, createdAt }
 }
 
 export async function findAccountByEmail(env: AuthEnv, email: string): Promise<(AccountRecord & { passwordHash: string; salt: string }) | null> {
   if (!env.DB) throw new Error('DB_NOT_CONFIGURED')
   const row = await env.DB.prepare(
-    'SELECT id, email, created_at as createdAt, password_hash as passwordHash, password_salt as salt FROM accounts WHERE email = ? LIMIT 1',
+    'SELECT id, email, created_at as createdAt, email_verified_at as emailVerifiedAt, password_hash as passwordHash, password_salt as salt FROM accounts WHERE email = ? LIMIT 1',
   ).bind(email).first?.<AccountRecord & { passwordHash: string; salt: string }>()
+  return row || null
+}
+
+export function emailVerificationRequired(env: AuthEnv): boolean {
+  return envString(env.AUTH_REQUIRE_EMAIL_VERIFICATION).toLowerCase() === 'true'
+}
+
+export async function findAccountById(env: AuthEnv, accountId: string): Promise<(AccountRecord & { passwordHash: string; salt: string }) | null> {
+  if (!env.DB) throw new Error('DB_NOT_CONFIGURED')
+  const row = await env.DB.prepare(
+    'SELECT id, email, created_at as createdAt, email_verified_at as emailVerifiedAt, password_hash as passwordHash, password_salt as salt FROM accounts WHERE id = ? LIMIT 1',
+  ).bind(accountId).first?.<AccountRecord & { passwordHash: string; salt: string }>()
   return row || null
 }
 
@@ -163,7 +193,7 @@ export async function getAccountFromRequest(context: AuthContext): Promise<Accou
   if (!token) return null
   const tokenHash = await digestHex(token)
   const row = await context.env.DB.prepare(
-    "SELECT a.id, a.email, a.created_at as createdAt FROM sessions s JOIN accounts a ON a.id = s.account_id WHERE s.token_hash = ? AND s.expires_at > datetime('now') LIMIT 1",
+    "SELECT a.id, a.email, a.created_at as createdAt, a.email_verified_at as emailVerifiedAt FROM sessions s JOIN accounts a ON a.id = s.account_id WHERE s.token_hash = ? AND s.expires_at > datetime('now') LIMIT 1",
   ).bind(tokenHash).first?.<AccountRecord>()
   return row || null
 }
@@ -204,5 +234,5 @@ function cookieSameSite(env?: AuthEnv): 'Lax' | 'Strict' | 'None' {
 }
 
 export function accountPayload(account: AccountRecord) {
-  return { id: account.id, email: account.email, createdAt: account.createdAt }
+  return { id: account.id, email: account.email, createdAt: account.createdAt, emailVerified: Boolean(account.emailVerifiedAt) }
 }
