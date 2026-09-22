@@ -355,8 +355,58 @@ export const COLORING_PAGES: ColoringPage[] = [
 
 const S = `fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"`
 const S2 = `fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"`
-const vb = (inner: string, footer = 'Kitap Cenneti') =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" width="400" height="420" role="img" aria-label="${footer}"><title>${footer}</title><rect x="15" y="15" width="370" height="365" rx="24" ${S2}/><path d="M34 365 Q200 347 366 365" ${S2}/><path d="M39 50 l5 10 11 1-8 7 3 11-11-6-10 6 3-11-8-7 11-1z M350 50 l5 10 11 1-8 7 3 11-11-6-10 6 3-11-8-7 11-1z" ${S2}/>${inner}<text x="200" y="408" text-anchor="middle" font-family="Nunito,Arial,sans-serif" font-size="14" fill="#777">${footer}</text></svg>`
+const ambientFor = (label: string) => {
+  const text = label.toLocaleLowerCase('tr-TR')
+  if (/uzay|gezegen|astronot|roket|yıldız|ay yüzeyi|galaksi|satürn|ufo|kuyruk/.test(text)) {
+    return `<g aria-label="Uzay ayrıntıları">
+      <path d="M45 105 l6 14 15 1-11 9 4 15-14-8-14 8 4-15-11-9 15-1z M332 205 l5 12 13 1-10 8 3 13-11-7-11 7 3-13-10-8 13-1z" ${S2}/>
+      <circle cx="83" cy="175" r="4" fill="#1a1a1a"/><circle cx="320" cy="90" r="4" fill="#1a1a1a"/><circle cx="65" cy="260" r="3" fill="#1a1a1a"/><circle cx="350" cy="285" r="3" fill="#1a1a1a"/>
+      <circle cx="330" cy="65" r="21" ${S2}/><ellipse cx="330" cy="65" rx="34" ry="9" ${S2}/>
+      <path d="M36 315 Q74 290 112 315 M288 330 Q325 304 364 330" ${S2}/>
+    </g>`
+  }
+  if (/deniz|balık|balina|ahtapot|yengeç|merc|denizaltı|okyanus|sualtı/.test(text)) {
+    return `<g aria-label="Deniz ayrıntıları">
+      <circle cx="54" cy="105" r="12" ${S2}/><circle cx="77" cy="77" r="8" ${S2}/><circle cx="103" cy="55" r="5" ${S2}/><circle cx="340" cy="125" r="10" ${S2}/>
+      <path d="M45 340 Q58 290 72 340 M72 340 Q88 280 104 340 M315 350 Q330 286 345 350" ${S2}/>
+      <path d="M30 365 Q100 340 170 362 Q240 384 370 355" ${S2}/>
+      <path d="M130 340 q12-25 24 0 M148 340 q12-34 24 0 M250 340 q12-28 24 0" ${S2}/>
+    </g>`
+  }
+  if (/bilim|mikroskop|volkan|deney|teleskop|laboratuvar/.test(text)) {
+    return `<g aria-label="Bilim ayrıntıları">
+      <path d="M46 100 h36 M64 82 v36 M315 115 h40 M335 95 v40" ${S2}/>
+      <circle cx="62" cy="265" r="18" ${S2}/><circle cx="335" cy="270" r="14" ${S2}/>
+      <path d="M98 75 q10-16 20 0 q10 16 20 0 M275 90 q10-16 20 0 q10 16 20 0" ${S2}/>
+      <path d="M42 350 Q95 315 148 350 M254 350 Q310 315 365 350" ${S2}/>
+    </g>`
+  }
+  if (/taşıt|araba|tren|balon|bisiklet|helikopter|traktör|kano|yelken|scooter/.test(text)) {
+    return `<g aria-label="Yol ve gökyüzü ayrıntıları">
+      <path d="M42 92 Q75 58 108 92 M292 88 Q326 53 360 88" ${S2}/>
+      <path d="M42 330 Q105 292 168 330 M235 330 Q300 292 365 330" ${S2}/>
+      <path d="M55 360 h42 M303 360 h42" ${S2}/><circle cx="68" cy="150" r="7" ${S2}/><circle cx="338" cy="170" r="6" ${S2}/>
+      <path d="M75 285 l15-20 15 20 M300 285 l15-20 15 20" ${S2}/>
+    </g>`
+  }
+  if (/mevsim|kış|kar|yağmur|sonbahar|ilkbahar|çiçek|ayçiçeği|dondurma/.test(text)) {
+    return `<g aria-label="Mevsim ayrıntıları">
+      <circle cx="330" cy="70" r="25" ${S2}/><path d="M330 34 v-12 M330 106 v12 M294 70 h-12 M366 70 h12" ${S2}/>
+      <path d="M42 315 Q82 282 122 315 M278 315 Q322 282 365 315" ${S2}/>
+      <path d="M55 150 q12-26 24 0 q12 26 24 0 M310 165 q12-26 24 0 q12 26 24 0" ${S2}/>
+      <circle cx="76" cy="250" r="9" ${S2}/><circle cx="326" cy="245" r="7" ${S2}/>
+    </g>`
+  }
+  return `<g aria-label="Doğa ve masal ayrıntıları">
+    <path d="M38 105 Q58 80 78 105 Q98 80 118 105" ${S2}/><path d="M278 120 Q298 94 318 120 Q338 94 358 120" ${S2}/>
+    <circle cx="335" cy="62" r="24" ${S2}/><path d="M335 28 v-10 M335 96 v10 M301 62 h-10 M369 62 h10" ${S2}/>
+    <path d="M38 342 Q86 305 134 342 M266 342 Q315 305 364 342" ${S2}/>
+    <path d="M62 342 q12-30 24 0 M82 342 q12-40 24 0 M310 342 q12-34 24 0" ${S2}/>
+    <circle cx="58" cy="205" r="8" ${S2}/><circle cx="350" cy="225" r="7" ${S2}/>
+  </g>`
+}
+const vb = (inner: string, footer = 'Kitap Cenneti', ambientLabel = footer) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" width="400" height="420" role="img" aria-label="${footer}"><title>${footer}</title><rect x="15" y="15" width="370" height="365" rx="24" ${S2}/><path d="M34 365 Q200 347 366 365" ${S2}/><path d="M39 50 l5 10 11 1-8 7 3 11-11-6-10 6 3-11-8-7 11-1z M350 50 l5 10 11 1-8 7 3 11-11-6-10 6 3-11-8-7 11-1z" ${S2}/>${ambientFor(ambientLabel)}${inner}<text x="200" y="408" text-anchor="middle" font-family="Nunito,Arial,sans-serif" font-size="14" fill="#777">${footer}</text></svg>`
 
 const hashId = (id: string) => Array.from(id).reduce((sum, char) => (sum * 31 + char.charCodeAt(0)) >>> 0, 7)
 
@@ -376,7 +426,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
       <path d="M62 325 l18-25 18 25 M310 325 l18-25 18 25" ${S2}/>
       <circle cx="55" cy="95" r="10" ${S2}/><circle cx="345" cy="125" r="8" ${S2}/>
       <path d="M48 280 q18-22 36 0 M316 280 q18-22 36 0" ${S2}/>
-    `, footer)
+    `, footer, `${category} ${footer}`)
   }
 
   if (category === 'Kahramanlar') {
@@ -388,7 +438,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
       <circle cx="55" cy="90" r="8" ${S2}/><circle cx="345" cy="80" r="10" ${S2}/>
       <path d="M42 300 Q80 270 115 300 M285 300 Q320 270 358 300" ${S2}/>
       <path d="M70 330 L100 270 L130 330 M270 330 L300 270 L330 330" ${S2}/>
-    `, footer)
+    `, footer, `${category} ${footer}`)
   }
 
   if (category === 'Masal') {
@@ -401,7 +451,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
       <path d="M34 340 Q76 306 116 340 M284 340 Q324 306 366 340" ${S2}/>
       <circle cx="55" cy="90" r="12" ${S2}/><circle cx="345" cy="105" r="9" ${S2}/>
       <path d="M45 275 q16-30 32 0 M323 275 q16-30 32 0" ${S2}/>
-    `, footer)
+    `, footer, `${category} ${footer}`)
   }
 
   if (category === 'Uzay') {
@@ -413,7 +463,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
       <ellipse cx="70" cy="95" rx="42" ry="12" ${S2}/>
       <path d="M320 55 l6 14 16 1-12 10 4 15-14-8-14 8 4-15-12-10 16-1z M305 280 l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" ${S2}/>
       <circle cx="95" cy="280" r="5" fill="#1a1a1a"/><circle cx="335" cy="180" r="5" fill="#1a1a1a"/>
-    `, footer)
+    `, footer, `${category} ${footer}`)
   }
 
   if (category === 'Deniz') {
@@ -424,7 +474,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
       <path d="M62 320 Q82 260 98 320 M98 320 Q120 255 138 320 M290 335 Q310 275 328 335" ${S2}/>
       <circle cx="65" cy="90" r="13" ${S2}/><circle cx="88" cy="58" r="8" ${S2}/><circle cx="320" cy="110" r="10" ${S2}/>
       <path d="M35 350 Q105 330 175 350 Q245 370 365 345" ${S2}/>
-    `, footer)
+    `, footer, `${category} ${footer}`)
   }
 
   if (category === 'Taşıtlar') {
@@ -436,7 +486,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
       <path d="M78 125 Q118 90 158 125 M260 120 Q300 85 340 120" ${S2}/>
       <path d="M35 340 L365 340 M75 325 l18 15 M310 325 l18 15" ${S2}/>
       <circle cx="200" cy="245" r="9" ${S2}/>
-    `, footer)
+    `, footer, `${category} ${footer}`)
   }
 
   if (category === 'Bilim') {
@@ -447,7 +497,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
       <path d="M200 95 L200 55 M180 55 L220 55" ${S}/><circle cx="200" cy="40" r="12" ${S2}/>
       <path d="M55 135 l30 0 M70 120 l0 30 M315 155 l30 0 M330 140 l0 30" ${S2}/>
       <circle cx="75" cy="280" r="20" ${S2}/><circle cx="330" cy="285" r="16" ${S2}/>
-    `, footer)
+    `, footer, `${category} ${footer}`)
   }
 
   if (category === 'Mevsim') {
@@ -457,7 +507,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
       <path d="M200 180 Q165 120 130 150 Q160 180 200 180 M200 180 Q235 120 270 150 Q240 180 200 180" ${S2}/>
       <path d="M45 330 Q90 300 135 330 M265 330 Q315 300 360 330" ${S2}/>
       <path d="M75 90 q18-20 36 0 M110 65 q18-20 36 0" ${S2}/><circle cx="60" cy="230" r="10" ${S2}/>
-    `, footer)
+    `, footer, `${category} ${footer}`)
   }
 
   return vb(`
@@ -465,7 +515,7 @@ const genericScene = (id: string, page?: ColoringPage) => {
     <ellipse cx="200" cy="275" rx="85" ry="62" ${S}/><circle cx="180" cy="170" r="6" fill="#1a1a1a"/><circle cx="220" cy="170" r="6" fill="#1a1a1a"/>
     <path d="M182 195 Q200 210 218 195" ${S2}/><path d="M145 275 Q120 315 145 345 M255 275 Q280 315 255 345" ${S2}/>
     <path d="M35 330 Q80 295 125 330 M275 330 Q320 295 365 330" ${S2}/><circle cx="65" cy="90" r="10" ${S2}/><circle cx="340" cy="120" r="8" ${S2}/>
-  `, footer)
+  `, footer, `${category} ${footer}`)
 }
 
 export function getColoringSvg(id: string): string {
