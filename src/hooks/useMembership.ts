@@ -116,7 +116,7 @@ export function useMembership() {
     void refresh()
   }, [refresh])
 
-  const checkout = useCallback(async (plan: 'monthly' | 'annual', email: string) => {
+  const checkout = useCallback(async (plan: 'monthly' | 'annual', email: string, digitalStartConsent: boolean) => {
     const normalizedEmail = email.trim().toLowerCase()
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
       showToast('Gib eine gültige E-Mail-Adresse ein, um fortzufahren')
@@ -136,7 +136,7 @@ export function useMembership() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Kitap-Request': '1' },
         credentials: 'include',
-        body: JSON.stringify({ plan }),
+        body: JSON.stringify({ plan, digitalStartConsent }),
       })
       const payload = (await response.json()) as { url?: string; error?: string }
       if (response.ok && payload.url) {

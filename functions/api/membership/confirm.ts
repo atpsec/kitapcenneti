@@ -26,6 +26,9 @@ export const onRequestPost = async (context: AuthContext) => {
     }
 
     if (!response.ok || !session.subscription?.id) return authResponse({ error: 'Mitgliedschaft konnte nicht bestätigt werden' }, 502, context)
+    if (session.payment_status !== 'paid' && session.payment_status !== 'no_payment_required') {
+      return authResponse({ error: 'Die Zahlung ist noch nicht bestätigt', code: 'payment_pending' }, 402, context)
+    }
     const linkedAccountId = session.metadata?.account_id || session.client_reference_id || ''
     if (linkedAccountId !== account.id) return authResponse({ error: 'Zahlungs- und Anmeldekonto stimmen nicht überein' }, 403, context)
     const activeStatuses = new Set(['active', 'trialing'])

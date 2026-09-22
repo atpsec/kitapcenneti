@@ -32,6 +32,7 @@ export function MembershipPage({ onNavigate }: Props) {
   const { account } = useAccount()
   const [billing, setBilling] = useState<'monthly' | 'annual'>('annual')
   const [email, setEmail] = useState(membership.email)
+  const [digitalStartConsent, setDigitalStartConsent] = useState(false)
 
   useEffect(() => {
     if (membership.email && !email) setEmail(membership.email)
@@ -127,8 +128,14 @@ export function MembershipPage({ onNavigate }: Props) {
               {account && !account.emailVerified && <p className="membership-checkout__notice">Bestätigen Sie zuerst Ihre E-Mail-Adresse im Elternkonto. Erst danach kann der sichere Checkout geöffnet werden.</p>}
               {accountConsentMissing && <p className="membership-checkout__notice">Bestätigen Sie zuerst Volljährigkeit, Nutzungsbedingungen und Datenschutzerklärung im Elternkonto. <a href="#profile">Jetzt öffnen</a></p>}
               {!LEGAL_DETAILS_READY && <p className="membership-checkout__notice">Der kostenpflichtige Abschluss bleibt gesperrt, bis Impressum und Unternehmensangaben für diese Produktionsumgebung hinterlegt sind.</p>}
-              <button type="button" className="btn btn--primary membership-plan__button" disabled={busy || !LEGAL_DETAILS_READY || Boolean(account && (!account.emailVerified || accountConsentMissing))} onClick={() => account ? void checkout(billing, account.email) : onNavigate('profile')}>
-                {busy ? 'Wird verbunden …' : !LEGAL_DETAILS_READY ? 'Nach rechtlicher Konfiguration verfügbar' : account && !account.emailVerified ? 'E-Mail zuerst bestätigen' : accountConsentMissing ? 'Bestätigungen im Profil speichern' : account ? 'Kostenpflichtig abonnieren' : 'Mit Elternkonto fortfahren'} <span>→</span>
+              {account && (
+                <label className="account-consent membership-checkout__consent">
+                  <input type="checkbox" checked={digitalStartConsent} onChange={(event) => setDigitalStartConsent(event.target.checked)} required />
+                  <span>Ich verlange ausdrücklich, dass der digitale Zugang unmittelbar nach dem Abschluss beginnt. Mir ist bekannt, dass mein Widerrufsrecht bei vollständiger Vertragserfüllung erlöschen kann. <a href="#terms">Details zum Widerruf</a></span>
+                </label>
+              )}
+              <button type="button" className="btn btn--primary membership-plan__button" disabled={busy || !LEGAL_DETAILS_READY || Boolean(account && (!digitalStartConsent || !account.emailVerified || accountConsentMissing))} onClick={() => account ? void checkout(billing, account.email, digitalStartConsent) : onNavigate('profile')}>
+                {busy ? 'Wird verbunden …' : !LEGAL_DETAILS_READY ? 'Nach rechtlicher Konfiguration verfügbar' : account && !account.emailVerified ? 'E-Mail zuerst bestätigen' : accountConsentMissing ? 'Bestätigungen im Profil speichern' : !digitalStartConsent ? 'Zustimmung zum digitalen Beginn erforderlich' : account ? 'Kostenpflichtig abonnieren' : 'Mit Elternkonto fortfahren'} <span>→</span>
               </button>
               <small>Kinderprofile werden im Elternbereich verwaltet. Die Zahlung wird über Stripe Checkout abgeschlossen; Kündigungen erfolgen im Kontobereich. <a href="#terms">Nutzungsbedingungen und Widerruf</a></small>
             </div>

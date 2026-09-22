@@ -66,8 +66,12 @@ for (const marker of ['MembershipPage', 'Familien+']) {
   if (!bundle.includes(marker)) throw new Error(`Build output is missing marker: ${marker}`)
 }
 const checkoutSource = readFileSync(join(root, 'functions/api/membership/checkout.ts'), 'utf8')
-for (const marker of ['legalConfigurationReady', 'productionSiteReady', 'email_unverified', 'consent_collection[terms_of_service]']) {
+for (const marker of ['legalConfigurationReady', 'productionSiteReady', 'email_unverified', 'consent_collection[terms_of_service]', 'digitalStartConsent', 'metadata[digital_start_consent]', 'TERMS_VERSION']) {
   if (!checkoutSource.includes(marker)) throw new Error(`Checkout hardening marker is missing: ${marker}`)
+}
+const confirmSource = readFileSync(join(root, 'functions/api/membership/confirm.ts'), 'utf8')
+for (const marker of ['payment_status', 'payment_pending']) {
+  if (!confirmSource.includes(marker)) throw new Error(`Payment confirmation marker is missing: ${marker}`)
 }
 const registerSource = readFileSync(join(root, 'functions/api/auth/register.ts'), 'utf8')
 for (const marker of ['adultConfirmed', 'termsAccepted', 'privacyAccepted', 'CONSENT_REQUIRED', 'legalConfigurationReady', 'legal_configuration_missing']) {

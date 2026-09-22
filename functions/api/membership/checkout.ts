@@ -1,4 +1,4 @@
-import { authOptions, authResponse, getAccountFromRequest, hasTrustedRequestHeader, type AuthContext } from '../../lib/auth'
+import { authOptions, authResponse, getAccountFromRequest, hasTrustedRequestHeader, TERMS_VERSION, type AuthContext } from '../../lib/auth'
 import { envString, legalConfigurationReady, productionSiteReady, siteUrl, stripeFetch } from '../../lib/stripe'
 
 export const onRequestOptions = (context: AuthContext) => authOptions(context)
@@ -17,7 +17,10 @@ export const onRequestPost = async (context: AuthContext) => {
     if (!legalConfigurationReady(context.env) || !productionSiteReady(context.env)) {
       return authResponse({ error: 'Der kostenpflichtige Abschluss ist noch nicht für den Produktionsbetrieb konfiguriert', code: 'configuration_missing' }, 503, context)
     }
-    const body = (await context.request.json()) as { plan?: unknown }
+    const body = (await context.request.json()) as { plan?: unknown; digitalStartConsent?: unknown }
+    if (body.digitalStartConsent !== true) {
+      return authResponse({ error: 'Bestätigen Sie den sofortigen Beginn des digitalen Zugangs und die Hinweise zum Widerrufsrecht', code: 'consent_required' }, 403, context)
+    }
     if (body.plan !== 'annual' && body.plan !== 'monthly') {
       return authResponse({ error: 'Ungültiger Abonnementplan' }, 400, context)
     }
@@ -66,6 +69,9 @@ export const onRequestPost = async (context: AuthContext) => {
     params.set('metadata[product]', 'kitapcenneti-family-plus')
     params.set('metadata[plan]', plan)
     params.set('metadata[account_id]', account.id)
+    params.set('metadata[terms_version]', TERMS_VERSION)
+    params.set('metadata[digital_start_consent]', 'accepted')
+    params.set('metadata[digital_start_consent_at]', new Date().toISOString())
     params.set('subscription_data[metadata][account_id]', account.id)
     params.set('subscription_data[metadata][plan]', plan)
 
