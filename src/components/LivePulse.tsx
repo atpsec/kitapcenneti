@@ -48,7 +48,7 @@ export function LivePulse({ onNavigate }: Props) {
           <strong>Aufgabe der Uhr</strong>
           <p>{live.challenge.title.replace('Aufgabe der Stunde: ', '')}</p>
           <small>
-            {live.hourlyDone ? 'Tamam ✓' : `+${live.challenge.stars}⭐`} · sonraki {formatMs(left)}
+            {live.hourlyDone ? 'Erledigt ✓' : `+${live.challenge.stars}⭐`} · nächste Aufgabe in {formatMs(left)}
           </small>
         </button>
 
@@ -56,7 +56,7 @@ export function LivePulse({ onNavigate }: Props) {
           <span>{slot.emoji}</span>
           <strong>{slot.label}</strong>
           <p>{live.slots.length} Abschnittsaufgaben bereit</p>
-          <small>🔥 seri {live.hourlyStreak}</small>
+          <small>🔥 Serie {live.hourlyStreak}</small>
         </button>
 
         <button
@@ -65,9 +65,9 @@ export function LivePulse({ onNavigate }: Props) {
           onClick={() => onNavigate('live')}
         >
           <span>🎁</span>
-          <strong>Gizemli kutu</strong>
+          <strong>Geheimnisvolle Box</strong>
           <p>{live.mysteryReady ? 'Bereit zum Öffnen!' : 'Wird alle 3 Stunden erneuert'}</p>
-          <small>Ziyaret: {live.visitCount}</small>
+          <small>Besuche: {live.visitCount}</small>
         </button>
 
         <button type="button" className="live-pulse__card" onClick={() => onNavigate(weekly.page)}>

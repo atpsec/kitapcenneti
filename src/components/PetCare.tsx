@@ -4,8 +4,8 @@ import { showToast } from './Toast'
 
 const MOOD_LINE = {
   happy: 'sehr glücklich und möchte spielen!',
-  ok: 'keyfi yerinde.',
-  sleepy: 'biraz uykusu var…',
+  ok: 'fühlt sich wohl.',
+  sleepy: 'ist ein wenig müde …',
   hungry: 'hat Hunger!',
 } as const
 
@@ -31,7 +31,7 @@ export function PetCare() {
 
       <div className="pet-bars">
         <label>
-          Tokluk
+          Sättigung
           <meter min={0} max={100} value={pet.hunger} />
         </label>
         <label>
@@ -39,7 +39,7 @@ export function PetCare() {
           <meter min={0} max={100} value={pet.joy} />
         </label>
         <label>
-          Enerji
+          Energie
           <meter min={0} max={100} value={pet.energy} />
         </label>
         <label>
@@ -54,10 +54,10 @@ export function PetCare() {
           className="btn btn--primary"
           onClick={() => {
             feed()
-            showToast(`${pet.name} afiyetle yedi! +XP`)
+            showToast(`${pet.name} hat gut gefressen! +XP`)
           }}
         >
-          🍎 Besle
+          🍎 Füttern
         </button>
         <button
           type="button"
@@ -67,7 +67,7 @@ export function PetCare() {
             showToast('Spielzeit! 🎾')
           }}
         >
-          🎾 Oynat
+          🎾 Spielen
         </button>
         <button
           type="button"
@@ -77,7 +77,7 @@ export function PetCare() {
             showToast('Nickerchen … 💤')
           }}
         >
-          💤 Dinlendir
+          💤 Ausruhen
         </button>
       </div>
 

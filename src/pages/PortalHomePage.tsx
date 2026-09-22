@@ -209,7 +209,7 @@ export function PortalHomePage({ onNavigate }: Props) {
         <aside className="portal-home__rail">
           <ProgressHub compact onNavigate={onNavigate} />
           <div className="rail-card rail-card--pet"><div className="rail-card__top"><span className="rail-card__icon">🦊</span><span className="rail-card__label">Dein Portal-Freund</span></div><h2>Zeit für etwas Pflege</h2><p>Kümmere dich um deinen Freund und starte danach ein neues Spiel.</p><button type="button" className="text-link" onClick={() => document.querySelector('.pet-care')?.scrollIntoView({ behavior: 'smooth' })}>Zu meinem Freund <span>↓</span></button></div>
-          <PremiumGate onNavigate={onNavigate} label="Küratör seçkileri Mit Familien+ freischalten">
+          <PremiumGate onNavigate={onNavigate} label="Kuratierte Auswahlen mit Familien+ freischalten">
             <div className="rail-card rail-card--collection"><div className="rail-card__top"><span className="rail-card__icon">🧭</span><span className="rail-card__label">Kuratierte Auswahl</span></div><h2>{COLLECTIONS[0]?.title || 'Neugier-Ecke'}</h2><p>{COLLECTIONS[0]?.description || 'Eine kleine Entdeckung für heute.'}</p><button type="button" className="text-link" onClick={() => onNavigate('discover')}>Auswahl öffnen <span>↗</span></button></div>
           </PremiumGate>
         </aside>

@@ -5,11 +5,11 @@ import { getMood, setMood, type MoodId } from '../utils/lastVisit'
 import { useState } from 'react'
 
 const MOODS: { id: MoodId; emoji: string; label: string }[] = [
-  { id: 'mutlu', emoji: '😄', label: 'Mutlu' },
+  { id: 'mutlu', emoji: '😄', label: 'Fröhlich' },
   { id: 'sakin', emoji: '😌', label: 'Ruhig' },
   { id: 'meraklı', emoji: '🧐', label: 'Neugierig' },
-  { id: 'yorgun', emoji: '😴', label: 'Yorgun' },
-  { id: 'cesur', emoji: '🦸', label: 'Cesur' },
+  { id: 'yorgun', emoji: '😴', label: 'Müde' },
+  { id: 'cesur', emoji: '🦸', label: 'Mutig' },
 ]
 
 interface Props {
@@ -26,7 +26,7 @@ export function SmartPicks({ ageGroup, interests, onNavigate }: Props) {
   return (
     <section className="section smart-picks">
       <h2 className="section__title">Die fünf Empfehlungen des Tages – passend zu euch</h2>
-      <div className="mood-row" role="group" aria-label="Ruh hali">
+      <div className="mood-row" role="group" aria-label="Stimmung">
         {MOODS.map((m) => (
           <button
             key={m.id}
