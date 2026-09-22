@@ -70,16 +70,20 @@ for (const marker of ['legalConfigurationReady', 'productionSiteReady', 'email_u
   if (!checkoutSource.includes(marker)) throw new Error(`Checkout hardening marker is missing: ${marker}`)
 }
 const registerSource = readFileSync(join(root, 'functions/api/auth/register.ts'), 'utf8')
-for (const marker of ['adultConfirmed', 'termsAccepted', 'privacyAccepted', 'CONSENT_REQUIRED']) {
+for (const marker of ['adultConfirmed', 'termsAccepted', 'privacyAccepted', 'CONSENT_REQUIRED', 'legalConfigurationReady', 'legal_configuration_missing']) {
   if (!registerSource.includes(marker)) throw new Error(`Registration consent marker is missing: ${marker}`)
 }
 const consentSource = readFileSync(join(root, 'functions/api/auth/consent.ts'), 'utf8')
-for (const marker of ['TERMS_VERSION', 'PRIVACY_VERSION', 'UPDATE accounts', 'consent_required']) {
+for (const marker of ['TERMS_VERSION', 'PRIVACY_VERSION', 'UPDATE accounts', 'consent_required', 'legalConfigurationReady', 'legal_configuration_missing']) {
   if (!consentSource.includes(marker)) throw new Error(`Consent update marker is missing: ${marker}`)
 }
 const adSlotSource = readFileSync(join(root, 'src/components/AdSlot.tsx'), 'utf8')
 for (const marker of ['adsAllowedOnPage', 'pageAllowed', 'adActive']) {
   if (!adSlotSource.includes(marker)) throw new Error(`Ad privacy gate marker is missing: ${marker}`)
+}
+const legalPageSource = readFileSync(join(root, 'src/pages/LegalPages.tsx'), 'utf8')
+for (const marker of ['LegalUnavailablePage', '!LEGAL_DETAILS_READY']) {
+  if (!legalPageSource.includes(marker)) throw new Error(`Legal page fail-closed marker is missing: ${marker}`)
 }
 
 console.log(`Membership smoke check passed: ${requiredFiles.length} routes/files, 9 D1 tables, ${jsFiles.length} bundles.`)

@@ -11,6 +11,7 @@ import { STICKERS } from '../data/stickers'
 import { SocialShare } from '../components/SocialShare'
 import { useMembership } from '../hooks/useMembership'
 import { useAccount, type RegistrationConsent } from '../hooks/useAccount'
+import { LEGAL_DETAILS_READY } from '../config/legal'
 
 const AVATARS = ['🦊', '🐻', '🦄', '🐱', '🐼', '🦁', '🐸', '🦉', '🐯', '🐨']
 const INTERESTS = ['masal', 'oyun', 'boyama', 'uzay', 'hayvan', 'stem', 'müzik', 'duygu']
@@ -218,8 +219,11 @@ export function ProfilePage({ onNavigate }: Props) {
                   </label>
                 </div>
               )}
+              {authMode === 'register' && !LEGAL_DETAILS_READY && (
+                <p className="notice notice--warning">Die Registrierung wird nach Eintragung der vollständigen Unternehmensangaben und der finalen Rechtstexte freigeschaltet.</p>
+              )}
               <div className="btn-row">
-                <button type="submit" className="btn btn--primary" disabled={accountBusy || !accountConfigured}>{accountBusy ? 'Wird verbunden …' : authMode === 'login' ? 'Anmelden' : 'Konto erstellen'}</button>
+                <button type="submit" className="btn btn--primary" disabled={accountBusy || !accountConfigured || (authMode === 'register' && !LEGAL_DETAILS_READY)}>{accountBusy ? 'Wird verbunden …' : authMode === 'login' ? 'Anmelden' : 'Konto erstellen'}</button>
                 <button type="button" className="btn btn--ghost" onClick={() => setAuthMode((mode) => mode === 'login' ? 'register' : 'login')}>
                   {authMode === 'login' ? 'Neues Konto erstellen' : 'Ich habe bereits ein Konto'}
                 </button>

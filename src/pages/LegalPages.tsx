@@ -10,6 +10,23 @@ function LegalConfigNotice() {
   )
 }
 
+function LegalUnavailablePage({ title, subtitle }: { title: string; subtitle: string }) {
+  return (
+    <div className="page legal-page">
+      <header className="page-header">
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
+      </header>
+      <div className="panel prose">
+        <div className="notice notice--warning">
+          <strong>Rechtliche Angaben werden noch eingerichtet.</strong>
+          <p>Diese Vorschau ist noch nicht für Konten, Verträge oder kostenpflichtige Leistungen freigeschaltet. Die vollständigen Unternehmensangaben und die geprüfte Fassung dieser Seite werden vor dem Produktivbetrieb veröffentlicht.</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function AboutPage() {
   return (
     <div className="page legal-page">
@@ -30,6 +47,7 @@ export function AboutPage() {
 }
 
 export function ImpressumPage() {
+  if (!LEGAL_DETAILS_READY) return <LegalUnavailablePage title="Impressum" subtitle="Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)" />
   return (
     <div className="page legal-page">
       <header className="page-header">
@@ -53,6 +71,7 @@ export function ImpressumPage() {
 }
 
 export function PrivacyPage() {
+  if (!LEGAL_DETAILS_READY) return <LegalUnavailablePage title="Datenschutzerklärung" subtitle="Informationen zur Verarbeitung personenbezogener Daten" />
   return (
     <div className="page legal-page">
       <header className="page-header">
@@ -98,6 +117,7 @@ export function PrivacyPage() {
 }
 
 export function TermsPage() {
+  if (!LEGAL_DETAILS_READY) return <LegalUnavailablePage title="Nutzungs- und Abonnementbedingungen" subtitle="Bedingungen für Kitap Cenneti und Familien+" />
   return (
     <div className="page legal-page">
       <header className="page-header">
@@ -140,6 +160,7 @@ export function TermsPage() {
 }
 
 export function ContactPage() {
+  if (!LEGAL_DETAILS_READY) return <LegalUnavailablePage title="Kontakt" subtitle="Fragen, Datenschutzanfragen, Widerruf und Support" />
   return (
     <div className="page legal-page">
       <header className="page-header">

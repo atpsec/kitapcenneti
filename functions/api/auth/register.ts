@@ -15,6 +15,7 @@ import {
 } from '../../lib/auth'
 import { authEmailConfigured } from '../../lib/email'
 import { issueEmailVerification } from '../../lib/recovery'
+import { legalConfigurationReady } from '../../lib/stripe'
 
 export const onRequestOptions = (context: AuthContext) => authOptions(context)
 
@@ -33,6 +34,9 @@ export const onRequestPost = async (context: AuthContext) => {
     }
     if (!consent.adultConfirmed || !consent.termsAccepted || !consent.privacyAccepted) {
       return authResponse({ error: 'Bitte bestätigen Sie, dass Sie volljährig sind und Nutzungsbedingungen sowie Datenschutzerklärung akzeptieren', code: 'consent_required' }, 400, context)
+    }
+    if (!legalConfigurationReady(context.env)) {
+      return authResponse({ error: 'Der Kontoservice wird erst nach der vollständigen rechtlichen Konfiguration freigeschaltet', code: 'legal_configuration_missing' }, 503, context)
     }
     if (emailVerificationRequired(context.env) && !authEmailConfigured(context.env)) {
       return authResponse({ error: 'E-Mail-Bestätigung ist aktiviert, aber der E-Mail-Dienst ist noch nicht eingerichtet', code: 'email_service_not_configured' }, 503, context)

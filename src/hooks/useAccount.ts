@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { showToast } from '../components/Toast'
+import { LEGAL_DETAILS_READY } from '../config/legal'
 
 export interface Account {
   id: string
@@ -142,6 +143,10 @@ export function useAccount() {
   }, [refresh])
 
   const authenticate = useCallback(async (mode: 'login' | 'register', email: string, password: string, consent?: RegistrationConsent) => {
+    if (mode === 'register' && !LEGAL_DETAILS_READY) {
+      showToast('Das Elternkonto wird nach der vollständigen rechtlichen Konfiguration freigeschaltet')
+      return false
+    }
     setBusy(true)
     try {
       const result = await request('/auth/' + mode, {

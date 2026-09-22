@@ -8,6 +8,7 @@ import {
   TERMS_VERSION,
   type AuthContext,
 } from '../../lib/auth'
+import { legalConfigurationReady } from '../../lib/stripe'
 
 export const onRequestOptions = (context: AuthContext) => authOptions(context)
 
@@ -17,6 +18,9 @@ export const onRequestPost = async (context: AuthContext) => {
     const account = await getAccountFromRequest(context)
     if (!account) return authResponse({ error: 'Anmeldung erforderlich', code: 'unauthorized' }, 401, context)
     if (!context.env.DB) return authResponse({ error: 'Kontoservice ist noch nicht eingerichtet', code: 'configuration_missing' }, 503, context)
+    if (!legalConfigurationReady(context.env)) {
+      return authResponse({ error: 'Rechtliche Bestätigungen werden erst nach der vollständigen rechtlichen Konfiguration angenommen', code: 'legal_configuration_missing' }, 503, context)
+    }
 
     const body = (await context.request.json()) as { adultConfirmed?: unknown; termsAccepted?: unknown; privacyAccepted?: unknown }
     if (body.adultConfirmed !== true || body.termsAccepted !== true || body.privacyAccepted !== true) {
