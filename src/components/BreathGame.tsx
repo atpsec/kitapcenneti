@@ -101,7 +101,7 @@ export function BreathGame() {
               setDone(false)
             }}
           >
-            Durdur
+            Stoppen
           </button>
         )}
       </div>

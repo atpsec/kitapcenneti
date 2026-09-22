@@ -95,5 +95,17 @@ const blogSource = readFileSync(join(root, 'src/data/blog.ts'), 'utf8')
 for (const marker of ['BLOG_LABELS', 'Digitale Übungen', 'Wöchentliche kleine Rückschau']) {
   if (!blogSource.includes(marker)) throw new Error(`Blog localization marker is missing: ${marker}`)
 }
+const voiceSource = readFileSync(join(root, 'src/components/VoicePicker.tsx'), 'utf8')
+const storyPlayerSource = readFileSync(join(root, 'src/components/StoryPlayer.tsx'), 'utf8')
+const shopSource = readFileSync(join(root, 'src/pages/ShopPage.tsx'), 'utf8')
+if (existsSync(join(root, 'src/utils/premium.ts'))) throw new Error('Local premium unlock helper must not exist')
+for (const [source, marker] of [[voiceSource, 'useMembership'], [storyPlayerSource, 'isPlus'], [shopSource, 'Familien+ ansehen']]) {
+  if (!source.includes(marker)) throw new Error(`Server membership gate marker is missing: ${marker}`)
+}
+for (const source of [voiceSource, storyPlayerSource, shopSource]) {
+  if (source.includes('hasPremiumVoice') || source.includes('PREMIUM_UNLOCK_CODE') || source.includes('unlockPremiumVoice')) {
+    throw new Error('Client-side premium bypass marker is still present')
+  }
+}
 
 console.log(`Membership smoke check passed: ${requiredFiles.length} routes/files, 9 D1 tables, ${jsFiles.length} bundles.`)

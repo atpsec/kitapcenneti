@@ -1,11 +1,10 @@
-import { useState } from 'react'
 import type { PageId } from '../types/nav'
 import { SHOP_PACKS } from '../data/shop'
 import { showToast } from '../components/Toast'
 import { addJournalEntry } from '../hooks/usePortalProfile'
 import { SocialShare } from '../components/SocialShare'
 import { useContentItemId } from '../hooks/useContentItemId'
-import { hasPremiumVoice, PREMIUM_UNLOCK_CODE, unlockPremiumVoice } from '../utils/premium'
+import { useMembership } from '../hooks/useMembership'
 
 interface Props {
   onNavigate: (page: PageId) => void
@@ -14,13 +13,12 @@ interface Props {
 export function ShopPage({ onNavigate }: Props) {
   const [activeId, setActiveId] = useContentItemId('shop', SHOP_PACKS[0].id)
   const activePack = SHOP_PACKS.find((p) => p.id === activeId) || SHOP_PACKS[0]
-  const [code, setCode] = useState('')
-  const [premium, setPremium] = useState(() => hasPremiumVoice())
+  const { isPlus } = useMembership()
 
   return (
     <div className="page">
       <header className="page-header">
-        <h1>🎁 Kostenloser Content-Markt</h1>
+        <h1>🎁 Kostenlose Familienpakete</h1>
         <p>
           {SHOP_PACKS.length} Pakete – alle kostenlos. „Öffnen“ führt direkt zum passenden Bereich.
         </p>
@@ -31,48 +29,30 @@ export function ShopPage({ onNavigate }: Props) {
         <div>
           <h2>Märchenmeister – Premium-Stimmpaket</h2>
           <p>
-            Sanftes Tempo, mitlesender, harmonischer Erzähler. Keine Zahlungen – Familiengeschenkcode oder ein Klick
-            erscheint (lokal).
+            Sanftes Tempo und ein harmonischer Erzähler für ruhige Vorlesemomente. Die Märchenmeister-Stimme gehört zum
+            Familien+-Vollzugang.
           </p>
-          {premium ? (
-            <strong>Ein ✓ – Wählen Sie „Märchenmeister“ bei den Hörgeschichten</strong>
+          {isPlus ? (
+            <strong>✓ Familien+ ist aktiv – wählen Sie „Märchenmeister“ bei den Hörgeschichten.</strong>
           ) : (
             <div className="btn-row">
               <button
                 type="button"
                 className="btn btn--primary"
-                onClick={() => {
-                  unlockPremiumVoice()
-                  setPremium(true)
-                  showToast('Premium-Stimme aktiviert')
-                  onNavigate('audio')
-                }}
+                onClick={() => onNavigate('membership')}
               >
-                Kostenlos geöffnet
+                Familien+ ansehen
               </button>
-              <input
-                value={code}
-                onChange={(e) => setCode(e.target.value.toUpperCase())}
-                placeholder="Geschenkcode"
-                maxLength={16}
-                style={{ maxWidth: 160 }}
-              />
               <button
                 type="button"
                 className="btn btn--ghost"
-                onClick={() => {
-                  if (code.trim() === PREMIUM_UNLOCK_CODE) {
-                    unlockPremiumVoice()
-                    setPremium(true)
-                    showToast('Code akzeptiert – Premium-Stimme aktiv')
-                  } else showToast('Ungültiger Code')
-                }}
+                onClick={() => onNavigate('audio')}
               >
-                Mit Code öffnen
+                Kostenlose Hörgeschichten
               </button>
             </div>
           )}
-          <small>Beispielcode: {PREMIUM_UNLOCK_CODE}</small>
+          <small>Die kostenlose Vorschau bleibt verfügbar; Premium-Zugriff wird serverseitig über Familien+ geprüft.</small>
         </div>
       </article>
       <div className="shop-grid">

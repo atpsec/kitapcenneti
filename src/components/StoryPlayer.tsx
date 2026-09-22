@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSpeech } from '../hooks/useSpeech'
+import { useMembership } from '../hooks/useMembership'
 import { VoicePicker } from './VoicePicker'
-import { hasPremiumVoice } from '../utils/premium'
 import { showToast } from './Toast'
 
 interface StoryLike {
@@ -43,6 +43,7 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
   const [together, setTogether] = useState(false)
   const [sleepMin, setSleepMin] = useState(0)
   const { speaking, paused, speak, stop, togglePause, profile, setProfile } = useSpeech()
+  const { isPlus } = useMembership()
 
   useEffect(() => {
     setChapter(0)
@@ -59,8 +60,8 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
     return () => clearTimeout(t)
   }, [sleepMin, story.id])
 
-  const rate = bedtime || hasPremiumVoice() ? (bedtime ? 0.82 : 0.9) : 1
-  const premiumPitchHint = hasPremiumVoice()
+  const rate = bedtime || isPlus ? (bedtime ? 0.82 : 0.9) : 1
+  const premiumPitchHint = isPlus
 
   const playChapter = (idx: number) => {
     const text = chapters[idx]
@@ -90,7 +91,7 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
           gemeinsam lesen
         </label>
         <label>
-          Uyku
+          Schlaf
           <select value={sleepMin} onChange={(e) => setSleepMin(Number(e.target.value))}>
             <option value={0}>Geschlossen</option>
             <option value={5}>5 Min.</option>
@@ -112,7 +113,7 @@ export function StoryPlayer({ story, bedtime, onListened }: Props) {
               {paused ? '▶ Weiter' : '⏸ Pause'}
             </button>
             <button type="button" className="btn btn--ghost" onClick={stop}>
-              ⏹ Durdur
+              ⏹ Stoppen
             </button>
           </>
         )}

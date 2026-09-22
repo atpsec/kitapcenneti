@@ -1,5 +1,5 @@
 import { VOICE_OPTIONS, type VoiceProfile } from '../hooks/useSpeech'
-import { hasPremiumVoice } from '../utils/premium'
+import { useMembership } from '../hooks/useMembership'
 import { showToast } from './Toast'
 
 interface VoicePickerProps {
@@ -8,7 +8,7 @@ interface VoicePickerProps {
 }
 
 export function VoicePicker({ profile, onChange }: VoicePickerProps) {
-  const premium = hasPremiumVoice()
+  const { isPlus } = useMembership()
 
   return (
     <div className="voice-picker" role="group" aria-label="Erzählstimme">
@@ -20,8 +20,8 @@ export function VoicePicker({ profile, onChange }: VoicePickerProps) {
             type="button"
             className={`voice-chip ${profile === opt.id ? 'is-active' : ''}`}
             onClick={() => {
-              if (opt.premium && !premium) {
-                showToast('Öffne im Shop das Paket „Märchenmeister“ für die Premium-Stimme')
+              if (opt.premium && !isPlus) {
+                showToast('Öffne Familien+, um die Märchenmeister-Stimme freizuschalten')
                 return
               }
               onChange(opt.id)
@@ -31,7 +31,7 @@ export function VoicePicker({ profile, onChange }: VoicePickerProps) {
             <span>{opt.emoji}</span>
             <strong>
               {opt.label}
-              {opt.premium ? (premium ? ' ✓' : ' 🔒') : ''}
+              {opt.premium ? (isPlus ? ' ✓' : ' 🔒') : ''}
             </strong>
           </button>
         ))}

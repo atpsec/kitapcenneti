@@ -278,7 +278,7 @@ export function FunPage({ onNavigate }: FunPageProps) {
             return (
               <div key={s.id} className={`sticker-card ${owned ? 'is-owned' : 'is-locked'}`}>
                 <span>{owned ? s.emoji : '❔'}</span>
-                <strong>{owned ? s.title : 'Gizli'}</strong>
+                <strong>{owned ? s.title : 'Verborgen'}</strong>
                 <small>{s.hint}</small>
               </div>
             )
