@@ -27,7 +27,7 @@ Wenden Sie die Migrationen in der angegebenen Reihenfolge an:
 npx wrangler d1 migrations apply kitapcenneti --remote
 ```
 
-`0003_billing_hardening.sql` bindet die Mitgliedschaft an das Elternkonto, protokolliert Stripe-Ereignisse idempotent und ergänzt Abrechnungs- und Laufzeitfelder. Aktivieren Sie den Zahlungsfluss nicht, bevor diese Migration angewendet wurde.
+`0003_billing_hardening.sql` bindet die Mitgliedschaft an das Elternkonto, protokolliert Stripe-Ereignisse idempotent und ergänzt Abrechnungs- und Laufzeitfelder. `0004_account_rights.sql` ergänzt E-Mail-Bestätigung und Kontorechte; `0005_account_consents.sql` speichert die Versionen und Zeitpunkte der Pflichtbestätigungen. Aktivieren Sie den Zahlungsfluss nicht, bevor alle Migrationen angewendet wurden.
 
 ## 3. Stripe
 
@@ -52,6 +52,12 @@ SITE_URL=https://<cloudflare-pages-domain>
 AUTH_ALLOWED_ORIGIN=https://<cloudflare-pages-domain>
 AUTH_SESSION_TTL_DAYS=30
 AUTH_COOKIE_SAMESITE=Lax
+LEGAL_COMPANY=<Unternehmensname>
+LEGAL_ADDRESS=<ladungsfähige Geschäftsanschrift>
+LEGAL_REPRESENTATIVE=<vertretungsberechtigte Person>
+LEGAL_REGISTER=<Registergericht und Registernummer>
+LEGAL_VAT_ID=<USt-IdNr.>
+SUPPORT_EMAIL=<echte Support-Adresse>
 ```
 
 ### Konto-E-Mail und Wiederherstellung
@@ -104,7 +110,7 @@ POST   /api/auth/reset-password
 
 `/api/membership/cancel` plant die Kündigung zum Ende des Abrechnungszeitraums. Die Schaltfläche „Verträge hier kündigen“ ruft den Endpunkt nach der Bestätigung der Nutzerin oder des Nutzers auf. Der Stripe-Webhook prüft den endgültigen Status weiterhin.
 
-Checkout wird nur für ein angemeldetes Elternkonto geöffnet. Zuerst muss auf der Profilseite ein Konto erstellt oder die Anmeldung abgeschlossen werden; die Mitgliedschaft wird über die Konto-ID und nicht über die Stripe-E-Mail-Adresse verknüpft.
+Checkout wird nur für ein angemeldetes, E-Mail-bestätigtes Elternkonto geöffnet. Zuerst muss auf der Profilseite ein Konto erstellt, die Volljährigkeit bestätigt und die E-Mail-Adresse bestätigt werden; die Mitgliedschaft wird über die Konto-ID und nicht über die Stripe-E-Mail-Adresse verknüpft. Zusätzlich prüft die Function serverseitig die vollständige Rechtskonfiguration und eine HTTPS-`SITE_URL`, damit ein direkter API-Aufruf die Frontend-Sperre nicht umgehen kann.
 
 Damit das Frontend auf GitHub Pages die Cloudflare-API erreicht, setzen Sie im Build-Umfeld diese Variablen:
 

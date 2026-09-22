@@ -26,7 +26,19 @@ export const onRequestGet = async (context: AuthContext) => {
     const payload = {
       exportedAt: new Date().toISOString(),
       schemaVersion: 1,
-      account: { id: account.id, email: account.email, createdAt: account.createdAt, emailVerified: Boolean(account.emailVerifiedAt) },
+      account: {
+        id: account.id,
+        email: account.email,
+        createdAt: account.createdAt,
+        emailVerified: Boolean(account.emailVerifiedAt),
+        consents: {
+          adultConfirmedAt: account.adultConfirmedAt || null,
+          termsAcceptedAt: account.termsAcceptedAt || null,
+          termsVersion: account.termsVersion || null,
+          privacyAcceptedAt: account.privacyAcceptedAt || null,
+          privacyVersion: account.privacyVersion || null,
+        },
+      },
       childProfiles: children.map((child) => ({
         id: child.id,
         childName: child.childName,

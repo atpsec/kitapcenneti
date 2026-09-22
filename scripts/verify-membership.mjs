@@ -29,6 +29,7 @@ const requiredFiles = [
   'migrations/0002_accounts.sql',
   'migrations/0003_billing_hardening.sql',
   'migrations/0004_account_rights.sql',
+  'migrations/0005_account_consents.sql',
 ]
 
 const missing = requiredFiles.filter((file) => !existsSync(join(root, file)))
@@ -38,7 +39,11 @@ const membershipMigration = readFileSync(join(root, 'migrations/0001_membership.
 const accountMigration = readFileSync(join(root, 'migrations/0002_accounts.sql'), 'utf8')
 const billingMigration = readFileSync(join(root, 'migrations/0003_billing_hardening.sql'), 'utf8')
 const rightsMigration = readFileSync(join(root, 'migrations/0004_account_rights.sql'), 'utf8')
+const consentMigration = readFileSync(join(root, 'migrations/0005_account_consents.sql'), 'utf8')
 if (!/ALTER TABLE accounts ADD COLUMN email_verified_at/i.test(rightsMigration)) throw new Error('Missing email verification column migration')
+for (const column of ['terms_accepted_at', 'privacy_accepted_at', 'adult_confirmed_at', 'terms_version', 'privacy_version']) {
+  if (!new RegExp(`ALTER TABLE accounts ADD COLUMN ${column}`, 'i').test(consentMigration)) throw new Error(`Missing consent column migration: ${column}`)
+}
 for (const table of ['memberships']) {
   if (!new RegExp(`CREATE TABLE IF NOT EXISTS\\s+${table}`, 'i').test(membershipMigration)) throw new Error(`Missing table migration: ${table}`)
 }
@@ -58,6 +63,18 @@ const jsFiles = readdirSync(join(dist, 'assets')).filter((file) => file.endsWith
 const bundle = jsFiles.map((file) => readFileSync(join(dist, 'assets', file), 'utf8')).join('\n')
 for (const marker of ['MembershipPage', 'Familien+']) {
   if (!bundle.includes(marker)) throw new Error(`Build output is missing marker: ${marker}`)
+}
+const checkoutSource = readFileSync(join(root, 'functions/api/membership/checkout.ts'), 'utf8')
+for (const marker of ['legalConfigurationReady', 'productionSiteReady', 'email_unverified', 'consent_collection[terms_of_service]']) {
+  if (!checkoutSource.includes(marker)) throw new Error(`Checkout hardening marker is missing: ${marker}`)
+}
+const registerSource = readFileSync(join(root, 'functions/api/auth/register.ts'), 'utf8')
+for (const marker of ['adultConfirmed', 'termsAccepted', 'privacyAccepted', 'CONSENT_REQUIRED']) {
+  if (!registerSource.includes(marker)) throw new Error(`Registration consent marker is missing: ${marker}`)
+}
+const adSlotSource = readFileSync(join(root, 'src/components/AdSlot.tsx'), 'utf8')
+for (const marker of ['adsAllowedOnPage', 'pageAllowed', 'adActive']) {
+  if (!adSlotSource.includes(marker)) throw new Error(`Ad privacy gate marker is missing: ${marker}`)
 }
 
 console.log(`Membership smoke check passed: ${requiredFiles.length} routes/files, 9 D1 tables, ${jsFiles.length} bundles.`)

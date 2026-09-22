@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { ADS_ENABLED, ADSENSE_CLIENT, hasAdConsent, type AdSlotId } from '../config/ads'
+import { ADS_ENABLED, ADSENSE_CLIENT, adsAllowedOnPage, hasAdConsent, type AdSlotId } from '../config/ads'
 import { COOKIE_CONSENT_EVENT } from '../utils/cookieConsent'
+import { parseContentHash } from '../utils/share'
 
 interface AdSlotProps {
   slot?: AdSlotId
@@ -14,6 +15,9 @@ interface AdSlotProps {
 export function AdSlot({ slot = 'in-article', format = 'auto', className = '' }: AdSlotProps) {
   const [consented, setConsented] = useState(() => hasAdConsent())
   const adRef = useRef<HTMLModElement>(null)
+  const currentPage = typeof window === 'undefined' ? 'portal' : (parseContentHash(window.location.hash).page || 'portal')
+  const pageAllowed = adsAllowedOnPage(currentPage)
+  const adActive = pageAllowed && ADS_ENABLED && consented
 
   useEffect(() => {
     const sync = () => setConsented(hasAdConsent())
@@ -25,7 +29,7 @@ export function AdSlot({ slot = 'in-article', format = 'auto', className = '' }:
 
   useEffect(() => {
     const scriptId = 'kitapcenneti-adsense-script'
-    if (!consented) {
+    if (!pageAllowed || !consented) {
       document.getElementById(scriptId)?.remove()
       return
     }
@@ -37,24 +41,26 @@ export function AdSlot({ slot = 'in-article', format = 'auto', className = '' }:
     script.crossOrigin = 'anonymous'
     script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(ADSENSE_CLIENT)}`
     document.head.appendChild(script)
-  }, [consented])
+  }, [consented, pageAllowed])
 
   useEffect(() => {
-    if (!ADS_ENABLED || !consented || !adRef.current) return
+    if (!adActive || !adRef.current) return
     const ads = (window as typeof window & { adsbygoogle?: unknown[] }).adsbygoogle ||= []
     try {
       ads.push({})
     } catch {
       // The provider can retry after its script finishes loading.
     }
-  }, [consented])
+  }, [adActive])
 
-  if (!ADS_ENABLED || !consented) {
+  if (!adActive) {
     return (
       <aside className={`ad-slot ad-slot--placeholder ${className}`} aria-label="Werbefläche">
         <span>📢 Werbefläche</span>
         <small>
-          {!ADS_ENABLED
+          {!pageAllowed
+            ? 'Nur auf Eltern- und Redaktionsseiten'
+            : !ADS_ENABLED
             ? `Nach der AdSense-Freigabe · ${slot}`
             : 'Nach Cookie-Einwilligung sichtbar (nur Elternseiten)'}
         </small>

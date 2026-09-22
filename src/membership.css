@@ -581,6 +581,37 @@
   color: #8099b3;
 }
 
+.account-consent-list {
+  display: grid;
+  gap: 9px;
+  padding: 4px 0 2px;
+}
+
+.account-access label.account-consent {
+  display: flex;
+  grid-template-columns: none;
+  align-items: flex-start;
+  gap: 9px;
+  color: #b8cbe0;
+  font-size: .76rem;
+  line-height: 1.45;
+  font-weight: 650;
+}
+
+.account-access label.account-consent input[type='checkbox'] {
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+  accent-color: #64d9c0;
+}
+
+.account-consent a {
+  color: #f5c76d;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 @media (max-width: 650px) {
   .account-access__fields,
   .account-access__signed-in {

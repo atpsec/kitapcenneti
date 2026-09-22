@@ -19,8 +19,8 @@
   --shadow-lg: 0 22px 48px rgba(28, 35, 33, 0.12);
   --radius: 24px;
   --radius-sm: 16px;
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Nunito', sans-serif;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
   --tap: 52px;
 }
 

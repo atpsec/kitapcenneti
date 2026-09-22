@@ -15,6 +15,11 @@ export interface AccountRecord {
   email: string
   createdAt: string
   emailVerifiedAt?: string | null
+  termsAcceptedAt?: string | null
+  privacyAcceptedAt?: string | null
+  adultConfirmedAt?: string | null
+  termsVersion?: string | null
+  privacyVersion?: string | null
 }
 
 export interface AuthContext {
@@ -25,6 +30,14 @@ export interface AuthContext {
 const SESSION_COOKIE = 'kitap_session'
 const DEFAULT_SESSION_TTL_SECONDS = 60 * 60 * 24 * 30
 const PBKDF2_ITERATIONS = 120_000
+export const TERMS_VERSION = '2026-09-22'
+export const PRIVACY_VERSION = '2026-09-22'
+
+export interface AccountConsent {
+  adultConfirmed: boolean
+  termsAccepted: boolean
+  privacyAccepted: boolean
+}
 
 function base64url(bytes: Uint8Array): string {
   let binary = ''
@@ -133,23 +146,24 @@ export function validPassword(value: unknown): string {
   return password.length >= 8 && password.length <= 200 ? password : ''
 }
 
-export async function createAccount(env: AuthEnv, email: string, password: string): Promise<AccountRecord> {
+export async function createAccount(env: AuthEnv, email: string, password: string, consent: AccountConsent): Promise<AccountRecord> {
   if (!env.DB) throw new Error('DB_NOT_CONFIGURED')
+  if (!consent.adultConfirmed || !consent.termsAccepted || !consent.privacyAccepted) throw new Error('CONSENT_REQUIRED')
   const existing = await env.DB.prepare('SELECT id FROM accounts WHERE email = ? LIMIT 1').bind(email).first?.()
   if (existing) throw new Error('ACCOUNT_EXISTS')
   const id = crypto.randomUUID()
   const credentials = await createPasswordCredentials(password)
   const createdAt = new Date().toISOString()
   await env.DB.prepare(
-    'INSERT INTO accounts (id, email, password_hash, password_salt, created_at) VALUES (?, ?, ?, ?, ?)',
-  ).bind(id, email, credentials.passwordHash, credentials.passwordSalt, createdAt).run()
-  return { id, email, createdAt }
+    'INSERT INTO accounts (id, email, password_hash, password_salt, created_at, terms_accepted_at, privacy_accepted_at, adult_confirmed_at, terms_version, privacy_version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+  ).bind(id, email, credentials.passwordHash, credentials.passwordSalt, createdAt, createdAt, createdAt, createdAt, TERMS_VERSION, PRIVACY_VERSION).run()
+  return { id, email, createdAt, termsAcceptedAt: createdAt, privacyAcceptedAt: createdAt, adultConfirmedAt: createdAt, termsVersion: TERMS_VERSION, privacyVersion: PRIVACY_VERSION }
 }
 
 export async function findAccountByEmail(env: AuthEnv, email: string): Promise<(AccountRecord & { passwordHash: string; salt: string }) | null> {
   if (!env.DB) throw new Error('DB_NOT_CONFIGURED')
   const row = await env.DB.prepare(
-    'SELECT id, email, created_at as createdAt, email_verified_at as emailVerifiedAt, password_hash as passwordHash, password_salt as salt FROM accounts WHERE email = ? LIMIT 1',
+    'SELECT id, email, created_at as createdAt, email_verified_at as emailVerifiedAt, terms_accepted_at as termsAcceptedAt, privacy_accepted_at as privacyAcceptedAt, adult_confirmed_at as adultConfirmedAt, terms_version as termsVersion, privacy_version as privacyVersion, password_hash as passwordHash, password_salt as salt FROM accounts WHERE email = ? LIMIT 1',
   ).bind(email).first?.<AccountRecord & { passwordHash: string; salt: string }>()
   return row || null
 }
@@ -161,7 +175,7 @@ export function emailVerificationRequired(env: AuthEnv): boolean {
 export async function findAccountById(env: AuthEnv, accountId: string): Promise<(AccountRecord & { passwordHash: string; salt: string }) | null> {
   if (!env.DB) throw new Error('DB_NOT_CONFIGURED')
   const row = await env.DB.prepare(
-    'SELECT id, email, created_at as createdAt, email_verified_at as emailVerifiedAt, password_hash as passwordHash, password_salt as salt FROM accounts WHERE id = ? LIMIT 1',
+    'SELECT id, email, created_at as createdAt, email_verified_at as emailVerifiedAt, terms_accepted_at as termsAcceptedAt, privacy_accepted_at as privacyAcceptedAt, adult_confirmed_at as adultConfirmedAt, terms_version as termsVersion, privacy_version as privacyVersion, password_hash as passwordHash, password_salt as salt FROM accounts WHERE id = ? LIMIT 1',
   ).bind(accountId).first?.<AccountRecord & { passwordHash: string; salt: string }>()
   return row || null
 }
@@ -193,7 +207,7 @@ export async function getAccountFromRequest(context: AuthContext): Promise<Accou
   if (!token) return null
   const tokenHash = await digestHex(token)
   const row = await context.env.DB.prepare(
-    "SELECT a.id, a.email, a.created_at as createdAt, a.email_verified_at as emailVerifiedAt FROM sessions s JOIN accounts a ON a.id = s.account_id WHERE s.token_hash = ? AND s.expires_at > datetime('now') LIMIT 1",
+    "SELECT a.id, a.email, a.created_at as createdAt, a.email_verified_at as emailVerifiedAt, a.terms_accepted_at as termsAcceptedAt, a.privacy_accepted_at as privacyAcceptedAt, a.adult_confirmed_at as adultConfirmedAt, a.terms_version as termsVersion, a.privacy_version as privacyVersion FROM sessions s JOIN accounts a ON a.id = s.account_id WHERE s.token_hash = ? AND s.expires_at > datetime('now') LIMIT 1",
   ).bind(tokenHash).first?.<AccountRecord>()
   return row || null
 }
@@ -234,5 +248,13 @@ function cookieSameSite(env?: AuthEnv): 'Lax' | 'Strict' | 'None' {
 }
 
 export function accountPayload(account: AccountRecord) {
-  return { id: account.id, email: account.email, createdAt: account.createdAt, emailVerified: Boolean(account.emailVerifiedAt) }
+  return {
+    id: account.id,
+    email: account.email,
+    createdAt: account.createdAt,
+    emailVerified: Boolean(account.emailVerifiedAt),
+    adultConfirmed: Boolean(account.adultConfirmedAt),
+    termsAccepted: Boolean(account.termsAcceptedAt),
+    privacyAccepted: Boolean(account.privacyAcceptedAt),
+  }
 }

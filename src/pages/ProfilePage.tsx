@@ -10,7 +10,7 @@ import { useProgress } from '../hooks/useProgress'
 import { STICKERS } from '../data/stickers'
 import { SocialShare } from '../components/SocialShare'
 import { useMembership } from '../hooks/useMembership'
-import { useAccount } from '../hooks/useAccount'
+import { useAccount, type RegistrationConsent } from '../hooks/useAccount'
 
 const AVATARS = ['🦊', '🐻', '🦄', '🐱', '🐼', '🦁', '🐸', '🦉', '🐯', '🐨']
 const INTERESTS = ['masal', 'oyun', 'boyama', 'uzay', 'hayvan', 'stem', 'müzik', 'duygu']
@@ -60,6 +60,9 @@ export function ProfilePage({ onNavigate }: Props) {
   const [resetToken, setResetToken] = useState('')
   const [resetPasswordValue, setResetPasswordValue] = useState('')
   const [deletePassword, setDeletePassword] = useState('')
+  const [adultConfirmed, setAdultConfirmed] = useState(false)
+  const [termsAccepted, setTermsAccepted] = useState(false)
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
 
   useEffect(() => {
     setDraft(profile)
@@ -142,8 +145,16 @@ export function ProfilePage({ onNavigate }: Props) {
           ) : (
             <form onSubmit={(event) => {
               event.preventDefault()
-              const action = authMode === 'login' ? login : register
-              void action(authEmail, authPassword).then((ok) => { if (ok) setAuthPassword('') })
+              if (authMode === 'register') {
+                const consent: RegistrationConsent = { adultConfirmed, termsAccepted, privacyAccepted }
+                if (!consent.adultConfirmed || !consent.termsAccepted || !consent.privacyAccepted) {
+                  showToast('Bitte bestätigen Sie Volljährigkeit, Nutzungsbedingungen und Datenschutzerklärung')
+                  return
+                }
+                void register(authEmail, authPassword, consent).then((ok) => { if (ok) setAuthPassword('') })
+                return
+              }
+              void login(authEmail, authPassword).then((ok) => { if (ok) setAuthPassword('') })
             }}>
               <p>Mit Ihrem kostenlosen Konto können Sie Profile verwalten und Fortschritte auf verschiedenen Geräten erzielen.</p>
               <div className="account-access__fields">
@@ -156,6 +167,22 @@ export function ProfilePage({ onNavigate }: Props) {
                   <input type="password" autoComplete={authMode === 'login' ? 'current-password' : 'new-password'} minLength={8} value={authPassword} onChange={(event) => setAuthPassword(event.target.value)} placeholder="Mindestens 8 Zeichen" required />
                 </label>
               </div>
+              {authMode === 'register' && (
+                <div className="account-consent-list">
+                  <label className="account-consent">
+                    <input type="checkbox" checked={adultConfirmed} onChange={(event) => setAdultConfirmed(event.target.checked)} required />
+                    <span>Ich bestätige, dass ich volljährig bin und das Konto für meine Familie anlege.</span>
+                  </label>
+                  <label className="account-consent">
+                    <input type="checkbox" checked={termsAccepted} onChange={(event) => setTermsAccepted(event.target.checked)} required />
+                    <span>Ich akzeptiere die <a href="#terms">Nutzungs- und Abonnementbedingungen</a>.</span>
+                  </label>
+                  <label className="account-consent">
+                    <input type="checkbox" checked={privacyAccepted} onChange={(event) => setPrivacyAccepted(event.target.checked)} required />
+                    <span>Ich habe die <a href="#privacy">Datenschutzerklärung</a> gelesen.</span>
+                  </label>
+                </div>
+              )}
               <div className="btn-row">
                 <button type="submit" className="btn btn--primary" disabled={accountBusy || !accountConfigured}>{accountBusy ? 'Wird verbunden …' : authMode === 'login' ? 'Anmelden' : 'Konto erstellen'}</button>
                 <button type="button" className="btn btn--ghost" onClick={() => setAuthMode((mode) => mode === 'login' ? 'register' : 'login')}>

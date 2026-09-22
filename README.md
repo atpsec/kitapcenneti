@@ -36,9 +36,9 @@ npm run build:gh
 
 ## Familien+-Mitgliedschaft
 
-Der kostenlose Bereich bleibt nutzbar. Für echte Zahlungen werden Cloudflare Pages Functions, Stripe und D1 benötigt. Hinterlegen Sie serverseitig `STRIPE_SECRET_KEY`, `STRIPE_PRICE_MONTHLY`, `STRIPE_PRICE_ANNUAL`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_TERMS_URL` und `SITE_URL`. Der Checkout verlangt die aktuellen Nutzungsbedingungen auch im Stripe-Dashboard. Das D1-Binding muss `DB` heißen; die Migrationen werden in der Reihenfolge `0001` bis `0004` ausgeführt.
+Der kostenlose Bereich bleibt nutzbar. Für echte Zahlungen werden Cloudflare Pages Functions, Stripe und D1 benötigt. Hinterlegen Sie serverseitig `STRIPE_SECRET_KEY`, `STRIPE_PRICE_MONTHLY`, `STRIPE_PRICE_ANNUAL`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_TERMS_URL`, `SITE_URL` sowie `LEGAL_COMPANY`, `LEGAL_ADDRESS`, `LEGAL_REPRESENTATIVE`, `LEGAL_REGISTER`, `LEGAL_VAT_ID` und `SUPPORT_EMAIL`. Der Checkout verlangt die aktuellen Nutzungsbedingungen auch im Stripe-Dashboard, eine verifizierte Eltern-E-Mail und eine HTTPS-Produktionsdomain. Das D1-Binding muss `DB` heißen; die Migrationen werden in der Reihenfolge `0001` bis `0005` ausgeführt.
 
-Die kostenpflichtige Schaltfläche bleibt gesperrt, solange die vollständigen Unternehmensangaben für Impressum und Datenschutz nicht als Build-Variablen gesetzt sind. Verwenden Sie dafür `VITE_LEGAL_COMPANY`, `VITE_LEGAL_ADDRESS`, `VITE_LEGAL_REPRESENTATIVE`, `VITE_LEGAL_REGISTER`, `VITE_LEGAL_VAT_ID` und `VITE_SUPPORT_EMAIL`.
+Die kostenpflichtige Schaltfläche und der Checkout bleiben gesperrt, solange die vollständigen Unternehmensangaben für Impressum und Datenschutz nicht sowohl als Build-Variablen (`VITE_LEGAL_*`, `VITE_SUPPORT_EMAIL`) als auch serverseitig (`LEGAL_*`, `SUPPORT_EMAIL`) gesetzt sind. Bei der Registrierung werden Volljährigkeit sowie Nutzungsbedingungen und Datenschutzerklärung versioniert mit Zeitstempel gespeichert.
 
 Konten, Fortschritt und Zahlungen laufen ausschließlich über serverseitige Functions. Passwörter werden mit PBKDF2-SHA-256 verarbeitet; Sitzungen verwenden HttpOnly-, Secure- und SameSite-Cookies.
 

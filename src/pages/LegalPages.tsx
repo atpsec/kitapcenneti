@@ -80,7 +80,7 @@ export function PrivacyPage() {
         <p>Erforderliche Sitzungs- und Sicherheitsmechanismen dienen ausschließlich dem Betrieb des Dienstes. Analyse und Werbung bleiben deaktiviert, bis Sie dafür separat einwilligen. Die Auswahl wird mit Versionsnummer und Zeitstempel gespeichert, damit sie später geändert oder widerrufen werden kann.</p>
 
         <h2>5. Zahlungsdienst und Auftragsverarbeiter</h2>
-        <p>Zahlungen für Familien+ werden über Stripe abgewickelt. Vollständige Kartendaten werden von uns nicht gespeichert. Für Hosting, Datenbank und Sicherheitsfunktionen können Cloudflare-Dienste, für E-Mails und KI-Funktionen die jeweils aktivierten Anbieter eingesetzt werden. Die Anbieter verarbeiten Daten nur für die genannten Zwecke und werden in den erforderlichen Auftragsverarbeitungsvereinbarungen dokumentiert. Soweit Daten in Drittländer übermittelt werden, erfolgt dies nur mit einer geeigneten Rechtsgrundlage und den erforderlichen Garantien.</p>
+        <p>Zahlungen für Familien+ werden über <strong>Stripe</strong> abgewickelt. Vollständige Kartendaten werden von uns nicht gespeichert. Hosting, Datenbank und Sicherheitsfunktionen laufen über <strong>Cloudflare Pages, Workers und D1</strong>. Für Bestätigungs- und Wiederherstellungs-E-Mails kann <strong>Resend</strong> aktiviert werden. Für die optionale Geschichtenerstellung kann <strong>OpenAI</strong> eingesetzt werden; für optionale Illustrationen kann der Dienst <strong>Pollinations</strong> angefragt werden. An diese KI-Dienste dürfen keine sensiblen oder identifizierenden Kinderangaben übermittelt werden. Die jeweils aktivierten Anbieter, Zwecke, Speicherfristen und Auftragsverarbeitungsvereinbarungen werden vor dem produktiven Start anhand der tatsächlich verwendeten Konfiguration geprüft und dokumentiert. Soweit Daten in Drittländer übermittelt werden, erfolgt dies nur mit einer geeigneten Rechtsgrundlage und den erforderlichen Garantien.</p>
         <p>Google-Werbung wird nur auf dafür vorgesehenen Elternseiten und nach Einwilligung geladen. Weitere Informationen finden Sie in den <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noreferrer">Google-Werberichtlinien</a>.</p>
 
         <h2>6. Speicherdauer und Ihre Rechte</h2>
@@ -89,6 +89,8 @@ export function PrivacyPage() {
 
         <h2>7. Kinder und Elternkonto</h2>
         <p>Ein Konto darf nur von einer erwachsenen Person angelegt werden. Kinder nutzen ausschließlich das vom Elternkonto eingerichtete Profil. Wir richten keine direkt von Kindern erstellten Konten und verwenden Kinderprofile nicht für personalisierte Werbung.</p>
+        <h2>8. Verantwortliche Entscheidungen und Beschwerde</h2>
+        <p>Es findet keine ausschließlich automatisierte Entscheidung mit rechtlicher Wirkung über Familien oder Kinder statt. Für Datenschutzanfragen, Berichtigungen, Löschungen oder Beschwerden können Sie die im Impressum genannte Kontaktadresse nutzen. Wir beantworten Anfragen ohne unangemessene Verzögerung und prüfen Identitätsnachweise nur, soweit sie zum Schutz des Kontos erforderlich sind.</p>
         <LegalConfigNotice />
       </div>
     </div>
@@ -109,7 +111,19 @@ export function TermsPage() {
         <p>Der kostenlose Bereich kann mit eingeschränktem Funktionsumfang genutzt werden. Familien+ ist ein kostenpflichtiges, sich automatisch verlängerndes Abonnement. Der konkrete Preis einschließlich Steuern, Abrechnungszeitraum, Leistungsumfang und Zahlungsmethode wird vor dem Abschluss im Stripe Checkout angezeigt und dort bestätigt.</p>
         <p>Familien+ kann jederzeit über die Kontoverwaltung gekündigt werden. Die Kündigung wird zum Ende des bereits bezahlten Abrechnungszeitraums wirksam; bis dahin bleiben die bezahlten Funktionen verfügbar. Eine Kündigungsbestätigung wird elektronisch bereitgestellt.</p>
         <h2>3. Widerrufsrecht und digitale Inhalte</h2>
-        <p>Verbraucher haben grundsätzlich ein gesetzliches Widerrufsrecht. Die Widerrufsbelehrung und das Muster-Widerrufsformular werden vor dem Abschluss gesondert bereitgestellt. Wenn digitale Inhalte vor Ablauf der Widerrufsfrist beginnen sollen, ist hierfür eine ausdrückliche Zustimmung und die gesetzlich erforderliche Bestätigung des Verlusts des Widerrufsrechts erforderlich.</p>
+        <div id="widerruf">
+          <h3>Widerrufsbelehrung</h3>
+          <p><strong>Widerrufsrecht.</strong> Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsschlusses.</p>
+          <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns ({LEGAL_DETAILS.company}, {LEGAL_DETAILS.address}, {LEGAL_DETAILS.email}) mittels einer eindeutigen Erklärung, zum Beispiel per E-Mail oder Brief, über Ihren Entschluss informieren. Sie können dafür das folgende Muster-Widerrufsformular verwenden; es ist nicht vorgeschrieben.</p>
+          <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
+          <p><strong>Folgen des Widerrufs.</strong> Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, sofern nicht ausdrücklich etwas anderes vereinbart wurde.</p>
+          <p><strong>Vorzeitiger Beginn.</strong> Wenn Sie ausdrücklich verlangen, dass die Leistung vor Ablauf der Widerrufsfrist beginnt, und Sie bestätigen, dass Sie bei vollständiger Vertragserfüllung Ihr Widerrufsrecht verlieren, kann der Zugang vorzeitig freigeschaltet werden. Gesetzliche Rechte bei noch nicht vollständiger Leistung bleiben unberührt. Die hierfür erforderlichen Bestätigungen werden im Checkout dokumentiert.</p>
+          <h3>Muster-Widerrufsformular</h3>
+          <p>An {LEGAL_DETAILS.company}, {LEGAL_DETAILS.address}, {LEGAL_DETAILS.email}:</p>
+          <p>Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*) / die Erbringung der folgenden Dienstleistung (*):</p>
+          <p>Bestellt am (*) / erhalten am (*):<br />Name des/der Verbraucher(s):<br />Anschrift des/der Verbraucher(s):<br />Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier):<br />Datum:</p>
+          <p>(*) Unzutreffendes streichen.</p>
+        </div>
         <h2>4. Zulässige Nutzung und Inhalte</h2>
         <ul className="tip-list">
           <li>Der Dienst darf nur rechtmäßig und unter Beachtung der Rechte Dritter genutzt werden.</li>

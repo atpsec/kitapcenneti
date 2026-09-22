@@ -1,5 +1,5 @@
 import { authOptions, authResponse, getAccountFromRequest, hasTrustedRequestHeader, type AuthContext } from '../../lib/auth'
-import { envString, siteUrl, stripeFetch } from '../../lib/stripe'
+import { envString, legalConfigurationReady, productionSiteReady, siteUrl, stripeFetch } from '../../lib/stripe'
 
 export const onRequestOptions = (context: AuthContext) => authOptions(context)
 
@@ -8,6 +8,12 @@ export const onRequestPost = async (context: AuthContext) => {
     if (!hasTrustedRequestHeader(context)) return authResponse({ error: 'Ungültige Anfrage' }, 400, context)
     const account = await getAccountFromRequest(context)
     if (!account) return authResponse({ error: 'Melden Sie sich für die Zahlung mit einem Elternkonto an', code: 'unauthorized' }, 401, context)
+    if (!account.emailVerifiedAt) {
+      return authResponse({ error: 'Bestätigen Sie Ihre E-Mail-Adresse, bevor Sie ein kostenpflichtiges Abonnement starten', code: 'email_unverified' }, 403, context)
+    }
+    if (!legalConfigurationReady(context.env) || !productionSiteReady(context.env)) {
+      return authResponse({ error: 'Der kostenpflichtige Abschluss ist noch nicht für den Produktionsbetrieb konfiguriert', code: 'configuration_missing' }, 503, context)
+    }
     const body = (await context.request.json()) as { plan?: unknown }
     if (body.plan !== 'annual' && body.plan !== 'monthly') {
       return authResponse({ error: 'Ungültiger Abonnementplan' }, 400, context)

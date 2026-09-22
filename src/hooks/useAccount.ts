@@ -6,6 +6,15 @@ export interface Account {
   email: string
   createdAt: string
   emailVerified?: boolean
+  adultConfirmed?: boolean
+  termsAccepted?: boolean
+  privacyAccepted?: boolean
+}
+
+export interface RegistrationConsent {
+  adultConfirmed: boolean
+  termsAccepted: boolean
+  privacyAccepted: boolean
 }
 
 export interface RemoteChild {
@@ -132,12 +141,12 @@ export function useAccount() {
     }
   }, [refresh])
 
-  const authenticate = useCallback(async (mode: 'login' | 'register', email: string, password: string) => {
+  const authenticate = useCallback(async (mode: 'login' | 'register', email: string, password: string, consent?: RegistrationConsent) => {
     setBusy(true)
     try {
       const result = await request('/auth/' + mode, {
         method: 'POST',
-        body: JSON.stringify({ email: email.trim().toLowerCase(), password }),
+        body: JSON.stringify({ email: email.trim().toLowerCase(), password, ...(mode === 'register' ? consent : {}) }),
       })
       if (!result.response.ok || !result.payload.account) {
         showToast(result.payload.error || 'Die Kontoaktion konnte nicht abgeschlossen werden')
@@ -341,7 +350,7 @@ export function useAccount() {
     configured,
     refresh,
     login: (email: string, password: string) => authenticate('login', email, password),
-    register: (email: string, password: string) => authenticate('register', email, password),
+    register: (email: string, password: string, consent: RegistrationConsent) => authenticate('register', email, password, consent),
     logout,
     requestVerification,
     verifyEmailToken,
