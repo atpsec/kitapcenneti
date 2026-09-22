@@ -108,7 +108,7 @@ function RoutedPage({
     case 'create':
       return <CreateStoryPage />
     case 'audio':
-      return <AudioStoriesPage />
+      return <AudioStoriesPage onNavigate={navigate} />
     case 'coloring':
       return <ColoringPagesPage />
     case 'heroes':

@@ -14,8 +14,14 @@ import { ContentPortalBar } from '../components/ContentPortalBar'
 import { useContentItemId } from '../hooks/useContentItemId'
 import { dayKey, factoryStory, hashSeed } from '../engines/contentFactory'
 import { StoryPlayer } from '../components/StoryPlayer'
+import { PremiumGate } from '../components/PremiumGate'
+import type { PageId } from '../types/nav'
 
-export function AudioStoriesPage() {
+interface Props {
+  onNavigate: (page: PageId) => void
+}
+
+export function AudioStoriesPage({ onNavigate }: Props) {
   const liveStories = useMemo(() => {
     const base = hashSeed(dayKey(), 'audio-live')
     return Array.from({ length: 48 }, (_, i) => factoryStory(hashSeed(base, i)))
@@ -23,13 +29,14 @@ export function AudioStoriesPage() {
 
   const library = useMemo(() => [...liveStories, ...AUDIO_STORIES], [liveStories])
 
-  const [activeId, setActiveId] = useContentItemId('audio', library[0].id)
+  const [activeId, setActiveId] = useContentItemId('audio', AUDIO_STORIES[0]?.id || library[0].id)
   const [favorites, setFavorites] = useState(() => getFavoriteAudioIds())
   const [onlyFavs, setOnlyFavs] = useState(false)
   const [query, setQuery] = useState('')
   const [theme, setTheme] = useState('Tümü')
   const { bedtime, toggleBedtime } = useProgress()
   const active = library.find((s) => s.id === activeId) || library[0]
+  const isLiveStory = 'source' in active && active.source === 'live'
 
   const themes = useMemo(
     () => ['Tümü', 'Canlı Düşüş', ...Array.from(new Set(AUDIO_STORIES.map((s) => s.theme)))],
@@ -103,11 +110,61 @@ export function AudioStoriesPage() {
                   {story.age} yaş · {story.duration} · {story.theme}
                 </small>
               </div>
+              {'source' in story && <span title="Aile+ içeriği" aria-label="Aile+ içeriği">✦</span>}
               {favorites.includes(story.id) && <span aria-hidden="true">❤️</span>}
             </button>
           ))}
         </div>
 
+        {isLiveStory ? (
+          <PremiumGate onNavigate={onNavigate} label="Canlı düşüş masalları Aile+ ile açılır">
+            <div className="audio-player panel">
+              <div className="audio-player__hero">
+                <span>{active.emoji}</span>
+                <div>
+                  <h2>{active.title}</h2>
+                  <p>{active.summary}</p>
+                </div>
+              </div>
+
+              <StoryPlayer
+                story={active}
+                bedtime={bedtime}
+                onListened={() => announceActivityResult(completeActivity('listen'))}
+              />
+
+              <div className="btn-row" style={{ marginTop: 12 }}>
+                <button
+                  className="btn btn--ghost"
+                  onClick={() => setFavorites(toggleFavoriteAudio(active.id))}
+                >
+                  {favorites.includes(active.id) ? '❤️ Favoride' : '🤍 Favorile'}
+                </button>
+                <button
+                  className="btn btn--ghost"
+                  onClick={() => {
+                    printHtml(
+                      active.title,
+                      `<p style="white-space:pre-wrap;line-height:1.8">${escapeHtml(active.text)}</p>`,
+                    )
+                    announceActivityResult(completeActivity('print'))
+                  }}
+                >
+                  🖨️ Yazdır
+                </button>
+              </div>
+              <SocialShare
+                payload={{
+                  title: `${active.emoji} ${active.title}`,
+                  text: active.summary,
+                  page: 'audio',
+                  itemId: active.id,
+                  hashtags: ['KitapCenneti', 'Masal', active.theme.replace(/\s+/g, '')],
+                }}
+              />
+            </div>
+          </PremiumGate>
+        ) : (
         <div className="audio-player panel">
           <div className="audio-player__hero">
             <span>{active.emoji}</span>
@@ -153,6 +210,7 @@ export function AudioStoriesPage() {
             }}
           />
         </div>
+        )}
       </div>
     </div>
   )

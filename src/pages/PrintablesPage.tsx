@@ -7,6 +7,7 @@ import { AdSlot } from '../components/AdSlot'
 import { announceActivityResult } from '../components/Toast'
 import { completeActivity } from '../hooks/useProgress'
 import { downloadFeelingsPackPdf, downloadQuestChecklistPdf } from '../utils/pdf'
+import { PremiumGate } from '../components/PremiumGate'
 
 interface PrintablesPageProps {
   onNavigate: (page: PageId) => void
@@ -48,7 +49,7 @@ export function PrintablesPage({ onNavigate }: PrintablesPageProps) {
       <div className="printables-grid">
         {PRINTABLES.map((p) => {
           const instant = p.id === 'gorev' || p.id === 'duygu'
-          return (
+          const card = (
             <article key={p.id} className="panel printable-card printable-card--rich">
               <span>{p.emoji}</span>
               <h3>{p.title}</h3>
@@ -72,6 +73,7 @@ export function PrintablesPage({ onNavigate }: PrintablesPageProps) {
               </div>
             </article>
           )
+          return p.premium ? <PremiumGate key={p.id} onNavigate={onNavigate} label="Bu paket Aile+ ile açılır">{card}</PremiumGate> : card
         })}
       </div>
 
