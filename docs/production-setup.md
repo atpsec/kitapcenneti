@@ -113,6 +113,8 @@ POST   /api/auth/reset-password
 
 Checkout wird nur für ein angemeldetes, E-Mail-bestätigtes Elternkonto mit gespeicherten Volljährigkeits-, Nutzungsbedingungs- und Datenschutzzustimmungen geöffnet. Neue Konten erfassen diese Nachweise bei der Registrierung; ältere Konten müssen die aktuelle Fassung einmalig auf der Profilseite bestätigen. Die Mitgliedschaft wird über die Konto-ID und nicht über die Stripe-E-Mail-Adresse verknüpft. Zusätzlich prüft die Function serverseitig die vollständige Rechtskonfiguration und eine HTTPS-`SITE_URL`, damit ein direkter API-Aufruf keine Frontend-Sperre umgehen kann.
 
+Fehlen die vollständigen Unternehmensangaben, bleibt die Sperre bereits vor dem Konto- und Consent-Schritt aktiv: Die rechtlichen Seiten zeigen nur einen Vorbereitungsstatus und `POST /api/auth/register` sowie `POST /api/auth/consent` antworten mit `legal_configuration_missing`. Erst nach gesetzter Konfiguration und veröffentlichter Rechtstextprüfung werden diese Flows freigeschaltet.
+
 Damit das Frontend auf GitHub Pages die Cloudflare-API erreicht, setzen Sie im Build-Umfeld diese Variablen:
 
 ```text

@@ -40,6 +40,8 @@ Der kostenlose Bereich bleibt nutzbar. Für echte Zahlungen werden Cloudflare Pa
 
 Die kostenpflichtige Schaltfläche und der Checkout bleiben gesperrt, solange die vollständigen Unternehmensangaben für Impressum und Datenschutz nicht sowohl als Build-Variablen (`VITE_LEGAL_*`, `VITE_SUPPORT_EMAIL`) als auch serverseitig (`LEGAL_*`, `SUPPORT_EMAIL`) gesetzt sind. Bei der Registrierung werden Volljährigkeit sowie Nutzungsbedingungen und Datenschutzerklärung versioniert mit Zeitstempel gespeichert; ältere Konten müssen die aktuelle Fassung vor dem Checkout einmalig im Elternprofil bestätigen.
 
+Solange diese Angaben fehlen, bleiben die rechtlichen Seiten und die Kontoerstellung absichtlich im Vorschau- bzw. Sperrmodus. Der kostenlose Inhaltsbereich kann weiterhin gelesen werden, aber es werden keine Konten oder Verträge ohne vollständige Rechtstexte angelegt.
+
 Konten, Fortschritt und Zahlungen laufen ausschließlich über serverseitige Functions. Passwörter werden mit PBKDF2-SHA-256 verarbeitet; Sitzungen verwenden HttpOnly-, Secure- und SameSite-Cookies.
 
 Wichtige Endpunkte:
