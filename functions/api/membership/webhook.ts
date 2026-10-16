@@ -1,4 +1,5 @@
 import { json, type MembershipEnv } from '../../lib/stripe'
+import { resolveMembershipStatus } from '../../lib/membership-status'
 
 const HANDLED_EVENTS = new Set([
   'checkout.session.completed',
@@ -80,11 +81,7 @@ async function persistEvent(env: MembershipEnv, event: StripeEvent) {
     accountId = account?.accountId || ''
   }
 
-  const status = event.type === 'customer.subscription.deleted'
-    ? 'canceled'
-    : event.type === 'invoice.payment_failed'
-      ? 'past_due'
-      : stringValue(object.status) || (event.type === 'checkout.session.completed' ? 'active' : existing?.status || 'active')
+  const status = resolveMembershipStatus(event.type, stringValue(object.status), existing?.status)
   const items = recordValue(object.items)
   const data = Array.isArray(items.data) ? items.data : []
   const firstItem = recordValue(data[0])

@@ -2,9 +2,15 @@
 
 Eine deutschsprachige Familienplattform für Geschichten, Spiele, MINT-Entdeckungen und ruhige Lernmomente.
 
-## Live
+## Live preview
 
 <https://atpsec.github.io/kitapcenneti/>
+
+## Cloudflare Pages (temporäre Produktionsadresse)
+
+<https://kitapcenneti.pages.dev/>
+
+Die Cloudflare-Adresse stellt die App und Pages Functions bereit. Kontoerstellung und Familien+-Checkout bleiben gesperrt, bis D1, E-Mail-Bestätigung sowie die geprüften Rechts- und Stripe-Angaben vollständig konfiguriert sind.
 
 ## Funktionen
 
