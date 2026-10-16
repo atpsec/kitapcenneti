@@ -2,6 +2,8 @@
 
 Die GitHub-Pages-Version dient als statischer Fallback. Für Konten, Fortschrittssynchronisierung und Stripe-Abonnements werden Cloudflare Pages Functions und D1 benötigt.
 
+Die aktuell erreichbare temporäre Adresse lautet <https://kitapcenneti.pages.dev/>. Die Functions antworten dort, aber `GET /api/auth/me` meldet derzeit `configuration_missing`; D1 und die kostenpflichtige Mitgliedschaft sind daher noch nicht betriebsbereit.
+
 ## 1. Cloudflare-Pages-Projekt
 
 Wählen Sie im Cloudflare-Dashboard unter **Workers & Pages → Create → Pages → Connect to Git** das Repository `atpsec/kitapcenneti` aus.
@@ -34,7 +36,7 @@ npx wrangler d1 migrations apply kitapcenneti --remote
 Erstellen Sie im Stripe-Dashboard zwei wiederkehrende Preise (monatlich/jährlich). Der Stripe-Webhook-Endpunkt lautet:
 
 ```text
-https://<cloudflare-pages-domain>/api/membership/webhook
+https://kitapcenneti.pages.dev/api/membership/webhook
 ```
 
 Hinterlegen Sie die folgenden Werte unter Cloudflare Pages → Settings → Environment variables → Production:
@@ -47,9 +49,9 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 STRIPE_CHECKOUT_LOCALE=de
 # Der Checkout verlangt standardmäßig aktuelle Nutzungsbedingungen im Stripe-Dashboard.
 STRIPE_REQUIRE_TERMS=true
-STRIPE_TERMS_URL=https://<ihre-domain>/#terms
-SITE_URL=https://<cloudflare-pages-domain>
-AUTH_ALLOWED_ORIGIN=https://<cloudflare-pages-domain>
+STRIPE_TERMS_URL=https://kitapcenneti.pages.dev/#terms
+SITE_URL=https://kitapcenneti.pages.dev
+AUTH_ALLOWED_ORIGIN=https://kitapcenneti.pages.dev
 AUTH_SESSION_TTL_DAYS=30
 AUTH_COOKIE_SAMESITE=Lax
 LEGAL_COMPANY=<Unternehmensname>
@@ -70,7 +72,7 @@ Absenderdomain eingerichtet:
 AUTH_EMAIL_PROVIDER=resend
 AUTH_EMAIL_API_KEY=re_...
 AUTH_EMAIL_FROM=Kitap Cenneti <konto@ihre-domain.de>
-AUTH_EMAIL_APP_URL=https://<cloudflare-pages-domain>
+AUTH_EMAIL_APP_URL=https://kitapcenneti.pages.dev
 AUTH_REQUIRE_EMAIL_VERIFICATION=true
 ```
 
@@ -122,7 +124,7 @@ Fehlen die vollständigen Unternehmensangaben, bleibt die Sperre bereits vor dem
 Damit das Frontend auf GitHub Pages die Cloudflare-API erreicht, setzen Sie im Build-Umfeld diese Variablen:
 
 ```text
-VITE_MEMBERSHIP_API_BASE=https://<cloudflare-pages-domain>/api
+VITE_MEMBERSHIP_API_BASE=https://kitapcenneti.pages.dev/api
 VITE_SUPPORT_EMAIL=<echte Support-Adresse>
 VITE_LEGAL_COMPANY=<Unternehmensname>
 VITE_LEGAL_ADDRESS=<Geschäftsanschrift in Deutschland>
@@ -134,4 +136,4 @@ VITE_LEGAL_DPO_EMAIL=<Datenschutzkontakt, falls vorhanden>
 VITE_LEGAL_SUPERVISORY_AUTHORITY=<zuständige Datenschutzaufsichtsbehörde>
 ```
 
-Wenn Frontend und Functions auf Cloudflare Pages dieselbe Domain verwenden, kann diese Variable leer bleiben; das Frontend verwendet automatisch `/api`.
+Da Frontend und Functions unter `kitapcenneti.pages.dev` dieselbe Domain verwenden, kann `VITE_MEMBERSHIP_API_BASE` leer bleiben; das Frontend verwendet automatisch `/api`. Tragen Sie `STRIPE_TERMS_URL` erst ein, nachdem die endgültigen Nutzungsbedingungen veröffentlicht und geprüft wurden.
